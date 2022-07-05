@@ -6,7 +6,7 @@ A doc manager written in React for organising and viewing MDX files.
 
 [![version][version-badge]][package] [![MIT License][license-badge]][license]
 
-[**Read The Docs**](https://fa-repo.github.io/shard-docs/#/docs)
+[**Read The Docs**](https://skystash.github.io/shard-docs/#/docs)
 </div>
 
 <hr/>
