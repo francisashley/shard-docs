@@ -4,7 +4,7 @@ import { withRouter, HashRouter, BrowserRouter, Route } from "react-router-dom";
 import Main from "../Main";
 import Sidebar from "../Sidebar";
 import fromSource from "../adapters/fromSource";
-import { SourcePropType } from "../types";
+import { SourcePropType } from "../prop-types";
 import { setActiveTreeNode, filterDocuments, setActiveCrumb } from "../utils";
 import "./sanitize.css";
 import "./ShardDocs.scss";

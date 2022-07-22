@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import ExternalIcon from "../icons/LinkExternal";
-import { ExternalLinkPropType } from "../types";
+import { ExternalLinkPropType } from "../prop-types";
 
 /**
  * ExternalLinkNode

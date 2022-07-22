@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Breadcrumbs from "../Breadcrumbs";
-import { BreadcrumbPropType } from "../types";
+import { BreadcrumbPropType } from "../prop-types";
 
 import "./github.css";
 import "./document.scss";

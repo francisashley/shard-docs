@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import classnames from "classnames";
 import { NavLink } from "react-router-dom";
-import { BreadcrumbPropType } from "../types";
+import { BreadcrumbPropType } from "../prop-types";
 import "./Breadcrumbs.scss";
 
 /**

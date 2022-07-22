@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import classnames from "classnames";
 import { NavLink } from "react-router-dom";
-import { DocumentPropType } from "../types";
+import { DocumentPropType } from "../prop-types";
 import FileIcon from "../icons/FileIcon";
 
 /**

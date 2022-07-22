@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { NavLink } from "react-router-dom";
-import { PaginationPropType } from "../types";
+import { PaginationPropType } from "../prop-types";
 import "./Pagination.scss";
 
 /**

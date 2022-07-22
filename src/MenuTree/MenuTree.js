@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import DocumentNode from "./DocumentNode";
 import ExternalLinkNode from "./LinkExternalNode";
 import FolderNode from "./FolderNode";
-import { TreePropType } from "../types";
+import { TreePropType } from "../prop-types";
 import "./MenuTree.scss";
 
 /**
