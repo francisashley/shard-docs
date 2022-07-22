@@ -21,10 +21,10 @@
     "prepare": "yarn build",
     "predeploy": "cd docs && yarn && yarn build",
     "deploy": "npx gh-pages -d docs/public --git $(which git)",
-    "preversion": "false",
+    "preversion": "npm run test && npx rimraf ./dist && npm run build",
     "postpublish": "git push --tags",
     "analyse": "yarn build && npx source-map-explorer ./dist/shard-docs.js",
-    "test": "npx ./node_modules/.bin/jest --env=jsdom",
+    "test": "false",
     "test:watch": "npx ./node_modules/.bin/jest --watch --env=jsdom",
     "test:coverage": "npx ./node_modules/.bin/jest --coverage"
   },
