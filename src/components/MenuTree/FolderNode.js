@@ -1,13 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { FolderPropType } from "../prop-types";
+import { FolderPropType } from "../../prop-types";
 import MenuTree from "./MenuTree";
 import classnames from "classnames";
 import { NavLink } from "react-router-dom";
 import BaseLink from "@fa-repo/base-react/dist/link";
 import TriangleArrowDown from "../icons/TriangleArrowDown";
 import TriangleArrowRight from "../icons/TriangleArrowRight";
-import sessionDB from "../utils/sessionDB";
+import sessionDB from "../../utils/sessionDB";
 
 /**
  * FolderNode

@@ -1,1 +1,1 @@
-export { default } from "./ShardDocs";
+export { default } from "./components/ShardDocs";

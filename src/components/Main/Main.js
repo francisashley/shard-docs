@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import Pagination from "../Pagination";
 import Document from "../Document";
-import { PaginationPropType, DocumentPropType } from "../prop-types";
+import { PaginationPropType, DocumentPropType } from "../../prop-types";
 import "./Main.scss";
 
 /**

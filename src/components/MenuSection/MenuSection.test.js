@@ -1,7 +1,7 @@
 import React from "react";
 import { mount } from "enzyme";
 import MenuSection from "./MenuSection";
-import fromSource from "../adapters/fromSource";
+import fromSource from "../../adapters/fromSource";
 import { MemoryRouter } from "react-router-dom";
 
 let { tree } = fromSource([

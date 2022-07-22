@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { FolderPropType } from "../prop-types";
+import { FolderPropType } from "../../prop-types";
 import MenuTree from "../MenuTree";
-import sessionDB from "../utils/sessionDB";
+import sessionDB from "../../utils/sessionDB";
 import classnames from "classnames";
 import MenuSectionHeader from "./MenuSectionHeader";
 import "./MenuSection.scss";

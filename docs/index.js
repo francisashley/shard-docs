@@ -3,7 +3,7 @@ import { render } from "react-dom";
 
 import { MDXProvider } from "@mdx-js/react";
 
-import CodeBlock from "@fa-repo/shard-docs/dist/renderers/codeblock";
+import CodeBlock from "@fa-repo/shard-docs/dist/components/codeblock";
 import ShardDocs from "@fa-repo/shard-docs";
 
 import "@fa-repo/shard-docs/dist/shard-docs.css";

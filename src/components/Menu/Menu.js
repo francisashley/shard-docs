@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { TreePropType } from "../prop-types";
+import { TreePropType } from "../../prop-types";
 import MenuTree from "../MenuTree";
 import MenuSection from "../MenuSection";
 import "./Menu.scss";

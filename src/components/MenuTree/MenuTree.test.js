@@ -2,7 +2,7 @@ import React from "react";
 import { mount } from "enzyme";
 import { MemoryRouter } from "react-router-dom";
 import MenuTree from "./MenuTree";
-import fromSource from "../adapters/fromSource";
+import fromSource from "../../adapters/fromSource";
 
 const { tree } = fromSource([
   { title: "Doc A", document: [] },

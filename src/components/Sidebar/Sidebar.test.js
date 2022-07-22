@@ -2,7 +2,7 @@ import React from "react";
 import { MemoryRouter } from "react-router-dom";
 import { mount } from "enzyme";
 import Sidebar from "./Sidebar";
-import fromSource from "../adapters/fromSource";
+import fromSource from "../../adapters/fromSource";
 
 const title = "App title";
 const description = "App description.";

@@ -4,7 +4,7 @@ import SidebarHeader from "../Header";
 import SidebarDescription from "../Description";
 import SidebarMenu from "../Menu";
 import BuiltWithShardDocs from "../BuiltWithShardDocs";
-import { AppPropType, TreePropType } from "../prop-types";
+import { AppPropType, TreePropType } from "../../prop-types";
 import "./Sidebar.scss";
 
 /**
