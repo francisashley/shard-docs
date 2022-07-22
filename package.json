@@ -21,7 +21,7 @@
     "prepare": "yarn build",
     "predeploy": "cd docs && yarn && yarn build",
     "deploy": "npx gh-pages -d docs/public --git $(which git)",
-    "preversion": "yarn test && npx rimraf ./dist && yarn build",
+    "preversion": "npm run test && npx rimraf ./dist && npm run build",
     "postpublish": "git push --tags",
     "analyse": "yarn build && npx source-map-explorer ./dist/shard-docs.js",
     "test": "npx ./node_modules/.bin/jest --env=jsdom",
