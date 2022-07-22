@@ -1,8 +1,8 @@
 "use strict";
 
-const { defaults } = require("jest-config");
+import { defaults } from "jest-config";
 
-module.exports = {
+export default {
   setupFilesAfterEnv: ["./enzyme.config.js", "jest-extended"],
   moduleNameMapper: {
     "\\.(css|scss|less)$": "identity-obj-proxy"
