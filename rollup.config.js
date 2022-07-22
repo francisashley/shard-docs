@@ -14,18 +14,18 @@ export default [
   transpile("src/renderers/CodeBlock", "dist/renderers", "codeblock")
 ];
 
-function transpile(entry, dest, name) {
+function transpile(input, outputPath, outputFileName) {
   return {
-    input: entry,
+    input,
     output: [
       {
-        file: dest + "/" + name + ".js",
+        file: outputPath + "/" + outputFileName + ".js",
         format: "cjs",
         sourcemap: true,
         exports: "named"
       },
       {
-        file: dest + "/" + name + ".es.js",
+        file: outputPath + "/" + outputFileName + ".es.js",
         format: "es",
         sourcemap: true,
         exports: "named"
