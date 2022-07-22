@@ -9,8 +9,8 @@ import json from "rollup-plugin-json";
 
 export default [
   transpile("src/index.js", "dist", "shard-docs"),
-  transpile("src/components/shards/CodeSample", "dist/shards", "code-sample"),
-  transpile("src/components/shards/Section", "dist/shards", "section"),
+  transpile("src/components/shards/CodeSampleShard", "dist/shards", "code-sample"),
+  transpile("src/components/shards/SectionShard", "dist/shards", "section"),
   transpile("src/components/CodeBlock", "dist/renderers", "codeblock")
 ];
 
