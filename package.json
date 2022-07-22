@@ -16,11 +16,8 @@
     "dist"
   ],
   "scripts": {
-    "test": "npx ./node_modules/.bin/jest --env=jsdom",
-    "test:watch": "npx ./node_modules/.bin/jest --watch --env=jsdom",
-    "test:coverage": "npx ./node_modules/.bin/jest --coverage",
-    "build": "npx rollup -c",
     "watch": "npx rollup -c -w",
+    "build": "npx rollup -c",
     "prepare": "yarn build",
     "predeploy": "cd docs && yarn && yarn build",
     "deploy": "npx gh-pages -d docs/public --git $(which git)",
@@ -30,7 +27,10 @@
     "prepublishOnly": "npx rimraf ./dist && yarn build",
     "postpublish": "git push --tags",
     "analyse": "yarn build && npx source-map-explorer ./dist/shard-docs.js",
-    "version": "node -p \"require('./package.json').version\""
+    "version": "node -p \"require('./package.json').version\"",
+    "test": "npx ./node_modules/.bin/jest --env=jsdom",
+    "test:watch": "npx ./node_modules/.bin/jest --watch --env=jsdom",
+    "test:coverage": "npx ./node_modules/.bin/jest --coverage"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
