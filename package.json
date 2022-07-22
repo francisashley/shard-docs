@@ -24,9 +24,9 @@
     "preversion": "npm run test && npx rimraf ./dist && npm run build",
     "postpublish": "git push --tags",
     "analyse": "yarn build && npx source-map-explorer ./dist/shard-docs.js",
-    "test": "false",
-    "test:watch": "npx ./node_modules/.bin/jest --watch --env=jsdom",
-    "test:coverage": "npx ./node_modules/.bin/jest --coverage"
+    "test": "jest --env=jsdom",
+    "test:watch": "jest --watch --env=jsdom",
+    "test:coverage": "jest --coverage"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
