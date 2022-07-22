@@ -4,7 +4,7 @@ import { withRouter, HashRouter, BrowserRouter, Route } from "react-router-dom";
 import Main from "../Main";
 import Sidebar from "../Sidebar";
 import fromSource from "../adapters/fromSource";
-import { sourceTypes, breadcrumbTypes } from "../types";
+import { SourcePropType } from "../types";
 import { setActiveTreeNode, filterDocuments, setActiveCrumb } from "../utils";
 import "./sanitize.css";
 import "./ShardDocs.scss";
@@ -100,7 +100,7 @@ class ShardDocs extends React.Component {
 ShardDocs.propTypes = {
   title: PropTypes.string,
   description: PropTypes.string,
-  source: sourceTypes,
+  source: SourcePropType,
   basePath: PropTypes.string,
   hideBuiltWithShardDocs: PropTypes.bool,
   useBrowserRouter: PropTypes.bool

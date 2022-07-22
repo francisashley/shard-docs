@@ -4,7 +4,7 @@ import SidebarHeader from "../Header";
 import SidebarDescription from "../Description";
 import SidebarMenu from "../Menu";
 import BuiltWithShardDocs from "../BuiltWithShardDocs";
-import { appTypes, treeTypes } from "../types";
+import { AppPropType, TreePropType } from "../types";
 import "./Sidebar.scss";
 
 /**
@@ -13,10 +13,10 @@ import "./Sidebar.scss";
 
 class Sidebar extends React.Component {
   static propTypes = {
-    app: appTypes,
+    app: AppPropType,
     title: PropTypes.string,
     description: PropTypes.string,
-    tree: treeTypes,
+    tree: TreePropType,
     hideBuiltWithShardDocs: PropTypes.bool
   };
 

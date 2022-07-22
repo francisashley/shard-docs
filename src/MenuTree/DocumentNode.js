@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import classnames from "classnames";
 import { NavLink } from "react-router-dom";
-import { documentTypes } from "../types";
+import { DocumentPropType } from "../types";
 import FileIcon from "../icons/FileIcon";
 
 /**
@@ -27,7 +27,7 @@ const DocumentNode = ({ node, onNavigate }) => {
 };
 
 DocumentNode.propTypes = {
-  node: documentTypes,
+  node: DocumentPropType,
   onNavigate: PropTypes.func
 };
 

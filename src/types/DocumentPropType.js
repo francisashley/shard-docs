@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
-import documentTypes from "./document";
-import breadcrumbTypes from "./breadcrumb";
+import documentPropType from "./DocumentPropType";
+import breadcrumbPropType from "./BreadcrumbPropType";
 
 export default PropTypes.shape({
   type: PropTypes.oneOf(["document"]),
@@ -8,6 +8,6 @@ export default PropTypes.shape({
   title: PropTypes.string,
   isEmpty: PropTypes.bool,
   isActive: PropTypes.bool,
-  breadcrumbs: PropTypes.arrayOf(breadcrumbTypes),
-  document: documentTypes
+  breadcrumbs: PropTypes.arrayOf(breadcrumbPropType),
+  document: documentPropType
 });

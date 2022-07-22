@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Breadcrumbs from "../Breadcrumbs";
-import { breadcrumbTypes } from "../types";
+import { BreadcrumbPropType } from "../types";
 
 import "./github.css";
 import "./document.scss";
@@ -21,7 +21,7 @@ const Document = ({ document, breadcrumbs }) => {
 };
 
 Document.propTypes = {
-  breadcrumbs: PropTypes.arrayOf(breadcrumbTypes).isRequired,
+  breadcrumbs: PropTypes.arrayOf(BreadcrumbPropType).isRequired,
   document: PropTypes.element
 };
 

@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { appTypes, treeTypes } from "../types";
+import { TreePropType } from "../types";
 import MenuTree from "../MenuTree";
 import MenuSection from "../MenuSection";
 import "./Menu.scss";
@@ -20,7 +20,7 @@ const Menu = props => {
 };
 
 Menu.propTypes = {
-  tree: treeTypes,
+  tree: TreePropType,
   showOnMobile: PropTypes.bool,
   onNavigate: PropTypes.func
 };

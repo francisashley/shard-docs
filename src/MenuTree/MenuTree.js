@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import DocumentNode from "./DocumentNode";
 import ExternalLinkNode from "./LinkExternalNode";
 import FolderNode from "./FolderNode";
-import { treeTypes } from "../types";
+import { TreePropType } from "../types";
 import "./MenuTree.scss";
 
 /**
@@ -27,7 +27,7 @@ const MenuTree = ({ tree, onNavigate }) => {
 };
 
 MenuTree.propTypes = {
-  tree: treeTypes,
+  tree: TreePropType,
   onNavigate: PropTypes.func
 };
 

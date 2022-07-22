@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { folderTypes } from "../types";
+import { FolderPropType } from "../types";
 import MenuTree from "./MenuTree";
 import classnames from "classnames";
 import { NavLink } from "react-router-dom";
@@ -55,7 +55,7 @@ class FolderNode extends React.Component {
 }
 
 FolderNode.propTypes = {
-  node: folderTypes,
+  node: FolderPropType,
   onNavigate: PropTypes.func
 };
 

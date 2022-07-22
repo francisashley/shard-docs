@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import classnames from "classnames";
 import { NavLink } from "react-router-dom";
-import { breadcrumbTypes } from "../types";
+import { BreadcrumbPropType } from "../types";
 import "./Breadcrumbs.scss";
 
 /**
@@ -30,7 +30,7 @@ const Breadcrumbs = ({ breadcrumbs }) => (
 );
 
 Breadcrumbs.propTypes = {
-  breadcrumbs: PropTypes.arrayOf(breadcrumbTypes).isRequired
+  breadcrumbs: PropTypes.arrayOf(BreadcrumbPropType).isRequired
 };
 
 Breadcrumbs.defaultProps = {

@@ -1,8 +1,8 @@
-export { default as appTypes } from "./app";
-export { default as breadcrumbTypes } from "./breadcrumb";
-export { default as paginationTypes } from "./pagination";
-export { default as treeTypes } from "./tree";
-export { default as externalLinkTypes } from "./externalLink";
-export { default as folderTypes } from "./folder";
-export { default as documentTypes } from "./document";
-export { default as sourceTypes } from "./source";
+export { default as AppPropType } from "./AppPropType";
+export { default as BreadcrumbPropType } from "./BreadcrumbPropType";
+export { default as PaginationPropType } from "./PaginationPropType";
+export { default as TreePropType } from "./TreePropType";
+export { default as ExternalLinkPropType } from "./ExternalLinkPropType";
+export { default as FolderPropType } from "./FolderPropType";
+export { default as DocumentPropType } from "./DocumentPropType";
+export { default as SourcePropType } from "./SourcePropType";

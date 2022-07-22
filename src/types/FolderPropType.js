@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import treeTypes from "./tree";
+import TreePropType from "./TreePropType";
 
 export default PropTypes.shape({
   type: PropTypes.oneOf(["folder"]),
@@ -7,5 +7,5 @@ export default PropTypes.shape({
   title: PropTypes.string,
   isEmpty: PropTypes.bool,
   isActive: PropTypes.bool,
-  folder: treeTypes
+  folder: TreePropType
 });
