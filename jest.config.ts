@@ -3,7 +3,7 @@
 import { defaults } from "jest-config";
 
 export default {
-  setupFilesAfterEnv: ["./enzyme.config.js", "jest-extended"],
+  setupFilesAfterEnv: ["./enzyme.config.js", "jest-extended", "./setup-tests.ts"],
   moduleNameMapper: {
     "\\.(css|scss|less)$": "identity-obj-proxy"
   },
