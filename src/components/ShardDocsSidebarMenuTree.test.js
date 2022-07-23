@@ -5,14 +5,15 @@ import MenuTree from "./ShardDocsSidebarMenuTree";
 import fromSource from "../adapters/fromSource";
 
 const { tree } = fromSource([
-  { title: "Doc A", document: [] },
-  { title: "Doc B", document: [] },
-  { title: "Doc C", document: [] },
+  { type: 'document', title: "Doc A", document: [] },
+  { type: 'document', title: "Doc B", document: [] },
+  { type: 'document', title: "Doc C", document: [] },
   {
+    type: 'folder', 
     title: "Folder",
-    folder: [{ title: "Doc D", document: [] }, { title: "Doc E", document: [] }]
+    folder: [{ type: 'document', title: "Doc D", document: [] }, { title: "Doc E", document: [] }]
   },
-  { title: "Github", externalLink: "http://github.com" }
+  { type: 'external-link', title: "Github", externalLink: "http://github.com" }
 ]);
 
 describe("<MenuTree />", () => {

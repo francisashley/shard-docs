@@ -6,8 +6,9 @@ import fromSource from "../adapters/fromSource";
 
 const { tree } = fromSource([
   {
+    type: 'folder', 
     title: "Folder",
-    folder: [{ title: "Document", document: <h1>Hello world</h1> }]
+    folder: [{ type: 'document', title: "Document", document: <h1>Hello world</h1> }]
   }
 ]);
 
