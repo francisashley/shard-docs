@@ -5,13 +5,13 @@ import MenuTree from "./ShardDocsSidebarMenuTree";
 import fromSource from "../adapters/fromSource";
 
 const { tree } = fromSource([
-  { type: 'document', title: "Doc A", document: [] },
-  { type: 'document', title: "Doc B", document: [] },
-  { type: 'document', title: "Doc C", document: [] },
+  { type: 'document', title: "Doc A", document: <h1>Doc A</h1> },
+  { type: 'document', title: "Doc B", document: <h1>Doc B</h1> },
+  { type: 'document', title: "Doc C", document: <h1>Doc C</h1> },
   {
     type: 'folder', 
     title: "Folder",
-    folder: [{ type: 'document', title: "Doc D", document: [] }, { title: "Doc E", document: [] }]
+    folder: [{ type: 'document', title: "Doc D", document: <h1>Doc D</h1> }, { title: "Doc E", document: <h1>Doc E</h1> }]
   },
   { type: 'external-link', title: "Github", externalLink: "http://github.com" }
 ]);
@@ -55,7 +55,7 @@ describe("<MenuTree />", () => {
 
   it("calls onNavigate", () => {
     const { wrapper, onNavigate } = mountMenuList({ tree });
-
+ 
     wrapper.find('MenuTree ul li a').first().simulate('click');
 
     expect(onNavigate.mock.calls.length).toBe(1)
