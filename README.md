@@ -127,6 +127,12 @@ Each item has a common `title` property. The combination of subsequent propertie
 ```jsx
   {
     /**
+     * Document type.
+     * @required
+     * @string
+    */
+    type: "document",
+    /**
      * Document title
      * @string
     */
@@ -142,6 +148,12 @@ Each item has a common `title` property. The combination of subsequent propertie
 `folder`: Contains any array with any number of items.
 ```jsx
   {
+    /**
+     * Folder type.
+     * @required
+     * @string
+    */
+    type: "folder",
     /**
      * Folder title.
      * @optional
@@ -159,6 +171,12 @@ Each item has a common `title` property. The combination of subsequent propertie
 `externalLink`: A link that opens in a new tab.
 ```jsx
   {
+    /**
+     * External link type.
+     * @required
+     * @string
+    */
+    type: "external-link",
     /**
      * Link title.
      * @string

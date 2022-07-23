@@ -40,25 +40,30 @@ render(
       description="A doc manager written in React for organising and viewing MDX files."
       source={[
         {
+          type: 'folder',
           title: "Essentials",
           folder: [
-            { title: "Get started", document: <GetStarted /> },
-            { title: "Source", document: <SchemaReference /> },
-            { title: "API", document: <ApiReference /> }
+            { type: 'document', title: "Get started", document: <GetStarted /> },
+            { type: 'document', title: "Source", document: <SchemaReference /> },
+            { type: 'document', title: "API", document: <ApiReference /> }
           ]
         },
         {
+          type: 'folder',
           title: "Examples",
-          folder: [{ title: "Hello world", document: <HelloWorld /> }]
+          folder: [
+            { type: 'document', title: "Hello world", document: <HelloWorld /> }
+          ]
         },
         {
+          type: 'folder',
           title: "Shards",
           folder: [
-            { title: "<CodeSample />", document: <CodeSampleShard /> },
-            { title: "<Section />", document: <SectionShard /> }
+            { type: 'document', title: "<CodeSample />", document: <CodeSampleShard /> },
+            { type: 'document', title: "<Section />", document: <SectionShard /> }
           ]
         },
-        { title: "Github", externalLink: "http://github.com/fa-repo/shard-docs" }
+        { type: 'document', title: "Github", externalLink: "http://github.com/fa-repo/shard-docs" }
       ]}
     />
   </MDXProvider>,
