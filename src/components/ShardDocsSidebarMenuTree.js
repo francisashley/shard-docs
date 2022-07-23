@@ -1,10 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
-import DocumentNode from "./DocumentNode";
-import ExternalLinkNode from "./LinkExternalNode";
-import FolderNode from "./FolderNode";
+import DocumentNode from "./ShardDocsSidebarDocumentNode";
+import ExternalLinkNode from "./ShardDocsSidebarLinkExternalNode";
+import FolderNode from "./ShardDocsSidebarFolderNode";
 import { TreePropType } from "../prop-types";
-import "./MenuTree.scss";
+import "./ShardDocsSidebarMenuTree.scss";
 
 /**
  * MenuTree

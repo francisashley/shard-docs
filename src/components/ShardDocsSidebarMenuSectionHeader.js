@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import ArrowDown from "./icons/ArrowDown";
 import ArrowRight from "./icons/ArrowRight";
 import BaseLink from "@fa-repo/base-react/dist/link";
-import "./MenuSectionHeader.scss";
+import "./ShardDocsSidebarMenuSectionHeader.scss";
 
 /**
  * MenuSectionHeader

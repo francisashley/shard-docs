@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { FolderPropType } from "../prop-types";
-import MenuTree from "./MenuTree";
+import MenuTree from "./ShardDocsSidebarMenuTree";
 import classnames from "classnames";
 import { NavLink } from "react-router-dom";
 import BaseLink from "@fa-repo/base-react/dist/link";

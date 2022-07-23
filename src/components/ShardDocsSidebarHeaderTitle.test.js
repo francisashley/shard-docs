@@ -1,7 +1,7 @@
 import React from "react";
 import { mount } from "enzyme";
 import { MemoryRouter } from "react-router-dom";
-import HeaderTitle from "./HeaderTitle";
+import HeaderTitle from "./ShardDocsSidebarHeaderTitle";
 
 describe("<HeaderTitle />", () => {
   it("renders with default props", () => {

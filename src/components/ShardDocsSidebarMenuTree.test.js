@@ -1,7 +1,7 @@
 import React from "react";
 import { mount } from "enzyme";
 import { MemoryRouter } from "react-router-dom";
-import MenuTree from "./MenuTree";
+import MenuTree from "./ShardDocsSidebarMenuTree";
 import fromSource from "../adapters/fromSource";
 
 const { tree } = fromSource([

@@ -1,6 +1,6 @@
 import React from "react";
 import { mount } from "enzyme";
-import MenuSection from "./MenuSection";
+import MenuSection from "./ShardDocsSidebarMenuSection";
 import fromSource from "../adapters/fromSource";
 import { MemoryRouter } from "react-router-dom";
 

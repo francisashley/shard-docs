@@ -1,7 +1,7 @@
 import React from "react";
 import { mount } from "enzyme";
 import { MemoryRouter } from "react-router-dom";
-import FolderNode from "./FolderNode";
+import FolderNode from "./ShardDocsSidebarFolderNode";
 import fromSource from "../adapters/fromSource";
 
 const { tree } = fromSource([

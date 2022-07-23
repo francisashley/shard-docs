@@ -1,7 +1,7 @@
 import React from "react";
 import { MemoryRouter } from "react-router-dom";
 import { mount } from "enzyme";
-import Main from "./Main";
+import Main from "./ShardDocsMain";
 
 const pagination = {
   prev: { text: "Prev", path: "/prev" },

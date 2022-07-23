@@ -1,6 +1,6 @@
 import React from "react";
 import { mount } from "enzyme";
-import Description from "./Description";
+import Description from "./ShardDocsSidebarDescription";
 
 describe("<Description />", () => {
   it("renders description", () => {

@@ -1,7 +1,7 @@
 import React from "react";
 import { MemoryRouter } from "react-router-dom";
 import { mount } from "enzyme";
-import Sidebar from "./Sidebar";
+import Sidebar from "./ShardDocsSidebar";
 import fromSource from "../adapters/fromSource";
 
 const title = "App title";

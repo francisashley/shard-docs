@@ -1,7 +1,7 @@
 
 import React from "react";
 import { mount } from "enzyme";
-import MenuSectionHeader from "./MenuSectionHeader";
+import MenuSectionHeader from "./ShardDocsSidebarMenuSectionHeader";
 
 test("<MenuSectionHeader /> renders correctly", () => {
   const onToggleMock = jest.fn();

@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
-import HeaderTitle from "./HeaderTitle";
-import HeaderToggle from "./HeaderToggle";
-import "./Header.scss";
+import HeaderTitle from "./ShardDocsSidebarHeaderTitle";
+import HeaderToggle from "./ShardDocsSidebarHeaderToggle";
+import "./ShardDocsSidebarHeader.scss";
 
 /**
  * Header

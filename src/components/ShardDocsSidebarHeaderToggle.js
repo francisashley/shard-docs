@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import MenuIcon from "boxicons/svg/regular/bx-menu.svg";
-import "./HeaderToggle.scss";
+import "./ShardDocsSidebarHeaderToggle.scss";
 
 /**
  * HeaderToggle

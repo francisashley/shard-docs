@@ -1,11 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
-import SidebarHeader from "./Header";
-import SidebarDescription from "./Description";
-import SidebarMenu from "./Menu";
-import BuiltWithShardDocs from "./BuiltWithShardDocs";
+import SidebarHeader from "./ShardDocsSidebarHeader";
+import SidebarDescription from "./ShardDocsSidebarDescription";
+import SidebarMenu from "./ShardDocsSidebarMenu";
+import BuiltWithShardDocs from "./ShardDocsSidebarBuiltWithShardDocs";
 import { AppPropType, TreePropType } from "../prop-types";
-import "./Sidebar.scss";
+import "./ShardDocsSidebar.scss";
 
 /**
  * Sidebar

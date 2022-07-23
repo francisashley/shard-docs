@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { withRouter, HashRouter, BrowserRouter, Route } from "react-router-dom";
-import Main from "./Main";
-import Sidebar from "./Sidebar";
+import ShardDocsMain from "./ShardDocsMain";
+import ShardDocsSidebar from "./ShardDocsSidebar";
 import fromSource from "../adapters/fromSource";
 import { SourcePropType } from "../prop-types";
 import { setActiveTreeNode, filterDocuments, setActiveCrumb } from "../utils";
@@ -83,7 +83,7 @@ class ShardDocs extends React.Component {
 
     return (
       <div {...props} className="shard-docs">
-        <Sidebar
+        <ShardDocsSidebar
           app={app}
           title={title}
           description={description}
@@ -91,7 +91,7 @@ class ShardDocs extends React.Component {
           tree={this.state.tree}
           hideBuiltWithShardDocs={this.props.hideBuiltWithShardDocs}
         />
-        <Main pagination={this.pagination} documents={this.state.documents} />
+        <ShardDocsMain pagination={this.pagination} documents={this.state.documents} />
       </div>
     );
   }

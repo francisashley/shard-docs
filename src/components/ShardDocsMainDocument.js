@@ -1,10 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Breadcrumbs from "./Breadcrumbs";
+import Breadcrumbs from "./ShardDocsMainBreadcrumbs";
 import { BreadcrumbPropType } from "../prop-types";
 
 import "../assets/github.css";
-import "./document.scss";
+import "./ShardDocsMainDocument.scss";
 import "../assets/prism-github.css";
 
 /**

@@ -1,7 +1,7 @@
 import React from "react";
 import { MemoryRouter } from "react-router-dom";
 import { mount } from "enzyme";
-import Pagination from "./Pagination";
+import Pagination from "./ShardDocsMainPagination";
 
 describe("<Pagination />", () => {
   const mountPagination = (pagination) => {

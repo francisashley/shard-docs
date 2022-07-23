@@ -1,7 +1,7 @@
 import React from "react";
 import { MemoryRouter } from "react-router-dom";
 import { mount } from "enzyme";
-import Document from "./Document";
+import Document from "./ShardDocsMainDocument";
 
 const breadcrumbs = [
   { text: "~", link: "/", isActive: false },

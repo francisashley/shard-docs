@@ -1,9 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Pagination from "./Pagination";
-import Document from "./Document";
+import Pagination from "./ShardDocsMainPagination";
+import Document from "./ShardDocsMainDocument";
 import { PaginationPropType, DocumentPropType } from "../prop-types";
-import "./Main.scss";
+import "./ShardDocsMain.scss";
 
 /**
  * Main

@@ -1,11 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { FolderPropType } from "../prop-types";
-import MenuTree from "./MenuTree";
+import MenuTree from "./ShardDocsSidebarMenuTree";
 import sessionDB from "../utils/sessionDB";
 import classnames from "classnames";
-import MenuSectionHeader from "./MenuSectionHeader";
-import "./MenuSection.scss";
+import MenuSectionHeader from "./ShardDocsSidebarMenuSectionHeader";
+import "./ShardDocsSidebarMenuSection.scss";
 
 /**
  * MenuSection

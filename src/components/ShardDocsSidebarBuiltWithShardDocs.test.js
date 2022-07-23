@@ -1,6 +1,6 @@
 import React from "react";
 import { mount } from "enzyme";
-import BuiltWithShardDocs from "./BuiltWithShardDocs";
+import BuiltWithShardDocs from "./ShardDocsSidebarBuiltWithShardDocs";
 
 describe("<BuiltWithShardDocs />", () => {
   it("renders with default props", () => {
