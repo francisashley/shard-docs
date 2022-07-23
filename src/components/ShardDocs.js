@@ -14,9 +14,23 @@ import "./ShardDocs.scss";
  */
 
 class ShardDocs extends React.Component {
-  static propTypes = {};
+  static propTypes = {
+    title: PropTypes.string,
+    description: PropTypes.string,
+    source: SourcePropType,
+    basePath: PropTypes.string,
+    hideBuiltWithShardDocs: PropTypes.bool,
+    useBrowserRouter: PropTypes.bool
+  };
 
-  static defaultProps = {};
+  static defaultProps = {
+    title: "",
+    description: "",
+    source: [],
+    basePath: "/",
+    hideBuiltWithShardDocs: false,
+    useBrowserRouter: false
+  };
 
   state = {
     source: fromSource(this.props.source, this.props.basePath),
@@ -96,24 +110,6 @@ class ShardDocs extends React.Component {
     );
   }
 }
-
-ShardDocs.propTypes = {
-  title: PropTypes.string,
-  description: PropTypes.string,
-  source: SourcePropType,
-  basePath: PropTypes.string,
-  hideBuiltWithShardDocs: PropTypes.bool,
-  useBrowserRouter: PropTypes.bool
-};
-
-ShardDocs.defaultProps = {
-  title: "",
-  description: "",
-  source: [],
-  basePath: "/",
-  hideBuiltWithShardDocs: false,
-  useBrowserRouter: false
-};
 
 export default props => {
   const Router = props.useBrowserRouter ? BrowserRouter : HashRouter;
