@@ -12,8 +12,6 @@
   },
   "homepage": "https://fa-repo.github.io/shard-docs",
   "devDependencies": {
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
     "@fa-repo/shard-docs": "file:..",
     "@mdx-js/loader": "^1.5.0",
     "babel-loader": "^8.0.6",
@@ -22,8 +20,11 @@
     "laravel-mix": "^4.1.2",
     "node-sass": "^4.12.0",
     "raw-loader": "^3.1.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
     "serve": "^11.1.0",
-    "source-map-explorer": "^2.0.1"
+    "source-map-explorer": "^2.0.1",
+    "vue-template-compiler": "^2.7.8"
   },
   "browserslist": [
     ">0.2%",
