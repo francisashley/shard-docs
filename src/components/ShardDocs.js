@@ -1,11 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { withRouter, HashRouter, BrowserRouter, Route } from "react-router-dom";
+import { HashRouter, BrowserRouter, Route } from "react-router-dom";
+import { setActiveTreeNode, filterDocuments, setActiveCrumb } from "../utils";
+
 import ShardDocsMain from "./ShardDocsMain";
 import ShardDocsSidebar from "./ShardDocsSidebar";
 import fromSource from "../adapters/fromSource";
+
 import { SourcePropType } from "../prop-types";
-import { setActiveTreeNode, filterDocuments, setActiveCrumb } from "../utils";
+
 import "../assets/sanitize.css";
 import "./ShardDocs.scss";
 
@@ -74,34 +77,20 @@ class ShardDocs extends React.Component {
   }
 
   render() {
-    const {
-      title,
-      description,
-      basePath,
-      source,
-      staticContext,
-      history,
-      location,
-      match,
-      hideBuiltWithShardDocs,
-      useBrowserRouter,
-      ...props
-    } = this.props;
-
     const app = {
-      title,
-      description,
-      basePath,
+      title: this.props.title,
+      description: this.props.description,
+      basePath: this.props.basePath,
       activePath: this.props.location.pathname
     };
 
     return (
-      <div {...props} className="shard-docs">
+      <div className="shard-docs">
         <ShardDocsSidebar
           app={app}
-          title={title}
-          description={description}
-          basePath={basePath}
+          title={this.props.title}
+          description={this.props.description}
+          basePath={this.props.basePath}
           tree={this.state.tree}
           hideBuiltWithShardDocs={this.props.hideBuiltWithShardDocs}
         />
@@ -115,7 +104,7 @@ export default props => {
   const Router = props.useBrowserRouter ? BrowserRouter : HashRouter;
   return (
     <Router>
-      <Route component={props2 => <ShardDocs {...{ ...props, ...props2 }} />} />
+      <Route component={routerProps => <ShardDocs {...{ ...props, ...routerProps }} />} />
     </Router>
   );
 };
