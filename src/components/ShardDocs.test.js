@@ -11,13 +11,14 @@ const source = [
 ];
 
 describe("<ShardDocs />", () => {
-  const mountShardDocs = ({title, description, source, hideBuiltWithShardDocs,useBrowserRouter}={}) => {
+  const mountShardDocs = (options = {}) => {
+    const { title, description, source = [], hideBuiltWithShardDocs, useBrowserRouter } = options;
     return mount(
       <MemoryRouter>
         <ShardDocs
           title={title}
           description={description}
-          source={source}
+          source={[]}
           hideBuiltWithShardDocs={hideBuiltWithShardDocs}
           useBrowserRouter={useBrowserRouter}
         />
