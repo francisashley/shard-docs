@@ -11,11 +11,12 @@ const { tree } = fromSource([
 ]);
 
 describe("<Sidebar />", () => {
-  const mountSidebar = ({ app, tree, hideBuiltWithShardDocs } = {}) => {
+  const mountSidebar = ({ title, description, tree, hideBuiltWithShardDocs } = {}) => {
     return mount(
       <MemoryRouter>
         <Sidebar
-          app={app}
+          title={title}
+          description={description}
           tree={tree}
           hideBuiltWithShardDocs={hideBuiltWithShardDocs}
         />
@@ -30,15 +31,13 @@ describe("<Sidebar />", () => {
   });
 
   it("renders app title", () => {
-    const app = { title };
-    const wrapper = mountSidebar({ app });
+    const wrapper = mountSidebar({ title });
 
     expect(wrapper.find('.shard-docs-header-title h2').text()).toBe(title);
   });
 
   it("renders app description", () => {
-    const app = { description };
-    const wrapper = mountSidebar({ app });
+    const wrapper = mountSidebar({ description });
 
     expect(wrapper.find('.shard-docs-description').text()).toBe(description);
   });

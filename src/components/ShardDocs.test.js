@@ -18,7 +18,7 @@ describe("<ShardDocs />", () => {
         <ShardDocs
           title={title}
           description={description}
-          source={[]}
+          source={source}
           hideBuiltWithShardDocs={hideBuiltWithShardDocs}
           useBrowserRouter={useBrowserRouter}
         />

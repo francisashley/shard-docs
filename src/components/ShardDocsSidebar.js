@@ -4,7 +4,7 @@ import SidebarHeader from "./ShardDocsSidebarHeader";
 import SidebarDescription from "./ShardDocsSidebarDescription";
 import SidebarMenu from "./ShardDocsSidebarMenu";
 import BuiltWithShardDocs from "./ShardDocsSidebarBuiltWithShardDocs";
-import { AppPropType, TreePropType } from "../prop-types";
+import { TreePropType } from "../prop-types";
 import "./ShardDocsSidebar.scss";
 
 /**
@@ -13,9 +13,9 @@ import "./ShardDocsSidebar.scss";
 
 class Sidebar extends React.Component {
   static propTypes = {
-    app: AppPropType,
     title: PropTypes.string,
     description: PropTypes.string,
+    basePath: PropTypes.string,
     tree: TreePropType,
     hideBuiltWithShardDocs: PropTypes.bool
   };
@@ -33,20 +33,19 @@ class Sidebar extends React.Component {
   };
 
   render() {
-    const { app, tree, hideBuiltWithShardDocs } = this.props;
-    const showBuiltWithShardDocs = !hideBuiltWithShardDocs;
-
+    const props = this.props;
+    const showBuiltWithShardDocs = !props.hideBuiltWithShardDocs;
     return (
       <aside className="shard-docs-sidebar">
         <SidebarHeader
-          title={app.title}
-          description={app.description}
-          basePath={app.basePath}
+          title={props.title}
+          description={props.description}
+          basePath={props.basePath}
           onToggleMenu={() => this.setState({ showMenuOnMobile: !this.state.showMenuOnMobile })}
         />
-        {app.description && <SidebarDescription description={app.description} />}
+        {props.description && <SidebarDescription description={props.description} />}
         <SidebarMenu
-          tree={tree}
+          tree={props.tree}
           showOnMobile={this.state.showMenuOnMobile}
           onNavigate={() => this.setState({ showMenuOnMobile: false })}
         />

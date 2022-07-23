@@ -1,4 +1,3 @@
-export { default as AppPropType } from "./AppPropType";
 export { default as BreadcrumbPropType } from "./BreadcrumbPropType";
 export { default as PaginationPropType } from "./PaginationPropType";
 export { default as TreePropType } from "./TreePropType";
