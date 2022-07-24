@@ -37,7 +37,9 @@ function transpile(input, outputPath, outputFileName) {
       url({ exclude: ["**/*.svg"] }),
       svgr(),
       babel({ exclude: "node_modules/**" }),
-      resolve(),
+      resolve({
+        preferBuiltins: true
+      }),
       commonjs(),
       json()
     ]
