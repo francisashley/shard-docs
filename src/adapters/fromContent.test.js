@@ -1,15 +1,18 @@
 import fromContent from "./fromContent";
 
 const content = fromContent([
-  { title: "Doc A", document: null },
-  { title: "Doc B", document: null },
-  { title: "Doc C", document: null },
+  { type: "document", title: "Doc A", document: null },
+  { type: "document", title: "Doc B", document: null },
+  { type: "document", title: "Doc C", document: null },
   {
+    type: "folder",
     title: "Folder",
-    folder: [{ title: "Doc D", document: null }, { title: "Doc E", document: null }]
+    folder: [
+      { type: "document", title: "Doc D", document: null }, { type: "", title: "Doc E", document: null }
+    ]
   },
-  { title: "Github", externalLink: "http://github.com" },
-  { title: "This is a purposefully invalid type that should be removed from the output", someType:'some-type'}
+  { type: "external-link", title: "Github", externalLink: "http://github.com" },
+  { type: "something", title: "This is a purposefully invalid type that should be removed from the output", someType:'some-type'}
 ]);
 
 test("fromContent() transforms data and returns tree", () => {
