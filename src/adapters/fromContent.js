@@ -102,10 +102,9 @@ export function addDepth(items, depth = 0) {
 export function shapeItems(items) {
   return items
     .map(item => {
-      const { type, name, path, depth, external = false } = item;
+      const { type, name, path, url, depth, external = false } = item;
       if (type === "link") {
-        const link = item.url;
-        return { type, name, link, depth, external };
+        return { type, name, url, depth, external };
       } else if (type === "category" && name) {
         const isEmpty = !item.items.length;
         const isActive = false;

@@ -3,12 +3,12 @@ import PropTypes from "prop-types";
 // Content data
 export const ContentDocumentPropType = PropTypes.shape({ type: PropTypes.oneOf(['document']).isRequired, name: PropTypes.string, document: PropTypes.element });
 export const ContentCategoryPropType = PropTypes.shape({ type: PropTypes.oneOf(['category']).isRequired, name: PropTypes.string, items: PropTypes.array });
-export const ContentExternalLinkPropType = PropTypes.shape({ type: PropTypes.oneOf(['link']).isRequired, name: PropTypes.string, url: PropTypes.string, external: PropTypes.bool });
+export const ContentLinkPropType = PropTypes.shape({ type: PropTypes.oneOf(['link']).isRequired, name: PropTypes.string, url: PropTypes.string, external: PropTypes.bool });
 export const ContentPropType = PropTypes.arrayOf(
   PropTypes.oneOfType([
     ContentDocumentPropType,
     ContentCategoryPropType,
-    ContentExternalLinkPropType,
+    ContentLinkPropType,
   ])
 );
 
@@ -33,7 +33,7 @@ export const PaginationPropType = PropTypes.shape({
 });
 
 // Tree structure leaves data
-export const ExternalLinkPropType = PropTypes.shape({
+export const LinkPropType = PropTypes.shape({
   type: PropTypes.oneOf(["link"]),
   name: PropTypes.string,
   url: PropTypes.string,
@@ -61,11 +61,11 @@ export const CategoryPropShape = {
 CategoryPropShape.items = PropTypes.arrayOf(
   PropTypes.oneOfType([
     DocumentPropType,
-    ExternalLinkPropType,
+    LinkPropType,
     PropTypes.shape(CategoryPropShape)
   ])
 );
 
 export const CategoryPropType = PropTypes.shape(CategoryPropShape);
 
-export const TreePropType = PropTypes.arrayOf(PropTypes.oneOfType([DocumentPropType, ExternalLinkPropType, CategoryPropType]));
+export const TreePropType = PropTypes.arrayOf(PropTypes.oneOfType([DocumentPropType, LinkPropType, CategoryPropType]));

@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import ExternalIcon from "./icons/LinkExternal";
-import { ExternalLinkPropType } from "../prop-types";
+import { LinkPropType } from "../prop-types";
 
 /**
  * ExternalLinkNode
@@ -9,7 +9,7 @@ import { ExternalLinkPropType } from "../prop-types";
 
 const ExternalLinkNode = ({ node }) => (
   <li className="shard-docs-menu-external">
-    <a href={node.link} target="_blank" style={{ paddingLeft: node.depth * 15 + "px" }}>
+    <a href={node.url} target="_blank" style={{ paddingLeft: node.depth * 15 + "px" }}>
       <ExternalIcon />
       {node.name}
     </a>
@@ -17,13 +17,13 @@ const ExternalLinkNode = ({ node }) => (
 );
 
 ExternalLinkNode.propTypes = {
-  node: ExternalLinkPropType
+  node: LinkPropType
 };
 
 ExternalLinkNode.defaultProps = {
   node: {
     name: "",
-    link: ""
+    url: ""
   }
 };
 

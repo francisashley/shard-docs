@@ -106,7 +106,7 @@ test("fromContent() transforms data and returns tree", () => {
       name: null,
       type: "category",
       items: [
-        { name: "Github", type: "link", link: "http://github.com", external: true, depth: 1 }
+        { name: "Github", type: "link", url: "http://github.com", external: true, depth: 1 }
       ],
       depth: 0
     }
