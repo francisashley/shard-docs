@@ -1,5 +1,5 @@
 /**
- * Compare a path to each path in document / folder items and set boolean result on isActive prop.
+ * Compare a path to each path in document / category items and set boolean result on isActive prop.
  * @param  {array} tree fed in from adapters/fromContent()
  * @param  {string} currentPath current url
  * @return {array}
@@ -7,10 +7,10 @@
 
 export default function setActiveTreeNode(tree = [], currentPath = "") {
   return tree.map(node => {
-    if (node.type === "folder") {
+    if (node.type === "category") {
       node.items = setActiveTreeNode(node.items, currentPath);
     }
-    if (node.type === "folder" || node.type === "document") {
+    if (node.type === "category" || node.type === "document") {
       node.isActive = node.path === currentPath;
     }
     return node;

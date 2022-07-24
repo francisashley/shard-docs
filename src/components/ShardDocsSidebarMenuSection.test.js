@@ -6,14 +6,14 @@ import { MemoryRouter } from "react-router-dom";
 
 let { tree } = fromContent([
   {
-    type: 'folder',
+    type: 'category',
     name: "Essentials",
     items: [
       { type: 'document', name: "Get started", document: <h1>Get started</h1> }
     ]
   },
   {
-    type: 'folder',
+    type: 'category',
     name: "Examples",
     items: [
       { type: 'document', name: "Hello world", document: <h1>Hello world</h1> }

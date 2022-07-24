@@ -15,23 +15,23 @@ export default function fromContent(tree, basePath = "/") {
 }
 
 /**
- * Combine all top level adjacent items (except folders) into discrete folders.
+ * Combine all top level adjacent items (except categories) into discrete categories.
  * @param  {array} items Requires types to have been added to array with addTypes().
  * @return {array}
  */
 export function combineTopLevelAdjacentItems(items) {
-  const isDiscreteFolder = item => item && item.type === "folder" && !item.name;
+  const isDiscreteCategory = item => item && item.type === "category" && !item.name;
 
   items = items.map(item => {
-    return item.type !== "folder"
-      ? { name: null, items: [item], type: "folder", depth: 0 }
+    return item.type !== "category"
+      ? { name: null, items: [item], type: "category", depth: 0 }
       : item;
   });
 
   return items.reduce((accumulator, item) => {
     const lastItem = accumulator[accumulator.length - 1];
 
-    if (isDiscreteFolder(item) && isDiscreteFolder(lastItem)) {
+    if (isDiscreteCategory(item) && isDiscreteCategory(lastItem)) {
       lastItem.items = [...lastItem.items, ...item.items];
       accumulator[accumulator.length - 1] = lastItem;
     } else {
@@ -54,7 +54,7 @@ export function addPaths(items, basePath) {
     // Generate path and remove trailing / duplicate slashes
     item.path = `${basePath}/${getSlug(item.name)}`.replace(/\/+$/, "").replace(/\/+/g, "/");
 
-    if (item.type === "folder") {
+    if (item.type === "category") {
       item.items = addPaths(item.items, item.path);
     }
 
@@ -63,14 +63,14 @@ export function addPaths(items, basePath) {
 }
 
 /**
- * Recursively loops through source tree adding breadcrumbs to all documents / folders.
+ * Recursively loops through source tree adding breadcrumbs to all documents / categories.
  * @param  {array} items Expects result of fromContent/ shapeItems().
  * @return {array}
  */
 export function addBreadcrumbs(items, breadcrumbs) {
   return items.map(item => {
     const crumb = { text: item.name, link: item.path, isActive: false };
-    if (item.type === "folder") {
+    if (item.type === "category") {
       item.items = addBreadcrumbs(item.items, [...breadcrumbs, crumb]);
     } else if (item.type === "document") {
       return { ...item, breadcrumbs: [...breadcrumbs, crumb] };
@@ -86,7 +86,7 @@ export function addBreadcrumbs(items, breadcrumbs) {
  */
 export function addDepth(items, depth = 0) {
   return items.map(item => {
-    if (item.type === "folder") {
+    if (item.type === "category") {
       item.items = addDepth(item.items, depth + 1);
     }
     item.depth = depth;
@@ -106,7 +106,7 @@ export function shapeItems(items) {
       if (type === "external-link") {
         const link = item.externalLink;
         return { type, name, link, depth };
-      } else if (type === "folder" && name) {
+      } else if (type === "category" && name) {
         const isEmpty = !item.items.length;
         const isActive = false;
         const items = shapeItems(item.items);
@@ -130,7 +130,7 @@ export function shapeItems(items) {
  */
 function flattenDocuments(items, accumulator = []) {
   for (const item of items) {
-    if (item.type === "folder") {
+    if (item.type === "category") {
       accumulator = flattenDocuments(item.items, accumulator);
     } else if (item.type === "document") {
       accumulator = [...accumulator, item];

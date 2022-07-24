@@ -35,7 +35,7 @@ render(
       description="A doc manager written in React for organising and viewing MDX files."
       content={[
         {
-          type: 'folder',
+          type: 'category',
           name: "Essentials",
           items: [
             { type: 'document', name: "Get started", document: <EssentialsGetStartedDocument /> },
@@ -44,14 +44,14 @@ render(
           ]
         },
         {
-          type: 'folder',
+          type: 'category',
           name: "Examples",
           items: [
             { type: 'document', name: "Hello world", document: <ExamplesHelloWorldDocument /> }
           ]
         },
         {
-          type: 'folder',
+          type: 'category',
           name: "Shards",
           items: [
             { type: 'document', name: "<CodeSample />", document: <ShardsCodeSampleShardDocument /> },

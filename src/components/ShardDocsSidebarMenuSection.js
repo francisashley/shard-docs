@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { FolderPropType } from "../prop-types";
+import { CategoryPropType } from "../prop-types";
 import MenuTree from "./ShardDocsSidebarMenuTree";
 import sessionDB from "../utils/sessionDB";
 import classnames from "classnames";
@@ -56,7 +56,7 @@ class MenuSection extends React.Component {
 
 MenuSection.propTypes = {
   index: PropTypes.number,
-  node: FolderPropType,
+  node: CategoryPropType,
   onNavigate: PropTypes.func
 };
 

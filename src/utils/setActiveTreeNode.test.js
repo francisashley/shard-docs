@@ -3,7 +3,7 @@ import setActiveTreeNode from "./setActiveTreeNode";
 const tree = [
   {
     name: null,
-    type: "folder",
+    type: "category",
     path: '/',
     items: [
       {
@@ -46,7 +46,7 @@ test("setActiveTreeNode() correctly sets isActive", () => {
   expect(setActiveTreeNode(tree, '/doc-b')).toStrictEqual([
     {
       name: null,
-      type: "folder",
+      type: "category",
       path: '/',
       isActive: false,
       items: [
@@ -92,7 +92,7 @@ test("setActiveTreeNode() correctly sets isActive", () => {
   expect(setActiveTreeNode(tree, '/doc-z')).toStrictEqual([
     {
       name: null,
-      type: "folder",
+      type: "category",
       path: "/",
       isActive: false,
       items: [

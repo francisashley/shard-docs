@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { FolderPropType } from "../prop-types";
+import { CategoryPropType } from "../prop-types";
 import MenuTree from "./ShardDocsSidebarMenuTree";
 import classnames from "classnames";
 import { NavLink } from "react-router-dom";
@@ -10,12 +10,12 @@ import TriangleArrowRight from "./icons/TriangleArrowRight";
 import sessionDB from "../utils/sessionDB";
 
 /**
- * FolderNode
+ * CategoryNode
  */
 
-class FolderNode extends React.Component {
+class CategoryNode extends React.Component {
   state = {
-    sessionId: "fa-repo-shard-docs-menu-folder-expanded" + this.props.node.path,
+    sessionId: "fa-repo-shard-docs-menu-category-expanded" + this.props.node.path,
     expanded: true
   };
 
@@ -25,7 +25,7 @@ class FolderNode extends React.Component {
     });
   }
 
-  toggleFolder = () => {
+  toggleCategory = () => {
     sessionDB.set(this.state.sessionId, !this.state.expanded);
 
     this.setState({ expanded: !this.state.expanded });
@@ -35,12 +35,12 @@ class FolderNode extends React.Component {
     const { node, onNavigate } = this.props;
 
     return (
-      <ul className="shard-docs-menu-folder">
+      <ul className="shard-docs-menu-category">
         {node.name && (
-          <li className="shard-docs-menu-folder-header">
+          <li className="shard-docs-menu-category-header">
             <BaseLink
               style={{ paddingLeft: node.depth * 15 + "px" }}
-              onClick={this.toggleFolder}
+              onClick={this.toggleCategory}
               disabled={node.isEmpty}
             >
               {this.state.expanded ? <TriangleArrowDown /> : <TriangleArrowRight />}
@@ -54,14 +54,14 @@ class FolderNode extends React.Component {
   }
 }
 
-FolderNode.propTypes = {
-  node: FolderPropType,
+CategoryNode.propTypes = {
+  node: CategoryPropType,
   onNavigate: PropTypes.func
 };
 
-FolderNode.defaultProps = {
+CategoryNode.defaultProps = {
   node: {},
   onNavigate: () => {}
 };
 
-export default FolderNode;
+export default CategoryNode;

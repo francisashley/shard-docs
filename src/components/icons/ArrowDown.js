@@ -8,7 +8,7 @@ import PropTypes from "prop-types";
 
 const ArrowDown = props => (
   <svg
-    className="shard-docs-menu-toggle-folder"
+    className="shard-docs-menu-toggle-category"
     xmlns="http://www.w3.org/2000/svg"
     width="24"
     height="24"

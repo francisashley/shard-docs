@@ -9,8 +9,8 @@ const { tree } = fromContent([
   { type: 'document', name: "Doc B", document: <h1>Doc B</h1> },
   { type: 'document', name: "Doc C", document: <h1>Doc C</h1> },
   {
-    type: 'folder', 
-    name: "Folder",
+    type: 'category', 
+    name: "Category",
     items: [
       { type: 'document', name: "Doc D", document: <h1>Doc D</h1> },
       { type: 'document', name: "Doc E", document: <h1>Doc E</h1> }
@@ -40,20 +40,20 @@ describe("<MenuTree />", () => {
   it("renders with tree data", () => {
     const { wrapper } = mountMenuList({ tree });
 
-    // Renders discrete folder
-    expect(wrapper.find('MenuTree > FolderNode').at(0).find('li').length).toBe(3);
+    // Renders discrete category
+    expect(wrapper.find('MenuTree > CategoryNode').at(0).find('li').length).toBe(3);
 
-    // Renders folder
-    expect(wrapper.find('MenuTree > FolderNode').at(1).find('a').first().text()).toBe('Folder');
-    expect(wrapper.find('MenuTree > FolderNode').at(1).find('a').length).toBe(3);
+    // Renders category
+    expect(wrapper.find('MenuTree > CategoryNode').at(1).find('a').first().text()).toBe('Category');
+    expect(wrapper.find('MenuTree > CategoryNode').at(1).find('a').length).toBe(3);
 
     // Renders external link
-    expect(wrapper.find('MenuTree > FolderNode').at(2).find('li a').props().href).toBe('http://github.com');
-    expect(wrapper.find('MenuTree > FolderNode').at(2).find('li a').text()).toBe('Github');
+    expect(wrapper.find('MenuTree > CategoryNode').at(2).find('li a').props().href).toBe('http://github.com');
+    expect(wrapper.find('MenuTree > CategoryNode').at(2).find('li a').text()).toBe('Github');
 
     // Renders document
-    expect(wrapper.find('MenuTree > FolderNode').at(0).find('li a').first().text()).toBe('Doc A');
-    expect(wrapper.find('MenuTree > FolderNode').at(0).find('li a').first().props().href).toBe('/doc-a');
+    expect(wrapper.find('MenuTree > CategoryNode').at(0).find('li a').first().text()).toBe('Doc A');
+    expect(wrapper.find('MenuTree > CategoryNode').at(0).find('li a').first().props().href).toBe('/doc-a');
   });
 
   it("calls onNavigate", () => {

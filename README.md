@@ -45,7 +45,7 @@ const content = [
   { type: "document", name: "Install", document: <><h1>Install</h1></> },
   { type: "document", name: "Basic usage", document: <><h1>Basic usage</h1></> },
   {
-    type: "folder",
+    type: "category",
     name: "Examples",
     items: [
       { type: "document", name: "Use case A", document: <><h1>Use case A</h1></> },
@@ -108,7 +108,7 @@ render(
   */
   content={[
     {
-      type: "folder",
+      type: "category",
       name: "Essentials",
       items: [
         { type: "document", name: "Get started", document: <p>Lorem ipsum dolor sit amet..</p> }
@@ -119,7 +119,7 @@ render(
 ```
 
 ## Content schema
-Data is composed in a way that describes the relationship of items to each other - like a tree structure. The structure of the data influences the paths generated for document and folder routes as well as how the sidebar menu is rendered.
+Data is composed in a way that describes the relationship of items to each other - like a tree structure. The structure of the data influences the paths generated for document and category routes as well as how the sidebar menu is rendered.
 
 Each item has a common `name` property. The combination of subsequent properties define their types.
 
@@ -147,23 +147,23 @@ Each item has a common `name` property. The combination of subsequent properties
   }
 ```
 
-`folder`: Contains any array with any number of items.
+`category`: Contains any array with any number of items.
 ```jsx
   {
     /**
-     * Folder type.
+     * Category type.
      * @required
      * @string
     */
-    type: "folder",
+    type: "category",
     /**
-     * Folder name.
+     * Category name.
      * @optional
      * @string
     */
     name: "Install",
     /**
-     * Folder items. Can contain any type of node.
+     * Category items. Can contain any type of node.
      * @array
     */
     items: [ /* items */ ]

@@ -5,8 +5,8 @@ const content = fromContent([
   { type: "document", name: "Doc B", document: null },
   { type: "document", name: "Doc C", document: null },
   {
-    type: "folder",
-    name: "Folder",
+    type: "category",
+    name: "Category",
     items: [
       { type: "document", name: "Doc D", document: null },
       { type: "document", name: "Doc E", document: null }
@@ -20,7 +20,7 @@ test("fromContent() transforms data and returns tree", () => {
   expect(content.tree).toStrictEqual([
     {
       name: null,
-      type: "folder",
+      type: "category",
       depth: 0,
       items: [
         {
@@ -65,9 +65,9 @@ test("fromContent() transforms data and returns tree", () => {
       ]
     },
     {
-      name: "Folder",
-      type: "folder",
-      path: "/folder",
+      name: "Category",
+      type: "category",
+      path: "/category",
       isEmpty: false,
       isActive: false,
       depth: 0,
@@ -75,11 +75,11 @@ test("fromContent() transforms data and returns tree", () => {
         {
           name: "Doc D",
           type: "document",
-          path: "/folder/doc-d",
+          path: "/category/doc-d",
           breadcrumbs: [
             { link: "/", text: "~", isActive: false },
-            { text: "Folder", link: "/folder", isActive: false },
-            { text: "Doc D", link: "/folder/doc-d", isActive: false }
+            { text: "Category", link: "/category", isActive: false },
+            { text: "Doc D", link: "/category/doc-d", isActive: false }
           ],
           document: null,
           isEmpty: true,
@@ -89,11 +89,11 @@ test("fromContent() transforms data and returns tree", () => {
         {
           name: "Doc E",
           type: "document",
-          path: "/folder/doc-e",
+          path: "/category/doc-e",
           breadcrumbs: [
             { link: "/", text: "~", isActive: false },
-            { text: "Folder", link: "/folder", isActive: false },
-            { text: "Doc E", link: "/folder/doc-e", isActive: false }
+            { text: "Category", link: "/category", isActive: false },
+            { text: "Doc E", link: "/category/doc-e", isActive: false }
           ],
           document: null,
           isEmpty: true,
@@ -104,7 +104,7 @@ test("fromContent() transforms data and returns tree", () => {
     },
     {
       name: null,
-      type: "folder",
+      type: "category",
       items: [
         { name: "Github", type: "external-link", link: "http://github.com", depth: 1 }
       ],
@@ -157,11 +157,11 @@ test("fromContent() transforms data and returns documents in a flat array", () =
     {
       name: "Doc D",
       type: "document",
-      path: "/folder/doc-d",
+      path: "/category/doc-d",
       breadcrumbs: [
         { link: "/", text: "~", isActive: false },
-        { text: "Folder", link: "/folder", isActive: false },
-        { text: "Doc D", link: "/folder/doc-d", isActive: false }
+        { text: "Category", link: "/category", isActive: false },
+        { text: "Doc D", link: "/category/doc-d", isActive: false }
       ],
       document: null,
       isEmpty: true,
@@ -171,11 +171,11 @@ test("fromContent() transforms data and returns documents in a flat array", () =
     {
       name: "Doc E",
       type: "document",
-      path: "/folder/doc-e",
+      path: "/category/doc-e",
       breadcrumbs: [
         { link: "/", text: "~", isActive: false },
-        { text: "Folder", link: "/folder", isActive: false },
-        { text: "Doc E", link: "/folder/doc-e", isActive: false }
+        { text: "Category", link: "/category", isActive: false },
+        { text: "Doc E", link: "/category/doc-e", isActive: false }
       ],
       document: null,
       isEmpty: true,
