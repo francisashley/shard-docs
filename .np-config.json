@@ -1,7 +1,0 @@
-{
-	"name": "@fa-repo/shard-docs",
-	"np": {
-		"yarn": false,
-		"contents": "dist"
-	}
-}
