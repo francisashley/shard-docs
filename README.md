@@ -123,7 +123,7 @@ Data is composed in a way that describes the relationship of items to each other
 
 Each item has a common `title` property. The combination of subsequent properties define their types.
 
-### Let's take a look at the different items:
+### Let's take a look at the different types of items:
 
 `document`:  Represents a document endpoint.
 ```jsx
@@ -170,7 +170,7 @@ Each item has a common `title` property. The combination of subsequent propertie
   }
 ```
 
-`externalLink`: A link that opens in a new tab.
+`external-link`: A link that opens in a new tab.
 ```jsx
   {
     /**
