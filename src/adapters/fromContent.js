@@ -2,7 +2,6 @@ import slugify from "slugify";
 import kebabCase from "lodash/kebabCase";
 
 export default function fromContent(tree, basePath = "/") {
-  tree = addTypes(tree);
   tree = addPaths(tree, basePath);
   tree = addBreadcrumbs(tree, [{ link: basePath, text: "~", isActive: false }]);
   tree = shapeItems(tree, basePath);
@@ -13,28 +12,6 @@ export default function fromContent(tree, basePath = "/") {
     tree,
     documents: flattenDocuments(tree)
   };
-}
-
-/**
- * Loops through each item, child and grandchild detecting and injecting each
- * items type.
- * @param  {array} items Source tree.
- * @return {array}
- */
-export function addTypes(items) {
-  for (let i in items) {
-    let type = false;
-
-    if (items[i].hasOwnProperty("folder")) type = "folder";
-    else if (items[i].hasOwnProperty("document")) type = "document";
-    else if (items[i].hasOwnProperty("externalLink")) type = "external-link";
-
-    if (type === "folder") items[i].folder = addTypes(items[i].folder);
-
-    items[i].type = type;
-  }
-
-  return items;
 }
 
 /**
