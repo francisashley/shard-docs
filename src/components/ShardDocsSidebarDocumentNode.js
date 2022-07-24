@@ -20,7 +20,7 @@ const DocumentNode = ({ node, onNavigate }) => {
         exact
       >
         <FileIcon />
-        {node.title}
+        {node.name}
       </NavLink>
     </li>
   );

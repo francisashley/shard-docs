@@ -42,17 +42,17 @@ import ShardDocs from "@fa-repo/shard-docs";
 import "@fa-repo/shard-docs/dist/index.css";
 
 const content = [
-  { type: "document", title: "Install", document: <><h1>Install</h1></> },
-  { type: "document", title: "Basic usage", document: <><h1>Basic usage</h1></> },
+  { type: "document", name: "Install", document: <><h1>Install</h1></> },
+  { type: "document", name: "Basic usage", document: <><h1>Basic usage</h1></> },
   {
     type: "folder",
-    title: "Examples",
+    name: "Examples",
     items: [
-      { type: "document", title: "Use case A", document: <><h1>Use case A</h1></> },
-      { type: "document", title: "Use case B", document: <><h1>Use case B</h1></> }
+      { type: "document", name: "Use case A", document: <><h1>Use case A</h1></> },
+      { type: "document", name: "Use case B", document: <><h1>Use case B</h1></> }
     ]
   },
-  { type: "external-link", title: "Github", externalLink: "https://github.com" },
+  { type: "external-link", name: "Github", externalLink: "https://github.com" },
 ]
 
 render(
@@ -109,9 +109,9 @@ render(
   content={[
     {
       type: "folder",
-      title: "Essentials",
+      name: "Essentials",
       items: [
-        { type: "document", title: "Get started", document: <p>Lorem ipsum dolor sit amet..</p> }
+        { type: "document", name: "Get started", document: <p>Lorem ipsum dolor sit amet..</p> }
       ]
     }
   ]}
@@ -121,7 +121,7 @@ render(
 ## Content schema
 Data is composed in a way that describes the relationship of items to each other - like a tree structure. The structure of the data influences the paths generated for document and folder routes as well as how the sidebar menu is rendered.
 
-Each item has a common `title` property. The combination of subsequent properties define their types.
+Each item has a common `name` property. The combination of subsequent properties define their types.
 
 ### Let's take a look at the different types of items:
 
@@ -135,10 +135,10 @@ Each item has a common `title` property. The combination of subsequent propertie
     */
     type: "document",
     /**
-     * Document title
+     * Document name
      * @string
     */
-    title: "Install",
+    name: "Install",
     /**
      * Document content
      * @jsx
@@ -157,11 +157,11 @@ Each item has a common `title` property. The combination of subsequent propertie
     */
     type: "folder",
     /**
-     * Folder title.
+     * Folder name.
      * @optional
      * @string
     */
-    title: "Install",
+    name: "Install",
     /**
      * Folder items. Can contain any type of node.
      * @array
@@ -180,10 +180,10 @@ Each item has a common `title` property. The combination of subsequent propertie
     */
     type: "external-link",
     /**
-     * Link title.
+     * Link name.
      * @string
     */
-    title: "Github",
+    name: "Github",
     /**
      * Link href.
      * @string

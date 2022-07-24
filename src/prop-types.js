@@ -1,9 +1,9 @@
 import PropTypes from "prop-types";
 
 // Content data
-export const ContentDocumentPropType = PropTypes.shape({ type: PropTypes.oneOf(['document']).isRequired, title: PropTypes.string, document: PropTypes.element });
-export const ContentFolderPropType = PropTypes.shape({ type: PropTypes.oneOf(['folder']).isRequired, title: PropTypes.string, items: PropTypes.array });
-export const ContentExternalLinkPropType = PropTypes.shape({ type: PropTypes.oneOf(['external-link']).isRequired, title: PropTypes.string, externalLink: PropTypes.string });
+export const ContentDocumentPropType = PropTypes.shape({ type: PropTypes.oneOf(['document']).isRequired, name: PropTypes.string, document: PropTypes.element });
+export const ContentFolderPropType = PropTypes.shape({ type: PropTypes.oneOf(['folder']).isRequired, name: PropTypes.string, items: PropTypes.array });
+export const ContentExternalLinkPropType = PropTypes.shape({ type: PropTypes.oneOf(['external-link']).isRequired, name: PropTypes.string, externalLink: PropTypes.string });
 export const ContentPropType = PropTypes.arrayOf(
   PropTypes.oneOfType([
     ContentDocumentPropType,
@@ -35,14 +35,14 @@ export const PaginationPropType = PropTypes.shape({
 // Tree structure leaves data
 export const ExternalLinkPropType = PropTypes.shape({
   type: PropTypes.oneOf(["external-link"]),
-  title: PropTypes.string,
+  name: PropTypes.string,
   link: PropTypes.string
 });
 
 export const DocumentPropType = PropTypes.shape({
   type: PropTypes.oneOf(["document"]),
   path: PropTypes.string,
-  title: PropTypes.string,
+  name: PropTypes.string,
   isEmpty: PropTypes.bool,
   isActive: PropTypes.bool,
   breadcrumbs: BreadcrumbsPropType,
@@ -53,7 +53,7 @@ export const DocumentPropType = PropTypes.shape({
 export const FolderPropShape = {
   type: PropTypes.oneOf(["folder"]),
   path: PropTypes.string,
-  title: PropTypes.string,
+  name: PropTypes.string,
   isEmpty: PropTypes.bool,
   isActive: PropTypes.bool,
 };

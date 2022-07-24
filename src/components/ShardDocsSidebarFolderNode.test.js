@@ -7,8 +7,8 @@ import fromContent from "../adapters/fromContent";
 const { tree } = fromContent([
   {
     type: 'folder', 
-    title: "Folder",
-    items: [{ type: 'document', title: "Document", document: <h1>Hello world</h1> }]
+    name: "Folder",
+    items: [{ type: 'document', name: "Document", document: <h1>Hello world</h1> }]
   }
 ]);
 

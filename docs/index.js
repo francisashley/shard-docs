@@ -36,29 +36,29 @@ render(
       content={[
         {
           type: 'folder',
-          title: "Essentials",
+          name: "Essentials",
           items: [
-            { type: 'document', title: "Get started", document: <EssentialsGetStartedDocument /> },
-            { type: 'document', title: "Content", document: <EssentialsSchemaReferenceDocument /> },
-            { type: 'document', title: "API", document: <EssentialsApiReferenceDocument /> }
+            { type: 'document', name: "Get started", document: <EssentialsGetStartedDocument /> },
+            { type: 'document', name: "Content", document: <EssentialsSchemaReferenceDocument /> },
+            { type: 'document', name: "API", document: <EssentialsApiReferenceDocument /> }
           ]
         },
         {
           type: 'folder',
-          title: "Examples",
+          name: "Examples",
           items: [
-            { type: 'document', title: "Hello world", document: <ExamplesHelloWorldDocument /> }
+            { type: 'document', name: "Hello world", document: <ExamplesHelloWorldDocument /> }
           ]
         },
         {
           type: 'folder',
-          title: "Shards",
+          name: "Shards",
           items: [
-            { type: 'document', title: "<CodeSample />", document: <ShardsCodeSampleShardDocument /> },
-            { type: 'document', title: "<Section />", document: <ShardsSectionShardDocument /> }
+            { type: 'document', name: "<CodeSample />", document: <ShardsCodeSampleShardDocument /> },
+            { type: 'document', name: "<Section />", document: <ShardsSectionShardDocument /> }
           ]
         },
-        { type: 'external-link', title: "Github", externalLink: "http://github.com/fa-repo/shard-docs" }
+        { type: 'external-link', name: "Github", externalLink: "http://github.com/fa-repo/shard-docs" }
       ]}
     />
   </MDXProvider>,

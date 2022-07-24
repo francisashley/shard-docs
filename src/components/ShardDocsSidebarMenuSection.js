@@ -27,7 +27,7 @@ class MenuSection extends React.Component {
 
   render() {
     const { node, onNavigate } = this.props;
-    const collapsible = Boolean(node.title);
+    const collapsible = Boolean(node.name);
     const expanded = this.state.expanded;
 
     const className = classnames(
@@ -42,7 +42,7 @@ class MenuSection extends React.Component {
     return (
       <section className={className}>
         {collapsible && (
-          <MenuSectionHeader title={node.title} expanded={expanded} onToggle={this.toggle} />
+          <MenuSectionHeader title={node.name} expanded={expanded} onToggle={this.toggle} />
         )}
         {showMenu && (
           <ul>

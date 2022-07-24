@@ -36,7 +36,7 @@ class FolderNode extends React.Component {
 
     return (
       <ul className="shard-docs-menu-folder">
-        {node.title && (
+        {node.name && (
           <li className="shard-docs-menu-folder-header">
             <BaseLink
               style={{ paddingLeft: node.depth * 15 + "px" }}
@@ -44,7 +44,7 @@ class FolderNode extends React.Component {
               disabled={node.isEmpty}
             >
               {this.state.expanded ? <TriangleArrowDown /> : <TriangleArrowRight />}
-              {node.title}
+              {node.name}
             </BaseLink>
           </li>
         )}

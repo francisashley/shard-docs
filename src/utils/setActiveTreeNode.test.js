@@ -2,12 +2,12 @@ import setActiveTreeNode from "./setActiveTreeNode";
 
 const tree = [
   {
-    title: null,
+    name: null,
     type: "folder",
     path: '/',
     items: [
       {
-        title: "Doc A",
+        name: "Doc A",
         type: "document",
         path: "/doc-a",
         breadcrumbs: [
@@ -17,7 +17,7 @@ const tree = [
         isEmpty: true
       },
       {
-        title: "Doc B",
+        name: "Doc B",
         type: "document",
         path: "/doc-b",
         breadcrumbs: [
@@ -28,7 +28,7 @@ const tree = [
         isEmpty: true
       },
       {
-        title: "Doc C",
+        name: "Doc C",
         type: "document",
         path: "/doc-c",
         breadcrumbs: [
@@ -45,13 +45,13 @@ const tree = [
 test("setActiveTreeNode() correctly sets isActive", () => {
   expect(setActiveTreeNode(tree, '/doc-b')).toStrictEqual([
     {
-      title: null,
+      name: null,
       type: "folder",
       path: '/',
       isActive: false,
       items: [
         {
-          title: "Doc A",
+          name: "Doc A",
           type: "document",
           path: "/doc-a",
           breadcrumbs: [
@@ -63,7 +63,7 @@ test("setActiveTreeNode() correctly sets isActive", () => {
           isActive: false
         },
         {
-          title: "Doc B",
+          name: "Doc B",
           type: "document",
           path: "/doc-b",
           breadcrumbs: [
@@ -75,7 +75,7 @@ test("setActiveTreeNode() correctly sets isActive", () => {
           isActive: true
         },
         {
-          title: "Doc C",
+          name: "Doc C",
           type: "document",
           path: "/doc-c",
           breadcrumbs: [
@@ -91,13 +91,13 @@ test("setActiveTreeNode() correctly sets isActive", () => {
   ])
   expect(setActiveTreeNode(tree, '/doc-z')).toStrictEqual([
     {
-      title: null,
+      name: null,
       type: "folder",
       path: "/",
       isActive: false,
       items: [
         {
-          title: "Doc A",
+          name: "Doc A",
           type: "document",
           path: "/doc-a",
           breadcrumbs: [
@@ -109,7 +109,7 @@ test("setActiveTreeNode() correctly sets isActive", () => {
           isActive: false
         },
         {
-          title: "Doc B",
+          name: "Doc B",
           type: "document",
           path: "/doc-b",
           breadcrumbs: [
@@ -121,7 +121,7 @@ test("setActiveTreeNode() correctly sets isActive", () => {
           isActive: false
         },
         {
-          title: "Doc C",
+          name: "Doc C",
           type: "document",
           path: "/doc-c",
           breadcrumbs: [

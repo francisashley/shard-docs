@@ -20,11 +20,11 @@ export default function fromContent(tree, basePath = "/") {
  * @return {array}
  */
 export function combineTopLevelAdjacentItems(items) {
-  const isDiscreteFolder = item => item && item.type === "folder" && !item.title;
+  const isDiscreteFolder = item => item && item.type === "folder" && !item.name;
 
   items = items.map(item => {
     return item.type !== "folder"
-      ? { title: null, items: [item], type: "folder", depth: 0 }
+      ? { name: null, items: [item], type: "folder", depth: 0 }
       : item;
   });
 
@@ -48,11 +48,11 @@ export function combineTopLevelAdjacentItems(items) {
  * @return {array}
  */
 export function addPaths(items, basePath) {
-  const getSlug = title => slugify(kebabCase(title), { lower: true });
+  const getSlug = name => slugify(kebabCase(name), { lower: true });
 
   return items.map(item => {
     // Generate path and remove trailing / duplicate slashes
-    item.path = `${basePath}/${getSlug(item.title)}`.replace(/\/+$/, "").replace(/\/+/g, "/");
+    item.path = `${basePath}/${getSlug(item.name)}`.replace(/\/+$/, "").replace(/\/+/g, "/");
 
     if (item.type === "folder") {
       item.items = addPaths(item.items, item.path);
@@ -69,7 +69,7 @@ export function addPaths(items, basePath) {
  */
 export function addBreadcrumbs(items, breadcrumbs) {
   return items.map(item => {
-    const crumb = { text: item.title, link: item.path, isActive: false };
+    const crumb = { text: item.name, link: item.path, isActive: false };
     if (item.type === "folder") {
       item.items = addBreadcrumbs(item.items, [...breadcrumbs, crumb]);
     } else if (item.type === "document") {
@@ -102,21 +102,21 @@ export function addDepth(items, depth = 0) {
 export function shapeItems(items) {
   return items
     .map(item => {
-      const { type, title, path, depth } = item;
+      const { type, name, path, depth } = item;
       if (type === "external-link") {
         const link = item.externalLink;
-        return { type, title, link, depth };
-      } else if (type === "folder" && title) {
+        return { type, name, link, depth };
+      } else if (type === "folder" && name) {
         const isEmpty = !item.items.length;
         const isActive = false;
         const items = shapeItems(item.items);
-        return { type, path, title, isEmpty, isActive, items, depth };
+        return { type, path, name, isEmpty, isActive, items, depth };
       } else if (type === "document") {
         const isEmpty = !Boolean(item.document);
         const isActive = false;
         const document = item.document;
         const breadcrumbs = item.breadcrumbs;
-        return { type, path, title, isEmpty, isActive, breadcrumbs, document, depth };
+        return { type, path, name, isEmpty, isActive, breadcrumbs, document, depth };
       }
       return null;
     })

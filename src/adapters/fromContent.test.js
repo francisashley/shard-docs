@@ -1,30 +1,30 @@
 import fromContent from "./fromContent";
 
 const content = fromContent([
-  { type: "document", title: "Doc A", document: null },
-  { type: "document", title: "Doc B", document: null },
-  { type: "document", title: "Doc C", document: null },
+  { type: "document", name: "Doc A", document: null },
+  { type: "document", name: "Doc B", document: null },
+  { type: "document", name: "Doc C", document: null },
   {
     type: "folder",
-    title: "Folder",
+    name: "Folder",
     items: [
-      { type: "document", title: "Doc D", document: null },
-      { type: "document", title: "Doc E", document: null }
+      { type: "document", name: "Doc D", document: null },
+      { type: "document", name: "Doc E", document: null }
     ]
   },
-  { type: "external-link", title: "Github", externalLink: "http://github.com" },
-  { type: "something", title: "This is a purposefully invalid type that should be removed from the output", someType:'some-type'}
+  { type: "external-link", name: "Github", externalLink: "http://github.com" },
+  { type: "something", name: "This is a purposefully invalid type that should be removed from the output", someType:'some-type'}
 ]);
 
 test("fromContent() transforms data and returns tree", () => {
   expect(content.tree).toStrictEqual([
     {
-      title: null,
+      name: null,
       type: "folder",
       depth: 0,
       items: [
         {
-          title: "Doc A",
+          name: "Doc A",
           type: "document",
           path: "/doc-a",
           breadcrumbs: [
@@ -37,7 +37,7 @@ test("fromContent() transforms data and returns tree", () => {
           depth: 1
         },
         {
-          title: "Doc B",
+          name: "Doc B",
           type: "document",
           path: "/doc-b",
           breadcrumbs: [
@@ -50,7 +50,7 @@ test("fromContent() transforms data and returns tree", () => {
           depth: 1
         },
         {
-          title: "Doc C",
+          name: "Doc C",
           type: "document",
           path: "/doc-c",
           breadcrumbs: [
@@ -65,7 +65,7 @@ test("fromContent() transforms data and returns tree", () => {
       ]
     },
     {
-      title: "Folder",
+      name: "Folder",
       type: "folder",
       path: "/folder",
       isEmpty: false,
@@ -73,7 +73,7 @@ test("fromContent() transforms data and returns tree", () => {
       depth: 0,
       items: [
         {
-          title: "Doc D",
+          name: "Doc D",
           type: "document",
           path: "/folder/doc-d",
           breadcrumbs: [
@@ -87,7 +87,7 @@ test("fromContent() transforms data and returns tree", () => {
           depth: 1
         },
         {
-          title: "Doc E",
+          name: "Doc E",
           type: "document",
           path: "/folder/doc-e",
           breadcrumbs: [
@@ -103,10 +103,10 @@ test("fromContent() transforms data and returns tree", () => {
       ]
     },
     {
-      title: null,
+      name: null,
       type: "folder",
       items: [
-        { title: "Github", type: "external-link", link: "http://github.com", depth: 1 }
+        { name: "Github", type: "external-link", link: "http://github.com", depth: 1 }
       ],
       depth: 0
     }
@@ -116,7 +116,7 @@ test("fromContent() transforms data and returns tree", () => {
 test("fromContent() transforms data and returns documents in a flat array", () =>
   expect(content.documents).toStrictEqual([
     {
-      title: "Doc A",
+      name: "Doc A",
       type: "document",
       path: "/doc-a",
       breadcrumbs: [
@@ -129,7 +129,7 @@ test("fromContent() transforms data and returns documents in a flat array", () =
       depth: 1
     },
     {
-      title: "Doc B",
+      name: "Doc B",
       type: "document",
       path: "/doc-b",
       breadcrumbs: [
@@ -142,7 +142,7 @@ test("fromContent() transforms data and returns documents in a flat array", () =
       depth: 1
     },
     {
-      title: "Doc C",
+      name: "Doc C",
       type: "document",
       path: "/doc-c",
       breadcrumbs: [
@@ -155,7 +155,7 @@ test("fromContent() transforms data and returns documents in a flat array", () =
       depth: 1
     },
     {
-      title: "Doc D",
+      name: "Doc D",
       type: "document",
       path: "/folder/doc-d",
       breadcrumbs: [
@@ -169,7 +169,7 @@ test("fromContent() transforms data and returns documents in a flat array", () =
       depth: 1
     },
     {
-      title: "Doc E",
+      name: "Doc E",
       type: "document",
       path: "/folder/doc-e",
       breadcrumbs: [

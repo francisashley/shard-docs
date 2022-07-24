@@ -5,18 +5,18 @@ import MenuTree from "./ShardDocsSidebarMenuTree";
 import fromContent from "../adapters/fromContent";
 
 const { tree } = fromContent([
-  { type: 'document', title: "Doc A", document: <h1>Doc A</h1> },
-  { type: 'document', title: "Doc B", document: <h1>Doc B</h1> },
-  { type: 'document', title: "Doc C", document: <h1>Doc C</h1> },
+  { type: 'document', name: "Doc A", document: <h1>Doc A</h1> },
+  { type: 'document', name: "Doc B", document: <h1>Doc B</h1> },
+  { type: 'document', name: "Doc C", document: <h1>Doc C</h1> },
   {
     type: 'folder', 
-    title: "Folder",
+    name: "Folder",
     items: [
-      { type: 'document', title: "Doc D", document: <h1>Doc D</h1> },
-      { type: 'document', title: "Doc E", document: <h1>Doc E</h1> }
+      { type: 'document', name: "Doc D", document: <h1>Doc D</h1> },
+      { type: 'document', name: "Doc E", document: <h1>Doc E</h1> }
     ]
   },
-  { type: 'external-link', title: "Github", externalLink: "http://github.com" }
+  { type: 'external-link', name: "Github", externalLink: "http://github.com" }
 ]);
 
 describe("<MenuTree />", () => {

@@ -2,7 +2,7 @@ import filterDocuments from "./filterDocuments";
 
 const documents = [
   {
-    title: "Doc A",
+    name: "Doc A",
     type: "document",
     path: "/doc-a",
     breadcrumbs: [
@@ -13,7 +13,7 @@ const documents = [
     isEmpty: true
   },
   {
-    title: "Doc B",
+    name: "Doc B",
     type: "document",
     path: "/doc-b",
     breadcrumbs: [
@@ -28,7 +28,7 @@ const documents = [
 test("filterDocuments() filters correctly", () => {
   expect(filterDocuments(documents)).toStrictEqual([
     {
-      title: "Doc A",
+      name: "Doc A",
       type: "document",
       path: "/doc-a",
       breadcrumbs: [
@@ -39,7 +39,7 @@ test("filterDocuments() filters correctly", () => {
       isEmpty: true
     },
     {
-      title: "Doc B",
+      name: "Doc B",
       type: "document",
       path: "/doc-b",
       breadcrumbs: [
@@ -52,7 +52,7 @@ test("filterDocuments() filters correctly", () => {
   ])
   expect(filterDocuments(documents, '/doc-a')).toStrictEqual([
     {
-      title: "Doc A",
+      name: "Doc A",
       type: "document",
       path: "/doc-a",
       breadcrumbs: [

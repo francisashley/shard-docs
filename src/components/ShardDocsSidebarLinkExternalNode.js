@@ -11,7 +11,7 @@ const ExternalLinkNode = ({ node }) => (
   <li className="shard-docs-menu-external">
     <a href={node.link} target="_blank" style={{ paddingLeft: node.depth * 15 + "px" }}>
       <ExternalIcon />
-      {node.title}
+      {node.name}
     </a>
   </li>
 );
@@ -22,7 +22,7 @@ ExternalLinkNode.propTypes = {
 
 ExternalLinkNode.defaultProps = {
   node: {
-    title: "",
+    name: "",
     link: ""
   }
 };

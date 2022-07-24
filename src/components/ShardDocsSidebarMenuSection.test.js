@@ -7,19 +7,19 @@ import { MemoryRouter } from "react-router-dom";
 let { tree } = fromContent([
   {
     type: 'folder',
-    title: "Essentials",
+    name: "Essentials",
     items: [
-      { type: 'document', title: "Get started", document: <h1>Get started</h1> }
+      { type: 'document', name: "Get started", document: <h1>Get started</h1> }
     ]
   },
   {
     type: 'folder',
-    title: "Examples",
+    name: "Examples",
     items: [
-      { type: 'document', title: "Hello world", document: <h1>Hello world</h1> }
+      { type: 'document', name: "Hello world", document: <h1>Hello world</h1> }
     ]
   },
-  { type: 'document', title: "Doc A", document: <h1>Doc A</h1> }
+  { type: 'document', name: "Doc A", document: <h1>Doc A</h1> }
 ]);
 
 test("<MenuSection /> renders first index correctly", () => {

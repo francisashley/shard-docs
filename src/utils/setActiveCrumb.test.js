@@ -1,7 +1,7 @@
 import setActiveCrumb from "./setActiveCrumb";
 
 const document = {
-  title: "Hello universe",
+  name: "Hello universe",
   type: "document",
   path: "/hello-universe",
   breadcrumbs: [
@@ -17,7 +17,7 @@ const document = {
 
 test("setActiveCrumb() sets active crumb correctly", () => {
   expect(setActiveCrumb(document)).toStrictEqual({
-    title: "Hello universe",
+    name: "Hello universe",
     type: "document",
     path: "/hello-universe",
     breadcrumbs: [
@@ -32,7 +32,7 @@ test("setActiveCrumb() sets active crumb correctly", () => {
   });
 
   expect(setActiveCrumb(document, "/hello")).toStrictEqual({
-    title: "Hello universe",
+    name: "Hello universe",
     type: "document",
     path: "/hello-universe",
     breadcrumbs: [
@@ -47,7 +47,7 @@ test("setActiveCrumb() sets active crumb correctly", () => {
   });
 
   expect(setActiveCrumb(document, "/hello/planet")).toStrictEqual({
-    title: "Hello universe",
+    name: "Hello universe",
     type: "document",
     path: "/hello-universe",
     breadcrumbs: [
@@ -62,7 +62,7 @@ test("setActiveCrumb() sets active crumb correctly", () => {
   });
 
   expect(setActiveCrumb(document, "/hello/planet/galaxy")).toStrictEqual({
-    title: "Hello universe",
+    name: "Hello universe",
     type: "document",
     path: "/hello-universe",
     breadcrumbs: [
@@ -77,7 +77,7 @@ test("setActiveCrumb() sets active crumb correctly", () => {
   });
 
   expect(setActiveCrumb(document, "/hello/planet/galaxy/universe")).toStrictEqual({
-    title: "Hello universe",
+    name: "Hello universe",
     type: "document",
     path: "/hello-universe",
     breadcrumbs: [

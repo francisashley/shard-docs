@@ -6,8 +6,8 @@ import ShardDocs from "./ShardDocs";
 const title = "App title";
 const description = "App description.";
 const content = [
-  { type: 'document', title: "Doc A", document: <h1>Doc A</h1> },
-  { type: 'document', title: "Doc B", document: <h1>Doc B</h1> }
+  { type: 'document', name: "Doc A", document: <h1>Doc A</h1> },
+  { type: 'document', name: "Doc B", document: <h1>Doc B</h1> }
 ];
 
 describe("<ShardDocs />", () => {

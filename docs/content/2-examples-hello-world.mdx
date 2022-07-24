@@ -11,18 +11,18 @@ import ShardDocs, { CodeSampleShard } from "@fa-repo/shard-docs";
     [
       {
         type: "document",
-        title: "Hello world",
+        name: "Hello world",
         document: <img src="/images/hello-world.jpg" alt="Turtle" />
       },
       {
         type: "folder",
-        title: "Examples",
+        name: "Examples",
         items: [
-          { title: "Use case A", document: <h1>Use case A</h1> },
-          { title: "Use case B", document: <h1>Use case B</h1> }
+          { name: "Use case A", document: <h1>Use case A</h1> },
+          { name: "Use case B", document: <h1>Use case B</h1> }
         ]
       },
-      { type: "external-link", title: "Github", externalLink: "https://github.com/" }
+      { type: "external-link", name: "Github", externalLink: "https://github.com/" }
     ]
   }
 />`}
@@ -36,16 +36,16 @@ import ShardDocs, { CodeSampleShard } from "@fa-repo/shard-docs";
     basePath="/examples/hello-world"
     content={
       [
-        { type: "document", title: "Hello world", document: <h1>Hello world</h1> },
+        { type: "document", name: "Hello world", document: <h1>Hello world</h1> },
         {
           type: "folder",
-          title: "Examples",
+          name: "Examples",
           items: [
-            { type: "document", title: "Use case A", document: <h1>Use case A</h1> },
-            { type: "document", title: "Use case B", document: <h1>Use case B</h1> }
+            { type: "document", name: "Use case A", document: <h1>Use case A</h1> },
+            { type: "document", name: "Use case B", document: <h1>Use case B</h1> }
           ]
         },
-        { type: "external-link", title: "Github", externalLink: "https://github.com/" }
+        { type: "external-link", name: "Github", externalLink: "https://github.com/" }
       ]
     }
   />

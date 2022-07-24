@@ -1,17 +1,17 @@
 ```js
 // example
 const content = [
-  { type: "document", title: "Install", document: [ <h1>Install</h1> ] },
-  { type: "document", title: "Basic usage", document: [ <h1>Basic usage</h1> ] },
+  { type: "document", name: "Install", document: [ <h1>Install</h1> ] },
+  { type: "document", name: "Basic usage", document: [ <h1>Basic usage</h1> ] },
   {
     type: "folder",
-    title: "Examples",
+    name: "Examples",
     items: [
-      { type: "document", title: "Use case A", document: [ <h1>Use case A</h1> ] },
-      { type: "document", title: "Use case B", document: [ <h1>Use case B</h1> ] }
+      { type: "document", name: "Use case A", document: [ <h1>Use case A</h1> ] },
+      { type: "document", name: "Use case B", document: [ <h1>Use case B</h1> ] }
     ]
   },
-  { type: "external-link", title: "Github", externalLink: "https://github.com" },
+  { type: "external-link", name: "Github", externalLink: "https://github.com" },
 ]
 ```
 
@@ -20,7 +20,7 @@ const content = [
 | Name       | Type   | Default | Required | Description                       |
 |------------|--------|---------|----------|-----------------------------------|
 | `type`     | string | `""`    | Required | Must be "document".                   |
-| `title`    | string | `""`    | Required | Document title.                   |
+| `name`    | string | `""`    | Required | Document name.                   |
 | `document` | JSX    | `null`  |          | Document content.                 |
 
 #### Folder item
@@ -28,7 +28,7 @@ const content = [
 | Name       | Type   | Default | Required | Description                                       |
 |------------|--------|---------|----------|---------------------------------------------------|
 | `type`     | string | `""`    |          | Must be "folder".                                     |
-| `title`    | string | `""`    |          | Folder title.                                     |
+| `name`    | string | `""`    |          | Folder name.                                     |
 | `items`   | array  | `[]`    | Required | An array that accepts all items listed here.      |
 
 #### External link item
@@ -36,5 +36,5 @@ const content = [
 | Name             | Type   | Default | Required | Description         |
 |------------------|--------|---------|----------|---------------------|
 | `type`           | string | `""`    | Required | Must be "external-link".          |
-| `title`          | string | `""`    |          | Link text.          |
+| `name`          | string | `""`    |          | Link text.          |
 | `externalLink`   | string | `""`    | Required | Link path.          |

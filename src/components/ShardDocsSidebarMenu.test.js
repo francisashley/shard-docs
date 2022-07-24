@@ -5,7 +5,7 @@ import Menu from "./ShardDocsSidebarMenu";
 import fromContent from "../adapters/fromContent";
 
 const { tree } = fromContent([
-  { type: 'document', title: "Doc A", document: <h1>Doc A</h1> }
+  { type: 'document', name: "Doc A", document: <h1>Doc A</h1> }
 ]);
 
 describe("<Menu />", () => {
