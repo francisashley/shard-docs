@@ -246,6 +246,13 @@ module.exports = {
 
 ```
 
+## TODO
+
+- Add github corner feature
+- Add search feature
+- Add ability to set max height of CodeExampleShard example container.
+- Add ability to set IframeShard height.
+- Extend the composition key to support objects as well as arrays.
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
