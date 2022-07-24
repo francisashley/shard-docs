@@ -10,7 +10,7 @@ import { ExternalLinkPropType } from "../prop-types";
 const ExternalLinkNode = ({ node }) => (
   <li className="shard-docs-menu-external">
     <a href={node.link} target="_blank" style={{ paddingLeft: node.depth * 15 + "px" }}>
-      <ExternalIcon />
+      <ExternalIcon viewBox="0 0 24 24" />
       {node.title}
     </a>
   </li>
