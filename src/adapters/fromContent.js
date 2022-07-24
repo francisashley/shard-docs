@@ -27,7 +27,7 @@ export function addTypes(items) {
 
     if (items[i].hasOwnProperty("folder")) type = "folder";
     else if (items[i].hasOwnProperty("document")) type = "document";
-    else if (items[i].hasOwnProperty("externalLink")) type = "external";
+    else if (items[i].hasOwnProperty("externalLink")) type = "external-link";
 
     if (type === "folder") items[i].folder = addTypes(items[i].folder);
 
@@ -126,7 +126,7 @@ export function shapeItems(items) {
   return items
     .map(item => {
       const { type, title, path, depth } = item;
-      if (type === "external") {
+      if (type === "external-link") {
         const link = item.externalLink;
         return { type, title, link, depth };
       } else if (type === "folder" && title) {

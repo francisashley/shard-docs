@@ -16,7 +16,7 @@ const MenuTree = ({ tree, onNavigate }) => {
       {tree.map((node, i) => {
         if (node.type === "document") {
           return <DocumentNode key={i} node={node} onNavigate={onNavigate} />;
-        } else if (node.type === "external") {
+        } else if (node.type === "external-link") {
           return <ExternalLinkNode key={i} node={node} />;
         } else if (node.type === "folder") {
           return <FolderNode key={i} node={node} onNavigate={onNavigate} />;

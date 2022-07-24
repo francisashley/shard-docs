@@ -34,7 +34,7 @@ export const PaginationPropType = PropTypes.shape({
 
 // Tree structure leaves data
 export const ExternalLinkPropType = PropTypes.shape({
-  type: PropTypes.oneOf(["external"]),
+  type: PropTypes.oneOf(["external-link"]),
   title: PropTypes.string,
   link: PropTypes.string
 });
