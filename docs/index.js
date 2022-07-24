@@ -10,12 +10,12 @@ import "@fa-repo/shard-docs/dist/shards/SectionShard.css";
 import "@fa-repo/shard-docs/dist/shards/CodeSampleShard.css";
 
 // Documents
-import EssentialsGetStartedDocument from "./pages/1-essentials-get-started.mdx";
-import EssentialsSchemaReferenceDocument from "./pages/1-source-schema.mdx";
-import EssentialsApiReferenceDocument from "./pages/1-reference-api.mdx";
-import ExamplesHelloWorldDocument from "./pages/2-examples-hello-world.mdx";
-import ShardsCodeSampleShardDocument from "./pages/3-shards-code-sample.mdx";
-import ShardsSectionShardDocument from "./pages/3-shards-section.mdx";
+import EssentialsGetStartedDocument from "./content/1-essentials-get-started.mdx";
+import EssentialsSchemaReferenceDocument from "./content/1-source-schema.mdx";
+import EssentialsApiReferenceDocument from "./content/1-reference-api.mdx";
+import ExamplesHelloWorldDocument from "./content/2-examples-hello-world.mdx";
+import ShardsCodeSampleShardDocument from "./content/3-shards-code-sample.mdx";
+import ShardsSectionShardDocument from "./content/3-shards-section.mdx";
 
 const components = {
   pre: props => {
