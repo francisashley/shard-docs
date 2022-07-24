@@ -5,20 +5,20 @@ import ShardDocs from "./ShardDocs";
 
 const title = "App title";
 const description = "App description.";
-const source = [
+const content = [
   { type: 'document', title: "Doc A", document: <h1>Doc A</h1> },
   { type: 'document', title: "Doc B", document: <h1>Doc B</h1> }
 ];
 
 describe("<ShardDocs />", () => {
   const mountShardDocs = (options = {}) => {
-    const { title, description, source = [], hideBuiltWithShardDocs, useBrowserRouter } = options;
+    const { title, description, content = [], hideBuiltWithShardDocs, useBrowserRouter } = options;
     return mount(
       <MemoryRouter>
         <ShardDocs
           title={title}
           description={description}
-          source={source}
+          content={content}
           hideBuiltWithShardDocs={hideBuiltWithShardDocs}
           useBrowserRouter={useBrowserRouter}
         />
@@ -33,7 +33,7 @@ describe("<ShardDocs />", () => {
   });
 
   it("renders with props", () => {
-    const wrapper = mountShardDocs({ title, description, source });
+    const wrapper = mountShardDocs({ title, description, content });
 
     // Renders sidebar
     expect(wrapper.find('Sidebar').exists()).toBe(true);

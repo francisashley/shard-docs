@@ -2,11 +2,11 @@ import React from "react";
 import { MemoryRouter } from "react-router-dom";
 import { mount } from "enzyme";
 import Sidebar from "./ShardDocsSidebar";
-import fromSource from "../adapters/fromSource";
+import fromContent from "../adapters/fromContent";
 
 const title = "App title";
 const description = "App description.";
-const { tree } = fromSource([
+const { tree } = fromContent([
   { type: 'document', title: "Doc A", document: <h1>Doc A</h1> }
 ]);
 

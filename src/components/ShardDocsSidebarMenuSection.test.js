@@ -1,10 +1,10 @@
 import React from "react";
 import { mount } from "enzyme";
 import MenuSection from "./ShardDocsSidebarMenuSection";
-import fromSource from "../adapters/fromSource";
+import fromContent from "../adapters/fromContent";
 import { MemoryRouter } from "react-router-dom";
 
-let { tree } = fromSource([
+let { tree } = fromContent([
   {
     type: 'folder',
     title: "Essentials",

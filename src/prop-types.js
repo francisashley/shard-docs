@@ -1,14 +1,14 @@
 import PropTypes from "prop-types";
 
-// Source data
-export const SourceDocumentPropType = PropTypes.shape({ type: PropTypes.oneOf(['document']).isRequired, title: PropTypes.string, document: PropTypes.element });
-export const SourceFolderPropType = PropTypes.shape({ type: PropTypes.oneOf(['folder']).isRequired, title: PropTypes.string, folder: PropTypes.array });
-export const SourceExternalLinkPropType = PropTypes.shape({ type: PropTypes.oneOf(['external-link']).isRequired, title: PropTypes.string, externalLink: PropTypes.string });
-export const SourcePropType = PropTypes.arrayOf(
+// Content data
+export const ContentDocumentPropType = PropTypes.shape({ type: PropTypes.oneOf(['document']).isRequired, title: PropTypes.string, document: PropTypes.element });
+export const ContentFolderPropType = PropTypes.shape({ type: PropTypes.oneOf(['folder']).isRequired, title: PropTypes.string, folder: PropTypes.array });
+export const ContentExternalLinkPropType = PropTypes.shape({ type: PropTypes.oneOf(['external-link']).isRequired, title: PropTypes.string, externalLink: PropTypes.string });
+export const ContentPropType = PropTypes.arrayOf(
   PropTypes.oneOfType([
-    SourceDocumentPropType,
-    SourceFolderPropType,
-    SourceExternalLinkPropType,
+    ContentDocumentPropType,
+    ContentFolderPropType,
+    ContentExternalLinkPropType,
   ])
 );
 

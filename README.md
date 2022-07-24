@@ -19,7 +19,7 @@ A doc manager written in React for organising and viewing MDX files.
 - [Install](#install)
 - [Basic usage](#basic-usage)
 - [API](#api)
-- [Source schema](#source-schema)
+- [Content schema](#content-schema)
 - [Write docs with MDX](#write-docs-with-mdx)
 - [License](#license)
 
@@ -41,7 +41,7 @@ import { render } from "react-dom";
 import ShardDocs from "@fa-repo/shard-docs";
 import "@fa-repo/shard-docs/dist/index.css";
 
-const source = [
+const content = [
   { title: "Install", document: <><h1>Install</h1></> },
   { title: "Basic usage", document: <><h1>Basic usage</h1></> },
   {
@@ -58,7 +58,7 @@ render(
   <ShardDocs
     title="ShardDocs demo"
     description="A description describing the purpose of the docs."
-    source={source}
+    content={content}
   />,
   document.getElementById("root")
 );
@@ -95,7 +95,7 @@ render(
   */
   hideBuiltWithShardDocs={true}
   /**
-   * Data is fed in through the source prop. Scroll down for an explanation of the schema.
+   * Data is fed in through the content prop. Scroll down for an explanation of the schema.
    * @array
    * @default []
   */
@@ -105,7 +105,7 @@ render(
    * @boolean
    * @default false
   */
-  source={[
+  content={[
     {
       title: "Essentials",
       folder: [
@@ -116,7 +116,7 @@ render(
 />
 ```
 
-## Source schema
+## Content schema
 Data is composed in a way that describes the relationship of items to each other - like a tree structure. The structure of the data influences the paths generated for document and folder routes as well as how the sidebar menu is rendered.
 
 Each item has a common `title` property. The combination of subsequent properties define their types.

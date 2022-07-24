@@ -1,6 +1,6 @@
 /**
  * Return documents that are equal too or descendants of path.
- * @param  {array} documents fed in from adapters/fromSource()
+ * @param  {array} documents fed in from adapters/fromContent()
  * @param  {string} path current url
  * @return {array}
  */

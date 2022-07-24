@@ -2,9 +2,9 @@ import React from "react";
 import { mount } from "enzyme";
 import { MemoryRouter } from "react-router-dom";
 import FolderNode from "./ShardDocsSidebarFolderNode";
-import fromSource from "../adapters/fromSource";
+import fromContent from "../adapters/fromContent";
 
-const { tree } = fromSource([
+const { tree } = fromContent([
   {
     type: 'folder', 
     title: "Folder",

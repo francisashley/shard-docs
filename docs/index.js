@@ -33,13 +33,13 @@ render(
     <ShardDocs
       title="@fa-repo/shard-docs"
       description="A doc manager written in React for organising and viewing MDX files."
-      source={[
+      content={[
         {
           type: 'folder',
           title: "Essentials",
           folder: [
             { type: 'document', title: "Get started", document: <EssentialsGetStartedDocument /> },
-            { type: 'document', title: "Source", document: <EssentialsSchemaReferenceDocument /> },
+            { type: 'document', title: "Content", document: <EssentialsSchemaReferenceDocument /> },
             { type: 'document', title: "API", document: <EssentialsApiReferenceDocument /> }
           ]
         },

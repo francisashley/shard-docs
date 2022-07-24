@@ -1,6 +1,6 @@
-import fromSource from "./fromSource";
+import fromContent from "./fromContent";
 
-const source = fromSource([
+const content = fromContent([
   { title: "Doc A", document: null },
   { title: "Doc B", document: null },
   { title: "Doc C", document: null },
@@ -12,8 +12,8 @@ const source = fromSource([
   { title: "This is a purposefully invalid type that should be removed from the output", someType:'some-type'}
 ]);
 
-test("fromSource() transforms data and returns tree", () => {
-  expect(source.tree).toStrictEqual([
+test("fromContent() transforms data and returns tree", () => {
+  expect(content.tree).toStrictEqual([
     {
       title: null,
       type: "folder",
@@ -109,8 +109,8 @@ test("fromSource() transforms data and returns tree", () => {
   ])}
 );
 
-test("fromSource() transforms data and returns documents in a flat array", () =>
-  expect(source.documents).toStrictEqual([
+test("fromContent() transforms data and returns documents in a flat array", () =>
+  expect(content.documents).toStrictEqual([
     {
       title: "Doc A",
       type: "document",

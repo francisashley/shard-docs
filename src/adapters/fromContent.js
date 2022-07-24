@@ -1,7 +1,7 @@
 import slugify from "slugify";
 import kebabCase from "lodash/kebabCase";
 
-export default function fromSource(tree, basePath = "/") {
+export default function fromContent(tree, basePath = "/") {
   tree = addTypes(tree);
   tree = addPaths(tree, basePath);
   tree = addBreadcrumbs(tree, [{ link: basePath, text: "~", isActive: false }]);
@@ -67,7 +67,7 @@ export function combineTopLevelAdjacentItems(items) {
 /**
  * Loops through each item, child and grandchild detecting and calculating and
  * and each items path.
- * @param  {array} items Expects result of fromSource/combineTopLevelAdjacentDocuments().
+ * @param  {array} items Expects result of fromContent/combineTopLevelAdjacentDocuments().
  * @return {array}
  */
 export function addPaths(items, basePath) {
@@ -87,7 +87,7 @@ export function addPaths(items, basePath) {
 
 /**
  * Recursively loops through source tree adding breadcrumbs to all documents / folders.
- * @param  {array} items Expects result of fromSource/ shapeItems().
+ * @param  {array} items Expects result of fromContent/ shapeItems().
  * @return {array}
  */
 export function addBreadcrumbs(items, breadcrumbs) {
@@ -104,7 +104,7 @@ export function addBreadcrumbs(items, breadcrumbs) {
 
 /**
  * Recursively loops through source tree adding depth level to all items.
- * @param  {array} items Expects result of fromSource/ shapeItems().
+ * @param  {array} items Expects result of fromContent/ shapeItems().
  * @return {array}
  */
 export function addDepth(items, depth = 0) {
@@ -119,7 +119,7 @@ export function addDepth(items, depth = 0) {
 
 /**
  * Loops through each item, child and grandchild shaping each item to the specs of its given type.
- * @param  {array} items Expects result of fromSource/combineTopLevelAdjacentDocuments().
+ * @param  {array} items Expects result of fromContent/combineTopLevelAdjacentDocuments().
  * @return {array}
  */
 export function shapeItems(items) {

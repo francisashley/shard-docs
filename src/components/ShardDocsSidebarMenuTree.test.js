@@ -2,9 +2,9 @@ import React from "react";
 import { mount } from "enzyme";
 import { MemoryRouter } from "react-router-dom";
 import MenuTree from "./ShardDocsSidebarMenuTree";
-import fromSource from "../adapters/fromSource";
+import fromContent from "../adapters/fromContent";
 
-const { tree } = fromSource([
+const { tree } = fromContent([
   { type: 'document', title: "Doc A", document: <h1>Doc A</h1> },
   { type: 'document', title: "Doc B", document: <h1>Doc B</h1> },
   { type: 'document', title: "Doc C", document: <h1>Doc C</h1> },

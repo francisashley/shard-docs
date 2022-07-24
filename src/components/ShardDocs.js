@@ -5,9 +5,9 @@ import { setActiveTreeNode, filterDocuments, setActiveCrumb } from "../utils";
 
 import ShardDocsMain from "./ShardDocsMain";
 import ShardDocsSidebar from "./ShardDocsSidebar";
-import fromSource from "../adapters/fromSource";
+import fromContent from "../adapters/fromContent";
 
-import { SourcePropType } from "../prop-types";
+import { ContentPropType } from "../prop-types";
 
 import "../assets/sanitize.css";
 import "./ShardDocs.scss";
@@ -20,7 +20,7 @@ class ShardDocs extends React.Component {
   static propTypes = {
     title: PropTypes.string,
     description: PropTypes.string,
-    source: SourcePropType,
+    content: ContentPropType,
     basePath: PropTypes.string,
     hideBuiltWithShardDocs: PropTypes.bool,
     useBrowserRouter: PropTypes.bool
@@ -29,20 +29,20 @@ class ShardDocs extends React.Component {
   static defaultProps = {
     title: "",
     description: "",
-    source: [],
+    content: [],
     basePath: "/",
     hideBuiltWithShardDocs: false,
     useBrowserRouter: false
   };
 
   state = {
-    source: fromSource(this.props.source, this.props.basePath),
+    content: fromContent(this.props.content, this.props.basePath),
     tree: [],
     documents: []
   };
 
   componentDidMount() {
-    const { tree, documents } = this.state.source;
+    const { tree, documents } = this.state.content;
     const path = this.props.location.pathname;
 
     this.setState({
@@ -52,7 +52,7 @@ class ShardDocs extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    const { tree, documents } = this.state.source;
+    const { tree, documents } = this.state.content;
     const path = this.props.location.pathname;
 
     if (path !== prevProps.location.pathname) {
