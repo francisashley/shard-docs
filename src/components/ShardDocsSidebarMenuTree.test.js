@@ -11,7 +11,10 @@ const { tree } = fromContent([
   {
     type: 'folder', 
     title: "Folder",
-    folder: [{ type: 'document', title: "Doc D", document: <h1>Doc D</h1> }, { title: "Doc E", document: <h1>Doc E</h1> }]
+    folder: [
+      { type: 'document', title: "Doc D", document: <h1>Doc D</h1> },
+      { type: 'document', title: "Doc E", document: <h1>Doc E</h1> }
+    ]
   },
   { type: 'external-link', title: "Github", externalLink: "http://github.com" }
 ]);

@@ -8,7 +8,8 @@ const content = fromContent([
     type: "folder",
     title: "Folder",
     folder: [
-      { type: "document", title: "Doc D", document: null }, { type: "", title: "Doc E", document: null }
+      { type: "document", title: "Doc D", document: null },
+      { type: "document", title: "Doc E", document: null }
     ]
   },
   { type: "external-link", title: "Github", externalLink: "http://github.com" },
