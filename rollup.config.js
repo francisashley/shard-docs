@@ -11,7 +11,7 @@ export default [
   transpile("src/index.js", "dist", "shard-docs"),
   transpile("src/components/shards/CodeSampleShard", "dist/shards", "CodeSampleShard"),
   transpile("src/components/shards/SectionShard", "dist/shards", "Section"),
-  transpile("src/components/renderers/CodeBlock", "dist/renderers", "CodeBlock")
+  transpile("src/components/renderers/CodeBlockRenderer", "dist/renderers", "CodeBlockRenderer")
 ];
 
 function transpile(input, outputPath, outputFileName) {
