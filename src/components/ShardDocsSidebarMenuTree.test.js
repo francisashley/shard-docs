@@ -11,7 +11,7 @@ const { tree } = fromContent([
   {
     type: 'folder', 
     title: "Folder",
-    folder: [
+    items: [
       { type: 'document', title: "Doc D", document: <h1>Doc D</h1> },
       { type: 'document', title: "Doc E", document: <h1>Doc E</h1> }
     ]

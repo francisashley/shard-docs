@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 
 // Content data
 export const ContentDocumentPropType = PropTypes.shape({ type: PropTypes.oneOf(['document']).isRequired, title: PropTypes.string, document: PropTypes.element });
-export const ContentFolderPropType = PropTypes.shape({ type: PropTypes.oneOf(['folder']).isRequired, title: PropTypes.string, folder: PropTypes.array });
+export const ContentFolderPropType = PropTypes.shape({ type: PropTypes.oneOf(['folder']).isRequired, title: PropTypes.string, items: PropTypes.array });
 export const ContentExternalLinkPropType = PropTypes.shape({ type: PropTypes.oneOf(['external-link']).isRequired, title: PropTypes.string, externalLink: PropTypes.string });
 export const ContentPropType = PropTypes.arrayOf(
   PropTypes.oneOfType([
@@ -57,7 +57,7 @@ export const FolderPropShape = {
   isEmpty: PropTypes.bool,
   isActive: PropTypes.bool,
 };
-FolderPropShape.folder = PropTypes.arrayOf(
+FolderPropShape.items = PropTypes.arrayOf(
   PropTypes.oneOfType([
     DocumentPropType,
     ExternalLinkPropType,

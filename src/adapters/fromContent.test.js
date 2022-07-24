@@ -7,7 +7,7 @@ const content = fromContent([
   {
     type: "folder",
     title: "Folder",
-    folder: [
+    items: [
       { type: "document", title: "Doc D", document: null },
       { type: "document", title: "Doc E", document: null }
     ]
@@ -22,7 +22,7 @@ test("fromContent() transforms data and returns tree", () => {
       title: null,
       type: "folder",
       depth: 0,
-      folder: [
+      items: [
         {
           title: "Doc A",
           type: "document",
@@ -71,7 +71,7 @@ test("fromContent() transforms data and returns tree", () => {
       isEmpty: false,
       isActive: false,
       depth: 0,
-      folder: [
+      items: [
         {
           title: "Doc D",
           type: "document",
@@ -105,7 +105,7 @@ test("fromContent() transforms data and returns tree", () => {
     {
       title: null,
       type: "folder",
-      folder: [
+      items: [
         { title: "Github", type: "external-link", link: "http://github.com", depth: 1 }
       ],
       depth: 0

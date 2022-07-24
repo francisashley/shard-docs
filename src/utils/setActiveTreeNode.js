@@ -8,7 +8,7 @@
 export default function setActiveTreeNode(tree = [], currentPath = "") {
   return tree.map(node => {
     if (node.type === "folder") {
-      node.folder = setActiveTreeNode(node.folder, currentPath);
+      node.items = setActiveTreeNode(node.items, currentPath);
     }
     if (node.type === "folder" || node.type === "document") {
       node.isActive = node.path === currentPath;

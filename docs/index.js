@@ -37,7 +37,7 @@ render(
         {
           type: 'folder',
           title: "Essentials",
-          folder: [
+          items: [
             { type: 'document', title: "Get started", document: <EssentialsGetStartedDocument /> },
             { type: 'document', title: "Content", document: <EssentialsSchemaReferenceDocument /> },
             { type: 'document', title: "API", document: <EssentialsApiReferenceDocument /> }
@@ -46,14 +46,14 @@ render(
         {
           type: 'folder',
           title: "Examples",
-          folder: [
+          items: [
             { type: 'document', title: "Hello world", document: <ExamplesHelloWorldDocument /> }
           ]
         },
         {
           type: 'folder',
           title: "Shards",
-          folder: [
+          items: [
             { type: 'document', title: "<CodeSample />", document: <ShardsCodeSampleShardDocument /> },
             { type: 'document', title: "<Section />", document: <ShardsSectionShardDocument /> }
           ]

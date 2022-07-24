@@ -8,7 +8,7 @@ const { tree } = fromContent([
   {
     type: 'folder', 
     title: "Folder",
-    folder: [{ type: 'document', title: "Document", document: <h1>Hello world</h1> }]
+    items: [{ type: 'document', title: "Document", document: <h1>Hello world</h1> }]
   }
 ]);
 

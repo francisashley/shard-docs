@@ -8,14 +8,14 @@ let { tree } = fromContent([
   {
     type: 'folder',
     title: "Essentials",
-    folder: [
+    items: [
       { type: 'document', title: "Get started", document: <h1>Get started</h1> }
     ]
   },
   {
     type: 'folder',
     title: "Examples",
-    folder: [
+    items: [
       { type: 'document', title: "Hello world", document: <h1>Hello world</h1> }
     ]
   },

@@ -48,7 +48,7 @@ class FolderNode extends React.Component {
             </BaseLink>
           </li>
         )}
-        {this.state.expanded && <MenuTree tree={node.folder} onNavigate={onNavigate} />}
+        {this.state.expanded && <MenuTree tree={node.items} onNavigate={onNavigate} />}
       </ul>
     );
   }

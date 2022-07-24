@@ -6,7 +6,7 @@ const content = [
   {
     type: "folder",
     title: "Examples",
-    folder: [
+    items: [
       { type: "document", title: "Use case A", document: [ <h1>Use case A</h1> ] },
       { type: "document", title: "Use case B", document: [ <h1>Use case B</h1> ] }
     ]
@@ -29,7 +29,7 @@ const content = [
 |------------|--------|---------|----------|---------------------------------------------------|
 | `type`     | string | `""`    |          | Must be "folder".                                     |
 | `title`    | string | `""`    |          | Folder title.                                     |
-| `folder`   | array  | `[]`    | Required | An array that accepts all items listed here.      |
+| `items`   | array  | `[]`    | Required | An array that accepts all items listed here.      |
 
 #### External link item
 

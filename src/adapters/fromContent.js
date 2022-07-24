@@ -24,7 +24,7 @@ export function combineTopLevelAdjacentItems(items) {
 
   items = items.map(item => {
     return item.type !== "folder"
-      ? { title: null, folder: [item], type: "folder", depth: 0 }
+      ? { title: null, items: [item], type: "folder", depth: 0 }
       : item;
   });
 
@@ -32,7 +32,7 @@ export function combineTopLevelAdjacentItems(items) {
     const lastItem = accumulator[accumulator.length - 1];
 
     if (isDiscreteFolder(item) && isDiscreteFolder(lastItem)) {
-      lastItem.folder = [...lastItem.folder, ...item.folder];
+      lastItem.items = [...lastItem.items, ...item.items];
       accumulator[accumulator.length - 1] = lastItem;
     } else {
       accumulator = [...accumulator, item];
@@ -55,7 +55,7 @@ export function addPaths(items, basePath) {
     item.path = `${basePath}/${getSlug(item.title)}`.replace(/\/+$/, "").replace(/\/+/g, "/");
 
     if (item.type === "folder") {
-      item.folder = addPaths(item.folder, item.path);
+      item.items = addPaths(item.items, item.path);
     }
 
     return item;
@@ -71,7 +71,7 @@ export function addBreadcrumbs(items, breadcrumbs) {
   return items.map(item => {
     const crumb = { text: item.title, link: item.path, isActive: false };
     if (item.type === "folder") {
-      item.folder = addBreadcrumbs(item.folder, [...breadcrumbs, crumb]);
+      item.items = addBreadcrumbs(item.items, [...breadcrumbs, crumb]);
     } else if (item.type === "document") {
       return { ...item, breadcrumbs: [...breadcrumbs, crumb] };
     }
@@ -87,7 +87,7 @@ export function addBreadcrumbs(items, breadcrumbs) {
 export function addDepth(items, depth = 0) {
   return items.map(item => {
     if (item.type === "folder") {
-      item.folder = addDepth(item.folder, depth + 1);
+      item.items = addDepth(item.items, depth + 1);
     }
     item.depth = depth;
     return item;
@@ -107,10 +107,10 @@ export function shapeItems(items) {
         const link = item.externalLink;
         return { type, title, link, depth };
       } else if (type === "folder" && title) {
-        const isEmpty = !item.folder.length;
+        const isEmpty = !item.items.length;
         const isActive = false;
-        const folder = shapeItems(item.folder);
-        return { type, path, title, isEmpty, isActive, folder, depth };
+        const items = shapeItems(item.items);
+        return { type, path, title, isEmpty, isActive, items, depth };
       } else if (type === "document") {
         const isEmpty = !Boolean(item.document);
         const isActive = false;
@@ -131,7 +131,7 @@ export function shapeItems(items) {
 function flattenDocuments(items, accumulator = []) {
   for (const item of items) {
     if (item.type === "folder") {
-      accumulator = flattenDocuments(item.folder, accumulator);
+      accumulator = flattenDocuments(item.items, accumulator);
     } else if (item.type === "document") {
       accumulator = [...accumulator, item];
     }

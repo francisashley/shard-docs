@@ -47,7 +47,7 @@ const content = [
   {
     type: "folder",
     title: "Examples",
-    folder: [
+    items: [
       { type: "document", title: "Use case A", document: <><h1>Use case A</h1></> },
       { type: "document", title: "Use case B", document: <><h1>Use case B</h1></> }
     ]
@@ -110,7 +110,7 @@ render(
     {
       type: "folder",
       title: "Essentials",
-      folder: [
+      items: [
         { type: "document", title: "Get started", document: <p>Lorem ipsum dolor sit amet..</p> }
       ]
     }
@@ -166,7 +166,7 @@ Each item has a common `title` property. The combination of subsequent propertie
      * Folder items. Can contain any type of node.
      * @array
     */
-    folder: [ /* items */ ]
+    items: [ /* items */ ]
   }
 ```
 
