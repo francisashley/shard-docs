@@ -3,7 +3,7 @@
   "version": "5.0.8",
   "description": "A doc manager written in React for organising and viewing MDX files.",
   "author": "fa-repo",
-  "license": "",
+  "license": "MIT",
   "repository": "fa-repo/shard-docs",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
