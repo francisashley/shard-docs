@@ -4,7 +4,7 @@ import classnames from "classnames";
 import CodeIcon from "boxicons/svg/regular/bx-code.svg";
 import GithubIcon from "boxicons/svg/logos/bxl-github.svg";
 import isArray from "lodash/isArray";
-import uniqid from "uniqid";
+import uniqueId from "lodash/uniqueId";
 import CodeBlockRenderer from "../renderers/CodeBlockRenderer";
 import BaseLink from "@fa-repo/base-react/dist/link";
 import Frame from "react-frame-component";
@@ -17,7 +17,7 @@ import "./CodeSampleShard.scss";
 class CodeSampleShard extends React.Component {
   state = {
     displayCode: false,
-    id: uniqid()
+    id: uniqueId()
   };
 
   toggleCode = () => {
