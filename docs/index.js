@@ -10,17 +10,13 @@ import "@fa-repo/shard-docs/dist/shard-docs.css";
 import "@fa-repo/shard-docs/dist/shards/section.css";
 import "@fa-repo/shard-docs/dist/shards/code-sample.css";
 
-// Essentials
-import GetStarted from "./pages/1-essentials-get-started.mdx";
-import ApiReference from "./pages/1-reference-api.mdx";
-import SchemaReference from "./pages/1-source-schema.mdx";
-
-// Examples
-import HelloWorld from "./pages/2-examples-hello-world.mdx";
-
-// Shards
-import CodeSampleShard from "./pages/3-shards-code-sample.mdx";
-import SectionShard from "./pages/3-shards-section.mdx";
+// Documents
+import EssentialsGetStartedDocument from "./pages/1-essentials-get-started.mdx";
+import EssentialsSchemaReferenceDocument from "./pages/1-source-schema.mdx";
+import EssentialsApiReferenceDocument from "./pages/1-reference-api.mdx";
+import ExamplesHelloWorldDocument from "./pages/2-examples-hello-world.mdx";
+import ShardsCodeSampleShardDocument from "./pages/3-shards-code-sample.mdx";
+import ShardsSectionShardDocument from "./pages/3-shards-section.mdx";
 
 const components = {
   pre: props => {
@@ -43,24 +39,24 @@ render(
           type: 'folder',
           title: "Essentials",
           folder: [
-            { type: 'document', title: "Get started", document: <GetStarted /> },
-            { type: 'document', title: "Source", document: <SchemaReference /> },
-            { type: 'document', title: "API", document: <ApiReference /> }
+            { type: 'document', title: "Get started", document: <EssentialsGetStartedDocument /> },
+            { type: 'document', title: "Source", document: <EssentialsSchemaReferenceDocument /> },
+            { type: 'document', title: "API", document: <EssentialsApiReferenceDocument /> }
           ]
         },
         {
           type: 'folder',
           title: "Examples",
           folder: [
-            { type: 'document', title: "Hello world", document: <HelloWorld /> }
+            { type: 'document', title: "Hello world", document: <ExamplesHelloWorldDocument /> }
           ]
         },
         {
           type: 'folder',
           title: "Shards",
           folder: [
-            { type: 'document', title: "<CodeSample />", document: <CodeSampleShard /> },
-            { type: 'document', title: "<Section />", document: <SectionShard /> }
+            { type: 'document', title: "<CodeSample />", document: <ShardsCodeSampleShardDocument /> },
+            { type: 'document', title: "<Section />", document: <ShardsSectionShardDocument /> }
           ]
         },
         { type: 'document', title: "Github", externalLink: "http://github.com/fa-repo/shard-docs" }
