@@ -8,30 +8,31 @@ import "./ShardDocsMainPagination.scss";
  * Pagination
  */
 
-const PaginationButton = ({ link, text, ...props }) => (
+const PaginationButton = ({ path, name, ...props }) => (
   <div {...props}>
-    <NavLink to={link} children={text} exact />
+    <NavLink to={path} children={name} exact />
   </div>
 );
 
 const Pagination = props => {
   const { prev, next } = props.pagination;
   const show = Boolean(prev || next);
+
   return (
     show && (
       <footer className="shard-docs-pagination">
         {prev && (
           <PaginationButton
             className="prev"
-            text={`⟵ ${prev.text}`}
-            link={prev.path}
+            name={`⟵ ${prev.name}`}
+            path={prev.path}
           ></PaginationButton>
         )}
         {next && (
           <PaginationButton
             className="next"
-            text={`${next.text} ⟶`}
-            link={next.path}
+            name={`${next.name} ⟶`}
+            path={next.path}
           ></PaginationButton>
         )}
       </footer>

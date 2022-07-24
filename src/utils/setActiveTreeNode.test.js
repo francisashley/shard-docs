@@ -11,8 +11,8 @@ const tree = [
         type: "document",
         path: "/doc-a",
         breadcrumbs: [
-          { link: "/", text: "~", isActive: false },
-          { text: "Doc A", link: "/doc-a", isActive: false }],
+          { path: "/", name: "~", isActive: false },
+          { name: "Doc A", path: "/doc-a", isActive: false }],
         document: null,
         isEmpty: true
       },
@@ -21,8 +21,8 @@ const tree = [
         type: "document",
         path: "/doc-b",
         breadcrumbs: [
-          { link: "/", text: "~", isActive: false },
-          { text: "Doc B", link: "/doc-b", isActive: false }
+          { path: "/", name: "~", isActive: false },
+          { name: "Doc B", path: "/doc-b", isActive: false }
         ],
         document: null,
         isEmpty: true
@@ -32,8 +32,8 @@ const tree = [
         type: "document",
         path: "/doc-c",
         breadcrumbs: [
-          { link: "/", text: "~", isActive: false },
-          { text: "Doc C", link: "/doc-c", isActive: false }
+          { path: "/", name: "~", isActive: false },
+          { name: "Doc C", path: "/doc-c", isActive: false }
         ],
         document: null,
         isEmpty: true
@@ -55,8 +55,8 @@ test("setActiveTreeNode() correctly sets isActive", () => {
           type: "document",
           path: "/doc-a",
           breadcrumbs: [
-            { link: "/", text: "~", isActive: false },
-            { text: "Doc A", link: "/doc-a", isActive: false }
+            { path: "/", name: "~", isActive: false },
+            { name: "Doc A", path: "/doc-a", isActive: false }
           ],
           document: null,
           isEmpty: true,
@@ -67,8 +67,8 @@ test("setActiveTreeNode() correctly sets isActive", () => {
           type: "document",
           path: "/doc-b",
           breadcrumbs: [
-            { link: "/", text: "~", isActive: false },
-            { text: "Doc B", link: "/doc-b", isActive: false }
+            { path: "/", name: "~", isActive: false },
+            { name: "Doc B", path: "/doc-b", isActive: false }
           ],
           document: null,
           isEmpty: true,
@@ -79,8 +79,8 @@ test("setActiveTreeNode() correctly sets isActive", () => {
           type: "document",
           path: "/doc-c",
           breadcrumbs: [
-            { link: "/", text: "~", isActive: false },
-            { text: "Doc C", link: "/doc-c", isActive: false }
+            { path: "/", name: "~", isActive: false },
+            { name: "Doc C", path: "/doc-c", isActive: false }
           ],
           document: null,
           isEmpty: true,
@@ -101,8 +101,8 @@ test("setActiveTreeNode() correctly sets isActive", () => {
           type: "document",
           path: "/doc-a",
           breadcrumbs: [
-            { link: "/", text: "~", isActive: false },
-            { text: "Doc A", link: "/doc-a", isActive: false }
+            { path: "/", name: "~", isActive: false },
+            { name: "Doc A", path: "/doc-a", isActive: false }
           ],
           document: null,
           isEmpty: true,
@@ -113,8 +113,8 @@ test("setActiveTreeNode() correctly sets isActive", () => {
           type: "document",
           path: "/doc-b",
           breadcrumbs: [
-            { link: "/", text: "~", isActive: false },
-            { text: "Doc B", link: "/doc-b", isActive: false }
+            { path: "/", name: "~", isActive: false },
+            { name: "Doc B", path: "/doc-b", isActive: false }
           ],
           document: null,
           isEmpty: true,
@@ -125,8 +125,8 @@ test("setActiveTreeNode() correctly sets isActive", () => {
           type: "document",
           path: "/doc-c",
           breadcrumbs: [
-            { link: "/", text: "~", isActive: false },
-            { text: "Doc C", link: "/doc-c", isActive: false }
+            { path: "/", name: "~", isActive: false },
+            { name: "Doc C", path: "/doc-c", isActive: false }
           ],
           document: null,
           isEmpty: true,

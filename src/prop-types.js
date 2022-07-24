@@ -14,8 +14,8 @@ export const ContentPropType = PropTypes.arrayOf(
 
 // Breadcrumbs data
 export const BreadcrumbPropType = PropTypes.shape({
-  text: PropTypes.string,
-  link: PropTypes.string,
+  name: PropTypes.string,
+  path: PropTypes.string,
   isActive: PropTypes.bool.isRequired
 });
 export const BreadcrumbsPropType = PropTypes.arrayOf(BreadcrumbPropType);

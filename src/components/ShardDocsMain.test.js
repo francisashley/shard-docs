@@ -4,17 +4,17 @@ import { mount } from "enzyme";
 import Main from "./ShardDocsMain";
 
 const pagination = {
-  prev: { text: "Prev", path: "/prev" },
-  next: { text: "Next", path: "/next" }
+  prev: { name: "Prev", path: "/prev" },
+  next: { name: "Next", path: "/next" }
 };
 
 const documents = [
   {
     type: 'document',
     breadcrumbs: [
-      { text: "~", link: "/", isActive: false },
-      { text: "Examples", link: "/examples", isActive: true },
-      { text: "Hello world", link: "/examples/hello-world", isActive: false }
+      { path: "/", name: "~", isActive: false },
+      { path: "/examples", name: "Examples", isActive: true },
+      { path: "/examples/hello-world", name: "Hello world", isActive: false }
     ],
     document: (
       <>

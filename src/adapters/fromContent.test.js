@@ -28,8 +28,8 @@ test("fromContent() transforms data and returns tree", () => {
           type: "document",
           path: "/doc-a",
           breadcrumbs: [
-            { link: "/", text: "~", isActive: false },
-            { text: "Doc A", link: "/doc-a", isActive: false }
+            { path: "/", name: "~", isActive: false },
+            { path: "/doc-a", name: "Doc A", isActive: false }
           ],
           document: null,
           isEmpty: true,
@@ -41,8 +41,8 @@ test("fromContent() transforms data and returns tree", () => {
           type: "document",
           path: "/doc-b",
           breadcrumbs: [
-            { link: "/", text: "~", isActive: false },
-            { text: "Doc B", link: "/doc-b", isActive: false }
+            { path: "/", name: "~", isActive: false },
+            { path: "/doc-b", name: "Doc B", isActive: false }
           ],
           document: null,
           isEmpty: true,
@@ -54,8 +54,8 @@ test("fromContent() transforms data and returns tree", () => {
           type: "document",
           path: "/doc-c",
           breadcrumbs: [
-            { link: "/", text: "~", isActive: false },
-            { text: "Doc C", link: "/doc-c", isActive: false }
+            { path: "/", name: "~", isActive: false },
+            { path: "/doc-c", name: "Doc C", isActive: false }
           ],
           document: null,
           isEmpty: true,
@@ -77,9 +77,9 @@ test("fromContent() transforms data and returns tree", () => {
           type: "document",
           path: "/category/doc-d",
           breadcrumbs: [
-            { link: "/", text: "~", isActive: false },
-            { text: "Category", link: "/category", isActive: false },
-            { text: "Doc D", link: "/category/doc-d", isActive: false }
+            { path: "/", name: "~", isActive: false },
+            { path: "/category", name: "Category", isActive: false },
+            { path: "/category/doc-d", name: "Doc D", isActive: false }
           ],
           document: null,
           isEmpty: true,
@@ -91,9 +91,9 @@ test("fromContent() transforms data and returns tree", () => {
           type: "document",
           path: "/category/doc-e",
           breadcrumbs: [
-            { link: "/", text: "~", isActive: false },
-            { text: "Category", link: "/category", isActive: false },
-            { text: "Doc E", link: "/category/doc-e", isActive: false }
+            { path: "/", name: "~", isActive: false },
+            { path: "/category", name: "Category", isActive: false },
+            { path: "/category/doc-e", name: "Doc E", isActive: false }
           ],
           document: null,
           isEmpty: true,
@@ -120,8 +120,8 @@ test("fromContent() transforms data and returns documents in a flat array", () =
       type: "document",
       path: "/doc-a",
       breadcrumbs: [
-        { link: "/", text: "~", isActive: false },
-        { text: "Doc A", link: "/doc-a", isActive: false }
+        { path: "/", name: "~", isActive: false },
+        { path: "/doc-a", name: "Doc A", isActive: false }
       ],
       document: null,
       isEmpty: true,
@@ -133,8 +133,8 @@ test("fromContent() transforms data and returns documents in a flat array", () =
       type: "document",
       path: "/doc-b",
       breadcrumbs: [
-        { link: "/", text: "~", isActive: false },
-        { text: "Doc B", link: "/doc-b", isActive: false }
+        { path: "/", name: "~", isActive: false },
+        { path: "/doc-b", name: "Doc B", isActive: false }
       ],
       document: null,
       isEmpty: true,
@@ -146,8 +146,8 @@ test("fromContent() transforms data and returns documents in a flat array", () =
       type: "document",
       path: "/doc-c",
       breadcrumbs: [
-        { link: "/", text: "~", isActive: false },
-        { text: "Doc C", link: "/doc-c", isActive: false }
+        { path: "/", name: "~", isActive: false },
+        { path: "/doc-c", name: "Doc C", isActive: false }
       ],
       document: null,
       isEmpty: true,
@@ -159,9 +159,9 @@ test("fromContent() transforms data and returns documents in a flat array", () =
       type: "document",
       path: "/category/doc-d",
       breadcrumbs: [
-        { link: "/", text: "~", isActive: false },
-        { text: "Category", link: "/category", isActive: false },
-        { text: "Doc D", link: "/category/doc-d", isActive: false }
+        { path: "/", name: "~", isActive: false },
+        { path: "/category", name: "Category", isActive: false },
+        { path: "/category/doc-d", name: "Doc D", isActive: false }
       ],
       document: null,
       isEmpty: true,
@@ -173,9 +173,9 @@ test("fromContent() transforms data and returns documents in a flat array", () =
       type: "document",
       path: "/category/doc-e",
       breadcrumbs: [
-        { link: "/", text: "~", isActive: false },
-        { text: "Category", link: "/category", isActive: false },
-        { text: "Doc E", link: "/category/doc-e", isActive: false }
+        { path: "/", name: "~", isActive: false },
+        { path: "/category", name: "Category", isActive: false },
+        { path: "/category/doc-e", name: "Doc E", isActive: false }
       ],
       document: null,
       isEmpty: true,

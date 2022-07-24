@@ -4,9 +4,9 @@ import { mount } from "enzyme";
 import Breadcrumbs from "./ShardDocsMainBreadcrumbs";
 
 const breadcrumbs = [
-  { text: "~", link: "/", isActive: false },
-  { text: "Examples", link: "/examples", isActive: false },
-  { text: "Hello world", link: "/examples/hello-world", isActive: true }
+  { name: "~", path: "/", isActive: false },
+  { name: "Examples", path: "/examples", isActive: false },
+  { name: "Hello world", path: "/examples/hello-world", isActive: true }
 ];
 
 describe("<Breadcrumbs />", () => {

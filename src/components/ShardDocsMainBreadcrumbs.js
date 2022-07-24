@@ -12,14 +12,14 @@ import "./ShardDocsMainBreadcrumbs.scss";
 const Breadcrumbs = ({ breadcrumbs }) => (
   <nav className="shard-docs-breadcrumbs">
     <ol>
-      {breadcrumbs.map(({ text, link, isActive }, i) => {
+      {breadcrumbs.map(({ name, path, isActive }, i) => {
         const className = classnames(isActive && "active");
 
         return (
           <li key={i}>
             {
-              <NavLink isActive={() => isActive} to={link}>
-                {text}
+              <NavLink isActive={() => isActive} to={path}>
+                {name}
               </NavLink>
             }
           </li>

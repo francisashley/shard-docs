@@ -71,8 +71,8 @@ class ShardDocs extends React.Component {
     const nextIndex = this.state.documents.findIndex(doc => doc.path === location.pathname) + 1;
     const prevPage = this.state.documents[prevIndex];
     const nextPage = this.state.documents[nextIndex];
-    const prev = prevPage && { text: prevPage.title, path: prevPage.path };
-    const next = nextPage && { text: nextPage.title, path: nextPage.path };
+    const prev = prevPage && { name: prevPage.name, path: prevPage.path };
+    const next = nextPage && { name: nextPage.name, path: nextPage.path };
     return { prev, next };
   }
 

@@ -8,7 +8,7 @@
 export default function setIsActive(document = {}, path = "") {
   document.breadcrumbs = document.breadcrumbs.map(crumb => ({
     ...crumb,
-    isActive: crumb.link === path
+    isActive: crumb.path === path
   }));
   return document;
 }

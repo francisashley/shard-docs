@@ -21,7 +21,7 @@ describe("<Pagination />", () => {
 
   it("renders prev page", () => {
     const wrapper = mountPagination({
-      prev: { text: "Prev", path: "/prev" },
+      prev: { name: "Prev", path: "/prev" },
       next: null
     });
 
@@ -33,7 +33,7 @@ describe("<Pagination />", () => {
   it("renders next page", () => {
     const wrapper = mountPagination({
       prev: null,
-      next: { text: "Next", path: "/next" }
+      next: { name: "Next", path: "/next" }
     });
 
     expect(wrapper.find(".shard-docs-pagination a").length).toBe(1);
@@ -43,8 +43,8 @@ describe("<Pagination />", () => {
 
   it("renders both pages", () => {
    const wrapper = mountPagination({
-    prev: { text: "Prev", path: "/prev" },
-    next: { text: "Next", path: "/next" }
+    prev: { name: "Prev", path: "/prev" },
+    next: { name: "Next", path: "/next" }
   });
 
     expect(wrapper.find(".shard-docs-pagination a").length).toBe(2);

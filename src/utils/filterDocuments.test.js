@@ -6,8 +6,8 @@ const documents = [
     type: "document",
     path: "/doc-a",
     breadcrumbs: [
-      { link: "/", text: "~", isActive: false },
-      { text: "Doc A", link: "/doc-a", isActive: false }
+      { path: "/", name: "~", isActive: false },
+      { name: "Doc A", path: "/doc-a", isActive: false }
     ],
     document: null,
     isEmpty: true
@@ -17,8 +17,8 @@ const documents = [
     type: "document",
     path: "/doc-b",
     breadcrumbs: [
-      { link: "/", text: "~", isActive: false },
-      { text: "Doc B", link: "/doc-b", isActive: false }
+      { path: "/", name: "~", isActive: false },
+      { name: "Doc B", path: "/doc-b", isActive: false }
     ],
     document: null,
     isEmpty: true
@@ -32,8 +32,8 @@ test("filterDocuments() filters correctly", () => {
       type: "document",
       path: "/doc-a",
       breadcrumbs: [
-        { link: "/", text: "~", isActive: false },
-        { text: "Doc A", link: "/doc-a", isActive: false }
+        { path: "/", name: "~", isActive: false },
+        { name: "Doc A", path: "/doc-a", isActive: false }
       ],
       document: null,
       isEmpty: true
@@ -43,8 +43,8 @@ test("filterDocuments() filters correctly", () => {
       type: "document",
       path: "/doc-b",
       breadcrumbs: [
-        { link: "/", text: "~", isActive: false },
-        { text: "Doc B", link: "/doc-b", isActive: false }
+        { path: "/", name: "~", isActive: false },
+        { name: "Doc B", path: "/doc-b", isActive: false }
       ],
       document: null,
       isEmpty: true
@@ -56,8 +56,8 @@ test("filterDocuments() filters correctly", () => {
       type: "document",
       path: "/doc-a",
       breadcrumbs: [
-        { link: "/", text: "~", isActive: false },
-        { text: "Doc A", link: "/doc-a", isActive: false }
+        { path: "/", name: "~", isActive: false },
+        { name: "Doc A", path: "/doc-a", isActive: false }
       ],
       document: null,
       isEmpty: true

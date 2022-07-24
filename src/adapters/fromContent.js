@@ -3,7 +3,7 @@ import kebabCase from "lodash/kebabCase";
 
 export default function fromContent(tree, basePath = "/") {
   tree = addPaths(tree, basePath);
-  tree = addBreadcrumbs(tree, [{ link: basePath, text: "~", isActive: false }]);
+  tree = addBreadcrumbs(tree, [{ path: basePath, name: "~", isActive: false }]);
   tree = shapeItems(tree, basePath);
   tree = combineTopLevelAdjacentItems(tree);
   tree = addDepth(tree);
@@ -69,7 +69,7 @@ export function addPaths(items, basePath) {
  */
 export function addBreadcrumbs(items, breadcrumbs) {
   return items.map(item => {
-    const crumb = { text: item.name, link: item.path, isActive: false };
+    const crumb = { name: item.name, path: item.path, isActive: false };
     if (item.type === "category") {
       item.items = addBreadcrumbs(item.items, [...breadcrumbs, crumb]);
     } else if (item.type === "document") {

@@ -5,11 +5,11 @@ const document = {
   type: "document",
   path: "/hello-universe",
   breadcrumbs: [
-    { text: "~", link: "/" },
-    { text: "Hello", link: "/hello" },
-    { text: "Planet", link: "/hello/planet" },
-    { text: "Galaxy", link: "/hello/planet/galaxy" },
-    { text: "Universe", link: "/hello/planet/galaxy/universe" }
+    { name: "~", path: "/" },
+    { name: "Hello", path: "/hello" },
+    { name: "Planet", path: "/hello/planet" },
+    { name: "Galaxy", path: "/hello/planet/galaxy" },
+    { name: "Universe", path: "/hello/planet/galaxy/universe" }
   ],
   document: null,
   isEmpty: true
@@ -21,11 +21,11 @@ test("setActiveCrumb() sets active crumb correctly", () => {
     type: "document",
     path: "/hello-universe",
     breadcrumbs: [
-      { text: "~", link: "/", isActive: false },
-      { text: "Hello", link: "/hello", isActive: false },
-      { text: "Planet", link: "/hello/planet", isActive: false },
-      { text: "Galaxy", link: "/hello/planet/galaxy", isActive: false },
-      { text: "Universe", link: "/hello/planet/galaxy/universe", isActive: false }
+      { name: "~", path: "/", isActive: false },
+      { name: "Hello", path: "/hello", isActive: false },
+      { name: "Planet", path: "/hello/planet", isActive: false },
+      { name: "Galaxy", path: "/hello/planet/galaxy", isActive: false },
+      { name: "Universe", path: "/hello/planet/galaxy/universe", isActive: false }
     ],
     document: null,
     isEmpty: true
@@ -36,11 +36,11 @@ test("setActiveCrumb() sets active crumb correctly", () => {
     type: "document",
     path: "/hello-universe",
     breadcrumbs: [
-      { text: "~", link: "/", isActive: false },
-      { text: "Hello", link: "/hello", isActive: true },
-      { text: "Planet", link: "/hello/planet", isActive: false },
-      { text: "Galaxy", link: "/hello/planet/galaxy", isActive: false },
-      { text: "Universe", link: "/hello/planet/galaxy/universe", isActive: false }
+      { name: "~", path: "/", isActive: false },
+      { name: "Hello", path: "/hello", isActive: true },
+      { name: "Planet", path: "/hello/planet", isActive: false },
+      { name: "Galaxy", path: "/hello/planet/galaxy", isActive: false },
+      { name: "Universe", path: "/hello/planet/galaxy/universe", isActive: false }
     ],
     document: null,
     isEmpty: true
@@ -51,11 +51,11 @@ test("setActiveCrumb() sets active crumb correctly", () => {
     type: "document",
     path: "/hello-universe",
     breadcrumbs: [
-      { text: "~", link: "/", isActive: false },
-      { text: "Hello", link: "/hello", isActive: false },
-      { text: "Planet", link: "/hello/planet", isActive: true },
-      { text: "Galaxy", link: "/hello/planet/galaxy", isActive: false },
-      { text: "Universe", link: "/hello/planet/galaxy/universe", isActive: false }
+      { name: "~", path: "/", isActive: false },
+      { name: "Hello", path: "/hello", isActive: false },
+      { name: "Planet", path: "/hello/planet", isActive: true },
+      { name: "Galaxy", path: "/hello/planet/galaxy", isActive: false },
+      { name: "Universe", path: "/hello/planet/galaxy/universe", isActive: false }
     ],
     document: null,
     isEmpty: true
@@ -66,11 +66,11 @@ test("setActiveCrumb() sets active crumb correctly", () => {
     type: "document",
     path: "/hello-universe",
     breadcrumbs: [
-      { text: "~", link: "/", isActive: false },
-      { text: "Hello", link: "/hello", isActive: false },
-      { text: "Planet", link: "/hello/planet", isActive: false },
-      { text: "Galaxy", link: "/hello/planet/galaxy", isActive: true },
-      { text: "Universe", link: "/hello/planet/galaxy/universe", isActive: false }
+      { name: "~", path: "/", isActive: false },
+      { name: "Hello", path: "/hello", isActive: false },
+      { name: "Planet", path: "/hello/planet", isActive: false },
+      { name: "Galaxy", path: "/hello/planet/galaxy", isActive: true },
+      { name: "Universe", path: "/hello/planet/galaxy/universe", isActive: false }
     ],
     document: null,
     isEmpty: true
@@ -81,11 +81,11 @@ test("setActiveCrumb() sets active crumb correctly", () => {
     type: "document",
     path: "/hello-universe",
     breadcrumbs: [
-      { text: "~", link: "/", isActive: false },
-      { text: "Hello", link: "/hello", isActive: false },
-      { text: "Planet", link: "/hello/planet", isActive: false },
-      { text: "Galaxy", link: "/hello/planet/galaxy", isActive: false },
-      { text: "Universe", link: "/hello/planet/galaxy/universe", isActive: true }
+      { name: "~", path: "/", isActive: false },
+      { name: "Hello", path: "/hello", isActive: false },
+      { name: "Planet", path: "/hello/planet", isActive: false },
+      { name: "Galaxy", path: "/hello/planet/galaxy", isActive: false },
+      { name: "Universe", path: "/hello/planet/galaxy/universe", isActive: true }
     ],
     document: null,
     isEmpty: true
