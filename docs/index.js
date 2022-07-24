@@ -58,7 +58,7 @@ render(
             { type: 'document', name: "<Section />", document: <ShardsSectionShardDocument /> }
           ]
         },
-        { type: 'external-link', name: "Github", externalLink: "http://github.com/fa-repo/shard-docs" }
+        { type: 'link', name: "Github", url: "http://github.com/fa-repo/shard-docs", external: true }
       ]}
     />
   </MDXProvider>,

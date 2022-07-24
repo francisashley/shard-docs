@@ -103,8 +103,8 @@ export function shapeItems(items) {
   return items
     .map(item => {
       const { type, name, path, depth } = item;
-      if (type === "external-link") {
-        const link = item.externalLink;
+      if (type === "link") {
+        const link = item.url;
         return { type, name, link, depth };
       } else if (type === "category" && name) {
         const isEmpty = !item.items.length;

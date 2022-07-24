@@ -12,7 +12,7 @@ const content = fromContent([
       { type: "document", name: "Doc E", document: null }
     ]
   },
-  { type: "external-link", name: "Github", externalLink: "http://github.com" },
+  { type: "link", name: "Github", url: "http://github.com", external: true },
   { type: "something", name: "This is a purposefully invalid type that should be removed from the output", someType:'some-type'}
 ]);
 
@@ -106,7 +106,7 @@ test("fromContent() transforms data and returns tree", () => {
       name: null,
       type: "category",
       items: [
-        { name: "Github", type: "external-link", link: "http://github.com", depth: 1 }
+        { name: "Github", type: "link", link: "http://github.com", external: true, depth: 1 }
       ],
       depth: 0
     }

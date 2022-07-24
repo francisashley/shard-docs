@@ -52,7 +52,7 @@ const content = [
       { type: "document", name: "Use case B", document: <><h1>Use case B</h1></> }
     ]
   },
-  { type: "external-link", name: "Github", externalLink: "https://github.com" },
+  { type: "link", name: "Github", url: "https://github.com", external: true },
 ]
 
 render(
@@ -170,25 +170,30 @@ Each item has a common `name` property. The combination of subsequent properties
   }
 ```
 
-`external-link`: A link that opens in a new tab.
+`link`: A link.
 ```jsx
   {
     /**
-     * External link type.
+     * Link type.
      * @required
      * @string
     */
-    type: "external-link",
+    type: "link",
     /**
      * Link name.
      * @string
     */
     name: "Github",
     /**
-     * Link href.
+     * Link url.
      * @string
     */
-    externalLink: "http://www.github.com"
+    url: "http://www.github.com",
+    /**
+     * External links will open in a new tab.
+     * @string
+    */
+   external: true,
   }
 ```
 

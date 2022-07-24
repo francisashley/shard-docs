@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import DocumentNode from "./ShardDocsSidebarDocumentNode";
-import ExternalLinkNode from "./ShardDocsSidebarLinkExternalNode";
+import LinkNode from "./ShardDocsSidebarLinkNode";
 import CategoryNode from "./ShardDocsSidebarCategoryNode";
 import { TreePropType } from "../prop-types";
 import "./ShardDocsSidebarMenuTree.scss";
@@ -16,8 +16,8 @@ const MenuTree = ({ tree, onNavigate }) => {
       {tree.map((node, i) => {
         if (node.type === "document") {
           return <DocumentNode key={i} node={node} onNavigate={onNavigate} />;
-        } else if (node.type === "external-link") {
-          return <ExternalLinkNode key={i} node={node} />;
+        } else if (node.type === "link") {
+          return <LinkNode key={i} node={node} />;
         } else if (node.type === "category") {
           return <CategoryNode key={i} node={node} onNavigate={onNavigate} />;
         }

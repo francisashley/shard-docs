@@ -16,7 +16,7 @@ const { tree } = fromContent([
       { type: 'document', name: "Doc E", document: <h1>Doc E</h1> }
     ]
   },
-  { type: 'external-link', name: "Github", externalLink: "http://github.com" }
+  { type: 'link', name: "Github", url: "http://github.com", external: true }
 ]);
 
 describe("<MenuTree />", () => {
