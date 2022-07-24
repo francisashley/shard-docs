@@ -23,7 +23,7 @@
     "deploy": "npx gh-pages -d docs/public --git $(which git)",
     "preversion": "yarn test && yarn build",
     "postpublish": "git push --tags",
-    "analyse": "yarn build && npx source-map-explorer ./dist/shard-docs.js",
+    "analyse": "yarn build && npx source-map-explorer ./dist/index.js",
     "test": "jest --env=jsdom",
     "test:watch": "jest --watch --env=jsdom",
     "test:coverage": "jest --coverage"
