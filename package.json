@@ -5,9 +5,9 @@
   "author": "fa-repo",
   "license": "",
   "repository": "fa-repo/shard-docs",
-  "main": "dist/shard-docs.js",
-  "module": "dist/shard-docs.es.js",
-  "jsnext:main": "dist/shard-docs.es.js",
+  "main": "dist/index.js",
+  "module": "dist/index.es.js",
+  "jsnext:main": "dist/index.es.js",
   "engines": {
     "node": ">=8",
     "npm": ">=5"

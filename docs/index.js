@@ -3,12 +3,11 @@ import { render } from "react-dom";
 
 import { MDXProvider } from "@mdx-js/react";
 
-import CodeBlock from "@fa-repo/shard-docs/dist/renderers/CodeBlock";
-import ShardDocs from "@fa-repo/shard-docs";
+import ShardDocs, { CodeBlockRenderer } from "@fa-repo/shard-docs";
 
-import "@fa-repo/shard-docs/dist/shard-docs.css";
-import "@fa-repo/shard-docs/dist/shards/section.css";
-import "@fa-repo/shard-docs/dist/shards/code-sample.css";
+import "@fa-repo/shard-docs/dist/index.css";
+import "@fa-repo/shard-docs/dist/shards/SectionShard.css";
+import "@fa-repo/shard-docs/dist/shards/CodeSampleShard.css";
 
 // Documents
 import EssentialsGetStartedDocument from "./pages/1-essentials-get-started.mdx";
@@ -26,7 +25,7 @@ const components = {
       return <pre {...props} />;
     }
   },
-  code: CodeBlock
+  code: CodeBlockRenderer
 };
 
 render(

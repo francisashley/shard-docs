@@ -8,9 +8,9 @@ import svgr from "@svgr/rollup";
 import json from "rollup-plugin-json";
 
 export default [
-  transpile("src/index.js", "dist", "shard-docs"),
+  transpile("src/index.js", "dist", "index"),
   transpile("src/components/shards/CodeSampleShard", "dist/shards", "CodeSampleShard"),
-  transpile("src/components/shards/SectionShard", "dist/shards", "Section"),
+  transpile("src/components/shards/SectionShard", "dist/shards", "SectionShard"),
   transpile("src/components/renderers/CodeBlockRenderer", "dist/renderers", "CodeBlockRenderer")
 ];
 

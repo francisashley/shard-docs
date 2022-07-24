@@ -1,9 +1,9 @@
-import CodeSample from "@fa-repo/shard-docs/dist/shards/code-sample";
+import { CodeSampleShard } from "@fa-repo/shard-docs";
 
 #### Import
 ```jsx
-import CodeSample from "@fa-repo/shard-docs/dist/shards/code-sample";
-import "@fa-repo/shard-docs/dist/shards/code-sample.css";
+import { CodeSampleShard } from "@fa-repo/shard-docs";
+import "@fa-repo/shard-docs/dist/shards/CodeSampleShard.css";
 ```
 
 #### Properties
@@ -17,16 +17,16 @@ import "@fa-repo/shard-docs/dist/shards/code-sample.css";
 | iframeHead | string | `""`    | | Add things to the iframe `<head />`.        |
 | iframeStyle | object | `{}`    | | Set the iframes inline style.        |
 
-<CodeSample
+<CodeSampleShard
   title="Hello world - (visual note: the shard is used to present itself here hence the inception style look)"
    sampleHead={`
    <style> :root { font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Ubuntu, Arial, sans-serif; }</style>
-    <link rel="stylesheet" type="text/css" href="/css/code-sample-shard.css"></link>`}
+    <link rel="stylesheet" type="text/css" href="/css/CodeSampleShard.css"></link>`}
   sourceCode={`
-<CodeSample
+<CodeSampleShard
   title="Hi!"
   repository="github.com/path/somewhere"
-  sampleHead={\`<link rel="stylesheet" type="text/css" href="/css/shard-docs.css"></link>\`}
+  sampleHead={\`<link rel="stylesheet" type="text/css" href="/css/index.css"></link>\`}
   sourceCode={\`<p>
     Nulla at egestas ante. Suspendisse urna nisl, cursus eu ullamcorper ut, gravida at nibh. In
     hendrerit eget sapien in sollicitudin. Nulla vulputate elementum turpis, vel ultrices purus
@@ -40,16 +40,16 @@ import "@fa-repo/shard-docs/dist/shards/code-sample.css";
     bibendum maximus. Aliquam vitae orci nunc. Praesent sagittis odio a odio gravida malesuada.
     Vivamus accumsan turpis a turpis sagittis, sit amet eleifend nisl scelerisque.
   </p>
-</CodeSample>
+</CodeSampleShard>
 `}
 >
-  <CodeSample
+  <CodeSampleShard
     title="Hi!"
     repository="github.com/path/somewhere"
     sampleHead={`
     <style> :root { font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Ubuntu, Arial, sans-serif; }</style>
     <link rel="stylesheet" type="text/css" href="/css/shard-docs.css"></link>
-    <link rel="stylesheet" type="text/css" href="/css/code-sample-shard.css"></link>`}
+    <link rel="stylesheet" type="text/css" href="/css/CodeSampleShard.css"></link>`}
     sourceCode={`<p>
 Nulla at egestas ante. Suspendisse urna nisl, cursus eu ullamcorper ut, gravida at nibh. In
 hendrerit eget sapien in sollicitudin. Nulla vulputate elementum turpis, vel ultrices purus
@@ -63,5 +63,5 @@ Vivamus accumsan turpis a turpis sagittis, sit amet eleifend nisl scelerisque.
       purus bibendum maximus. Aliquam vitae orci nunc. Praesent sagittis odio a odio gravida
       malesuada. Vivamus accumsan turpis a turpis sagittis, sit amet eleifend nisl scelerisque.
     </p>
-  </CodeSample>
-</CodeSample>
+  </CodeSampleShard>
+</CodeSampleShard>
