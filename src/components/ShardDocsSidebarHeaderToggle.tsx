@@ -3,11 +3,7 @@ import PropTypes from "prop-types";
 import MenuIcon from "boxicons/svg/regular/bx-menu.svg";
 import "./ShardDocsSidebarHeaderToggle.scss";
 
-/**
- * HeaderToggle
- */
-
-const HeaderToggle = props => {
+const HeaderToggle = (props: object) => {
   return (
     <button className="shard-docs-header-toggle" {...props}>
       <MenuIcon />
