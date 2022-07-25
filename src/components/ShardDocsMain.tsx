@@ -4,18 +4,27 @@ import Pagination from "./ShardDocsMainPagination";
 import Document from "./ShardDocsMainDocument";
 import { PagePropType, DocumentPropType } from "../prop-types";
 import "./ShardDocsMain.scss";
+import { contentItemDocument } from "../utils/contentTool";
 
-/**
- * Main
- */
-
-const Main = props => {
+type MainProps = {
+  documents: contentItemDocument[],
+  prevPage?: {
+    name: string,
+    path: string
+  },
+  nextPage?: {
+    name: string,
+    path: string
+  },
+}
+const Main = (props: MainProps) => {
+  const showPagination = Boolean(props.prevPage || props.nextPage);
   return (
     <main className="shard-docs-main">
       {props.documents.map((document, i) => (
         <Document key={i} breadcrumbs={document.breadcrumbs} document={document.document} />
       ))}
-      <Pagination prevPage={props.prevPage} nextPage={props.nextPage} />
+     { showPagination && <Pagination prevPage={props.prevPage} nextPage={props.nextPage} />}
     </main>
   );
 };

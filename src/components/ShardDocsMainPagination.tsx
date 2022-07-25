@@ -27,27 +27,23 @@ type PaginationProps = {
 }
 
 const Pagination = (props: PaginationProps) => {
-  const showPagination = Boolean(props.prevPage || props.nextPage);
-
   return (
-    showPagination && (
-      <footer className="shard-docs-pagination">
-        {props.prevPage && (
-          <PaginationButton
-            className="prev"
-            name={`⟵ ${props.prevPage.name}`}
-            path={props.prevPage.path}
-          ></PaginationButton>
-        )}
-        {props.nextPage && (
-          <PaginationButton
-            className="next"
-            name={`${props.nextPage.name} ⟶`}
-            path={props.nextPage.path}
-          ></PaginationButton>
-        )}
-      </footer>
-    )
+    <footer className="shard-docs-pagination">
+      {props.prevPage && (
+        <PaginationButton
+          className="prev"
+          name={`⟵ ${props.prevPage.name}`}
+          path={props.prevPage.path}
+        ></PaginationButton>
+      )}
+      {props.nextPage && (
+        <PaginationButton
+          className="next"
+          name={`${props.nextPage.name} ⟶`}
+          path={props.nextPage.path}
+        ></PaginationButton>
+      )}
+    </footer>
   );
 };
 
