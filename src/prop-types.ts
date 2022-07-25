@@ -35,7 +35,7 @@ export const BreadcrumbsPropType = PropTypes.arrayOf(BreadcrumbPropType);
 
 // Pagination data
 export const PagePropType = PropTypes.shape({
-  title: PropTypes.string,
+  name: PropTypes.string,
   path: PropTypes.string
 });
 
