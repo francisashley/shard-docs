@@ -1,12 +1,7 @@
 import React from "react";
-import PropTypes from "prop-types";
 
-/**
- * ArrowDown
- * Origin: Material design - keyboard_arrow_down
- */
-
-const ArrowDown = props => (
+// (origin) Material design - keyboard_arrow_down
+const ArrowDown = (props: any) => (
   <svg
     className="shard-docs-menu-toggle-category"
     xmlns="http://www.w3.org/2000/svg"
