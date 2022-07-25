@@ -3,14 +3,15 @@ import PropTypes from "prop-types";
 import { NavLink } from "react-router-dom";
 import "./ShardDocsSidebarHeaderTitle.scss";
 
-/**
- * HeaderTitle
- */
+type HeaderTitleProps = {
+  title: string,
+  path: string
+}
 
-const HeaderTitle = ({ title, path }) => {
+const HeaderTitle = (props: HeaderTitleProps) => {
   return (
-    <NavLink to={path} className="shard-docs-header-title">
-      <h2 title={title}>{title}</h2>
+    <NavLink to={props.path} className="shard-docs-header-title">
+      <h2 title={props.title}>{props.title}</h2>
     </NavLink>
   );
 };
