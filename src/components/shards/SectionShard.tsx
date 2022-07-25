@@ -4,7 +4,19 @@ import classnames from "classnames";
 import BaseLink from "@fa-repo/base-react/dist/link";
 import "./SectionShard.scss";
 
-class SectionShard extends React.Component {
+type SectionShardProps = {
+  title?: string,
+  persistState?: string,
+  className?: string,
+  children?: React.ReactNode,
+}
+
+type SectionShardState = {
+  expanded: boolean,
+  storageId: string
+}
+
+class SectionShard extends React.Component<SectionShardProps, SectionShardState> {
   static propTypes = {
     title: PropTypes.string.isRequired,
     persistState: PropTypes.string
@@ -27,13 +39,13 @@ class SectionShard extends React.Component {
   }
 
   isExpanded = () => {
-    let expanded = JSON.parse(localStorage.getItem(this.state.storageId));
-    return expanded === null ? this.state.expanded : Boolean(expanded);
+    const state = localStorage.getItem(this.state.storageId);
+    return state === null ? this.state.expanded : state === "true";
   };
 
   toggle = () => {
     const expanded = !this.isExpanded();
-    if (this.props.persistState) localStorage.setItem(this.state.storageId, expanded);
+    if (this.props.persistState) localStorage.setItem(this.state.storageId, String(expanded));
     this.setState({ expanded });
   };
 

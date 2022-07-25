@@ -50,8 +50,8 @@ describe("<SectionShard />", () => {
 
     expect(localStorage.getItem('fa-repo-section-shard-state-abc')).toBe(null);
     wrapper.find('.shard-docs-section-shard-title a').simulate('click');
-    expect(JSON.parse(localStorage.getItem('fa-repo-section-shard-state-abc'))).toBe(false);
+    expect(JSON.parse(localStorage.getItem('fa-repo-section-shard-state-abc') as string)).toBe(false);
     wrapper.find('.shard-docs-section-shard-title a').simulate('click');
-    expect(JSON.parse(localStorage.getItem('fa-repo-section-shard-state-abc'))).toBe(true);
+    expect(JSON.parse(localStorage.getItem('fa-repo-section-shard-state-abc') as string)).toBe(true);
   });
 });
