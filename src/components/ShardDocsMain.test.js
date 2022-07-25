@@ -30,7 +30,7 @@ describe("<Pagination />", () => {
   const mountMain = (pagination, documents = []) => {
     return mount(
       <MemoryRouter>
-        <Main pagination={pagination} documents={documents} />
+        <Main prevPage={pagination.prev} nextPage={pagination.next} documents={documents} />
       </MemoryRouter>
     )
   };
