@@ -2,30 +2,32 @@ import React from "react";
 import PropTypes from "prop-types";
 import Pagination from "./ShardDocsMainPagination";
 import Document from "./ShardDocsMainDocument";
-import { PaginationPropType, DocumentPropType } from "../prop-types";
+import { PagePropType, DocumentPropType } from "../prop-types";
 import "./ShardDocsMain.scss";
 
 /**
  * Main
  */
 
-const Main = ({ pagination, documents }) => {
+const Main = props => {
   return (
     <main className="shard-docs-main">
-      {documents.map((document, i) => (
+      {props.documents.map((document, i) => (
         <Document key={i} breadcrumbs={document.breadcrumbs} document={document.document} />
       ))}
-      <Pagination pagination={pagination} />
+      <Pagination prevPage={props.prevPage} nextPage={props.nextPage} />
     </main>
   );
 };
 
 Main.propTypes = {
-  pagination: PaginationPropType,
+  prevPage: PagePropType,
+  nextPage: PagePropType,
   documents: PropTypes.arrayOf(DocumentPropType)
 };
 Main.defaultProps = {
-  pagination: {},
+  prevPage: null,
+  nextPage: null,
   documents: []
 };
 

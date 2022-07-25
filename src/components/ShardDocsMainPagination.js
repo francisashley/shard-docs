@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { NavLink } from "react-router-dom";
-import { PaginationPropType } from "../prop-types";
+import { PagePropType } from "../prop-types";
 import "./ShardDocsMainPagination.scss";
 
 /**
@@ -15,24 +15,23 @@ const PaginationButton = ({ path, name, ...props }) => (
 );
 
 const Pagination = props => {
-  const { prev, next } = props.pagination;
-  const show = Boolean(prev || next);
+  const showPagination = Boolean(props.prevPage || props.nextPage);
 
   return (
-    show && (
+    showPagination && (
       <footer className="shard-docs-pagination">
-        {prev && (
+        {props.prevPage && (
           <PaginationButton
             className="prev"
-            name={`⟵ ${prev.name}`}
-            path={prev.path}
+            name={`⟵ ${props.prevPage.name}`}
+            path={props.prevPage.path}
           ></PaginationButton>
         )}
-        {next && (
+        {props.nextPage && (
           <PaginationButton
             className="next"
-            name={`${next.name} ⟶`}
-            path={next.path}
+            name={`${props.nextPage.name} ⟶`}
+            path={props.nextPage.path}
           ></PaginationButton>
         )}
       </footer>
@@ -41,11 +40,13 @@ const Pagination = props => {
 };
 
 Pagination.propTypes = {
-  pagination: PaginationPropType
+  prevPage: PagePropType,
+  nextPage: PagePropType
 };
 
 Pagination.defaultProps = {
-  pagination: { prev: null, next: null }
+  prevPage: null,
+  nextPage: null,
 };
 
 export default Pagination;

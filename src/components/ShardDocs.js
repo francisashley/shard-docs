@@ -64,16 +64,18 @@ class ShardDocs extends React.Component {
     }
   }
 
-  get pagination() {
+  get prevPage() {
     const location = this.props.location;
-    const prevIndex =
-      this.state.documents.findIndex(document => document.path === location.pathname) - 1;
-    const nextIndex = this.state.documents.findIndex(doc => doc.path === location.pathname) + 1;
+    const prevIndex = this.state.documents.findIndex(document => document.path === location.pathname) - 1;
     const prevPage = this.state.documents[prevIndex];
+    return prevPage && { name: prevPage.name, path: prevPage.path };
+  }
+
+  get nextPage() {
+    const location = this.props.location;
+    const nextIndex = this.state.documents.findIndex(doc => doc.path === location.pathname) + 1;
     const nextPage = this.state.documents[nextIndex];
-    const prev = prevPage && { name: prevPage.name, path: prevPage.path };
-    const next = nextPage && { name: nextPage.name, path: nextPage.path };
-    return { prev, next };
+    return nextPage && { name: nextPage.name, path: nextPage.path };
   }
 
   render() {
@@ -86,7 +88,7 @@ class ShardDocs extends React.Component {
           tree={this.state.tree}
           hideBuiltWithShardDocs={this.props.hideBuiltWithShardDocs}
         />
-        <ShardDocsMain pagination={this.pagination} documents={this.state.documents} />
+        <ShardDocsMain documents={this.state.documents} prevPage={this.prevPage} nextPage={this.nextPage} />
       </div>
     );
   }

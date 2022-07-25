@@ -34,15 +34,9 @@ export const BreadcrumbPropType = PropTypes.shape({
 export const BreadcrumbsPropType = PropTypes.arrayOf(BreadcrumbPropType);
 
 // Pagination data
-export const PaginationPropType = PropTypes.shape({
-  prev: PropTypes.shape({
-    title: PropTypes.string,
-    path: PropTypes.string
-  }),
-  next: PropTypes.shape({
-    title: PropTypes.string,
-    path: PropTypes.string
-  })
+export const PagePropType = PropTypes.shape({
+  title: PropTypes.string,
+  path: PropTypes.string
 });
 
 // Tree structure leaves data

@@ -4,26 +4,23 @@ import { mount } from "enzyme";
 import Pagination from "./ShardDocsMainPagination";
 
 describe("<Pagination />", () => {
-  const mountPagination = (pagination) => {
+  const mountPagination = ({ prevPage = null, nextPage = null } = {}) => {
     return mount(
       <MemoryRouter>
-        <Pagination pagination={pagination} />
+        <Pagination prevPage={prevPage} nextPage={nextPage} />
       </MemoryRouter>
     )
   };
 
   it("renders nothing", () => {
-    const wrapper = mountPagination({ prev: null, next: null });
+    const wrapper = mountPagination({ prevPage: null, nextPage: null });
 
     expect(wrapper.find(".shard-docs-pagination a").length).toBe(0);
   });
 
 
   it("renders prev page", () => {
-    const wrapper = mountPagination({
-      prev: { name: "Prev", path: "/prev" },
-      next: null
-    });
+    const wrapper = mountPagination({ prevPage: { name: "Prev", path: "/prev" } });
 
     expect(wrapper.find(".shard-docs-pagination a").length).toBe(1);
     expect(wrapper.find(".shard-docs-pagination .prev a").props().href).toBe("/prev");
@@ -31,10 +28,7 @@ describe("<Pagination />", () => {
   });
 
   it("renders next page", () => {
-    const wrapper = mountPagination({
-      prev: null,
-      next: { name: "Next", path: "/next" }
-    });
+    const wrapper = mountPagination({ nextPage: { name: "Next", path: "/next" } });
 
     expect(wrapper.find(".shard-docs-pagination a").length).toBe(1);
     expect(wrapper.find(".shard-docs-pagination .next a").props().href).toBe("/next");
@@ -43,8 +37,8 @@ describe("<Pagination />", () => {
 
   it("renders both pages", () => {
    const wrapper = mountPagination({
-    prev: { name: "Prev", path: "/prev" },
-    next: { name: "Next", path: "/next" }
+    prevPage: { name: "Prev", path: "/prev" },
+    nextPage: { name: "Next", path: "/next" }
   });
 
     expect(wrapper.find(".shard-docs-pagination a").length).toBe(2);
