@@ -24,9 +24,9 @@ type ShardDocsProps = {
 
 type ShardDocsState = {
   documents: documentItem[],
-  tree: (categoryItem | documentItem | linkItem)[],
+  tree: item[],
   content: {
-    tree: (categoryItem | documentItem | linkItem)[],
+    tree: item[],
     documents: documentItem[]
   }
 }

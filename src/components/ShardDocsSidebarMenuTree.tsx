@@ -7,7 +7,7 @@ import { TreePropType } from "../prop-types";
 import "./ShardDocsSidebarMenuTree.scss";
 
 type MenuTreeProps = {
-  tree: tree,
+  tree: item[],
   onNavigate: () => void
 }
 

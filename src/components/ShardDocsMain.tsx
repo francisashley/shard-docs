@@ -7,14 +7,8 @@ import "./ShardDocsMain.scss";
 
 type MainProps = {
   documents: documentItem[],
-  prevPage?: {
-    name: string,
-    path: string
-  },
-  nextPage?: {
-    name: string,
-    path: string
-  },
+  prevPage?: paginationPage,
+  nextPage?: paginationPage,
 }
 const Main = (props: MainProps) => {
   const showPagination = Boolean(props.prevPage || props.nextPage);

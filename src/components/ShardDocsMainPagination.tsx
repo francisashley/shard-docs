@@ -16,14 +16,8 @@ const PaginationButton = ({ path, name, ...props }: PaginationButtonProps) => (
 );
 
 type PaginationProps = {
-  prevPage?: {
-    name: string,
-    path: string
-  },
-  nextPage?: {
-    name: string,
-    path: string
-  },
+  prevPage?: paginationPage,
+  nextPage?: paginationPage,
 }
 
 const Pagination = (props: PaginationProps) => {

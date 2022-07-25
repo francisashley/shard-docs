@@ -11,7 +11,7 @@ type categoryItem = {
   type: 'category';
   name: string | null;
   path: string;
-  items: (categoryItem | documentItem | linkItem)[];
+  items: item[];
   isEmpty: boolean,
   isActive: boolean,
   depth: number
@@ -36,7 +36,7 @@ type linkItem = {
   depth: number
 }
 
-type tree = (categoryItem | documentItem | linkItem)[]
+type item = (categoryItem | documentItem | linkItem)
 
 type breadcrumb = {
   path: string,

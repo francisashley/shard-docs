@@ -4,7 +4,7 @@ import kebabCase from "lodash/kebabCase";
 const getSlug = (name: string) => slugify(kebabCase(name), { lower: true });
 const removeDuplicateSlashes = (path: string) => path.replace(/\/+$/, "").replace(/\/+/g, "/");
 
-function normaliseContent(items: content): (categoryItem | documentItem | linkItem)[] {
+function normaliseContent(items: content): item[] {
   const itemTemplates = {
     category: { type: 'category', name: '', path: '', items: [], isEmpty: true, isActive: false, depth: 0 },
     document: { type: 'document', name: '', path: '', breadcrumbs: [], document: null, isEmpty: true, isActive: false, depth: 0 },
@@ -31,7 +31,7 @@ function normaliseContent(items: content): (categoryItem | documentItem | linkIt
   return output;
 }
 
- function addPaths(items: (categoryItem | documentItem | linkItem)[], basePath = ''): (categoryItem | documentItem | linkItem)[] {
+ function addPaths(items: item[], basePath = ''): item[] {
     const output = []
     for (const item of items) {
       const path = removeDuplicateSlashes(`${basePath}/${getSlug(item.name || '')}`);
@@ -51,7 +51,7 @@ function normaliseContent(items: content): (categoryItem | documentItem | linkIt
  * @param  {array} items Expects result of parseContent/ shapeItems().
  * @return {array}
  */
-function addBreadcrumbs(items: (categoryItem | documentItem | linkItem)[], breadcrumbs: breadcrumb[]): (categoryItem | documentItem | linkItem)[] {
+function addBreadcrumbs(items: item[], breadcrumbs: breadcrumb[]): item[] {
   const output = [];
   for (const item of items) {
     if (item.type === "category") {
@@ -76,7 +76,7 @@ function addBreadcrumbs(items: (categoryItem | documentItem | linkItem)[], bread
  * @param  {array} items Expects result of parseContent/combineTopLevelAdjacentDocuments().
  * @return {array}
  */
- function shapeItems(items: (categoryItem | documentItem | linkItem)[]): (categoryItem | documentItem | linkItem)[] {
+ function shapeItems(items: item[]): item[] {
   const output = [];
   for (const item of items) {
     if (item.type === "category") {
@@ -100,7 +100,7 @@ function addBreadcrumbs(items: (categoryItem | documentItem | linkItem)[], bread
  * @param  {array} items Requires types to have been added to array with addTypes().
  * @return {array}
  */
- function combineTopLevelAdjacentItems(items: (categoryItem | documentItem | linkItem)[]): (categoryItem | documentItem | linkItem)[] {
+ function combineTopLevelAdjacentItems(items: item[]): item[] {
   const preparedItems = items.map(item => {
     if (item.type !== "category") {
       return { name: null, items: [item], type: "category"} as categoryItem;
@@ -110,7 +110,7 @@ function addBreadcrumbs(items: (categoryItem | documentItem | linkItem)[], bread
 
   const output = [];
   for (const item of preparedItems) {
-    const lastItem = output[output.length - 1] as categoryItem | documentItem | linkItem | undefined;
+    const lastItem = output[output.length - 1] as item | undefined;
     if (lastItem?.type === 'category' && !lastItem.name && item.type === 'category' && !item.name) {
       lastItem.items = [...lastItem.items, ...item.items];
       output[output.length - 1] = lastItem;
@@ -127,7 +127,7 @@ function addBreadcrumbs(items: (categoryItem | documentItem | linkItem)[], bread
  * @param  {array} items Expects result of parseContent/ shapeItems().
  * @return {array}
  */
-function addDepth(items: (categoryItem | documentItem | linkItem)[], depth = 0): (categoryItem | documentItem | linkItem)[] {
+function addDepth(items: item[], depth = 0): item[] {
   const output = [];
   for (const item of items) {
     if (item.type === "category") {
@@ -146,7 +146,7 @@ function addDepth(items: (categoryItem | documentItem | linkItem)[], depth = 0):
  * @param  {array} source Expects source array to have been fed through addTypes..
  * @return {array} returns all documents in an array
  */
-function flattenDocuments(items: (categoryItem | documentItem | linkItem)[], accumulator: (documentItem)[] = []) {
+function flattenDocuments(items: item[], accumulator: (documentItem)[] = []) {
   for (const item of items) {
     if (item.type === "category") {
       accumulator = flattenDocuments((item.items || []), accumulator);

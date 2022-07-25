@@ -13,7 +13,6 @@ const { tree } = contentTool.parseContent([
 ]);
 
 test("<CategoryNode /> renders correctly", () => {
-  const onNavigateMock = jest.fn();
   const wrapper = mount(
     <MemoryRouter>
       <CategoryNode node={tree[0] as categoryItem} />

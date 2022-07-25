@@ -20,7 +20,7 @@ const { tree } = contentTool.parseContent([
 ]);
 
 describe("<MenuTree />", () => {
-  const mountMenuList = ({ tree } = {} as { tree: tree}) => {
+  const mountMenuList = ({ tree } = {} as { tree: item[]}) => {
     const onNavigate = jest.fn();
     const wrapper = mount(
       <MemoryRouter>

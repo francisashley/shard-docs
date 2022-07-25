@@ -43,7 +43,7 @@ const tree = [
 ];
 
 test("setActiveTreeNode() correctly sets isActive", () => {
-  expect(setActiveTreeNode(tree as (categoryItem | documentItem | linkItem)[], '/doc-b')).toStrictEqual([
+  expect(setActiveTreeNode(tree as item[], '/doc-b')).toStrictEqual([
     {
       name: null,
       type: "category",
@@ -89,7 +89,7 @@ test("setActiveTreeNode() correctly sets isActive", () => {
       ]
     }
   ])
-  expect(setActiveTreeNode(tree as (categoryItem | documentItem | linkItem)[], '/doc-z')).toStrictEqual([
+  expect(setActiveTreeNode(tree as item[], '/doc-z')).toStrictEqual([
     {
       name: null,
       type: "category",
