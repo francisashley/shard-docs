@@ -30,7 +30,7 @@ export type contentItemDocument = {
   type: 'document';
   name: string;
   path: string;
-  document: unknown;
+  document: string | React.ReactNode;
   breadcrumbs: breadcrumb[];
   isEmpty: boolean,
   isActive: boolean,

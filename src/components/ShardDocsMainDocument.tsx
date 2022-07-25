@@ -9,7 +9,7 @@ import "./ShardDocsMainDocument.scss";
 import "../assets/prism-github.css";
 
 type DocumentProps = {
-  document: string,
+  document: string | React.ReactNode,
   breadcrumbs: breadcrumb[]
 }
 const Document = ({ document, breadcrumbs }: DocumentProps) => {
