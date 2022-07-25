@@ -6,12 +6,21 @@ import SidebarMenu from "./ShardDocsSidebarMenu";
 import BuiltWithShardDocs from "./ShardDocsSidebarBuiltWithShardDocs";
 import { TreePropType } from "../prop-types";
 import "./ShardDocsSidebar.scss";
+import { contentItemCategory } from "../utils/contentTool";
 
-/**
- * Sidebar
- */
+type SidebarProps = {
+  title: string,
+  description: string,
+  basePath: string,
+  tree: contentItemCategory[],
+  hideBuiltWithShardDocs: boolean,
+}
 
-class Sidebar extends React.Component {
+type SidebarState = {
+  showMenuOnMobile: boolean,
+}
+
+class Sidebar extends React.Component<SidebarProps,SidebarState> {
   static propTypes = {
     title: PropTypes.string,
     description: PropTypes.string,
