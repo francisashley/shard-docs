@@ -190,7 +190,7 @@ function addDepth(items: (contentItemCategory | contentItemDocument | contentIte
  * @param  {array} source Expects source array to have been fed through addTypes..
  * @return {array} returns all documents in an array
  */
-function flattenDocuments(items: (contentItemCategory | contentItemDocument | contentItemLink)[], accumulator: (contentItemCategory | contentItemDocument | contentItemLink)[] = []) {
+function flattenDocuments(items: (contentItemCategory | contentItemDocument | contentItemLink)[], accumulator: (contentItemDocument)[] = []) {
   for (const item of items) {
     if (item.type === "category") {
       accumulator = flattenDocuments((item.items || []), accumulator);
