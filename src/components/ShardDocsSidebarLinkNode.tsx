@@ -1,17 +1,17 @@
 import React from "react";
-import PropTypes from "prop-types";
 import ExternalIcon from "./icons/LinkExternal";
 import { LinkPropType } from "../prop-types";
+import { contentItemLink } from "../utils/contentTool";
 
-/**
- * ExternalLinkNode
- */
+type ExternalLinkNodeProps = {
+  node: contentItemLink
+}
 
-const ExternalLinkNode = ({ node }) => (
+const ExternalLinkNode = (props: ExternalLinkNodeProps) => (
   <li className="shard-docs-menu-external">
-    <a href={node.url} target="_blank" style={{ paddingLeft: node.depth * 15 + "px" }}>
+    <a href={props.node.url} target="_blank" style={{ paddingLeft: props.node.depth * 15 + "px" }}>
       <ExternalIcon />
-      {node.name}
+      {props.node.name}
     </a>
   </li>
 );
