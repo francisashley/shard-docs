@@ -6,12 +6,30 @@ import sessionDB from "../utils/sessionDB";
 import classnames from "classnames";
 import MenuSectionHeader from "./ShardDocsSidebarMenuSectionHeader";
 import "./ShardDocsSidebarMenuSection.scss";
+import { contentItemCategory, contentItemDocument, contentItemLink } from "../utils/contentTool";
 
-/**
- * MenuSection
- */
+type MenuSectionProps = {
+  index: number,
+  node: contentItemCategory,
+  onNavigate: () => void,
+}
+type MenuSectionState = {
+  expanded: boolean
+}
 
-class MenuSection extends React.Component {
+class MenuSection extends React.Component<MenuSectionProps, MenuSectionState> {
+  static propTypes = {
+    index: PropTypes.number,
+    node: CategoryPropType,
+    onNavigate: PropTypes.func
+  };
+  
+  static defaultProps = {
+    index: 0,
+    node: {},
+    onNavigate: () => {}
+  };
+
   state = {
     expanded: sessionDB.get(this.sessionId, this.props.index === 0 ? true : false)
   };
@@ -26,8 +44,8 @@ class MenuSection extends React.Component {
   };
 
   render() {
-    const { node, onNavigate } = this.props;
-    const collapsible = Boolean(node.name);
+    const props = this.props;
+    const collapsible = Boolean(props.node.name);
     const expanded = this.state.expanded;
 
     const className = classnames(
@@ -42,28 +60,16 @@ class MenuSection extends React.Component {
     return (
       <section className={className}>
         {collapsible && (
-          <MenuSectionHeader title={node.name} expanded={expanded} onToggle={this.toggle} />
+          <MenuSectionHeader title={props.node.name || ''} expanded={expanded} onToggle={this.toggle} />
         )}
         {showMenu && (
           <ul>
-            <MenuTree tree={node.items} onNavigate={onNavigate} />
+            <MenuTree tree={props.node.items} onNavigate={props.onNavigate} />
           </ul>
         )}
       </section>
     );
   }
 }
-
-MenuSection.propTypes = {
-  index: PropTypes.number,
-  node: CategoryPropType,
-  onNavigate: PropTypes.func
-};
-
-MenuSection.defaultProps = {
-  index: 0,
-  node: {},
-  onNavigate: () => {}
-};
 
 export default MenuSection;

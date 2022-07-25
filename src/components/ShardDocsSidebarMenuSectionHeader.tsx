@@ -6,10 +6,10 @@ import BaseLink from "@fa-repo/base-react/dist/link";
 import "./ShardDocsSidebarMenuSectionHeader.scss";
 
 type MenuSectionHeaderProps = {
-  title: string,
-  expanded: boolean,
-  onClick: () => void,
-  onToggle: () => void
+  title?: string,
+  expanded?: boolean,
+  onClick?: () => void,
+  onToggle?: () => void
 }
 
 class MenuSectionHeader extends React.Component<MenuSectionHeaderProps> {
