@@ -1,10 +1,10 @@
 import React from "react";
 import { mount } from "enzyme";
 import MenuSection from "./ShardDocsSidebarMenuSection";
-import fromContent from "../adapters/fromContent";
+import contentTool from "../utils/contentTool";
 import { MemoryRouter } from "react-router-dom";
 
-let { tree } = fromContent([
+let { tree } = contentTool.parseContent([
   {
     type: 'category',
     name: "Essentials",

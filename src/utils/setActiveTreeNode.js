@@ -1,6 +1,6 @@
 /**
  * Compare a path to each path in document / category items and set boolean result on isActive prop.
- * @param  {array} tree fed in from adapters/fromContent()
+ * @param  {array} tree fed in from adapters/contentTool()
  * @param  {string} currentPath current url
  * @return {array}
  */

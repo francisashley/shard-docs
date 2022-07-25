@@ -2,9 +2,9 @@ import React from "react";
 import { mount } from "enzyme";
 import { MemoryRouter } from "react-router-dom";
 import CategoryNode from "./ShardDocsSidebarCategoryNode";
-import fromContent from "../adapters/fromContent";
+import contentTool from "../utils/contentTool";
 
-const { tree } = fromContent([
+const { tree } = contentTool.parseContent([
   {
     type: 'category', 
     name: "Category",

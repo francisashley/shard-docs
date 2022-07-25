@@ -2,11 +2,11 @@ import React from "react";
 import { MemoryRouter } from "react-router-dom";
 import { mount } from "enzyme";
 import Sidebar from "./ShardDocsSidebar";
-import fromContent from "../adapters/fromContent";
+import contentTool from "../utils/contentTool";
 
 const title = "App title";
 const description = "App description.";
-const { tree } = fromContent([
+const { tree } = contentTool.parseContent([
   { type: 'document', name: "Doc A", document: <h1>Doc A</h1> }
 ]);
 

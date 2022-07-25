@@ -1,6 +1,6 @@
-import fromContent from "./fromContent";
+import contentTools from "./contentTool";
 
-const content = fromContent([
+const content = contentTools.parseContent([
   { type: "document", name: "Doc A", document: null },
   { type: "document", name: "Doc B", document: null },
   { type: "document", name: "Doc C", document: null },
@@ -16,7 +16,7 @@ const content = fromContent([
   { type: "something", name: "This is a purposefully invalid type that should be removed from the output", someType:'some-type'}
 ]);
 
-test("fromContent() transforms data and returns tree", () => {
+test("contentTools() transforms data and returns tree", () => {
   expect(content.tree).toStrictEqual([
     {
       name: null,
@@ -113,7 +113,7 @@ test("fromContent() transforms data and returns tree", () => {
   ])}
 );
 
-test("fromContent() transforms data and returns documents in a flat array", () =>
+test("contentTools() transforms data and returns documents in a flat array", () =>
   expect(content.documents).toStrictEqual([
     {
       name: "Doc A",

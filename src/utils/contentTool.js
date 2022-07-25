@@ -1,7 +1,7 @@
 import slugify from "slugify";
 import kebabCase from "lodash/kebabCase";
 
-export default function fromContent(tree, basePath = "/") {
+function parseContent(tree, basePath = "/") {
   tree = addPaths(tree, basePath);
   tree = addBreadcrumbs(tree, [{ path: basePath, name: "~", isActive: false }]);
   tree = shapeItems(tree, basePath);
@@ -19,7 +19,7 @@ export default function fromContent(tree, basePath = "/") {
  * @param  {array} items Requires types to have been added to array with addTypes().
  * @return {array}
  */
-export function combineTopLevelAdjacentItems(items) {
+function combineTopLevelAdjacentItems(items) {
   const isDiscreteCategory = item => item && item.type === "category" && !item.name;
 
   items = items.map(item => {
@@ -44,10 +44,10 @@ export function combineTopLevelAdjacentItems(items) {
 /**
  * Loops through each item, child and grandchild detecting and calculating and
  * and each items path.
- * @param  {array} items Expects result of fromContent/combineTopLevelAdjacentDocuments().
+ * @param  {array} items Expects result of parseContent/combineTopLevelAdjacentDocuments().
  * @return {array}
  */
-export function addPaths(items, basePath) {
+function addPaths(items, basePath) {
   const getSlug = name => slugify(kebabCase(name), { lower: true });
 
   return items.map(item => {
@@ -64,10 +64,10 @@ export function addPaths(items, basePath) {
 
 /**
  * Recursively loops through source tree adding breadcrumbs to all documents / categories.
- * @param  {array} items Expects result of fromContent/ shapeItems().
+ * @param  {array} items Expects result of parseContent/ shapeItems().
  * @return {array}
  */
-export function addBreadcrumbs(items, breadcrumbs) {
+function addBreadcrumbs(items, breadcrumbs) {
   return items.map(item => {
     const crumb = { name: item.name, path: item.path, isActive: false };
     if (item.type === "category") {
@@ -81,10 +81,10 @@ export function addBreadcrumbs(items, breadcrumbs) {
 
 /**
  * Recursively loops through source tree adding depth level to all items.
- * @param  {array} items Expects result of fromContent/ shapeItems().
+ * @param  {array} items Expects result of parseContent/ shapeItems().
  * @return {array}
  */
-export function addDepth(items, depth = 0) {
+function addDepth(items, depth = 0) {
   return items.map(item => {
     if (item.type === "category") {
       item.items = addDepth(item.items, depth + 1);
@@ -96,10 +96,10 @@ export function addDepth(items, depth = 0) {
 
 /**
  * Loops through each item, child and grandchild shaping each item to the specs of its given type.
- * @param  {array} items Expects result of fromContent/combineTopLevelAdjacentDocuments().
+ * @param  {array} items Expects result of parseContent/combineTopLevelAdjacentDocuments().
  * @return {array}
  */
-export function shapeItems(items) {
+function shapeItems(items) {
   return items
     .map(item => {
       const { type, name, path, url, depth, external = false } = item;
@@ -136,4 +136,8 @@ function flattenDocuments(items, accumulator = []) {
     }
   }
   return accumulator;
+}
+
+export default {
+  parseContent
 }

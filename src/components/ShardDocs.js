@@ -5,7 +5,7 @@ import { setActiveTreeNode, filterDocuments, setActiveCrumb } from "../utils";
 
 import ShardDocsMain from "./ShardDocsMain";
 import ShardDocsSidebar from "./ShardDocsSidebar";
-import fromContent from "../adapters/fromContent";
+import contentTool from "../utils/contentTool";
 
 import { ContentPropType } from "../prop-types";
 
@@ -36,7 +36,7 @@ class ShardDocs extends React.Component {
   };
 
   state = {
-    content: fromContent(this.props.content, this.props.basePath),
+    content: contentTool.parseContent(this.props.content, this.props.basePath),
     tree: [],
     documents: []
   };
