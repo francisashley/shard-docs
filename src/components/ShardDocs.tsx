@@ -23,12 +23,9 @@ type ShardDocsProps = {
 }
 
 type ShardDocsState = {
-  documents: documentItem[],
-  tree: item[],
-  content: {
-    tree: item[],
-    documents: documentItem[]
-  }
+  currentPath: string,
+  documentsData: documentItem[],
+  treeData: item[],
 }
 
 class ShardDocs extends React.Component<ShardDocsProps, ShardDocsState> {
@@ -51,45 +48,51 @@ class ShardDocs extends React.Component<ShardDocsProps, ShardDocsState> {
   };
 
   state = {
-    content: contentTool.parseContent(this.props.content, this.props.basePath),
-    tree: [],
-    documents: []
+    currentPath: this.props.routerProps.location?.pathname || '',
+    treeData: [],
+    documentsData: []
   };
 
   componentDidMount() {
-    const { tree, documents } = this.state.content;
-    const path = this.props.routerProps.location?.pathname || '';
+    const currentPath = this.props.routerProps.location?.pathname || '';
+    const { tree, documents } = contentTool.parseContent(this.props.content, this.props.basePath)
 
     this.setState({
-      tree: setActiveTreeNode(tree, path),
-      documents: filterDocuments(documents, path).map(document => setActiveCrumb(document, path))
+      currentPath,
+      treeData: tree,
+      documentsData: documents,
     });
   }
 
   componentDidUpdate(prevProps: any) {
-    const { tree, documents } = this.state.content;
-    const path = this.props.routerProps.location?.pathname || '';
+    const currentPath = this.props.routerProps.location?.pathname || '';
 
-    if (path !== prevProps.location.pathname) {
-      this.setState({
-        tree: setActiveTreeNode(tree, path),
-        documents: filterDocuments(documents, path).map(document => setActiveCrumb(document, path))
-      });
+    if (currentPath !== prevProps.location.pathname) {
+      this.setState({ currentPath });
       window.scrollTo(0, 0);
     }
   }
 
+  get getDocuments() {
+    return filterDocuments(this.state.documentsData, this.state.currentPath)
+      .map(document => setActiveCrumb(document, this.state.currentPath))
+  }
+
+  get getTreeData() {
+    return setActiveTreeNode(this.state.treeData, this.state.currentPath) as categoryItem[]
+  }
+
   get prevPage() {
     const location = this.props.routerProps.location;
-    const prevIndex = this.state.documents.findIndex((document: documentItem) => document.path === location?.pathname) - 1;
-    const prevPage = this.state.documents[prevIndex] as documentItem | undefined;
+    const prevIndex = this.getDocuments.findIndex((document: documentItem) => document.path === location?.pathname) - 1;
+    const prevPage = this.getDocuments[prevIndex] as documentItem | undefined;
     return prevPage && { name: prevPage.name, path: prevPage.path };
   }
 
   get nextPage() {
     const location = this.props.routerProps.location;
-    const nextIndex = this.state.documents.findIndex((document: documentItem) => document.path === location?.pathname) + 1;
-    const nextPage = this.state.documents[nextIndex] as documentItem | undefined;
+    const nextIndex = this.getDocuments.findIndex((document: documentItem) => document.path === location?.pathname) + 1;
+    const nextPage = this.getDocuments[nextIndex] as documentItem | undefined;
     return nextPage && { name: nextPage.name, path: nextPage.path };
   }
 
@@ -100,10 +103,10 @@ class ShardDocs extends React.Component<ShardDocsProps, ShardDocsState> {
           title={this.props.title}
           description={this.props.description}
           basePath={this.props.basePath}
-          tree={this.state.tree}
+          tree={this.getTreeData}
           hideBuiltWithShardDocs={this.props.hideBuiltWithShardDocs}
         />
-        <ShardDocsMain documents={this.state.documents} prevPage={this.prevPage} nextPage={this.nextPage} />
+        <ShardDocsMain documents={this.getDocuments} prevPage={this.prevPage} nextPage={this.nextPage} />
       </div>
     );
   }
