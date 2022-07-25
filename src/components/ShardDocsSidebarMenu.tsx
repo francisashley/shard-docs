@@ -1,15 +1,17 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { TreePropType } from "../prop-types";
-import MenuTree from "./ShardDocsSidebarMenuTree";
 import MenuSection from "./ShardDocsSidebarMenuSection";
 import "./ShardDocsSidebarMenu.scss";
+import { contentItemCategory } from "../utils/contentTool";
 
-/**
- * Menu
- */
+type MenuProps = {
+  showOnMobile: boolean,
+  tree: contentItemCategory[],
+  onNavigate: () => void,
+}
 
-const Menu = props => {
+const Menu = (props: MenuProps) => {
   return (
     <div className="shard-docs-menu" data-show-on-mobile={props.showOnMobile}>
       {props.tree.map((node, i) => (
