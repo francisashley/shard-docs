@@ -10,7 +10,7 @@ import typescript from "@rollup/plugin-typescript";
 
 export default [
   transpile("src/index.js", "dist", "index"),
-  transpile("src/components/shards/CodeSampleShard", "dist/shards", "CodeSampleShard"),
+  transpile("src/components/shards/CodeSampleShard.tsx", "dist/shards", "CodeSampleShard"),
   transpile("src/components/shards/SectionShard", "dist/shards", "SectionShard"),
   transpile("src/components/renderers/CodeBlockRenderer.tsx", "dist/renderers", "CodeBlockRenderer")
 ];
