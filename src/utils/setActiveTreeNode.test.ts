@@ -1,3 +1,4 @@
+import { contentItemCategory, contentItemDocument, contentItemLink } from "./contentTool";
 import setActiveTreeNode from "./setActiveTreeNode";
 
 const tree = [
@@ -43,7 +44,7 @@ const tree = [
 ];
 
 test("setActiveTreeNode() correctly sets isActive", () => {
-  expect(setActiveTreeNode(tree, '/doc-b')).toStrictEqual([
+  expect(setActiveTreeNode(tree as (contentItemCategory | contentItemDocument | contentItemLink)[], '/doc-b')).toStrictEqual([
     {
       name: null,
       type: "category",
@@ -89,7 +90,7 @@ test("setActiveTreeNode() correctly sets isActive", () => {
       ]
     }
   ])
-  expect(setActiveTreeNode(tree, '/doc-z')).toStrictEqual([
+  expect(setActiveTreeNode(tree as (contentItemCategory | contentItemDocument | contentItemLink)[], '/doc-z')).toStrictEqual([
     {
       name: null,
       type: "category",

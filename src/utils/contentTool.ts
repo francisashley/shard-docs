@@ -1,7 +1,7 @@
 import slugify from "slugify";
 import kebabCase from "lodash/kebabCase";
 
-interface baseContentItem {
+export interface baseContentItem {
   type: 'category' | 'document' | 'link';
   name: string;
   url?: string;

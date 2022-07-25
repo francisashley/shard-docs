@@ -7,11 +7,10 @@ test("sessionDB() sets and gets values from sessionStorage correctly", () => {
   expect(sessionDB.get('key')).toBe('Hello world');
   sessionDB.set('key', 'Hello universe');
   expect(sessionDB.get('key')).toBe('Hello universe');
-  expect(sessionDB.get('key')).toBeString();
   sessionDB.set('is-bool', true)
-  expect(sessionDB.get('is-bool')).toBeBoolean();
+  expect(sessionDB.get('is-bool')).toBe(true);
   sessionDB.set('is-array', [1, 2, 3])
-  expect(sessionDB.get('is-array')).toBeArray();
+  expect(sessionDB.get('is-array')).toEqual([1,2,3]);
   sessionDB.set('is-object', { a: 'a', b: 'b' })
-  expect(sessionDB.get('is-object')).toBeObject();
+  expect(sessionDB.get('is-object')).toEqual({ a: 'a', b: 'b' });
 });

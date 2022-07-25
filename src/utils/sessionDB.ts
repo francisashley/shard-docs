@@ -1,5 +1,5 @@
 export default {
-  get: (key: string, defaultValue: unknown) => {
+  get: (key: string, defaultValue?: unknown) => {
     let value = sessionStorage.getItem(key);
     return value !== null ? JSON.parse(value) : defaultValue;
   },

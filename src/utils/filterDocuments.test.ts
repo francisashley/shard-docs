@@ -1,3 +1,4 @@
+import { contentItemDocument } from "./contentTool";
 import filterDocuments from "./filterDocuments";
 
 const documents = [
@@ -26,7 +27,7 @@ const documents = [
 ];
 
 test("filterDocuments() filters correctly", () => {
-  expect(filterDocuments(documents)).toStrictEqual([
+  expect(filterDocuments(documents as contentItemDocument[])).toStrictEqual([
     {
       name: "Doc A",
       type: "document",
@@ -50,7 +51,7 @@ test("filterDocuments() filters correctly", () => {
       isEmpty: true
     }
   ])
-  expect(filterDocuments(documents, '/doc-a')).toStrictEqual([
+  expect(filterDocuments(documents as contentItemDocument[], '/doc-a')).toStrictEqual([
     {
       name: "Doc A",
       type: "document",
