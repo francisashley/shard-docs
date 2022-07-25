@@ -14,7 +14,7 @@ const content = contentTools.parseContent([
   },
   { type: "link", name: "Github", url: "http://github.com", external: true },
   { type: "something", name: "This is a purposefully invalid type that should be removed from the output", someType:'some-type'}
-]);
+] as any);
 
 test("contentTools() transforms data and returns tree", () => {
   expect(content.tree).toStrictEqual([
