@@ -5,7 +5,9 @@
  * @return {array}
  */
 
-export default function setIsActive(document = {}, path = "") {
+import { contentItemDocument } from "./contentTool";
+
+export default function setIsActive(document: contentItemDocument, path = "") {
   document.breadcrumbs = document.breadcrumbs.map(crumb => ({
     ...crumb,
     isActive: crumb.path === path
