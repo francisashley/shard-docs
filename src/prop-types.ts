@@ -1,9 +1,22 @@
 import PropTypes from "prop-types";
 
 // Content data
-export const ContentDocumentPropType = PropTypes.shape({ type: PropTypes.oneOf(['document']).isRequired, name: PropTypes.string, document: PropTypes.element });
-export const ContentCategoryPropType = PropTypes.shape({ type: PropTypes.oneOf(['category']).isRequired, name: PropTypes.string, items: PropTypes.array });
-export const ContentLinkPropType = PropTypes.shape({ type: PropTypes.oneOf(['link']).isRequired, name: PropTypes.string, url: PropTypes.string, external: PropTypes.bool });
+export const ContentDocumentPropType = PropTypes.shape({
+  type: PropTypes.oneOf(['document']).isRequired,
+  name: PropTypes.string,
+  document: PropTypes.element
+});
+export const ContentCategoryPropType = PropTypes.shape({
+  type: PropTypes.oneOf(['category']).isRequired,
+  name: PropTypes.string,
+  items: PropTypes.array
+});
+export const ContentLinkPropType = PropTypes.shape({
+  type: PropTypes.oneOf(['link']).isRequired,
+  name: PropTypes.string,
+  url: PropTypes.string,
+  external: PropTypes.bool
+});
 export const ContentPropType = PropTypes.arrayOf(
   PropTypes.oneOfType([
     ContentDocumentPropType,
@@ -57,12 +70,12 @@ export const CategoryPropShape = {
   name: PropTypes.string,
   isEmpty: PropTypes.bool,
   isActive: PropTypes.bool,
-};
+} as { [key: string]: any };
 CategoryPropShape.items = PropTypes.arrayOf(
   PropTypes.oneOfType([
     DocumentPropType,
     LinkPropType,
-    PropTypes.shape(CategoryPropShape)
+    PropTypes.shape(CategoryPropShape )
   ])
 );
 

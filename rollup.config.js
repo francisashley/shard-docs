@@ -6,6 +6,7 @@ import resolve from "rollup-plugin-node-resolve";
 import url from "rollup-plugin-url";
 import svgr from "@svgr/rollup";
 import json from "rollup-plugin-json";
+import typescript from "@rollup/plugin-typescript";
 
 export default [
   transpile("src/index.js", "dist", "index"),
@@ -32,6 +33,7 @@ function transpile(input, outputPath, outputFileName) {
       }
     ],
     plugins: [
+      typescript(),
       external(),
       postcss({ extract: true }),
       url({ exclude: ["**/*.svg"] }),
