@@ -4,7 +4,7 @@ import { mount } from "enzyme";
 import Pagination from "./ShardDocsMainPagination";
 
 describe("<Pagination />", () => {
-  const mountPagination = ({ prevPage = null, nextPage = null } = {}) => {
+  const mountPagination = ({ prevPage, nextPage } = {} as {prevPage?:paginationPage, nextPage?:paginationPage}) => {
     return mount(
       <MemoryRouter>
         <Pagination prevPage={prevPage} nextPage={nextPage} />
@@ -13,7 +13,7 @@ describe("<Pagination />", () => {
   };
 
   it("renders nothing", () => {
-    const wrapper = mountPagination({ prevPage: null, nextPage: null });
+    const wrapper = mountPagination();
 
     expect(wrapper.find(".shard-docs-pagination a").length).toBe(0);
   });

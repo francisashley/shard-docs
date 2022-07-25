@@ -2,7 +2,7 @@ import React from "react";
 import { mount } from "enzyme";
 import { MemoryRouter } from "react-router-dom";
 import CategoryNode from "./ShardDocsSidebarCategoryNode";
-import contentTool from "../utils/contentTool";
+import contentTool, { contentItemCategory } from "../utils/contentTool";
 
 const { tree } = contentTool.parseContent([
   {
@@ -16,7 +16,7 @@ test("<CategoryNode /> renders correctly", () => {
   const onNavigateMock = jest.fn();
   const wrapper = mount(
     <MemoryRouter>
-      <CategoryNode node={tree[0]} />
+      <CategoryNode node={tree[0] as contentItemCategory} />
     </MemoryRouter>
   );
 

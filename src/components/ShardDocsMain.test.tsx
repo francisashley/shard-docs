@@ -2,12 +2,10 @@ import React from "react";
 import { MemoryRouter } from "react-router-dom";
 import { mount } from "enzyme";
 import Main from "./ShardDocsMain";
+import { contentItemDocument } from "../utils/contentTool";
 
-const pagination = {
-  prev: { name: "Prev", path: "/prev" },
-  next: { name: "Next", path: "/next" }
-};
-
+const prevPage = { name: "Prev", path: "/prev" } as paginationPage;
+const nextPage = { name: "Next", path: "/next" } as paginationPage;
 const documents = [
   {
     type: 'document',
@@ -24,25 +22,26 @@ const documents = [
       </>
     )
   }
-];
+] as contentItemDocument[];
 
 describe("<Pagination />", () => {
-  const mountMain = (pagination, documents = []) => {
+  const mountMain = (options: { prevPage?: paginationPage, nextPage?: paginationPage, documents?: contentItemDocument[] }) => {
+    const { prevPage, nextPage, documents = []} = options
     return mount(
       <MemoryRouter>
-        <Main prevPage={pagination.prev} nextPage={pagination.next} documents={documents} />
+        <Main prevPage={prevPage} nextPage={nextPage} documents={documents} />
       </MemoryRouter>
     )
   };
 
   it("renders Pagination", () => {
-    const wrapper = mountMain(pagination);
+    const wrapper = mountMain({prevPage, nextPage});
 
     expect(wrapper.find("Pagination").exists()).toBe(true);
   });
 
   it("renders Document", () => {
-    const wrapper = mountMain(pagination, documents);
+    const wrapper = mountMain({prevPage, nextPage, documents});
 
     expect(wrapper.find("Document").length).toBe(1);
   });

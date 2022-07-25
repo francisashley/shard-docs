@@ -5,10 +5,9 @@ import LinkNode from "./ShardDocsSidebarLinkNode";
 import CategoryNode from "./ShardDocsSidebarCategoryNode";
 import { TreePropType } from "../prop-types";
 import "./ShardDocsSidebarMenuTree.scss";
-import { contentItemCategory, contentItemDocument, contentItemLink } from "../utils/contentTool";
 
 type MenuTreeProps = {
-  tree: (contentItemCategory | contentItemDocument | contentItemLink)[],
+  tree: tree,
   onNavigate: () => void
 }
 

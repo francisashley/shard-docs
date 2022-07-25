@@ -110,12 +110,12 @@ class ShardDocs extends React.Component<ShardDocsProps, ShardDocsState> {
 }
 
 type indexProps = {
-  title: string,
-  description: string,
-  content: (baseContentItem)[],
-  basePath: string,
-  hideBuiltWithShardDocs: boolean,
-  useBrowserRouter: boolean
+  title?: string,
+  description?: string,
+  content?: (baseContentItem)[],
+  basePath?: string,
+  hideBuiltWithShardDocs?: boolean,
+  useBrowserRouter?: boolean
 }
 export default (props: indexProps) => {
   const Router = (props.useBrowserRouter ? BrowserRouter : HashRouter) as React.ElementType;

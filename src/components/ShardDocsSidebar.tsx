@@ -9,9 +9,9 @@ import "./ShardDocsSidebar.scss";
 import { contentItemCategory } from "../utils/contentTool";
 
 type SidebarProps = {
-  title: string,
-  description: string,
-  basePath: string,
+  title?: string,
+  description?: string,
+  basePath?: string,
   tree: contentItemCategory[],
   hideBuiltWithShardDocs: boolean,
 }

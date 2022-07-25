@@ -11,7 +11,8 @@ const { tree } = contentTool.parseContent([
 ]);
 
 describe("<Sidebar />", () => {
-  const mountSidebar = ({ title, description, tree, hideBuiltWithShardDocs } = {}) => {
+  const mountSidebar = (options = {} as { title?: string, description?: string, tree?: tree, hideBuiltWithShardDocs?: boolean}) => {
+    const { title, description, tree, hideBuiltWithShardDocs } = options;
     return mount(
       <MemoryRouter>
         <Sidebar
@@ -63,18 +64,18 @@ describe("<Sidebar />", () => {
   it("can toggle sidebar", () => {
     const wrapper = mountSidebar();
 
-    expect(wrapper.find('[data-show-on-mobile]').props()['data-show-on-mobile']).toBe(false)
+    expect((wrapper.find('[data-show-on-mobile]').props() as any)['data-show-on-mobile']).toBe(false)
     wrapper.find('.shard-docs-header-toggle').simulate('click')
-    expect(wrapper.find('[data-show-on-mobile]').props()['data-show-on-mobile']).toBe(true)
+    expect((wrapper.find('[data-show-on-mobile]').props() as any)['data-show-on-mobile']).toBe(true)
   });
 
   it("closes sidebar menu when navigating", () => {
     const wrapper = mountSidebar({ tree });
 
-    expect(wrapper.find('[data-show-on-mobile]').props()['data-show-on-mobile']).toBe(false)
+    expect((wrapper.find('[data-show-on-mobile]').props() as any)['data-show-on-mobile']).toBe(false)
     wrapper.find('.shard-docs-header-toggle').simulate('click')
-    expect(wrapper.find('[data-show-on-mobile]').props()['data-show-on-mobile']).toBe(true)
+    expect((wrapper.find('[data-show-on-mobile]').props() as any)['data-show-on-mobile']).toBe(true)
     wrapper.find('.shard-docs-menu DocumentNode a').simulate('click')
-    expect(wrapper.find('[data-show-on-mobile]').props()['data-show-on-mobile']).toBe(false)
+    expect((wrapper.find('[data-show-on-mobile]').props() as any)['data-show-on-mobile']).toBe(false)
   });
 });
