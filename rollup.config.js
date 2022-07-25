@@ -12,7 +12,7 @@ export default [
   transpile("src/index.js", "dist", "index"),
   transpile("src/components/shards/CodeSampleShard", "dist/shards", "CodeSampleShard"),
   transpile("src/components/shards/SectionShard", "dist/shards", "SectionShard"),
-  transpile("src/components/renderers/CodeBlockRenderer", "dist/renderers", "CodeBlockRenderer")
+  transpile("src/components/renderers/CodeBlockRenderer.tsx", "dist/renderers", "CodeBlockRenderer")
 ];
 
 function transpile(input, outputPath, outputFileName) {

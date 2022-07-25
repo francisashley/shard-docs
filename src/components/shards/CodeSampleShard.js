@@ -5,7 +5,7 @@ import CodeIcon from "boxicons/svg/regular/bx-code.svg";
 import GithubIcon from "boxicons/svg/logos/bxl-github.svg";
 import isArray from "lodash/isArray";
 import uniqueId from "lodash/uniqueId";
-import CodeBlockRenderer from "../renderers/CodeBlockRenderer";
+import CodeBlockRenderer from "../renderers/CodeBlockRenderer.tsx";
 import BaseLink from "@fa-repo/base-react/dist/link";
 import Frame from "react-frame-component";
 import "./CodeSampleShard.scss";
