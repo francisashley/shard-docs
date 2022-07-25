@@ -10,7 +10,7 @@ export interface baseContentItem {
   document?: unknown;
 }
 
-type breadcrumb = {
+export type breadcrumb = {
   path: string,
   name: string,
   isActive: boolean

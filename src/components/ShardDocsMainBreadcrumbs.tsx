@@ -4,12 +4,12 @@ import classnames from "classnames";
 import { NavLink } from "react-router-dom";
 import { BreadcrumbPropType } from "../prop-types";
 import "./ShardDocsMainBreadcrumbs.scss";
+import { breadcrumb } from "../utils/contentTool";
 
-/**
- * Breadcrumbs
- */
-
-const Breadcrumbs = ({ breadcrumbs }) => (
+type BreadcrumbProps = {
+  breadcrumbs: breadcrumb[],
+}
+const Breadcrumbs = ({ breadcrumbs }: BreadcrumbProps) => (
   <nav className="shard-docs-breadcrumbs">
     <ol>
       {breadcrumbs.map(({ name, path, isActive }, i) => {
