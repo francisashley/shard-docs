@@ -11,7 +11,7 @@ export default (props: CodeBlockRendererProps) => {
   const language = props.language || props.className?.replace(/language-/, "");
 
   return (
-    <Highlight {...defaultProps} code={props.children.trim()} language={language}>
+    <Highlight {...defaultProps} code={props.children.trim()} language={language} theme={undefined}>
       {({ className, tokens, getLineProps, getTokenProps }) => (
         <pre className={className}>
           <code>
