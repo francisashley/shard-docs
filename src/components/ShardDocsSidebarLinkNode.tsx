@@ -1,6 +1,6 @@
 import React from "react";
 import ExternalIcon from "./icons/LinkExternal";
-import { LinkPropType } from "../prop-types";
+import { LinkItemPropType } from "../prop-types";
 
 type ExternalLinkNodeProps = {
   node: linkItem;
@@ -16,7 +16,7 @@ const ExternalLinkNode = (props: ExternalLinkNodeProps) => (
 );
 
 ExternalLinkNode.propTypes = {
-  node: LinkPropType
+  node: LinkItemPropType
 };
 
 ExternalLinkNode.defaultProps = {

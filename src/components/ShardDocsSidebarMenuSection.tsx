@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { CategoryPropType } from "../prop-types";
+import { CategoryItemPropType } from "../prop-types";
 import MenuTree from "./ShardDocsSidebarMenuTree";
 import sessionDB from "../utils/sessionDB";
 import classnames from "classnames";
@@ -19,7 +19,7 @@ type MenuSectionState = {
 class MenuSection extends React.Component<MenuSectionProps, MenuSectionState> {
   static propTypes = {
     index: PropTypes.number,
-    node: CategoryPropType,
+    node: CategoryItemPropType,
     onNavigate: PropTypes.func
   };
   

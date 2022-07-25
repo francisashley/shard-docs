@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import Pagination from "./ShardDocsMainPagination";
 import Document from "./ShardDocsMainDocument";
-import { PagePropType, DocumentPropType } from "../prop-types";
+import { PagePropType, DocumentItemPropType } from "../prop-types";
 import "./ShardDocsMain.scss";
 
 type MainProps = {
@@ -25,7 +25,7 @@ const Main = (props: MainProps) => {
 Main.propTypes = {
   prevPage: PagePropType,
   nextPage: PagePropType,
-  documents: PropTypes.arrayOf(DocumentPropType)
+  documents: PropTypes.arrayOf(DocumentItemPropType)
 };
 Main.defaultProps = {
   prevPage: null,

@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { CategoryPropType } from "../prop-types";
+import { CategoryItemPropType } from "../prop-types";
 import MenuTree from "./ShardDocsSidebarMenuTree";
 import BaseLink from "@fa-repo/base-react/dist/link";
 import TriangleArrowDown from "./icons/TriangleArrowDown";
@@ -18,7 +18,7 @@ type CategoryNodeState = {
 
 class CategoryNode extends React.Component<CategoryNodeProps, CategoryNodeState> {
   static propTypes = {
-    node: CategoryPropType,
+    node: CategoryItemPropType,
     onNavigate: PropTypes.func
   };
   
