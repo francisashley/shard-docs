@@ -4,23 +4,25 @@ import classnames from "classnames";
 import { NavLink } from "react-router-dom";
 import { DocumentPropType } from "../prop-types";
 import FileIcon from "./icons/FileIcon";
+import { contentItemDocument } from "../utils/contentTool";
 
-/**
- * DocumentNode
- */
-const DocumentNode = ({ node, onNavigate }) => {
+type DocumentNodeProps = {
+  node: contentItemDocument;
+  onNavigate: () => void;
+}
+
+const DocumentNode = (props: DocumentNodeProps) => {
   return (
     <li className="shard-docs-menu-document">
       <NavLink
-        style={{ paddingLeft: node.depth * 15 + "px" }}
-        className={classnames(node.isActive && "active")}
-        onClick={e => (node.isEmpty ? e.preventDefault() : onNavigate())}
-        disabled={node.isEmpty}
-        to={node.path}
+        style={{ paddingLeft: props.node.depth * 15 + "px" }}
+        className={classnames(props.node.isActive && "active")}
+        onClick={e => (props.node.isEmpty ? e.preventDefault() : props.onNavigate())}
+        to={props.node.path}
         exact
       >
         <FileIcon />
-        {node.name}
+        {props.node.name}
       </NavLink>
     </li>
   );
