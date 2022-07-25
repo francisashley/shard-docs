@@ -1,20 +1,32 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { NavLink } from "react-router-dom";
 import { PagePropType } from "../prop-types";
 import "./ShardDocsMainPagination.scss";
 
-/**
- * Pagination
- */
+type PaginationButtonProps = {
+  path: string,
+  name: string,
+  className: string
+}
 
-const PaginationButton = ({ path, name, ...props }) => (
+const PaginationButton = ({ path, name, ...props }: PaginationButtonProps) => (
   <div {...props}>
     <NavLink to={path} children={name} exact />
   </div>
 );
 
-const Pagination = props => {
+type PaginationProps = {
+  prevPage?: {
+    name: string,
+    path: string
+  },
+  nextPage?: {
+    name: string,
+    path: string
+  },
+}
+
+const Pagination = (props: PaginationProps) => {
   const showPagination = Boolean(props.prevPage || props.nextPage);
 
   return (
