@@ -16,7 +16,7 @@ type breadcrumb = {
   isActive: boolean
 }
 
-type contentItemCategory = {
+export type contentItemCategory = {
   type: 'category';
   name: string | null;
   path: string;
@@ -26,7 +26,7 @@ type contentItemCategory = {
   depth: number
 }
 
-type contentItemDocument = {
+export type contentItemDocument = {
   type: 'document';
   name: string;
   path: string;
@@ -37,7 +37,7 @@ type contentItemDocument = {
   depth: number
 }
 
-type contentItemLink = {
+export type contentItemLink = {
   type: 'link';
   name: string;
   url: string;
