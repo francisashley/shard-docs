@@ -1,22 +1,37 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { HashRouter, BrowserRouter, Route } from "react-router-dom";
+import { HashRouter, BrowserRouter, Route, RouteProps } from "react-router-dom";
 import { setActiveTreeNode, filterDocuments, setActiveCrumb } from "../utils";
 
 import ShardDocsMain from "./ShardDocsMain";
 import ShardDocsSidebar from "./ShardDocsSidebar";
-import contentTool from "../utils/contentTool";
+import contentTool, { baseContentItem, contentItemCategory, contentItemDocument, contentItemLink } from "../utils/contentTool";
 
 import { ContentPropType } from "../prop-types";
 
 import "../assets/sanitize.css";
 import "./ShardDocs.scss";
 
-/**
- * ShardDocs
- */
+type ShardDocsProps = {
+  title: string,
+  description: string,
+  content: (baseContentItem)[],
+  basePath: string,
+  hideBuiltWithShardDocs: boolean,
+  useBrowserRouter: boolean,
+  routerProps: RouteProps
+}
 
-class ShardDocs extends React.Component {
+type ShardDocsState = {
+  documents: contentItemDocument[],
+  tree: (contentItemCategory | contentItemDocument |contentItemLink)[],
+  content: {
+    tree: (contentItemCategory | contentItemDocument |contentItemLink)[],
+    documents: contentItemDocument[]
+  }
+}
+
+class ShardDocs extends React.Component<ShardDocsProps, ShardDocsState> {
   static propTypes = {
     title: PropTypes.string,
     description: PropTypes.string,
@@ -43,7 +58,7 @@ class ShardDocs extends React.Component {
 
   componentDidMount() {
     const { tree, documents } = this.state.content;
-    const path = this.props.location.pathname;
+    const path = this.props.routerProps.location?.pathname || '';
 
     this.setState({
       tree: setActiveTreeNode(tree, path),
@@ -51,9 +66,9 @@ class ShardDocs extends React.Component {
     });
   }
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(prevProps: any) {
     const { tree, documents } = this.state.content;
-    const path = this.props.location.pathname;
+    const path = this.props.routerProps.location?.pathname || '';
 
     if (path !== prevProps.location.pathname) {
       this.setState({
@@ -65,16 +80,16 @@ class ShardDocs extends React.Component {
   }
 
   get prevPage() {
-    const location = this.props.location;
-    const prevIndex = this.state.documents.findIndex(document => document.path === location.pathname) - 1;
-    const prevPage = this.state.documents[prevIndex];
+    const location = this.props.routerProps.location;
+    const prevIndex = this.state.documents.findIndex((document: contentItemDocument) => document.path === location?.pathname) - 1;
+    const prevPage = this.state.documents[prevIndex] as contentItemDocument | undefined;
     return prevPage && { name: prevPage.name, path: prevPage.path };
   }
 
   get nextPage() {
-    const location = this.props.location;
-    const nextIndex = this.state.documents.findIndex(doc => doc.path === location.pathname) + 1;
-    const nextPage = this.state.documents[nextIndex];
+    const location = this.props.routerProps.location;
+    const nextIndex = this.state.documents.findIndex((document: contentItemDocument) => document.path === location?.pathname) + 1;
+    const nextPage = this.state.documents[nextIndex] as contentItemDocument | undefined;
     return nextPage && { name: nextPage.name, path: nextPage.path };
   }
 
@@ -94,11 +109,19 @@ class ShardDocs extends React.Component {
   }
 }
 
-export default props => {
-  const Router = props.useBrowserRouter ? BrowserRouter : HashRouter;
+type indexProps = {
+  title: string,
+  description: string,
+  content: (baseContentItem)[],
+  basePath: string,
+  hideBuiltWithShardDocs: boolean,
+  useBrowserRouter: boolean
+}
+export default (props: indexProps) => {
+  const Router = (props.useBrowserRouter ? BrowserRouter : HashRouter) as React.ElementType;
   return (
     <Router>
-      <Route component={routerProps => <ShardDocs {...{ ...props, ...routerProps }} />} />
+      <Route component={(routerProps: RouteProps) => <ShardDocs {...{ ...props, ...routerProps }} routerProps={routerProps} />} />
     </Router>
   );
 };
