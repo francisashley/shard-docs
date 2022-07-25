@@ -2,11 +2,11 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./ShardDocsSidebarDescription.scss";
 
-/**
- * Description
- */
+type DescriptionProps = {
+  description: PropTypes.string
+}
 
-const Description = ({ description }) => <p className="shard-docs-description">{description}</p>;
+const Description = (props: DescriptionProps) => <p className="shard-docs-description">{props.description}</p>;
 
 Description.propTypes = {
   description: PropTypes.string
