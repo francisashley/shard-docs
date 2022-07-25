@@ -4,11 +4,13 @@ import HeaderTitle from "./ShardDocsSidebarHeaderTitle";
 import HeaderToggle from "./ShardDocsSidebarHeaderToggle";
 import "./ShardDocsSidebarHeader.scss";
 
-/**
- * Header
- */
+type HeaderProps = {
+  title:string,
+  basePath:string,
+  onToggleMenu: () => void;
+}
 
-const Header = ({ title, basePath, onToggleMenu, ...props }) => {
+const Header = ({ title, basePath, onToggleMenu, ...props }: HeaderProps) => {
   return (
     <header className="shard-docs-header" {...props}>
       {title && <HeaderTitle title={title} path={basePath} />}
