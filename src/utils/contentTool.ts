@@ -10,79 +10,84 @@ interface baseContentItem {
   document?: unknown;
 }
 
-interface contentItemWithPath extends baseContentItem {
-  name: string;
-  path?: string;
-  items?: contentItemWithPath[]
-}
-
-interface contentItemWithBreadcrumbs extends contentItemWithPath {
-  breadcrumbs?: breadcrumb[]
-}
-
-interface contentItemWithShape extends contentItemWithBreadcrumbs {
-  isEmpty?: boolean;
-  isActive?: boolean;
-  depth: number;
-}
-
-interface contentItemWithCombinedItems {
-  type: 'category' | 'document' | 'link';
-  name: string | null;
-  path: string;
-  items?: contentItemWithCombinedItems[]
-}
-
-interface contentItemWithDepth {
-  depth: number
-  items?: contentItemWithDepth[]
-  type: 'category' | 'document' | 'link';
-  name: string | null;
-  path: string;
-}
-
 type breadcrumb = {
   path: string,
   name: string,
   isActive: boolean
 }
 
-/**
- * Loops through each item, child and grandchild detecting and calculating and
- * and each items path.
- * @param  {array} items Expects result of parseContent/combineTopLevelAdjacentDocuments().
- * @return {array}
- */
-function addPaths(items: baseContentItem[], basePath = ''): contentItemWithPath[] {
-  const getSlug = (name: string) => slugify(kebabCase(name), { lower: true });
+type contentItemCategory = {
+  type: 'category';
+  name: string | null;
+  path: string;
+  items: (contentItemCategory | contentItemDocument | contentItemLink)[];
+  isEmpty: boolean,
+  isActive: boolean,
+  depth: number
+}
 
-  return items.map(item => {
-    // Generate path and remove trailing / duplicate slashes
-    const path = `${basePath}/${getSlug(item.name)}`.replace(/\/+$/, "").replace(/\/+/g, "/");
+type contentItemDocument = {
+  type: 'document';
+  name: string;
+  path: string;
+  document: unknown;
+  breadcrumbs: breadcrumb[];
+  isEmpty: boolean,
+  isActive: boolean,
+  depth: number
+}
 
-    const outputItem = {
-      type: item.type,
-      name: item.name,
-    }
+type contentItemLink = {
+  type: 'link';
+  name: string;
+  url: string;
+  external: boolean;
+  depth: number
+}
+
+const getSlug = (name: string) => slugify(kebabCase(name), { lower: true });
+const removeDuplicateSlashes = (path: string) => path.replace(/\/+$/, "").replace(/\/+/g, "/");
+
+function normaliseContent(items: baseContentItem[]): (contentItemCategory | contentItemDocument | contentItemLink)[] {
+  const itemTemplates = {
+    category: { type: 'category', name: '', path: '', items: [], isEmpty: true, isActive: false, depth: 0 },
+    document: { type: 'document', name: '', path: '', breadcrumbs: [], document: null, isEmpty: true, isActive: false, depth: 0 },
+    link: { type: 'link', name: '', url: '', external: false, depth: 0 },
+  }
+
+  const output = [];
+
+  for (const item of items) {
+    if (!itemTemplates[item.type]) continue;
+
+    const outputTemplate = itemTemplates[item.type];
 
     if (item.type === "category") {
-      return { ...outputItem, path, items: addPaths(item.items || [], path) }
+      const items = normaliseContent(item.items || []);
+      output.push({ ...outputTemplate, name: item.name, items } as contentItemCategory);
     } else if (item.type === "document") {
-      return {
-        ...outputItem,
-        path,
-        document: item.document,
-      }
+      output.push({ ...outputTemplate, name: item.name, document: item.document } as contentItemDocument);
     } else if (item.type === "link") {
-      return {
-        ...outputItem,
-        external: item.external,
-        url: item.url,
-      }
-    } else {
-      return outputItem
+      output.push({ ...outputTemplate, name: item.name, url: item.url, external: item.external } as contentItemLink);
     }
-  });
+  }
+
+  return output;
+}
+
+ function addPaths(items: (contentItemCategory | contentItemDocument | contentItemLink)[], basePath = ''): (contentItemCategory | contentItemDocument | contentItemLink)[] {
+    const output = []
+    for (const item of items) {
+      const path = removeDuplicateSlashes(`${basePath}/${getSlug(item.name || '')}`);
+      if (item.type === "category") {
+        output.push({ ...item, path, items: addPaths(item.items || [], path) });
+      } else if (item.type === "document") {
+        output.push({ ...item, path });
+      } else if (item.type === "link") {
+        output.push(item);
+      }
+  }
+  return output;
 }
 
 /**
@@ -90,20 +95,24 @@ function addPaths(items: baseContentItem[], basePath = ''): contentItemWithPath[
  * @param  {array} items Expects result of parseContent/ shapeItems().
  * @return {array}
  */
-function addBreadcrumbs(items: contentItemWithPath[], breadcrumbs: breadcrumb[]): contentItemWithBreadcrumbs[] {
-  return items.map(item => {
-    const crumb = {
-      name: item.name,
-      path: item.path || '',
-      isActive: false
-    };
+function addBreadcrumbs(items: (contentItemCategory | contentItemDocument | contentItemLink)[], breadcrumbs: breadcrumb[]): (contentItemCategory | contentItemDocument | contentItemLink)[] {
+  const output = [];
+  for (const item of items) {
     if (item.type === "category") {
-      item.items = addBreadcrumbs(item.items || [], [...breadcrumbs, crumb]);
+      output.push({
+        ...item,
+        items: addBreadcrumbs(item.items || [], [...breadcrumbs, { name: item.name || '', path: item.path, isActive: false }]),
+      })
     } else if (item.type === "document") {
-      return { ...item, breadcrumbs: [...breadcrumbs, crumb] };
+      output.push({
+        ...item,
+        breadcrumbs: [...breadcrumbs, { name: item.name, path: item.path, isActive: false }],
+      })
+    } else if (item.type === "link") {
+      output.push(item);
     }
-    return item;
-  });
+  }
+  return output;
 }
 
 /**
@@ -111,27 +120,23 @@ function addBreadcrumbs(items: contentItemWithPath[], breadcrumbs: breadcrumb[])
  * @param  {array} items Expects result of parseContent/combineTopLevelAdjacentDocuments().
  * @return {array}
  */
- function shapeItems(items: contentItemWithBreadcrumbs[]): contentItemWithShape[] {
-  return items
-    .map(item => {
-      const { type, name, path, url = '', external = false } = item;
-      if (type === "link") {
-        return { ...item, type, name, url, depth: 0, external };
-      } else if (type === "category" && name) {
-        const isEmpty = !item.items?.length;
-        const isActive = false;
-        const items = shapeItems(item.items || []);
-        return { type, path, name, isEmpty, isActive, items, depth: 0 };
-      } else if (type === "document") {
-        const isEmpty = !Boolean(item.document);
-        const isActive = false;
-        const document = item.document;
-        const breadcrumbs = item.breadcrumbs || [];
-        return { type, path, name, isEmpty, isActive, breadcrumbs, document, depth: 0 };
-      }
-      return null;
-    })
-    .filter(item => item !== null) as contentItemWithShape[];
+ function shapeItems(items: (contentItemCategory | contentItemDocument | contentItemLink)[]): (contentItemCategory | contentItemDocument | contentItemLink)[] {
+  const output = [];
+  for (const item of items) {
+    if (item.type === "category") {
+      const items = shapeItems(item.items || []);
+      const isEmpty = !item.items?.length;
+      output.push({ ...item, isEmpty, items })
+    } else if (item.type === "document") {
+      const isEmpty = !item.document;
+      const depth = item.breadcrumbs?.length || 0;
+      output.push({ ...item, isEmpty, depth })
+    } else if (item.type === "link") {
+      output.push(item)
+    }
+  }
+
+  return output;
 }
 
 /**
@@ -139,27 +144,26 @@ function addBreadcrumbs(items: contentItemWithPath[], breadcrumbs: breadcrumb[])
  * @param  {array} items Requires types to have been added to array with addTypes().
  * @return {array}
  */
- function combineTopLevelAdjacentItems(items: contentItemWithShape[]): contentItemWithCombinedItems[] {
-  const isDiscreteCategory = (item: contentItemWithCombinedItems): boolean => item && item.type === "category" && !item.name;
-
+ function combineTopLevelAdjacentItems(items: (contentItemCategory | contentItemDocument | contentItemLink)[]): (contentItemCategory | contentItemDocument | contentItemLink)[] {
   const preparedItems = items.map(item => {
     if (item.type !== "category") {
-      return { name: null, items: [item], type: "category"}
+      return { name: null, items: [item], type: "category"} as contentItemCategory;
     }
     return item
-  }) as contentItemWithCombinedItems[];
+  });
 
-  return preparedItems.reduce((accumulator: contentItemWithCombinedItems[], item) => {
-    const lastItem = accumulator[accumulator.length - 1];
-
-    if (isDiscreteCategory(item) && isDiscreteCategory(lastItem)) {
-      lastItem.items = [...(lastItem.items || []), ...(item.items || [])];
-      accumulator[accumulator.length - 1] = lastItem;
+  const output = [];
+  for (const item of preparedItems) {
+    const lastItem = output[output.length - 1] as contentItemCategory | contentItemDocument | contentItemLink | undefined;
+    if (lastItem?.type === 'category' && !lastItem.name && item.type === 'category' && !item.name) {
+      lastItem.items = [...lastItem.items, ...item.items];
+      output[output.length - 1] = lastItem;
     } else {
-      accumulator = [...accumulator, item];
+      output.push(item);
     }
-    return accumulator;
-  }, []);
+  }
+
+  return output;
 }
 
 /**
@@ -167,17 +171,17 @@ function addBreadcrumbs(items: contentItemWithPath[], breadcrumbs: breadcrumb[])
  * @param  {array} items Expects result of parseContent/ shapeItems().
  * @return {array}
  */
-function addDepth(items: contentItemWithCombinedItems[], depth = 0): contentItemWithDepth[] {
-  return items.map(item => {
+function addDepth(items: (contentItemCategory | contentItemDocument | contentItemLink)[], depth = 0): (contentItemCategory | contentItemDocument | contentItemLink)[] {
+  const output = [];
+  for (const item of items) {
     if (item.type === "category") {
-      return {
-        ...item,
-        items: addDepth(item.items || [], depth + 1),
-        depth
-      }
+      const items = addDepth(item.items || [], depth + 1);
+      output.push({ ...item, items, depth })
+    } else {
+      output.push({ ...item, depth })
     }
-    return { ...item, depth }
-  }) as contentItemWithDepth[]
+  }
+  return output;
 }
 
 
@@ -186,7 +190,7 @@ function addDepth(items: contentItemWithCombinedItems[], depth = 0): contentItem
  * @param  {array} source Expects source array to have been fed through addTypes..
  * @return {array} returns all documents in an array
  */
-function flattenDocuments(items: contentItemWithDepth[], accumulator: contentItemWithDepth[] = []) {
+function flattenDocuments(items: (contentItemCategory | contentItemDocument | contentItemLink)[], accumulator: (contentItemCategory | contentItemDocument | contentItemLink)[] = []) {
   for (const item of items) {
     if (item.type === "category") {
       accumulator = flattenDocuments((item.items || []), accumulator);
@@ -198,15 +202,16 @@ function flattenDocuments(items: contentItemWithDepth[], accumulator: contentIte
 }
 
 function parseContent(tree: baseContentItem[], basePath = "/") {
-  const treeWithPaths = addPaths(tree, basePath);
-  const treeWithBreadcrumbs = addBreadcrumbs(treeWithPaths, [{ path: basePath, name: "~", isActive: false }]);
-  const treeWithShapedItems = shapeItems(treeWithBreadcrumbs);
-  const treeWithCombinedItems = combineTopLevelAdjacentItems(treeWithShapedItems);
-  const processedItems = addDepth(treeWithCombinedItems);
+  let normalisedTree = normaliseContent(tree);
+  normalisedTree = addPaths(normalisedTree, basePath);
+  normalisedTree = addBreadcrumbs(normalisedTree, [{ path: basePath, name: "~", isActive: false }]);
+  normalisedTree = shapeItems(normalisedTree);
+  normalisedTree = combineTopLevelAdjacentItems(normalisedTree);
+  normalisedTree = addDepth(normalisedTree);
 
   return {
-    tree: processedItems,
-    documents: flattenDocuments(processedItems)
+    tree: normalisedTree,
+    documents: flattenDocuments(normalisedTree)
   };
 }
 
