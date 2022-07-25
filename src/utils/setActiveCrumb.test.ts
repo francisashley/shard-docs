@@ -1,4 +1,3 @@
-import { contentItemDocument } from "./contentTool";
 import setActiveCrumb from "./setActiveCrumb";
 
 const document = {

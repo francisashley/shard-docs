@@ -5,8 +5,6 @@
  * @return {array}
  */
 
-import { contentItemCategory, contentItemDocument, contentItemLink } from "./contentTool";
-
 export default function setActiveTreeNode(tree: (contentItemCategory | contentItemDocument | contentItemLink)[] = [], currentPath = "") {
   return tree.map(node => {
     if (node.type === "category") {

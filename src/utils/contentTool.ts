@@ -1,50 +1,6 @@
 import slugify from "slugify";
 import kebabCase from "lodash/kebabCase";
 
-export interface baseContentItem {
-  type: 'category' | 'document' | 'link';
-  name: string;
-  url?: string;
-  external?: boolean;
-  items?: baseContentItem[]
-  document?: unknown;
-}
-
-export type breadcrumb = {
-  path: string,
-  name: string,
-  isActive: boolean
-}
-
-export type contentItemCategory = {
-  type: 'category';
-  name: string | null;
-  path: string;
-  items: (contentItemCategory | contentItemDocument | contentItemLink)[];
-  isEmpty: boolean,
-  isActive: boolean,
-  depth: number
-}
-
-export type contentItemDocument = {
-  type: 'document';
-  name: string;
-  path: string;
-  document: string | React.ReactNode;
-  breadcrumbs: breadcrumb[];
-  isEmpty: boolean,
-  isActive: boolean,
-  depth: number
-}
-
-export type contentItemLink = {
-  type: 'link';
-  name: string;
-  url: string;
-  external: boolean;
-  depth: number
-}
-
 const getSlug = (name: string) => slugify(kebabCase(name), { lower: true });
 const removeDuplicateSlashes = (path: string) => path.replace(/\/+$/, "").replace(/\/+/g, "/");
 

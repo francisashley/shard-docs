@@ -11,7 +11,7 @@ const { tree } = contentTool.parseContent([
 ]);
 
 describe("<Sidebar />", () => {
-  const mountSidebar = (options = {} as { title?: string, description?: string, tree?: tree, hideBuiltWithShardDocs?: boolean}) => {
+  const mountSidebar = (options = {} as { title?: string, description?: string, tree?: contentItemCategory[], hideBuiltWithShardDocs?: boolean}) => {
     const { title, description, tree, hideBuiltWithShardDocs } = options;
     return mount(
       <MemoryRouter>
@@ -44,7 +44,7 @@ describe("<Sidebar />", () => {
   });
 
   it("renders menu", () => {
-    const wrapper = mountSidebar({ tree });
+    const wrapper = mountSidebar({ tree } as { tree: contentItemCategory[] });
 
     expect(wrapper.find('.shard-docs-menu ul li').exists()).toBe(true);
   });
@@ -70,7 +70,7 @@ describe("<Sidebar />", () => {
   });
 
   it("closes sidebar menu when navigating", () => {
-    const wrapper = mountSidebar({ tree });
+    const wrapper = mountSidebar({ tree } as { tree: contentItemCategory[] });
 
     expect((wrapper.find('[data-show-on-mobile]').props() as any)['data-show-on-mobile']).toBe(false)
     wrapper.find('.shard-docs-header-toggle').simulate('click')

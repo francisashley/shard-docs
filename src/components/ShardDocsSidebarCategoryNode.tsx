@@ -6,7 +6,6 @@ import BaseLink from "@fa-repo/base-react/dist/link";
 import TriangleArrowDown from "./icons/TriangleArrowDown";
 import TriangleArrowRight from "./icons/TriangleArrowRight";
 import sessionDB from "../utils/sessionDB";
-import { contentItemCategory } from "../utils/contentTool";
 
 type CategoryNodeProps = {
   node: contentItemCategory,

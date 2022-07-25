@@ -1,7 +1,7 @@
 import React from "react";
 import { mount } from "enzyme";
 import MenuSection from "./ShardDocsSidebarMenuSection";
-import contentTool, { contentItemCategory } from "../utils/contentTool";
+import contentTool from "../utils/contentTool";
 import { MemoryRouter } from "react-router-dom";
 
 let { tree } = contentTool.parseContent([

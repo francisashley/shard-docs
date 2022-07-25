@@ -1,7 +1,6 @@
 import React from "react";
 import ExternalIcon from "./icons/LinkExternal";
 import { LinkPropType } from "../prop-types";
-import { contentItemLink } from "../utils/contentTool";
 
 type ExternalLinkNodeProps = {
   node: contentItemLink

@@ -5,8 +5,6 @@
  * @return {array}
  */
 
-import { contentItemDocument } from "./contentTool";
-
 export default function setIsActive(document: contentItemDocument, path = "") {
   document.breadcrumbs = document.breadcrumbs.map(crumb => ({
     ...crumb,

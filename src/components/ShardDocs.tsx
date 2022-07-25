@@ -5,7 +5,7 @@ import { setActiveTreeNode, filterDocuments, setActiveCrumb } from "../utils";
 
 import ShardDocsMain from "./ShardDocsMain";
 import ShardDocsSidebar from "./ShardDocsSidebar";
-import contentTool, { baseContentItem, contentItemCategory, contentItemDocument, contentItemLink } from "../utils/contentTool";
+import contentTool from "../utils/contentTool";
 
 import { ContentPropType } from "../prop-types";
 

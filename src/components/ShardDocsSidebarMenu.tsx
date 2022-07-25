@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import { TreePropType } from "../prop-types";
 import MenuSection from "./ShardDocsSidebarMenuSection";
 import "./ShardDocsSidebarMenu.scss";
-import { contentItemCategory } from "../utils/contentTool";
 
 type MenuProps = {
   showOnMobile: boolean,

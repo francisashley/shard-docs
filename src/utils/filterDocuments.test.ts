@@ -1,4 +1,3 @@
-import { contentItemDocument } from "./contentTool";
 import filterDocuments from "./filterDocuments";
 
 const documents = [

@@ -6,7 +6,6 @@ import sessionDB from "../utils/sessionDB";
 import classnames from "classnames";
 import MenuSectionHeader from "./ShardDocsSidebarMenuSectionHeader";
 import "./ShardDocsSidebarMenuSection.scss";
-import { contentItemCategory, contentItemDocument, contentItemLink } from "../utils/contentTool";
 
 type MenuSectionProps = {
   index: number,

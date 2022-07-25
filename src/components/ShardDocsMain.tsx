@@ -4,7 +4,6 @@ import Pagination from "./ShardDocsMainPagination";
 import Document from "./ShardDocsMainDocument";
 import { PagePropType, DocumentPropType } from "../prop-types";
 import "./ShardDocsMain.scss";
-import { contentItemDocument } from "../utils/contentTool";
 
 type MainProps = {
   documents: contentItemDocument[],

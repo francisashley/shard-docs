@@ -2,14 +2,14 @@ import React from "react";
 import { mount } from "enzyme";
 import { MemoryRouter } from "react-router-dom";
 import Menu from "./ShardDocsSidebarMenu";
-import contentTool, { contentItemCategory } from "../utils/contentTool";
+import contentTool from "../utils/contentTool";
 
 const { tree } = contentTool.parseContent([
   { type: 'document', name: "Doc A", document: <h1>Doc A</h1> }
 ]);
 
 describe("<Menu />", () => {
-  const mountMenu = ({ tree, showOnMobile } = {} as {tree?: tree, showOnMobile?:boolean}) => {
+  const mountMenu = ({ tree, showOnMobile } = {} as {tree?: contentItemCategory[], showOnMobile?:boolean}) => {
     const onNavigate = jest.fn();
     const wrapper = mount(
       <MemoryRouter>
@@ -27,25 +27,25 @@ describe("<Menu />", () => {
   });
 
   it("renders Menu", () => {
-    const { wrapper } = mountMenu({ tree });
+    const { wrapper } = mountMenu({ tree } as { tree: contentItemCategory[]});
 
     expect(wrapper.find('.shard-docs-menu ul li').exists()).toBe(true)
   });
 
   it("can show menu on mobile devices", () => {
-    const { wrapper } = mountMenu({ tree, showOnMobile: true });
+    const { wrapper } = mountMenu({ tree, showOnMobile: true } as { tree: contentItemCategory[]});
 
     expect((wrapper.find('.shard-docs-menu').props() as any)['data-show-on-mobile']).toBe(true)
   });
 
   it("can show menu on mobile devices", () => {
-    const { wrapper } = mountMenu({ tree, showOnMobile: false });
+    const { wrapper } = mountMenu({ tree, showOnMobile: false } as { tree: contentItemCategory[]});
 
     expect((wrapper.find('.shard-docs-menu').props() as any)['data-show-on-mobile']).toBe(false)
   });
 
   it("calls onNavigate", () => {
-    const { wrapper, onNavigate } = mountMenu({ tree });
+    const { wrapper, onNavigate } = mountMenu({ tree } as { tree: contentItemCategory[]});
 
     wrapper.find('.shard-docs-menu ul li a').first().simulate('click');
 

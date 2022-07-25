@@ -2,7 +2,6 @@ import React from "react";
 import { MemoryRouter } from "react-router-dom";
 import { mount } from "enzyme";
 import Main from "./ShardDocsMain";
-import { contentItemDocument } from "../utils/contentTool";
 
 const prevPage = { name: "Prev", path: "/prev" } as paginationPage;
 const nextPage = { name: "Next", path: "/next" } as paginationPage;

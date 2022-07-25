@@ -4,7 +4,6 @@ import classnames from "classnames";
 import { NavLink } from "react-router-dom";
 import { DocumentPropType } from "../prop-types";
 import FileIcon from "./icons/FileIcon";
-import { contentItemDocument } from "../utils/contentTool";
 
 type DocumentNodeProps = {
   node: contentItemDocument;

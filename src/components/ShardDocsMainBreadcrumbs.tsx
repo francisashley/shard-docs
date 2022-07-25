@@ -4,7 +4,6 @@ import classnames from "classnames";
 import { NavLink } from "react-router-dom";
 import { BreadcrumbPropType } from "../prop-types";
 import "./ShardDocsMainBreadcrumbs.scss";
-import { breadcrumb } from "../utils/contentTool";
 
 type BreadcrumbProps = {
   breadcrumbs: breadcrumb[],

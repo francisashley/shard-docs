@@ -5,8 +5,6 @@
  * @return {array}
  */
 
-import { contentItemDocument } from "./contentTool";
-
 export default function filterDocuments(documents: contentItemDocument[] = [], path = "") {
   return documents.filter(document => document.path.startsWith(path));
 }

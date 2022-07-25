@@ -1,4 +1,3 @@
-import { contentItemCategory, contentItemDocument, contentItemLink } from "./contentTool";
 import setActiveTreeNode from "./setActiveTreeNode";
 
 const tree = [

@@ -6,7 +6,6 @@ import SidebarMenu from "./ShardDocsSidebarMenu";
 import BuiltWithShardDocs from "./ShardDocsSidebarBuiltWithShardDocs";
 import { TreePropType } from "../prop-types";
 import "./ShardDocsSidebar.scss";
-import { contentItemCategory } from "../utils/contentTool";
 
 type SidebarProps = {
   title?: string,

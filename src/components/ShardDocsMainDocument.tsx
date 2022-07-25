@@ -2,7 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 import Breadcrumbs from "./ShardDocsMainBreadcrumbs";
 import { BreadcrumbPropType } from "../prop-types";
-import { breadcrumb } from "../utils/contentTool";
 
 import "../assets/github.css";
 import "./ShardDocsMainDocument.scss";
