@@ -1,19 +1,6 @@
 import slugify from "slugify";
 import kebabCase from "lodash/kebabCase";
 
-function parseContent(tree, basePath = "/") {
-  tree = addPaths(tree, basePath);
-  tree = addBreadcrumbs(tree, [{ path: basePath, name: "~", isActive: false }]);
-  tree = shapeItems(tree, basePath);
-  tree = combineTopLevelAdjacentItems(tree);
-  tree = addDepth(tree);
-
-  return {
-    tree,
-    documents: flattenDocuments(tree)
-  };
-}
-
 /**
  * Combine all top level adjacent items (except categories) into discrete categories.
  * @param  {array} items Requires types to have been added to array with addTypes().
@@ -136,6 +123,19 @@ function flattenDocuments(items, accumulator = []) {
     }
   }
   return accumulator;
+}
+
+function parseContent(tree, basePath = "/") {
+  tree = addPaths(tree, basePath);
+  tree = addBreadcrumbs(tree, [{ path: basePath, name: "~", isActive: false }]);
+  tree = shapeItems(tree, basePath);
+  tree = combineTopLevelAdjacentItems(tree);
+  tree = addDepth(tree);
+
+  return {
+    tree,
+    documents: flattenDocuments(tree)
+  };
 }
 
 export default {
