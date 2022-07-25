@@ -2,16 +2,17 @@ import React from "react";
 import PropTypes from "prop-types";
 import Breadcrumbs from "./ShardDocsMainBreadcrumbs";
 import { BreadcrumbPropType } from "../prop-types";
+import { breadcrumb } from "../utils/contentTool";
 
 import "../assets/github.css";
 import "./ShardDocsMainDocument.scss";
 import "../assets/prism-github.css";
 
-/**
- * Document
- */
-
-const Document = ({ document, breadcrumbs }) => {
+type DocumentProps = {
+  document: string,
+  breadcrumbs: breadcrumb[]
+}
+const Document = ({ document, breadcrumbs }: DocumentProps) => {
   return (
     <article className="shard-docs-document">
       <Breadcrumbs breadcrumbs={breadcrumbs} />
