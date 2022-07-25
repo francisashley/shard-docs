@@ -5,7 +5,7 @@
  * @return {array}
  */
 
-export default function setIsActive(document: contentItemDocument, path = "") {
+export default function setIsActive(document: documentItem, path = "") {
   document.breadcrumbs = document.breadcrumbs.map(crumb => ({
     ...crumb,
     isActive: crumb.path === path

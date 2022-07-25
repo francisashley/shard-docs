@@ -15,7 +15,7 @@ import "./ShardDocs.scss";
 type ShardDocsProps = {
   title: string,
   description: string,
-  content: (baseContentItem)[],
+  content: content,
   basePath: string,
   hideBuiltWithShardDocs: boolean,
   useBrowserRouter: boolean,
@@ -23,11 +23,11 @@ type ShardDocsProps = {
 }
 
 type ShardDocsState = {
-  documents: contentItemDocument[],
-  tree: (contentItemCategory | contentItemDocument |contentItemLink)[],
+  documents: documentItem[],
+  tree: (categoryItem | documentItem | linkItem)[],
   content: {
-    tree: (contentItemCategory | contentItemDocument |contentItemLink)[],
-    documents: contentItemDocument[]
+    tree: (categoryItem | documentItem | linkItem)[],
+    documents: documentItem[]
   }
 }
 
@@ -81,15 +81,15 @@ class ShardDocs extends React.Component<ShardDocsProps, ShardDocsState> {
 
   get prevPage() {
     const location = this.props.routerProps.location;
-    const prevIndex = this.state.documents.findIndex((document: contentItemDocument) => document.path === location?.pathname) - 1;
-    const prevPage = this.state.documents[prevIndex] as contentItemDocument | undefined;
+    const prevIndex = this.state.documents.findIndex((document: documentItem) => document.path === location?.pathname) - 1;
+    const prevPage = this.state.documents[prevIndex] as documentItem | undefined;
     return prevPage && { name: prevPage.name, path: prevPage.path };
   }
 
   get nextPage() {
     const location = this.props.routerProps.location;
-    const nextIndex = this.state.documents.findIndex((document: contentItemDocument) => document.path === location?.pathname) + 1;
-    const nextPage = this.state.documents[nextIndex] as contentItemDocument | undefined;
+    const nextIndex = this.state.documents.findIndex((document: documentItem) => document.path === location?.pathname) + 1;
+    const nextPage = this.state.documents[nextIndex] as documentItem | undefined;
     return nextPage && { name: nextPage.name, path: nextPage.path };
   }
 
@@ -112,7 +112,7 @@ class ShardDocs extends React.Component<ShardDocsProps, ShardDocsState> {
 type indexProps = {
   title?: string,
   description?: string,
-  content?: (baseContentItem)[],
+  content?: content,
   basePath?: string,
   hideBuiltWithShardDocs?: boolean,
   useBrowserRouter?: boolean

@@ -6,7 +6,7 @@ import { PagePropType, DocumentPropType } from "../prop-types";
 import "./ShardDocsMain.scss";
 
 type MainProps = {
-  documents: contentItemDocument[],
+  documents: documentItem[],
   prevPage?: {
     name: string,
     path: string

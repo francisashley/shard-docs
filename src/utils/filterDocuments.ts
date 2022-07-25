@@ -5,6 +5,6 @@
  * @return {array}
  */
 
-export default function filterDocuments(documents: contentItemDocument[] = [], path = "") {
+export default function filterDocuments(documents: documentItem[] = [], path = "") {
   return documents.filter(document => document.path.startsWith(path));
 }

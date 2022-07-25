@@ -11,7 +11,7 @@ type SidebarProps = {
   title?: string,
   description?: string,
   basePath?: string,
-  tree: contentItemCategory[],
+  tree: categoryItem[],
   hideBuiltWithShardDocs: boolean,
 }
 

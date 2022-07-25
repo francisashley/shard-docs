@@ -21,10 +21,10 @@ const documents = [
       </>
     )
   }
-] as contentItemDocument[];
+] as documentItem[];
 
 describe("<Pagination />", () => {
-  const mountMain = (options: { prevPage?: paginationPage, nextPage?: paginationPage, documents?: contentItemDocument[] }) => {
+  const mountMain = (options: { prevPage?: paginationPage, nextPage?: paginationPage, documents?: documentItem[] }) => {
     const { prevPage, nextPage, documents = []} = options
     return mount(
       <MemoryRouter>

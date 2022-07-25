@@ -3,7 +3,7 @@ import ExternalIcon from "./icons/LinkExternal";
 import { LinkPropType } from "../prop-types";
 
 type ExternalLinkNodeProps = {
-  node: contentItemLink
+  node: linkItem;
 }
 
 const ExternalLinkNode = (props: ExternalLinkNodeProps) => (

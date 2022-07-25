@@ -8,7 +8,7 @@ import TriangleArrowRight from "./icons/TriangleArrowRight";
 import sessionDB from "../utils/sessionDB";
 
 type CategoryNodeProps = {
-  node: contentItemCategory,
+  node: categoryItem,
   onNavigate: () => void
 }
 type CategoryNodeState = {

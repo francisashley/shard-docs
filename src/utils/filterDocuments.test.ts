@@ -26,7 +26,7 @@ const documents = [
 ];
 
 test("filterDocuments() filters correctly", () => {
-  expect(filterDocuments(documents as contentItemDocument[])).toStrictEqual([
+  expect(filterDocuments(documents as documentItem[])).toStrictEqual([
     {
       name: "Doc A",
       type: "document",
@@ -50,7 +50,7 @@ test("filterDocuments() filters correctly", () => {
       isEmpty: true
     }
   ])
-  expect(filterDocuments(documents as contentItemDocument[], '/doc-a')).toStrictEqual([
+  expect(filterDocuments(documents as documentItem[], '/doc-a')).toStrictEqual([
     {
       name: "Doc A",
       type: "document",

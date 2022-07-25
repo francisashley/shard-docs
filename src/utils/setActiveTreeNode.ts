@@ -5,7 +5,7 @@
  * @return {array}
  */
 
-export default function setActiveTreeNode(tree: (contentItemCategory | contentItemDocument | contentItemLink)[] = [], currentPath = "") {
+export default function setActiveTreeNode(tree: (categoryItem | documentItem | linkItem)[] = [], currentPath = "") {
   return tree.map(node => {
     if (node.type === "category") {
       node.items = setActiveTreeNode(node.items, currentPath);

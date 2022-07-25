@@ -1,36 +1,23 @@
-type paginationPage = {
-  name: string,
-  path: string
-}
-
-type tree = (contentItemCategory | contentItemDocument | contentItemLink)[]
-
-interface baseContentItem {
+type content = {
   type: 'category' | 'document' | 'link';
   name: string;
   url?: string;
   external?: boolean;
-  items?: baseContentItem[]
+  items?: contentItem[]
   document?: unknown;
-}
+}[]
 
-type breadcrumb = {
-  path: string,
-  name: string,
-  isActive: boolean
-}
-
-type contentItemCategory = {
+type categoryItem = {
   type: 'category';
   name: string | null;
   path: string;
-  items: (contentItemCategory | contentItemDocument | contentItemLink)[];
+  items: (categoryItem | documentItem | linkItem)[];
   isEmpty: boolean,
   isActive: boolean,
   depth: number
 }
 
-type contentItemDocument = {
+type documentItem = {
   type: 'document';
   name: string;
   path: string;
@@ -41,10 +28,23 @@ type contentItemDocument = {
   depth: number
 }
 
-type contentItemLink = {
+type linkItem = {
   type: 'link';
   name: string;
   url: string;
   external: boolean;
   depth: number
+}
+
+type tree = (categoryItem | documentItem | linkItem)[]
+
+type breadcrumb = {
+  path: string,
+  name: string,
+  isActive: boolean
+}
+
+type paginationPage = {
+  name: string,
+  path: string
 }

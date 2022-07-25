@@ -6,7 +6,7 @@ import { DocumentPropType } from "../prop-types";
 import FileIcon from "./icons/FileIcon";
 
 type DocumentNodeProps = {
-  node: contentItemDocument;
+  node: documentItem;
   onNavigate: () => void;
 }
 

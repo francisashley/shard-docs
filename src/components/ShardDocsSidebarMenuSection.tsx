@@ -9,7 +9,7 @@ import "./ShardDocsSidebarMenuSection.scss";
 
 type MenuSectionProps = {
   index: number,
-  node: contentItemCategory,
+  node: categoryItem,
   onNavigate: () => void,
 }
 type MenuSectionState = {

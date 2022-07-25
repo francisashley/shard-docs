@@ -16,7 +16,7 @@ const document = {
 };
 
 test("setActiveCrumb() sets active crumb correctly", () => {
-  expect(setActiveCrumb(document as contentItemDocument)).toStrictEqual({
+  expect(setActiveCrumb(document as documentItem)).toStrictEqual({
     name: "Hello universe",
     type: "document",
     path: "/hello-universe",
@@ -31,7 +31,7 @@ test("setActiveCrumb() sets active crumb correctly", () => {
     isEmpty: true
   });
 
-  expect(setActiveCrumb(document as contentItemDocument, "/hello")).toStrictEqual({
+  expect(setActiveCrumb(document as documentItem, "/hello")).toStrictEqual({
     name: "Hello universe",
     type: "document",
     path: "/hello-universe",
@@ -46,7 +46,7 @@ test("setActiveCrumb() sets active crumb correctly", () => {
     isEmpty: true
   });
 
-  expect(setActiveCrumb(document as contentItemDocument, "/hello/planet")).toStrictEqual({
+  expect(setActiveCrumb(document as documentItem, "/hello/planet")).toStrictEqual({
     name: "Hello universe",
     type: "document",
     path: "/hello-universe",
@@ -61,7 +61,7 @@ test("setActiveCrumb() sets active crumb correctly", () => {
     isEmpty: true
   });
 
-  expect(setActiveCrumb(document as contentItemDocument, "/hello/planet/galaxy")).toStrictEqual({
+  expect(setActiveCrumb(document as documentItem, "/hello/planet/galaxy")).toStrictEqual({
     name: "Hello universe",
     type: "document",
     path: "/hello-universe",
@@ -76,7 +76,7 @@ test("setActiveCrumb() sets active crumb correctly", () => {
     isEmpty: true
   });
 
-  expect(setActiveCrumb(document as contentItemDocument, "/hello/planet/galaxy/universe")).toStrictEqual({
+  expect(setActiveCrumb(document as documentItem, "/hello/planet/galaxy/universe")).toStrictEqual({
     name: "Hello universe",
     type: "document",
     path: "/hello-universe",

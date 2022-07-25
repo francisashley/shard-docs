@@ -4,7 +4,7 @@ import kebabCase from "lodash/kebabCase";
 const getSlug = (name: string) => slugify(kebabCase(name), { lower: true });
 const removeDuplicateSlashes = (path: string) => path.replace(/\/+$/, "").replace(/\/+/g, "/");
 
-function normaliseContent(items: baseContentItem[]): (contentItemCategory | contentItemDocument | contentItemLink)[] {
+function normaliseContent(items: content): (categoryItem | documentItem | linkItem)[] {
   const itemTemplates = {
     category: { type: 'category', name: '', path: '', items: [], isEmpty: true, isActive: false, depth: 0 },
     document: { type: 'document', name: '', path: '', breadcrumbs: [], document: null, isEmpty: true, isActive: false, depth: 0 },
@@ -20,18 +20,18 @@ function normaliseContent(items: baseContentItem[]): (contentItemCategory | cont
 
     if (item.type === "category") {
       const items = normaliseContent(item.items || []);
-      output.push({ ...outputTemplate, name: item.name, items } as contentItemCategory);
+      output.push({ ...outputTemplate, name: item.name, items } as categoryItem);
     } else if (item.type === "document") {
-      output.push({ ...outputTemplate, name: item.name, document: item.document } as contentItemDocument);
+      output.push({ ...outputTemplate, name: item.name, document: item.document } as documentItem);
     } else if (item.type === "link") {
-      output.push({ ...outputTemplate, name: item.name, url: item.url, external: item.external } as contentItemLink);
+      output.push({ ...outputTemplate, name: item.name, url: item.url, external: item.external } as linkItem);
     }
   }
 
   return output;
 }
 
- function addPaths(items: (contentItemCategory | contentItemDocument | contentItemLink)[], basePath = ''): (contentItemCategory | contentItemDocument | contentItemLink)[] {
+ function addPaths(items: (categoryItem | documentItem | linkItem)[], basePath = ''): (categoryItem | documentItem | linkItem)[] {
     const output = []
     for (const item of items) {
       const path = removeDuplicateSlashes(`${basePath}/${getSlug(item.name || '')}`);
@@ -51,7 +51,7 @@ function normaliseContent(items: baseContentItem[]): (contentItemCategory | cont
  * @param  {array} items Expects result of parseContent/ shapeItems().
  * @return {array}
  */
-function addBreadcrumbs(items: (contentItemCategory | contentItemDocument | contentItemLink)[], breadcrumbs: breadcrumb[]): (contentItemCategory | contentItemDocument | contentItemLink)[] {
+function addBreadcrumbs(items: (categoryItem | documentItem | linkItem)[], breadcrumbs: breadcrumb[]): (categoryItem | documentItem | linkItem)[] {
   const output = [];
   for (const item of items) {
     if (item.type === "category") {
@@ -76,7 +76,7 @@ function addBreadcrumbs(items: (contentItemCategory | contentItemDocument | cont
  * @param  {array} items Expects result of parseContent/combineTopLevelAdjacentDocuments().
  * @return {array}
  */
- function shapeItems(items: (contentItemCategory | contentItemDocument | contentItemLink)[]): (contentItemCategory | contentItemDocument | contentItemLink)[] {
+ function shapeItems(items: (categoryItem | documentItem | linkItem)[]): (categoryItem | documentItem | linkItem)[] {
   const output = [];
   for (const item of items) {
     if (item.type === "category") {
@@ -100,17 +100,17 @@ function addBreadcrumbs(items: (contentItemCategory | contentItemDocument | cont
  * @param  {array} items Requires types to have been added to array with addTypes().
  * @return {array}
  */
- function combineTopLevelAdjacentItems(items: (contentItemCategory | contentItemDocument | contentItemLink)[]): (contentItemCategory | contentItemDocument | contentItemLink)[] {
+ function combineTopLevelAdjacentItems(items: (categoryItem | documentItem | linkItem)[]): (categoryItem | documentItem | linkItem)[] {
   const preparedItems = items.map(item => {
     if (item.type !== "category") {
-      return { name: null, items: [item], type: "category"} as contentItemCategory;
+      return { name: null, items: [item], type: "category"} as categoryItem;
     }
     return item
   });
 
   const output = [];
   for (const item of preparedItems) {
-    const lastItem = output[output.length - 1] as contentItemCategory | contentItemDocument | contentItemLink | undefined;
+    const lastItem = output[output.length - 1] as categoryItem | documentItem | linkItem | undefined;
     if (lastItem?.type === 'category' && !lastItem.name && item.type === 'category' && !item.name) {
       lastItem.items = [...lastItem.items, ...item.items];
       output[output.length - 1] = lastItem;
@@ -127,7 +127,7 @@ function addBreadcrumbs(items: (contentItemCategory | contentItemDocument | cont
  * @param  {array} items Expects result of parseContent/ shapeItems().
  * @return {array}
  */
-function addDepth(items: (contentItemCategory | contentItemDocument | contentItemLink)[], depth = 0): (contentItemCategory | contentItemDocument | contentItemLink)[] {
+function addDepth(items: (categoryItem | documentItem | linkItem)[], depth = 0): (categoryItem | documentItem | linkItem)[] {
   const output = [];
   for (const item of items) {
     if (item.type === "category") {
@@ -146,7 +146,7 @@ function addDepth(items: (contentItemCategory | contentItemDocument | contentIte
  * @param  {array} source Expects source array to have been fed through addTypes..
  * @return {array} returns all documents in an array
  */
-function flattenDocuments(items: (contentItemCategory | contentItemDocument | contentItemLink)[], accumulator: (contentItemDocument)[] = []) {
+function flattenDocuments(items: (categoryItem | documentItem | linkItem)[], accumulator: (documentItem)[] = []) {
   for (const item of items) {
     if (item.type === "category") {
       accumulator = flattenDocuments((item.items || []), accumulator);
@@ -157,7 +157,7 @@ function flattenDocuments(items: (contentItemCategory | contentItemDocument | co
   return accumulator;
 }
 
-function parseContent(tree: baseContentItem[], basePath = "/") {
+function parseContent(tree: content, basePath = "/") {
   let normalisedTree = normaliseContent(tree);
   normalisedTree = addPaths(normalisedTree, basePath);
   normalisedTree = addBreadcrumbs(normalisedTree, [{ path: basePath, name: "~", isActive: false }]);

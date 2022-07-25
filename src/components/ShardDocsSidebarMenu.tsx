@@ -6,7 +6,7 @@ import "./ShardDocsSidebarMenu.scss";
 
 type MenuProps = {
   showOnMobile: boolean,
-  tree: contentItemCategory[],
+  tree: categoryItem[],
   onNavigate: () => void,
 }
 

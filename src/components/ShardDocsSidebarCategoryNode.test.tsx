@@ -16,7 +16,7 @@ test("<CategoryNode /> renders correctly", () => {
   const onNavigateMock = jest.fn();
   const wrapper = mount(
     <MemoryRouter>
-      <CategoryNode node={tree[0] as contentItemCategory} />
+      <CategoryNode node={tree[0] as categoryItem} />
     </MemoryRouter>
   );
 
