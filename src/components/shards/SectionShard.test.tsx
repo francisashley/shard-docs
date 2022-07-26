@@ -1,57 +1,40 @@
 import React from "react";
-import { mount } from "enzyme";
+import { render, screen } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 import SectionShard from "./SectionShard";
 
 const title = "Hello world"
 
-describe("<SectionShard />", () => {
-  it("renders with default props", () => {
-    const wrapper = mount(<SectionShard />)
 
-    expect(wrapper.find('SectionShard').exists()).toBe(true)
-  });
+test("<SectionShard /> renders with default props", () => {
+  render(<SectionShard />)
+  expect(screen).toBeTruthy()
+});
 
-  it("renders title", () => {
-    const wrapper = mount(<SectionShard title={title} />)
+test("<SectionShard /> renders title", () => {
+  render(<SectionShard title={title} />)
+  expect(screen.getByRole('heading')).toHaveTextContent('Hello world')
+});
 
-    expect(wrapper.find('.shard-docs-section-shard-title a').text()).toBe('Hello world')
-  });
+test("<SectionShard /> renders body", () => {
+  render(<SectionShard><p data-testid="body">Hi</p></SectionShard>)
+  expect(screen.getByTestId('body')).toHaveTextContent('Hi')
+});
 
-  it("renders body", () => {
-    const wrapper = mount(
-      <SectionShard>
-        <h1>Hi</h1>
-      </SectionShard>
-    )
+test("<SectionShard /> can toggle body", async () => {
+  const user = userEvent.setup();
+  render(<SectionShard title={title}><p data-testid="av">Hi</p></SectionShard>);
+  expect(screen.queryByTestId('av')).toBeInTheDocument()
+  await user.click(screen.getByRole('link'))
+  expect(screen.queryByTestId('av')).not.toBeInTheDocument()
+});
 
-    expect(wrapper.find('.shard-docs-section-shard h1').text()).toBe('Hi')
-  });
-
-  it("can toggle body", () => {
-    const wrapper = mount(
-      <SectionShard title={title}>
-        <h1>Hi</h1>
-      </SectionShard>
-    );
-
-    expect(wrapper.find('.shard-docs-section-shard h1').exists()).toBe(true)
-
-    wrapper.find('.shard-docs-section-shard-title a').simulate('click')
-
-    expect(wrapper.find('.shard-docs-section-shard h1').exists()).toBe(false)
-  });
-
-  it("remembers toggle state", () => {
-    const wrapper = mount(
-      <SectionShard title={title} persistState="abc">
-        <h1>Hi</h1>
-      </SectionShard>
-    );
-
-    expect(localStorage.getItem('fa-repo-section-shard-state-abc')).toBe(null);
-    wrapper.find('.shard-docs-section-shard-title a').simulate('click');
-    expect(JSON.parse(localStorage.getItem('fa-repo-section-shard-state-abc') as string)).toBe(false);
-    wrapper.find('.shard-docs-section-shard-title a').simulate('click');
-    expect(JSON.parse(localStorage.getItem('fa-repo-section-shard-state-abc') as string)).toBe(true);
-  });
+test("<SectionShard /> remembers toggle state", async () => {
+  const user = userEvent.setup();
+  render(<SectionShard title={title} persistState="abc"><p>Hi</p></SectionShard>);
+  expect(localStorage.getItem('fa-repo-section-shard-state-abc')).toBe(null);
+  await user.click(screen.getByRole('link'))
+  expect(JSON.parse(localStorage.getItem('fa-repo-section-shard-state-abc') as string)).toBe(false);
+  await user.click(screen.getByRole('link'))
+  expect(JSON.parse(localStorage.getItem('fa-repo-section-shard-state-abc') as string)).toBe(true);
 });
