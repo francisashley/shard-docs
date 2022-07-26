@@ -1,6 +1,5 @@
 import PropTypes from "prop-types";
 
-// Content data
 export const ContentPropType = PropTypes.arrayOf(
   PropTypes.oneOfType([
     PropTypes.shape({
@@ -22,7 +21,6 @@ export const ContentPropType = PropTypes.arrayOf(
   ])
 );
 
-// Breadcrumbs data
 export const BreadcrumbPropType = PropTypes.shape({
   name: PropTypes.string,
   path: PropTypes.string,
@@ -30,13 +28,11 @@ export const BreadcrumbPropType = PropTypes.shape({
 });
 export const BreadcrumbsPropType = PropTypes.arrayOf(BreadcrumbPropType);
 
-// Pagination data
 export const PagePropType = PropTypes.shape({
   name: PropTypes.string,
   path: PropTypes.string
 });
 
-// Tree structure leaves data
 export const LinkItemPropType = PropTypes.shape({
   type: PropTypes.oneOf(["link"]),
   name: PropTypes.string,
@@ -54,7 +50,6 @@ export const DocumentItemPropType = PropTypes.shape({
   document: PropTypes.element
 });
 
-// Tree structure (problematic) data
 export const CategoryItemPropShape = {
   type: PropTypes.oneOf(["category"]),
   path: PropTypes.string,
