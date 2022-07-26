@@ -4,7 +4,7 @@ import SidebarHeader from "./ShardDocsSidebarHeader";
 import SidebarDescription from "./ShardDocsSidebarDescription";
 import SidebarMenu from "./ShardDocsSidebarMenu";
 import BuiltWithShardDocs from "./ShardDocsSidebarBuiltWithShardDocs";
-import { TreePropType } from "../prop-types";
+import { ItemsPropType } from "../prop-types";
 import "./ShardDocsSidebar.scss";
 
 type SidebarProps = {
@@ -24,7 +24,7 @@ class Sidebar extends React.Component<SidebarProps,SidebarState> {
     title: PropTypes.string,
     description: PropTypes.string,
     basePath: PropTypes.string,
-    tree: TreePropType,
+    tree: ItemsPropType,
     hideBuiltWithShardDocs: PropTypes.bool
   };
 

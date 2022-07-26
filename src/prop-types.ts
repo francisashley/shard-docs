@@ -67,4 +67,4 @@ CategoryItemPropShape.items = PropTypes.arrayOf(
 
 export const CategoryItemPropType = PropTypes.shape(CategoryItemPropShape);
 
-export const TreePropType = PropTypes.arrayOf(PropTypes.oneOfType([DocumentItemPropType, LinkItemPropType, CategoryItemPropType]));
+export const ItemsPropType = PropTypes.arrayOf(PropTypes.oneOfType([DocumentItemPropType, LinkItemPropType, CategoryItemPropType]));

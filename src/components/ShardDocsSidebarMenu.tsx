@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { TreePropType } from "../prop-types";
+import { ItemsPropType } from "../prop-types";
 import MenuSection from "./ShardDocsSidebarMenuSection";
 import "./ShardDocsSidebarMenu.scss";
 
@@ -21,7 +21,7 @@ const Menu = (props: MenuProps) => {
 };
 
 Menu.propTypes = {
-  tree: TreePropType,
+  tree: ItemsPropType,
   showOnMobile: PropTypes.bool,
   onNavigate: PropTypes.func
 };

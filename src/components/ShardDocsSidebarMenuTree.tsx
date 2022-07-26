@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import DocumentItem from "./ShardDocsSidebarMenuDocument";
 import LinkItem from "./ShardDocsSidebarMenuLink";
 import CategoryItem from "./ShardDocsSidebarMenuCategory";
-import { TreePropType } from "../prop-types";
+import { ItemsPropType } from "../prop-types";
 import "./ShardDocsSidebarMenuTree.scss";
 
 type MenuTreeProps = {
@@ -28,7 +28,7 @@ const MenuTree = (props: MenuTreeProps) => {
 };
 
 MenuTree.propTypes = {
-  tree: TreePropType,
+  tree: ItemsPropType,
   onNavigate: PropTypes.func
 };
 
