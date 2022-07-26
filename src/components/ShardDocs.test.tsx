@@ -1,5 +1,4 @@
 import React from "react";
-import { MemoryRouter } from "react-router-dom";
 import { mount } from "enzyme";
 import ShardDocs from "./ShardDocs";
 
@@ -20,15 +19,13 @@ describe("<ShardDocs />", () => {
       useBrowserRouter?: boolean;
     };
     return mount(
-      <MemoryRouter>
-        <ShardDocs
-          title={title}
-          description={description}
-          content={content}
-          hideBuiltWithShardDocs={hideBuiltWithShardDocs}
-          useBrowserRouter={useBrowserRouter}
-        />
-      </MemoryRouter>
+      <ShardDocs
+        title={title}
+        description={description}
+        content={content}
+        hideBuiltWithShardDocs={hideBuiltWithShardDocs}
+        useBrowserRouter={useBrowserRouter}
+      />
     )
   };
 
