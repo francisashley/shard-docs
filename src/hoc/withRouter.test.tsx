@@ -3,7 +3,7 @@ import { mount } from "enzyme";
 import withRouter from "./withRouter";
 import ShardDocs, { ShardDocsProps } from "../components/ShardDocs";
 
-test("withRouter: renders with default props", () => {
+test("withRouter() renders with default props", () => {
   const App = withRouter<ShardDocsProps>(ShardDocs);
   const wrapper = mount(<App />);
 
