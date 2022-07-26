@@ -3,11 +3,11 @@ import { createRoot } from "react-dom/client";
 
 import { MDXProvider } from "@mdx-js/react";
 
-import ShardDocs, { CodeBlockRenderer } from "@fa-repo/shard-docs";
+import ShardDocs, { CodeBlockRenderer } from "../dist/index";
 
-import "@fa-repo/shard-docs/dist/index.css";
-import "@fa-repo/shard-docs/dist/shards/SectionShard.css";
-import "@fa-repo/shard-docs/dist/shards/CodeSampleShard.css";
+import "../dist/index.css";
+import "../dist/shards/SectionShard.css";
+import "../dist/shards/CodeSampleShard.css";
 
 // Documents
 import EssentialsGetStartedDocument from "./content/1-essentials-get-started.mdx";

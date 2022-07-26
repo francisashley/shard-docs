@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
-import DocumentNode from "./ShardDocsSidebarDocumentNode";
-import LinkNode from "./ShardDocsSidebarLinkNode";
-import CategoryNode from "./ShardDocsSidebarCategoryNode";
+import DocumentItem from "./ShardDocsSidebarMenuDocument";
+import LinkItem from "./ShardDocsSidebarMenuLink";
+import CategoryItem from "./ShardDocsSidebarMenuCategory";
 import { TreePropType } from "../prop-types";
 import "./ShardDocsSidebarMenuTree.scss";
 
@@ -16,11 +16,11 @@ const MenuTree = (props: MenuTreeProps) => {
     <>
       {props.tree.map((node, i) => {
         if (node.type === "document") {
-          return <DocumentNode key={i} node={node} onNavigate={props.onNavigate} />;
+          return <DocumentItem key={i} node={node} onNavigate={props.onNavigate} />;
         } else if (node.type === "link") {
-          return <LinkNode key={i} node={node} />;
+          return <LinkItem key={i} node={node} />;
         } else if (node.type === "category") {
-          return <CategoryNode key={i} node={node} onNavigate={props.onNavigate} />;
+          return <CategoryItem key={i} node={node} onNavigate={props.onNavigate} />;
         }
       })}
     </>

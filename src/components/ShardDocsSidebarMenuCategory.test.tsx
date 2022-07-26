@@ -1,7 +1,7 @@
 import React from "react";
 import { mount } from "enzyme";
 import { MemoryRouter } from "react-router-dom";
-import CategoryNode from "./ShardDocsSidebarCategoryNode";
+import CategoryNode from "./ShardDocsSidebarMenuCategory";
 import contentTool from "../utils/contentTool";
 
 const { tree } = contentTool.parseContent([
