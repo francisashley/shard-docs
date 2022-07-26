@@ -1,5 +1,5 @@
 import React from "react";
-import ExternalIcon from "./icons/LinkExternal";
+import ExternalLinkIcon from "./icons/ExternalLinkIcon";
 import { LinkItemPropType } from "../prop-types";
 
 type LinkNodeProps = {
@@ -11,7 +11,7 @@ const LinkNode = (props: LinkNodeProps) => {
   return (
     <li className="shard-docs-menu-external">
       <a href={props.node.url} target={openInNewTab ? "_blank" : "_self"} style={{ paddingLeft: props.node.depth * 15 + "px" }}>
-        <ExternalIcon />
+        <ExternalLinkIcon />
         {props.node.name}
       </a>
     </li>

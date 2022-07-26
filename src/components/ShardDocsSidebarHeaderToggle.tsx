@@ -1,6 +1,5 @@
 import React from "react";
-import PropTypes from "prop-types";
-import MenuIcon from "boxicons/svg/regular/bx-menu.svg";
+import MenuIcon from "./icons/MenuIcon";
 import "./ShardDocsSidebarHeaderToggle.scss";
 
 type HeaderToggleProps = {
