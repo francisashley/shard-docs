@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import { HashRouter, BrowserRouter, Route, RouteProps } from "react-router-dom";
 import { setActiveTreeNode, filterDocuments, setActiveCrumb } from "../utils";
+import withRouter from "../hoc/withRouter";
 
 import ShardDocsMain from "./ShardDocsMain";
 import ShardDocsSidebar from "./ShardDocsSidebar";
@@ -12,119 +12,86 @@ import { ContentPropType } from "../prop-types";
 import "../assets/sanitize.css";
 import "./ShardDocs.scss";
 
-type ShardDocsProps = {
-  title: string,
-  description: string,
-  content: content,
-  basePath: string,
-  hideBuiltWithShardDocs: boolean,
-  useBrowserRouter: boolean,
-  routerProps: RouteProps
-}
-
-type ShardDocsState = {
-  currentPath: string,
-  documentsData: documentItem[],
-  treeData: item[],
-}
-
-class ShardDocs extends React.Component<ShardDocsProps, ShardDocsState> {
-  static propTypes = {
-    title: PropTypes.string,
-    description: PropTypes.string,
-    content: ContentPropType,
-    basePath: PropTypes.string,
-    hideBuiltWithShardDocs: PropTypes.bool,
-    useBrowserRouter: PropTypes.bool
-  };
-
-  static defaultProps = {
-    title: "",
-    description: "",
-    content: [],
-    basePath: "/",
-    hideBuiltWithShardDocs: false,
-    useBrowserRouter: false
-  };
-
-  state = {
-    currentPath: this.props.routerProps.location?.pathname || '',
-    treeData: [],
-    documentsData: []
-  };
-
-  componentDidMount() {
-    const currentPath = this.props.routerProps.location?.pathname || '';
-    const { tree, documents } = contentTool.parseContent(this.props.content, this.props.basePath)
-
-    this.setState({
-      currentPath,
-      treeData: tree,
-      documentsData: documents,
-    });
-  }
-
-  componentDidUpdate(prevProps: any) {
-    const currentPath = this.props.routerProps.location?.pathname || '';
-
-    if (currentPath !== prevProps.location.pathname) {
-      this.setState({ currentPath });
-      window.scrollTo(0, 0);
-    }
-  }
-
-  get getDocuments() {
-    return filterDocuments(this.state.documentsData, this.state.currentPath)
-      .map(document => setActiveCrumb(document, this.state.currentPath))
-  }
-
-  get getTreeData() {
-    return setActiveTreeNode(this.state.treeData, this.state.currentPath) as categoryItem[]
-  }
-
-  get prevPage() {
-    const location = this.props.routerProps.location;
-    const prevIndex = this.getDocuments.findIndex((document: documentItem) => document.path === location?.pathname) - 1;
-    const prevPage = this.getDocuments[prevIndex] as documentItem | undefined;
-    return prevPage && { name: prevPage.name, path: prevPage.path };
-  }
-
-  get nextPage() {
-    const location = this.props.routerProps.location;
-    const nextIndex = this.getDocuments.findIndex((document: documentItem) => document.path === location?.pathname) + 1;
-    const nextPage = this.getDocuments[nextIndex] as documentItem | undefined;
-    return nextPage && { name: nextPage.name, path: nextPage.path };
-  }
-
-  render() {
-    return (
-      <div className="shard-docs">
-        <ShardDocsSidebar
-          title={this.props.title}
-          description={this.props.description}
-          basePath={this.props.basePath}
-          tree={this.getTreeData}
-          hideBuiltWithShardDocs={this.props.hideBuiltWithShardDocs}
-        />
-        <ShardDocsMain documents={this.getDocuments} prevPage={this.prevPage} nextPage={this.nextPage} />
-      </div>
-    );
-  }
-}
-
-type indexProps = {
+export type ShardDocsProps = {
   title?: string,
   description?: string,
   content?: content,
   basePath?: string,
   hideBuiltWithShardDocs?: boolean,
-  useBrowserRouter?: boolean
+  useBrowserRouter?: boolean,
+  currentPath?: string
 }
-export default (props: indexProps) => {
-  const Router = (props.useBrowserRouter ? BrowserRouter : HashRouter) as React.ElementType;
+
+const ShardDocs = (props: ShardDocsProps) => {
+  const [basePath] = useState(props.basePath);
+  const [currentPath, setCurrentPath] = useState(props.currentPath);
+  const [content, setContent] = useState({ tree: [], documents: [] } as { tree: item[], documents: documentItem[] });
+  const [menu, setMenu] = useState([] as item[]);
+  const [documents, setDocuments] = useState([] as documentItem[]);
+  const [prevPage, setPrevPage] = useState(null as documentItem | null);
+  const [nextPage, setNextPage] = useState(null as documentItem | null);
+
+  useEffect(() => {
+    const content = contentTool.parseContent(props.content || [], basePath)
+    setContent(content)
+    setMenu(content.tree);
+    setDocuments(content.documents);
+  }, []);
+
+  useEffect(() => {
+    const prevPath = currentPath;
+
+    if (props.currentPath !== prevPath) {
+      setCurrentPath(props.currentPath);
+
+      const currentDocuments = filterDocuments(content.documents, props.currentPath).map(document => setActiveCrumb(document, props.currentPath));
+      const currentActiveTreeNode = setActiveTreeNode(content.tree, props.currentPath) as categoryItem[]
+
+      setDocuments(currentDocuments)
+      setMenu(currentActiveTreeNode)
+
+      const prevIndex = currentDocuments.findIndex((document: documentItem) => document.path === props.currentPath) - 1;
+      setPrevPage(currentDocuments[prevIndex] ? currentDocuments[prevIndex] : null);
+      
+      const nextIndex = currentDocuments.findIndex((document: documentItem) => document.path === props.currentPath) + 1;
+      setNextPage(currentDocuments[nextIndex] ? currentDocuments[nextIndex] : null);
+
+      window.scrollTo(0, 0);
+    }
+  }, [props.currentPath])
+
   return (
-    <Router>
-      <Route component={(routerProps: RouteProps) => <ShardDocs {...{ ...props, ...routerProps }} routerProps={routerProps} />} />
-    </Router>
+    <div className="shard-docs">
+      <ShardDocsSidebar
+        title={props.title}
+        description={props.description}
+        basePath={props.basePath}
+        tree={menu as categoryItem[]}
+        hideBuiltWithShardDocs={props.hideBuiltWithShardDocs}
+      />
+      <ShardDocsMain documents={documents} prevPage={prevPage as paginationPage} nextPage={nextPage as paginationPage} />
+    </div>
   );
+}
+
+ShardDocs.propTypes = {
+  title: PropTypes.string,
+  description: PropTypes.string,
+  content: ContentPropType,
+  basePath: PropTypes.string,
+  hideBuiltWithShardDocs: PropTypes.bool,
+  useBrowserRouter: PropTypes.bool,
+  currentPath: PropTypes.string,
 };
+
+ShardDocs.defaultProps = {
+  title: "",
+  description: "",
+  content: [],
+  basePath: "/",
+  hideBuiltWithShardDocs: false,
+  useBrowserRouter: false,
+  currentPath: ''
+};
+
+export default withRouter<ShardDocsProps>(ShardDocs);

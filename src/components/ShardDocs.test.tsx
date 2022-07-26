@@ -58,20 +58,11 @@ describe("<ShardDocs />", () => {
 
     // Renders documents
     expect(wrapper.find('Main Document').exists()).toBe(true);
-
-    // Uses HashRouter
-    expect(wrapper.find('HashRouter').exists()).toBe(true);
   });
 
   it("can hide sidebar footer", () => {
     const wrapper = mountShardDocs({ hideBuiltWithShardDocs: true });
 
     expect(wrapper.find('Sidebar .shard-docs-built-with-shard-docs').exists()).toBe(false);
-  });
-
-  it("can use BrowserRouter instead of HashRouter", () => {
-    const wrapper = mountShardDocs({ useBrowserRouter: true });
-
-    expect(wrapper.find('BrowserRouter').exists()).toBe(true);
   });
 });
