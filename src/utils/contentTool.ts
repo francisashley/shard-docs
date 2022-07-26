@@ -19,7 +19,7 @@ function normaliseContent(items: content): item[] {
     const outputTemplate = itemTemplates[item.type];
 
     if (item.type === "category") {
-      const items = normaliseContent(item.items || []);
+      const items = normaliseContent((item.items || []) as content);
       output.push({ ...outputTemplate, name: item.name, items } as categoryItem);
     } else if (item.type === "document") {
       output.push({ ...outputTemplate, name: item.name, document: item.document } as documentItem);

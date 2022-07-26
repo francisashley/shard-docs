@@ -3,7 +3,7 @@ type content = {
   name: string;
   url?: string;
   external?: boolean;
-  items?: item[]
+  items?: content
   document?: unknown;
 }[]
 
