@@ -1,22 +1,22 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { CategoryItemPropType } from "../prop-types";
-import MenuTree from "./ShardDocsSidebarMenuTree";
+import ShardDocsSidebarMenuTree from "./ShardDocsSidebarMenuTree";
 import BaseLink from "@fa-repo/base-react/dist/link";
 import TriangleArrowDown from "./icons/TriangleArrowDown";
 import TriangleArrowRight from "./icons/TriangleArrowRight";
 import sessionDB from "../utils/sessionDB";
 
-type CategoryNodeProps = {
+type props = {
   item: categoryItem,
   onNavigate: () => void
 }
-type CategoryNodeState = {
+type state = {
   sessionId: string,
   expanded: boolean
 }
 
-class CategoryNode extends React.Component<CategoryNodeProps, CategoryNodeState> {
+class ShardDocsSidebarMenuCategory extends React.Component<props, state> {
   static propTypes = {
     item: CategoryItemPropType,
     onNavigate: PropTypes.func
@@ -61,10 +61,10 @@ class CategoryNode extends React.Component<CategoryNodeProps, CategoryNodeState>
             </BaseLink>
           </li>
         )}
-        {this.state.expanded && <MenuTree items={item.items} onNavigate={onNavigate} />}
+        {this.state.expanded && <ShardDocsSidebarMenuTree items={item.items} onNavigate={onNavigate} />}
       </ul>
     );
   }
 }
 
-export default CategoryNode;
+export default ShardDocsSidebarMenuCategory;

@@ -5,10 +5,11 @@ import { NavLink } from "react-router-dom";
 import { BreadcrumbPropType } from "../prop-types";
 import "./ShardDocsMainBreadcrumbs.scss";
 
-type BreadcrumbProps = {
+type props = {
   breadcrumbs: breadcrumb[],
 }
-const Breadcrumbs = ({ breadcrumbs }: BreadcrumbProps) => (
+
+const ShardDocsMainBreadcrumbs = ({ breadcrumbs }: props) => (
   <nav className="shard-docs-breadcrumbs">
     <ol>
       {breadcrumbs.map(({ name, path, isActive }, i) => {
@@ -28,12 +29,12 @@ const Breadcrumbs = ({ breadcrumbs }: BreadcrumbProps) => (
   </nav>
 );
 
-Breadcrumbs.propTypes = {
+ShardDocsMainBreadcrumbs.propTypes = {
   breadcrumbs: PropTypes.arrayOf(BreadcrumbPropType).isRequired
 };
 
-Breadcrumbs.defaultProps = {
+ShardDocsMainBreadcrumbs.defaultProps = {
   breadcrumbs: []
 };
 
-export default Breadcrumbs;
+export default ShardDocsMainBreadcrumbs;

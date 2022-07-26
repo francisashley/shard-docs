@@ -2,11 +2,11 @@ import React from "react";
 import ExternalLinkIcon from "./icons/ExternalLinkIcon";
 import { LinkItemPropType } from "../prop-types";
 
-type LinkNodeProps = {
+type props = {
   item: linkItem;
 }
 
-const LinkNode = (props: LinkNodeProps) => {
+const ShardDocsSidebarMenuLink = (props: props) => {
   const openInNewTab = props.item.external === true;
   return (
     <li className="shard-docs-menu-external">
@@ -18,15 +18,15 @@ const LinkNode = (props: LinkNodeProps) => {
   )
 };
 
-LinkNode.propTypes = {
+ShardDocsSidebarMenuLink.propTypes = {
   item: LinkItemPropType
 };
 
-LinkNode.defaultProps = {
+ShardDocsSidebarMenuLink.defaultProps = {
   item: {
     name: "",
     url: ""
   }
 };
 
-export default LinkNode;
+export default ShardDocsSidebarMenuLink;

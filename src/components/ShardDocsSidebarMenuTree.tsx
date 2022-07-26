@@ -1,40 +1,40 @@
 import React from "react";
 import PropTypes from "prop-types";
-import DocumentItem from "./ShardDocsSidebarMenuDocument";
-import LinkItem from "./ShardDocsSidebarMenuLink";
-import CategoryItem from "./ShardDocsSidebarMenuCategory";
+import ShardDocsSidebarMenuDocument from "./ShardDocsSidebarMenuDocument";
+import ShardDocsSidebarMenuLink from "./ShardDocsSidebarMenuLink";
+import ShardDocsSidebarMenuCategory from "./ShardDocsSidebarMenuCategory";
 import { ItemsPropType } from "../prop-types";
 import "./ShardDocsSidebarMenuTree.scss";
 
-type MenuTreeProps = {
+type props = {
   items: item[],
   onNavigate: () => void
 }
 
-const MenuTree = (props: MenuTreeProps) => {
+const ShardDocsSidebarMenuTree = (props: props) => {
   return (
     <>
       {props.items.map((item, i) => {
         if (item.type === "document") {
-          return <DocumentItem key={i} item={item} onNavigate={props.onNavigate} />;
+          return <ShardDocsSidebarMenuDocument key={i} item={item} onNavigate={props.onNavigate} />;
         } else if (item.type === "link") {
-          return <LinkItem key={i} item={item} />;
+          return <ShardDocsSidebarMenuLink key={i} item={item} />;
         } else if (item.type === "category") {
-          return <CategoryItem key={i} item={item} onNavigate={props.onNavigate} />;
+          return <ShardDocsSidebarMenuCategory key={i} item={item} onNavigate={props.onNavigate} />;
         }
       })}
     </>
   );
 };
 
-MenuTree.propTypes = {
+ShardDocsSidebarMenuTree.propTypes = {
   items: ItemsPropType,
   onNavigate: PropTypes.func
 };
 
-MenuTree.defaultProps = {
+ShardDocsSidebarMenuTree.defaultProps = {
   items: [],
   onNavigate: () => {}
 };
 
-export default MenuTree;
+export default ShardDocsSidebarMenuTree;

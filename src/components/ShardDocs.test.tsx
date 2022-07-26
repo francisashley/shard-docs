@@ -39,29 +39,29 @@ test("<ShardDocs /> renders with props", () => {
   const wrapper = mountShardDocs({ title, description, content });
 
   // Renders sidebar
-  expect(wrapper.find('Sidebar').exists()).toBe(true);
+  expect(wrapper.find('ShardDocsSidebar').exists()).toBe(true);
 
   // Renders app title
-  expect(wrapper.find('Sidebar .shard-docs-header-title h2').text()).toBe(title);
+  expect(wrapper.find('ShardDocsSidebar .shard-docs-header-title h2').text()).toBe(title);
 
   // Renders app description
-  expect(wrapper.find('Sidebar .shard-docs-description').text()).toBe(description);
+  expect(wrapper.find('ShardDocsSidebar .shard-docs-description').text()).toBe(description);
 
   // Renders menu
-  expect(wrapper.find('Sidebar .shard-docs-menu ul li').exists()).toBe(true);
+  expect(wrapper.find('ShardDocsSidebar .shard-docs-menu ul li').exists()).toBe(true);
 
   // Renders sidebar footer
-  expect(wrapper.find('Sidebar .shard-docs-built-with-shard-docs').exists()).toBe(true);
+  expect(wrapper.find('ShardDocsSidebar .shard-docs-built-with-shard-docs').exists()).toBe(true);
 
   // Renders main
-  expect(wrapper.find('Main').exists()).toBe(true);
+  expect(wrapper.find('ShardDocsMain').exists()).toBe(true);
 
   // Renders documents
-  expect(wrapper.find('Main Document').exists()).toBe(true);
+  expect(wrapper.find('ShardDocsMain ShardDocsMainDocument').exists()).toBe(true);
 });
 
 test("<ShardDocs /> can hide sidebar footer", () => {
   const wrapper = mountShardDocs({ hideBuiltWithShardDocs: true });
 
-  expect(wrapper.find('Sidebar .shard-docs-built-with-shard-docs').exists()).toBe(false);
+  expect(wrapper.find('ShardDocsSidebar .shard-docs-built-with-shard-docs').exists()).toBe(false);
 });

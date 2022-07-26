@@ -1,33 +1,33 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Breadcrumbs from "./ShardDocsMainBreadcrumbs";
+import ShardDocsMainBreadcrumbs from "./ShardDocsMainBreadcrumbs";
 import { BreadcrumbPropType } from "../prop-types";
 
 import "../assets/github.css";
 import "./ShardDocsMainDocument.scss";
 import "../assets/prism-github.css";
 
-type DocumentProps = {
+type props = {
   document: string | React.ReactNode,
   breadcrumbs: breadcrumb[]
 }
-const Document = ({ document, breadcrumbs }: DocumentProps) => {
+const ShardDocsMainDocument = ({ document, breadcrumbs }: props) => {
   return (
     <article className="shard-docs-document">
-      <Breadcrumbs breadcrumbs={breadcrumbs} />
+      <ShardDocsMainBreadcrumbs breadcrumbs={breadcrumbs} />
       <div className="shard-docs-document-body markdown-body">{document}</div>
     </article>
   );
 };
 
-Document.propTypes = {
+ShardDocsMainDocument.propTypes = {
   breadcrumbs: PropTypes.arrayOf(BreadcrumbPropType).isRequired,
   document: PropTypes.element
 };
 
-Document.defaultProps = {
+ShardDocsMainDocument.defaultProps = {
   breadcrumbs: [],
   document: null
 };
 
-export default Document;
+export default ShardDocsMainDocument;

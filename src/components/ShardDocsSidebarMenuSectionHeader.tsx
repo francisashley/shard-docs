@@ -5,14 +5,14 @@ import ArrowRight from "./icons/ArrowRight";
 import BaseLink from "@fa-repo/base-react/dist/link";
 import "./ShardDocsSidebarMenuSectionHeader.scss";
 
-type MenuSectionHeaderProps = {
+type props = {
   title?: string,
   expanded?: boolean,
   onClick?: () => void,
   onToggle?: () => void
 }
 
-class MenuSectionHeader extends React.Component<MenuSectionHeaderProps> {
+class ShardDocsSidebarMenuSectionHeader extends React.Component<props> {
   static propTypes = {
     title: PropTypes.string,
     expanded: PropTypes.bool,
@@ -39,4 +39,4 @@ class MenuSectionHeader extends React.Component<MenuSectionHeaderProps> {
   }
 }
 
-export default MenuSectionHeader;
+export default ShardDocsSidebarMenuSectionHeader;

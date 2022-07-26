@@ -1,13 +1,13 @@
 import React from "react";
 import Highlight, { defaultProps, Language } from "prism-react-renderer";
 
-type CodeBlockRendererProps = {
+type props = {
   children: string;
   className?: string;
   language: Language;
 }
 
-export default (props: CodeBlockRendererProps) => {
+export default (props: props) => {
   const language = props.language || props.className?.replace(/language-/, "");
 
   return (

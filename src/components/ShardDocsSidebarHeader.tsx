@@ -1,36 +1,36 @@
 import React from "react";
 import PropTypes from "prop-types";
-import HeaderTitle from "./ShardDocsSidebarHeaderTitle";
-import HeaderToggle from "./ShardDocsSidebarHeaderToggle";
+import ShardDocsSidebarHeaderTitle from "./ShardDocsSidebarHeaderTitle";
+import ShardDocsSidebarHeaderToggle from "./ShardDocsSidebarHeaderToggle";
 import "./ShardDocsSidebarHeader.scss";
 
-type HeaderProps = {
+type props = {
   title:string,
   basePath:string,
   onToggleMenu: () => void;
 }
 
-const Header = ({ title, basePath, onToggleMenu, ...props }: HeaderProps) => {
+const ShardDocsSidebarHeader = ({ title, basePath, onToggleMenu, ...props }: props) => {
   return (
     <header className="shard-docs-header" {...props}>
-      {title && <HeaderTitle title={title} path={basePath} />}
-      <HeaderToggle onClick={onToggleMenu} />
+      {title && <ShardDocsSidebarHeaderTitle title={title} path={basePath} />}
+      <ShardDocsSidebarHeaderToggle onClick={onToggleMenu} />
     </header>
   );
 };
 
-Header.propTypes = {
+ShardDocsSidebarHeader.propTypes = {
   title: PropTypes.string,
   description: PropTypes.string,
   basePath: PropTypes.string,
   onToggleMenu: PropTypes.func
 };
 
-Header.defaultProps = {
+ShardDocsSidebarHeader.defaultProps = {
   title: "",
   description: "",
   basePath: "/",
   onToggleMenu: () => {}
 };
 
-export default Header;
+export default ShardDocsSidebarHeader;

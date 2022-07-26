@@ -1,7 +1,7 @@
 import React from "react";
 import { mount } from "enzyme";
 import { MemoryRouter } from "react-router-dom";
-import MenuTree from "./ShardDocsSidebarMenuTree";
+import ShardDocsSidebarMenuTree from "./ShardDocsSidebarMenuTree";
 import contentTool from "../utils/contentTool";
 
 const { items } = contentTool.parseContent([
@@ -23,42 +23,42 @@ const mountMenuList = ({ items } = {} as { items: item[]}) => {
   const onNavigate = jest.fn();
   const wrapper = mount(
     <MemoryRouter>
-      <MenuTree onNavigate={onNavigate} items={items} />
+      <ShardDocsSidebarMenuTree onNavigate={onNavigate} items={items} />
     </MemoryRouter>
   );
 
   return { wrapper, onNavigate }
 }
 
-test("<MenuTree /> renders with default props", () => {
+test("<ShardDocsSidebarMenuTree /> renders with default props", () => {
   const { wrapper } = mountMenuList();
 
   expect(wrapper.exists()).toBe(true);
 });
 
-test("<MenuTree /> renders with items data", () => {
+test("<ShardDocsSidebarMenuTree /> renders with items data", () => {
   const { wrapper } = mountMenuList({ items });
 
   // Renders discrete category
-  expect(wrapper.find('MenuTree > CategoryNode').at(0).find('li').length).toBe(3);
+  expect(wrapper.find('ShardDocsSidebarMenuTree > ShardDocsSidebarMenuCategory').at(0).find('li').length).toBe(3);
 
   // Renders category
-  expect(wrapper.find('MenuTree > CategoryNode').at(1).find('a').first().text()).toBe('Category');
-  expect(wrapper.find('MenuTree > CategoryNode').at(1).find('a').length).toBe(3);
+  expect(wrapper.find('ShardDocsSidebarMenuTree > ShardDocsSidebarMenuCategory').at(1).find('a').first().text()).toBe('Category');
+  expect(wrapper.find('ShardDocsSidebarMenuTree > ShardDocsSidebarMenuCategory').at(1).find('a').length).toBe(3);
 
   // Renders external link
-  expect(wrapper.find('MenuTree > CategoryNode').at(2).find('li a').props().href).toBe('http://github.com');
-  expect(wrapper.find('MenuTree > CategoryNode').at(2).find('li a').text()).toBe('Github');
+  expect(wrapper.find('ShardDocsSidebarMenuTree > ShardDocsSidebarMenuCategory').at(2).find('li a').props().href).toBe('http://github.com');
+  expect(wrapper.find('ShardDocsSidebarMenuTree > ShardDocsSidebarMenuCategory').at(2).find('li a').text()).toBe('Github');
 
   // Renders document
-  expect(wrapper.find('MenuTree > CategoryNode').at(0).find('li a').first().text()).toBe('Doc A');
-  expect(wrapper.find('MenuTree > CategoryNode').at(0).find('li a').first().props().href).toBe('/doc-a');
+  expect(wrapper.find('ShardDocsSidebarMenuTree > ShardDocsSidebarMenuCategory').at(0).find('li a').first().text()).toBe('Doc A');
+  expect(wrapper.find('ShardDocsSidebarMenuTree > ShardDocsSidebarMenuCategory').at(0).find('li a').first().props().href).toBe('/doc-a');
 });
 
 test("<MenuTree /> calls onNavigate", () => {
   const { wrapper, onNavigate } = mountMenuList({ items });
 
-  wrapper.find('MenuTree ul li a').first().simulate('click');
+  wrapper.find('ShardDocsSidebarMenuTree ul li a').first().simulate('click');
 
   expect(onNavigate.mock.calls.length).toBe(1)
 });

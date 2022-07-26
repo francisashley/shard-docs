@@ -31,17 +31,17 @@ test("<MenuSection /> renders first index correctly", () => {
   );
 
   // first section is open by default
-  expect(wrapper.find('MenuSectionHeader').exists()).toBe(true)
-  expect(wrapper.find('MenuTree').exists()).toBe(true)
+  expect(wrapper.find('ShardDocsSidebarMenuSectionHeader').exists()).toBe(true)
+  expect(wrapper.find('ShardDocsSidebarMenuTree').exists()).toBe(true)
 
   // toggle closed, toggle open, toggle closed
-  wrapper.find('MenuSectionHeader a').simulate('click')
-  expect(wrapper.find('MenuTree').exists()).toBe(false)
-  wrapper.find('MenuSectionHeader a').simulate('click')
-  expect(wrapper.find('MenuTree').exists()).toBe(true)
+  wrapper.find('ShardDocsSidebarMenuSectionHeader a').simulate('click')
+  expect(wrapper.find('ShardDocsSidebarMenuTree').exists()).toBe(false)
+  wrapper.find('ShardDocsSidebarMenuSectionHeader a').simulate('click')
+  expect(wrapper.find('ShardDocsSidebarMenuTree').exists()).toBe(true)
 
   // calls onNavigate
-  wrapper.find('MenuTree DocumentNode a').first().simulate('click')
+  wrapper.find('ShardDocsSidebarMenuTree ShardDocsSidebarMenuDocument a').first().simulate('click')
   expect(onNavigateMock.mock.calls.length).toBe(1)
 });
 
@@ -53,8 +53,8 @@ test("<MenuSection /> render indexes after first index correctly", () => {
   );
 
   // second section section is closed by default
-  expect(wrapper.find('MenuSectionHeader').exists()).toBe(true)
-  expect(wrapper.find('MenuTree').exists()).toBe(false)
+  expect(wrapper.find('ShardDocsSidebarMenuSectionHeader').exists()).toBe(true)
+  expect(wrapper.find('ShardDocsSidebarMenuTree').exists()).toBe(false)
 });
 
 test("<MenuSection /> renders without title correctly", () => {
@@ -64,7 +64,7 @@ test("<MenuSection /> renders without title correctly", () => {
     </MemoryRouter>
   );
 
-  expect(wrapper.find('MenuSectionHeader').exists()).toBe(false)
-  expect(wrapper.find('MenuTree').exists()).toBe(true)
+  expect(wrapper.find('ShardDocsSidebarMenuSectionHeader').exists()).toBe(false)
+  expect(wrapper.find('ShardDocsSidebarMenuTree').exists()).toBe(true)
 });
 

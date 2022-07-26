@@ -1,35 +1,35 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { ItemsPropType } from "../prop-types";
-import MenuSection from "./ShardDocsSidebarMenuSection";
+import ShardDocsSidebarMenuSection from "./ShardDocsSidebarMenuSection";
 import "./ShardDocsSidebarMenu.scss";
 
-type MenuProps = {
+type props = {
   showOnMobile: boolean,
   items: categoryItem[],
   onNavigate: () => void,
 }
 
-const Menu = (props: MenuProps) => {
+const ShardDocsSidebarMenu = (props: props) => {
   return (
     <div className="shard-docs-menu" data-show-on-mobile={props.showOnMobile}>
       {props.items.map((item, i) => (
-        <MenuSection key={i} index={i} item={item} onNavigate={props.onNavigate} />
+        <ShardDocsSidebarMenuSection key={i} index={i} item={item} onNavigate={props.onNavigate} />
       ))}
     </div>
   );
 };
 
-Menu.propTypes = {
+ShardDocsSidebarMenu.propTypes = {
   items: ItemsPropType,
   showOnMobile: PropTypes.bool,
   onNavigate: PropTypes.func
 };
 
-Menu.defaultProps = {
+ShardDocsSidebarMenu.defaultProps = {
   items: [],
   showOnMobile: false,
   onNavigate: () => {}
 };
 
-export default Menu;
+export default ShardDocsSidebarMenu;

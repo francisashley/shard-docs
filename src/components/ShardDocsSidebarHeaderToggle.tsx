@@ -2,11 +2,11 @@ import React from "react";
 import MenuIcon from "./icons/MenuIcon";
 import "./ShardDocsSidebarHeaderToggle.scss";
 
-type HeaderToggleProps = {
+type props = {
   onClick: React.MouseEventHandler<HTMLButtonElement>
 }
 
-const HeaderToggle = ({ onClick, ...props}: HeaderToggleProps) => {
+const ShardDocsSidebarHeaderToggle = ({ onClick, ...props}: props) => {
   return (
     <button className="shard-docs-header-toggle" onClick={onClick} {...props}>
       <MenuIcon />
@@ -14,8 +14,8 @@ const HeaderToggle = ({ onClick, ...props}: HeaderToggleProps) => {
   );
 };
 
-HeaderToggle.propTypes = {};
+ShardDocsSidebarHeaderToggle.propTypes = {};
 
-HeaderToggle.defaultProps = {};
+ShardDocsSidebarHeaderToggle.defaultProps = {};
 
-export default HeaderToggle;
+export default ShardDocsSidebarHeaderToggle;

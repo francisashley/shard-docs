@@ -4,5 +4,5 @@ import BuiltWithShardDocs from "./ShardDocsSidebarBuiltWithShardDocs";
 
 test("<BuiltWithShardDocs /> renders with default props", () => {
   const wrapper = mount(<BuiltWithShardDocs />)
-  expect(wrapper.find('BuiltWithShardDocs').exists()).toBe(true)
+  expect(wrapper.find('ShardDocsSidebarBuiltWithShardDocs').exists()).toBe(true)
 });

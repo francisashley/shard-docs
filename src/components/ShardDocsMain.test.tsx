@@ -35,11 +35,11 @@ const mountMain = (options: { prevPage?: paginationPage, nextPage?: paginationPa
 test("<Pagination /> renders Pagination", () => {
   const wrapper = mountMain({prevPage, nextPage});
 
-  expect(wrapper.find("Pagination").exists()).toBe(true);
+  expect(wrapper.find("ShardDocsMainPagination").exists()).toBe(true);
 });
 
 test("<Pagination /> renders Document", () => {
   const wrapper = mountMain({prevPage, nextPage, documents});
 
-  expect(wrapper.find("Document").length).toBe(1);
+  expect(wrapper.find("ShardDocsMainDocument").length).toBe(1);
 });

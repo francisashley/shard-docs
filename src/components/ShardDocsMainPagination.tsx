@@ -3,24 +3,24 @@ import { NavLink } from "react-router-dom";
 import { PagePropType } from "../prop-types";
 import "./ShardDocsMainPagination.scss";
 
-type PaginationButtonProps = {
+type paginationButtonProps = {
   path: string,
   name: string,
   className: string
 }
 
-const PaginationButton = ({ path, name, ...props }: PaginationButtonProps) => (
+const PaginationButton = ({ path, name, ...props }: paginationButtonProps) => (
   <div {...props}>
     <NavLink to={path} children={name} exact />
   </div>
 );
 
-type PaginationProps = {
+type ShardDocsMainPaginationProps = {
   prevPage?: paginationPage,
   nextPage?: paginationPage,
 }
 
-const Pagination = (props: PaginationProps) => {
+const ShardDocsMainPagination = (props: ShardDocsMainPaginationProps) => {
   return (
     <footer className="shard-docs-pagination">
       {props.prevPage && (
@@ -41,14 +41,14 @@ const Pagination = (props: PaginationProps) => {
   );
 };
 
-Pagination.propTypes = {
+ShardDocsMainPagination.propTypes = {
   prevPage: PagePropType,
   nextPage: PagePropType
 };
 
-Pagination.defaultProps = {
+ShardDocsMainPagination.defaultProps = {
   prevPage: null,
   nextPage: null,
 };
 
-export default Pagination;
+export default ShardDocsMainPagination;

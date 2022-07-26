@@ -74,6 +74,6 @@ test("<Sidebar /> closes sidebar menu when navigating", () => {
   expect((wrapper.find('[data-show-on-mobile]').props() as any)['data-show-on-mobile']).toBe(false)
   wrapper.find('.shard-docs-header-toggle').simulate('click')
   expect((wrapper.find('[data-show-on-mobile]').props() as any)['data-show-on-mobile']).toBe(true)
-  wrapper.find('.shard-docs-menu DocumentNode a').simulate('click')
+  wrapper.find('.shard-docs-menu ShardDocsSidebarMenuDocument a').simulate('click')
   expect((wrapper.find('[data-show-on-mobile]').props() as any)['data-show-on-mobile']).toBe(false)
 });

@@ -5,12 +5,12 @@ import { NavLink } from "react-router-dom";
 import { DocumentItemPropType } from "../prop-types";
 import FileIcon from "./icons/FileIcon";
 
-type DocumentNodeProps = {
+type props = {
   item: documentItem;
   onNavigate: () => void;
 }
 
-const DocumentNode = (props: DocumentNodeProps) => {
+const ShardDocsSidebarMenuDocument = (props: props) => {
   return (
     <li className="shard-docs-menu-document">
       <NavLink
@@ -27,14 +27,14 @@ const DocumentNode = (props: DocumentNodeProps) => {
   );
 };
 
-DocumentNode.propTypes = {
+ShardDocsSidebarMenuDocument.propTypes = {
   item: DocumentItemPropType,
   onNavigate: PropTypes.func
 };
 
-DocumentNode.defaultProps = {
+ShardDocsSidebarMenuDocument.defaultProps = {
   item: {},
   onNavigate: () => {}
 };
 
-export default DocumentNode;
+export default ShardDocsSidebarMenuDocument;

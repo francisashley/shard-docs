@@ -1,36 +1,38 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Pagination from "./ShardDocsMainPagination";
-import Document from "./ShardDocsMainDocument";
+import ShardDocsMainPagination from "./ShardDocsMainPagination";
+import ShardDocsMainDocument from "./ShardDocsMainDocument";
 import { PagePropType, DocumentItemPropType } from "../prop-types";
 import "./ShardDocsMain.scss";
 
-type MainProps = {
+type props = {
   documents: documentItem[],
   prevPage?: paginationPage,
   nextPage?: paginationPage,
 }
-const Main = (props: MainProps) => {
+
+const ShardDocsMain = (props: props) => {
   const showPagination = Boolean(props.prevPage || props.nextPage);
+  console.log('showPagination', showPagination)
   return (
     <main className="shard-docs-main">
       {props.documents.map((document, i) => (
-        <Document key={i} breadcrumbs={document.breadcrumbs} document={document.document} />
+        <ShardDocsMainDocument key={i} breadcrumbs={document.breadcrumbs} document={document.document} />
       ))}
-     { showPagination && <Pagination prevPage={props.prevPage} nextPage={props.nextPage} />}
+     { showPagination && <ShardDocsMainPagination prevPage={props.prevPage} nextPage={props.nextPage} />}
     </main>
   );
 };
 
-Main.propTypes = {
+ShardDocsMain.propTypes = {
   prevPage: PagePropType,
   nextPage: PagePropType,
   documents: PropTypes.arrayOf(DocumentItemPropType)
 };
-Main.defaultProps = {
+ShardDocsMain.defaultProps = {
   prevPage: null,
   nextPage: null,
   documents: []
 };
 
-export default Main;
+export default ShardDocsMain;

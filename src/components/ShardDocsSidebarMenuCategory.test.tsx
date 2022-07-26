@@ -19,9 +19,9 @@ test("<CategoryNode /> renders correctly", () => {
     </MemoryRouter>
   );
 
-  expect(wrapper.find('MenuTree').exists()).toBe(true);
+  expect(wrapper.find('ShardDocsSidebarMenuTree').exists()).toBe(true);
 
   wrapper.find('.shard-docs-menu-category-header a').first().simulate('click')
 
-  expect(wrapper.find('MenuTree').exists()).toBe(false);
+  expect(wrapper.find('ShardDocsSidebarMenuTree').exists()).toBe(false);
 });

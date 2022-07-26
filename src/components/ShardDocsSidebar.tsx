@@ -1,13 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
-import SidebarHeader from "./ShardDocsSidebarHeader";
-import SidebarDescription from "./ShardDocsSidebarDescription";
-import SidebarMenu from "./ShardDocsSidebarMenu";
-import BuiltWithShardDocs from "./ShardDocsSidebarBuiltWithShardDocs";
+import ShardDocsSidebarHeader from "./ShardDocsSidebarHeader";
+import ShardDocsSidebarDescription from "./ShardDocsSidebarDescription";
+import ShardDocsSidebarMenu from "./ShardDocsSidebarMenu";
+import ShardDocsSidebarBuiltWithShardDocs from "./ShardDocsSidebarBuiltWithShardDocs";
 import { ItemsPropType } from "../prop-types";
 import "./ShardDocsSidebar.scss";
 
-type SidebarProps = {
+type props = {
   title?: string,
   description?: string,
   basePath?: string,
@@ -15,11 +15,11 @@ type SidebarProps = {
   hideBuiltWithShardDocs: boolean,
 }
 
-type SidebarState = {
+type state = {
   showMenuOnMobile: boolean,
 }
 
-class Sidebar extends React.Component<SidebarProps,SidebarState> {
+class ShardDocsSidebar extends React.Component<props, state> {
   static propTypes = {
     title: PropTypes.string,
     description: PropTypes.string,
@@ -45,22 +45,22 @@ class Sidebar extends React.Component<SidebarProps,SidebarState> {
     const showBuiltWithShardDocs = !props.hideBuiltWithShardDocs;
     return (
       <aside className="shard-docs-sidebar">
-        <SidebarHeader
+        <ShardDocsSidebarHeader
           title={props.title}
           description={props.description}
           basePath={props.basePath}
           onToggleMenu={() => this.setState({ showMenuOnMobile: !this.state.showMenuOnMobile })}
         />
-        {props.description && <SidebarDescription description={props.description} />}
-        <SidebarMenu
+        {props.description && <ShardDocsSidebarDescription description={props.description} />}
+        <ShardDocsSidebarMenu
           items={props.items}
           showOnMobile={this.state.showMenuOnMobile}
           onNavigate={() => this.setState({ showMenuOnMobile: false })}
         />
-        {showBuiltWithShardDocs && <BuiltWithShardDocs />}
+        {showBuiltWithShardDocs && <ShardDocsSidebarBuiltWithShardDocs />}
       </aside>
     );
   }
 }
 
-export default Sidebar;
+export default ShardDocsSidebar;

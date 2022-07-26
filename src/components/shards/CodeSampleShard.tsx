@@ -15,7 +15,7 @@ import { Language } from "prism-react-renderer";
  * CodeSampleShard
  */
 
-type CodeSampleShardProps = {
+type props = {
   title?: string,
   lang: Language,
   sourceCode: string,
@@ -27,12 +27,12 @@ type CodeSampleShardProps = {
   className?: string,
 }
 
-type CodeSampleShardState = {
+type state = {
   displayCode: boolean,
   id: string
 }
 
-class CodeSampleShard extends React.Component<CodeSampleShardProps, CodeSampleShardState> {
+class CodeSampleShard extends React.Component<props, state> {
   static propTypes = {
     title: PropTypes.string,
     lang: PropTypes.string,

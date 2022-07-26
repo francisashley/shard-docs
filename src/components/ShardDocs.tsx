@@ -12,7 +12,7 @@ import { ContentPropType } from "../prop-types";
 import "../assets/sanitize.css";
 import "./ShardDocs.scss";
 
-export type ShardDocsProps = {
+export type props = {
   title?: string,
   description?: string,
   content?: content,
@@ -22,7 +22,7 @@ export type ShardDocsProps = {
   currentPath?: string
 }
 
-const ShardDocs = (props: ShardDocsProps) => {
+const ShardDocs = (props: props) => {
   const [basePath] = useState(props.basePath);
   const [currentPath, setCurrentPath] = useState(props.currentPath);
   const [content, setContent] = useState({ items: [], documents: [] } as { items: item[], documents: documentItem[] });
@@ -94,4 +94,4 @@ ShardDocs.defaultProps = {
   currentPath: ''
 };
 
-export default withRouter<ShardDocsProps>(ShardDocs);
+export default withRouter<props>(ShardDocs);
