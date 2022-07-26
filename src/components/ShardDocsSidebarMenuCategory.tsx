@@ -8,7 +8,7 @@ import TriangleArrowRight from "./icons/TriangleArrowRight";
 import sessionDB from "../utils/sessionDB";
 
 type CategoryNodeProps = {
-  node: categoryItem,
+  item: categoryItem,
   onNavigate: () => void
 }
 type CategoryNodeState = {
@@ -18,17 +18,17 @@ type CategoryNodeState = {
 
 class CategoryNode extends React.Component<CategoryNodeProps, CategoryNodeState> {
   static propTypes = {
-    node: CategoryItemPropType,
+    item: CategoryItemPropType,
     onNavigate: PropTypes.func
   };
   
   static defaultProps = {
-    node: {},
+    item: {},
     onNavigate: () => {}
   };
 
   state = {
-    sessionId: "fa-repo-shard-docs-menu-category-expanded" + this.props.node.path,
+    sessionId: "fa-repo-shard-docs-menu-category-expanded" + this.props.item.path,
     expanded: true
   };
 
@@ -45,23 +45,23 @@ class CategoryNode extends React.Component<CategoryNodeProps, CategoryNodeState>
   };
 
   render() {
-    const { node, onNavigate } = this.props;
+    const { item, onNavigate } = this.props;
 
     return (
       <ul className="shard-docs-menu-category">
-        {node.name && (
+        {item.name && (
           <li className="shard-docs-menu-category-header">
             <BaseLink
-              style={{ paddingLeft: node.depth * 15 + "px" }}
+              style={{ paddingLeft: item.depth * 15 + "px" }}
               onClick={this.toggleCategory}
-              disabled={node.isEmpty}
+              disabled={item.isEmpty}
             >
               {this.state.expanded ? <TriangleArrowDown /> : <TriangleArrowRight />}
-              {node.name}
+              {item.name}
             </BaseLink>
           </li>
         )}
-        {this.state.expanded && <MenuTree items={node.items} onNavigate={onNavigate} />}
+        {this.state.expanded && <MenuTree items={item.items} onNavigate={onNavigate} />}
       </ul>
     );
   }

@@ -9,7 +9,7 @@ import "./ShardDocsSidebarMenuSection.scss";
 
 type MenuSectionProps = {
   index: number,
-  node: categoryItem,
+  item: categoryItem,
   onNavigate: () => void,
 }
 type MenuSectionState = {
@@ -19,13 +19,13 @@ type MenuSectionState = {
 class MenuSection extends React.Component<MenuSectionProps, MenuSectionState> {
   static propTypes = {
     index: PropTypes.number,
-    node: CategoryItemPropType,
+    item: CategoryItemPropType,
     onNavigate: PropTypes.func
   };
   
   static defaultProps = {
     index: 0,
-    node: {},
+    item: {},
     onNavigate: () => {}
   };
 
@@ -34,7 +34,7 @@ class MenuSection extends React.Component<MenuSectionProps, MenuSectionState> {
   };
 
   get sessionId() {
-    return "fa-repo-shard-docs-menu-section-expanded" + (this.props.node.path || "");
+    return "fa-repo-shard-docs-menu-section-expanded" + (this.props.item.path || "");
   }
 
   toggle = () => {
@@ -44,7 +44,7 @@ class MenuSection extends React.Component<MenuSectionProps, MenuSectionState> {
 
   render() {
     const props = this.props;
-    const collapsible = Boolean(props.node.name);
+    const collapsible = Boolean(props.item.name);
     const expanded = this.state.expanded;
 
     const className = classnames(
@@ -59,11 +59,11 @@ class MenuSection extends React.Component<MenuSectionProps, MenuSectionState> {
     return (
       <section className={className}>
         {collapsible && (
-          <MenuSectionHeader title={props.node.name || ''} expanded={expanded} onToggle={this.toggle} />
+          <MenuSectionHeader title={props.item.name || ''} expanded={expanded} onToggle={this.toggle} />
         )}
         {showMenu && (
           <ul>
-            <MenuTree items={props.node.items} onNavigate={props.onNavigate} />
+            <MenuTree items={props.item.items} onNavigate={props.onNavigate} />
           </ul>
         )}
       </section>

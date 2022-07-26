@@ -15,7 +15,7 @@ const { items } = contentTool.parseContent([
 test("<CategoryNode /> renders correctly", () => {
   const wrapper = mount(
     <MemoryRouter>
-      <CategoryNode node={items[0] as categoryItem} />
+      <CategoryNode item={items[0] as categoryItem} />
     </MemoryRouter>
   );
 

@@ -14,13 +14,13 @@ type MenuTreeProps = {
 const MenuTree = (props: MenuTreeProps) => {
   return (
     <>
-      {props.items.map((node, i) => {
-        if (node.type === "document") {
-          return <DocumentItem key={i} node={node} onNavigate={props.onNavigate} />;
-        } else if (node.type === "link") {
-          return <LinkItem key={i} node={node} />;
-        } else if (node.type === "category") {
-          return <CategoryItem key={i} node={node} onNavigate={props.onNavigate} />;
+      {props.items.map((item, i) => {
+        if (item.type === "document") {
+          return <DocumentItem key={i} item={item} onNavigate={props.onNavigate} />;
+        } else if (item.type === "link") {
+          return <LinkItem key={i} item={item} />;
+        } else if (item.type === "category") {
+          return <CategoryItem key={i} item={item} onNavigate={props.onNavigate} />;
         }
       })}
     </>

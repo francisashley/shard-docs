@@ -13,8 +13,8 @@ type MenuProps = {
 const Menu = (props: MenuProps) => {
   return (
     <div className="shard-docs-menu" data-show-on-mobile={props.showOnMobile}>
-      {props.items.map((node, i) => (
-        <MenuSection key={i} index={i} node={node} onNavigate={props.onNavigate} />
+      {props.items.map((item, i) => (
+        <MenuSection key={i} index={i} item={item} onNavigate={props.onNavigate} />
       ))}
     </div>
   );

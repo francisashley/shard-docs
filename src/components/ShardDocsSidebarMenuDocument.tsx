@@ -6,7 +6,7 @@ import { DocumentItemPropType } from "../prop-types";
 import FileIcon from "./icons/FileIcon";
 
 type DocumentNodeProps = {
-  node: documentItem;
+  item: documentItem;
   onNavigate: () => void;
 }
 
@@ -14,26 +14,26 @@ const DocumentNode = (props: DocumentNodeProps) => {
   return (
     <li className="shard-docs-menu-document">
       <NavLink
-        style={{ paddingLeft: props.node.depth * 15 + "px" }}
-        className={classnames(props.node.isActive && "active")}
-        onClick={e => (props.node.isEmpty ? e.preventDefault() : props.onNavigate())}
-        to={props.node.path}
+        style={{ paddingLeft: props.item.depth * 15 + "px" }}
+        className={classnames(props.item.isActive && "active")}
+        onClick={e => (props.item.isEmpty ? e.preventDefault() : props.onNavigate())}
+        to={props.item.path}
         exact
       >
         <FileIcon />
-        {props.node.name}
+        {props.item.name}
       </NavLink>
     </li>
   );
 };
 
 DocumentNode.propTypes = {
-  node: DocumentItemPropType,
+  item: DocumentItemPropType,
   onNavigate: PropTypes.func
 };
 
 DocumentNode.defaultProps = {
-  node: {},
+  item: {},
   onNavigate: () => {}
 };
 

@@ -3,27 +3,27 @@ import ExternalLinkIcon from "./icons/ExternalLinkIcon";
 import { LinkItemPropType } from "../prop-types";
 
 type LinkNodeProps = {
-  node: linkItem;
+  item: linkItem;
 }
 
 const LinkNode = (props: LinkNodeProps) => {
-  const openInNewTab = props.node.external === true;
+  const openInNewTab = props.item.external === true;
   return (
     <li className="shard-docs-menu-external">
-      <a href={props.node.url} target={openInNewTab ? "_blank" : "_self"} style={{ paddingLeft: props.node.depth * 15 + "px" }}>
+      <a href={props.item.url} target={openInNewTab ? "_blank" : "_self"} style={{ paddingLeft: props.item.depth * 15 + "px" }}>
         <ExternalLinkIcon />
-        {props.node.name}
+        {props.item.name}
       </a>
     </li>
   )
 };
 
 LinkNode.propTypes = {
-  node: LinkItemPropType
+  item: LinkItemPropType
 };
 
 LinkNode.defaultProps = {
-  node: {
+  item: {
     name: "",
     url: ""
   }
