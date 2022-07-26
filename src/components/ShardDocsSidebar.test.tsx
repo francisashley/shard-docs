@@ -6,18 +6,18 @@ import contentTool from "../utils/contentTool";
 
 const title = "App title";
 const description = "App description.";
-const { tree } = contentTool.parseContent([
+const { items } = contentTool.parseContent([
   { type: 'document', name: "Doc A", document: <h1>Doc A</h1> }
 ]);
 
-const mountSidebar = (options = {} as { title?: string, description?: string, tree?: categoryItem[], hideBuiltWithShardDocs?: boolean}) => {
-  const { title, description, tree, hideBuiltWithShardDocs } = options;
+const mountSidebar = (options = {} as { title?: string, description?: string, items?: categoryItem[], hideBuiltWithShardDocs?: boolean}) => {
+  const { title, description, items, hideBuiltWithShardDocs } = options;
   return mount(
     <MemoryRouter>
       <Sidebar
         title={title}
         description={description}
-        tree={tree}
+        items={items}
         hideBuiltWithShardDocs={hideBuiltWithShardDocs}
       />
     </MemoryRouter>
@@ -43,7 +43,7 @@ test("<Sidebar /> renders app description", () => {
 });
 
 test("<Sidebar /> renders menu", () => {
-  const wrapper = mountSidebar({ tree } as { tree: categoryItem[] });
+  const wrapper = mountSidebar({ items } as { items: categoryItem[] });
 
   expect(wrapper.find('.shard-docs-menu ul li').exists()).toBe(true);
 });
@@ -69,7 +69,7 @@ test("<Sidebar /> can toggle sidebar", () => {
 });
 
 test("<Sidebar /> closes sidebar menu when navigating", () => {
-  const wrapper = mountSidebar({ tree } as { tree: categoryItem[] });
+  const wrapper = mountSidebar({ items } as { items: categoryItem[] });
 
   expect((wrapper.find('[data-show-on-mobile]').props() as any)['data-show-on-mobile']).toBe(false)
   wrapper.find('.shard-docs-header-toggle').simulate('click')

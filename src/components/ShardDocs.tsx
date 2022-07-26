@@ -25,7 +25,7 @@ export type ShardDocsProps = {
 const ShardDocs = (props: ShardDocsProps) => {
   const [basePath] = useState(props.basePath);
   const [currentPath, setCurrentPath] = useState(props.currentPath);
-  const [content, setContent] = useState({ tree: [], documents: [] } as { tree: item[], documents: documentItem[] });
+  const [content, setContent] = useState({ items: [], documents: [] } as { items: item[], documents: documentItem[] });
   const [menu, setMenu] = useState([] as item[]);
   const [documents, setDocuments] = useState([] as documentItem[]);
   const [prevPage, setPrevPage] = useState(null as documentItem | null);
@@ -34,7 +34,7 @@ const ShardDocs = (props: ShardDocsProps) => {
   useEffect(() => {
     const content = contentTool.parseContent(props.content || [], basePath)
     setContent(content)
-    setMenu(content.tree);
+    setMenu(content.items);
     setDocuments(content.documents);
   }, []);
 
@@ -45,10 +45,10 @@ const ShardDocs = (props: ShardDocsProps) => {
       setCurrentPath(props.currentPath);
 
       const currentDocuments = filterDocuments(content.documents, props.currentPath).map(document => setActiveCrumb(document, props.currentPath));
-      const currentActiveTreeNode = setActiveMenuItem(content.tree, props.currentPath) as categoryItem[]
+      const currentActiveMenuItem = setActiveMenuItem(content.items, props.currentPath) as categoryItem[]
 
       setDocuments(currentDocuments)
-      setMenu(currentActiveTreeNode)
+      setMenu(currentActiveMenuItem)
 
       const prevIndex = currentDocuments.findIndex((document: documentItem) => document.path === props.currentPath) - 1;
       setPrevPage(currentDocuments[prevIndex] ? currentDocuments[prevIndex] : null);
@@ -66,7 +66,7 @@ const ShardDocs = (props: ShardDocsProps) => {
         title={props.title}
         description={props.description}
         basePath={props.basePath}
-        tree={menu as categoryItem[]}
+        items={menu as categoryItem[]}
         hideBuiltWithShardDocs={props.hideBuiltWithShardDocs}
       />
       <ShardDocsMain documents={documents} prevPage={prevPage as paginationPage} nextPage={nextPage as paginationPage} />

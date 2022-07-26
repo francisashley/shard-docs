@@ -4,7 +4,7 @@ import { MemoryRouter } from "react-router-dom";
 import MenuTree from "./ShardDocsSidebarMenuTree";
 import contentTool from "../utils/contentTool";
 
-const { tree } = contentTool.parseContent([
+const { items } = contentTool.parseContent([
   { type: 'document', name: "Doc A", document: <h1>Doc A</h1> },
   { type: 'document', name: "Doc B", document: <h1>Doc B</h1> },
   { type: 'document', name: "Doc C", document: <h1>Doc C</h1> },
@@ -19,11 +19,11 @@ const { tree } = contentTool.parseContent([
   { type: 'link', name: "Github", url: "http://github.com", external: true }
 ]);
 
-const mountMenuList = ({ tree } = {} as { tree: item[]}) => {
+const mountMenuList = ({ items } = {} as { items: item[]}) => {
   const onNavigate = jest.fn();
   const wrapper = mount(
     <MemoryRouter>
-      <MenuTree onNavigate={onNavigate} tree={tree} />
+      <MenuTree onNavigate={onNavigate} items={items} />
     </MemoryRouter>
   );
 
@@ -36,8 +36,8 @@ test("<MenuTree /> renders with default props", () => {
   expect(wrapper.exists()).toBe(true);
 });
 
-test("<MenuTree /> renders with tree data", () => {
-  const { wrapper } = mountMenuList({ tree });
+test("<MenuTree /> renders with items data", () => {
+  const { wrapper } = mountMenuList({ items });
 
   // Renders discrete category
   expect(wrapper.find('MenuTree > CategoryNode').at(0).find('li').length).toBe(3);
@@ -56,7 +56,7 @@ test("<MenuTree /> renders with tree data", () => {
 });
 
 test("<MenuTree /> calls onNavigate", () => {
-  const { wrapper, onNavigate } = mountMenuList({ tree });
+  const { wrapper, onNavigate } = mountMenuList({ items });
 
   wrapper.find('MenuTree ul li a').first().simulate('click');
 

@@ -11,7 +11,7 @@ type SidebarProps = {
   title?: string,
   description?: string,
   basePath?: string,
-  tree: categoryItem[],
+  items: categoryItem[],
   hideBuiltWithShardDocs: boolean,
 }
 
@@ -24,7 +24,7 @@ class Sidebar extends React.Component<SidebarProps,SidebarState> {
     title: PropTypes.string,
     description: PropTypes.string,
     basePath: PropTypes.string,
-    tree: ItemsPropType,
+    items: ItemsPropType,
     hideBuiltWithShardDocs: PropTypes.bool
   };
 
@@ -32,7 +32,7 @@ class Sidebar extends React.Component<SidebarProps,SidebarState> {
     app: {},
     title: "",
     description: "",
-    tree: [],
+    items: [],
     hideBuiltWithShardDocs: false
   };
 
@@ -53,7 +53,7 @@ class Sidebar extends React.Component<SidebarProps,SidebarState> {
         />
         {props.description && <SidebarDescription description={props.description} />}
         <SidebarMenu
-          tree={props.tree}
+          items={props.items}
           showOnMobile={this.state.showMenuOnMobile}
           onNavigate={() => this.setState({ showMenuOnMobile: false })}
         />

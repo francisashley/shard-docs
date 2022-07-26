@@ -17,7 +17,7 @@ const content = contentTools.parseContent([
 ] as any);
 
 test("contentTools() transforms data and returns tree", () => {
-  expect(content.tree).toStrictEqual([
+  expect(content.items).toStrictEqual([
     {
       name: null,
       type: "category",

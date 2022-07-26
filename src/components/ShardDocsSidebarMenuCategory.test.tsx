@@ -4,7 +4,7 @@ import { MemoryRouter } from "react-router-dom";
 import CategoryNode from "./ShardDocsSidebarMenuCategory";
 import contentTool from "../utils/contentTool";
 
-const { tree } = contentTool.parseContent([
+const { items } = contentTool.parseContent([
   {
     type: 'category', 
     name: "Category",
@@ -15,7 +15,7 @@ const { tree } = contentTool.parseContent([
 test("<CategoryNode /> renders correctly", () => {
   const wrapper = mount(
     <MemoryRouter>
-      <CategoryNode node={tree[0] as categoryItem} />
+      <CategoryNode node={items[0] as categoryItem} />
     </MemoryRouter>
   );
 

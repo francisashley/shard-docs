@@ -7,14 +7,14 @@ import { ItemsPropType } from "../prop-types";
 import "./ShardDocsSidebarMenuTree.scss";
 
 type MenuTreeProps = {
-  tree: item[],
+  items: item[],
   onNavigate: () => void
 }
 
 const MenuTree = (props: MenuTreeProps) => {
   return (
     <>
-      {props.tree.map((node, i) => {
+      {props.items.map((node, i) => {
         if (node.type === "document") {
           return <DocumentItem key={i} node={node} onNavigate={props.onNavigate} />;
         } else if (node.type === "link") {
@@ -28,12 +28,12 @@ const MenuTree = (props: MenuTreeProps) => {
 };
 
 MenuTree.propTypes = {
-  tree: ItemsPropType,
+  items: ItemsPropType,
   onNavigate: PropTypes.func
 };
 
 MenuTree.defaultProps = {
-  tree: [],
+  items: [],
   onNavigate: () => {}
 };
 

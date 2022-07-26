@@ -1,6 +1,6 @@
 import setActiveMenuItem from "./setActiveMenuItem";
 
-const tree = [
+const items = [
   {
     name: null,
     type: "category",
@@ -43,7 +43,7 @@ const tree = [
 ];
 
 test("setActiveMenuItem() correctly sets isActive", () => {
-  expect(setActiveMenuItem(tree as item[], '/doc-b')).toStrictEqual([
+  expect(setActiveMenuItem(items as item[], '/doc-b')).toStrictEqual([
     {
       name: null,
       type: "category",
@@ -89,7 +89,7 @@ test("setActiveMenuItem() correctly sets isActive", () => {
       ]
     }
   ])
-  expect(setActiveMenuItem(tree as item[], '/doc-z')).toStrictEqual([
+  expect(setActiveMenuItem(items as item[], '/doc-z')).toStrictEqual([
     {
       name: null,
       type: "category",

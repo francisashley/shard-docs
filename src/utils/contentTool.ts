@@ -157,17 +157,17 @@ function flattenDocuments(items: item[], accumulator: (documentItem)[] = []) {
   return accumulator;
 }
 
-function parseContent(tree: content, basePath = "/") {
-  let normalisedTree = normaliseContent(tree);
-  normalisedTree = addPaths(normalisedTree, basePath);
-  normalisedTree = addBreadcrumbs(normalisedTree, [{ path: basePath, name: "~", isActive: false }]);
-  normalisedTree = shapeItems(normalisedTree);
-  normalisedTree = combineTopLevelAdjacentItems(normalisedTree);
-  normalisedTree = addDepth(normalisedTree);
+function parseContent(items: content, basePath = "/") {
+  let normalisedItems = normaliseContent(items);
+  normalisedItems = addPaths(normalisedItems, basePath);
+  normalisedItems = addBreadcrumbs(normalisedItems, [{ path: basePath, name: "~", isActive: false }]);
+  normalisedItems = shapeItems(normalisedItems);
+  normalisedItems = combineTopLevelAdjacentItems(normalisedItems);
+  normalisedItems = addDepth(normalisedItems);
 
   return {
-    tree: normalisedTree,
-    documents: flattenDocuments(normalisedTree)
+    items: normalisedItems,
+    documents: flattenDocuments(normalisedItems)
   };
 }
 

@@ -6,14 +6,14 @@ import "./ShardDocsSidebarMenu.scss";
 
 type MenuProps = {
   showOnMobile: boolean,
-  tree: categoryItem[],
+  items: categoryItem[],
   onNavigate: () => void,
 }
 
 const Menu = (props: MenuProps) => {
   return (
     <div className="shard-docs-menu" data-show-on-mobile={props.showOnMobile}>
-      {props.tree.map((node, i) => (
+      {props.items.map((node, i) => (
         <MenuSection key={i} index={i} node={node} onNavigate={props.onNavigate} />
       ))}
     </div>
@@ -21,13 +21,13 @@ const Menu = (props: MenuProps) => {
 };
 
 Menu.propTypes = {
-  tree: ItemsPropType,
+  items: ItemsPropType,
   showOnMobile: PropTypes.bool,
   onNavigate: PropTypes.func
 };
 
 Menu.defaultProps = {
-  tree: [],
+  items: [],
   showOnMobile: false,
   onNavigate: () => {}
 };

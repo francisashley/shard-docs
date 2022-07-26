@@ -61,7 +61,7 @@ class CategoryNode extends React.Component<CategoryNodeProps, CategoryNodeState>
             </BaseLink>
           </li>
         )}
-        {this.state.expanded && <MenuTree tree={node.items} onNavigate={onNavigate} />}
+        {this.state.expanded && <MenuTree items={node.items} onNavigate={onNavigate} />}
       </ul>
     );
   }

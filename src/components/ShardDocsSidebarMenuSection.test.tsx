@@ -4,7 +4,7 @@ import MenuSection from "./ShardDocsSidebarMenuSection";
 import contentTool from "../utils/contentTool";
 import { MemoryRouter } from "react-router-dom";
 
-let { tree } = contentTool.parseContent([
+let { items } = contentTool.parseContent([
   {
     type: 'category',
     name: "Essentials",
@@ -26,7 +26,7 @@ test("<MenuSection /> renders first index correctly", () => {
   const onNavigateMock = jest.fn();
   const wrapper = mount(
     <MemoryRouter>
-      <MenuSection index={0} node={tree[0] as categoryItem} onNavigate={onNavigateMock} />
+      <MenuSection index={0} node={items[0] as categoryItem} onNavigate={onNavigateMock} />
     </MemoryRouter>
   );
 
@@ -48,7 +48,7 @@ test("<MenuSection /> renders first index correctly", () => {
 test("<MenuSection /> render indexes after first index correctly", () => {
   const wrapper = mount(
     <MemoryRouter>
-      <MenuSection index={1} node={tree[1] as categoryItem} />
+      <MenuSection index={1} node={items[1] as categoryItem} />
     </MemoryRouter>
   );
 
@@ -60,7 +60,7 @@ test("<MenuSection /> render indexes after first index correctly", () => {
 test("<MenuSection /> renders without title correctly", () => {
   const wrapper = mount(
     <MemoryRouter>
-      <MenuSection index={1} node={tree[2] as categoryItem} />
+      <MenuSection index={1} node={items[2] as categoryItem} />
     </MemoryRouter>
   );
 

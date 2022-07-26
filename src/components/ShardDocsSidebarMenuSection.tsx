@@ -63,7 +63,7 @@ class MenuSection extends React.Component<MenuSectionProps, MenuSectionState> {
         )}
         {showMenu && (
           <ul>
-            <MenuTree tree={props.node.items} onNavigate={props.onNavigate} />
+            <MenuTree items={props.node.items} onNavigate={props.onNavigate} />
           </ul>
         )}
       </section>
