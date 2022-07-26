@@ -15,31 +15,29 @@ const document = <>
   <h3>Hello universe!</h3>
 </>
 
-describe("<Document />", () => {
-  it("renders with default props", () => {
-    mount(<Document />);
-  });
+it("<Document /> renders with default props", () => {
+  mount(<Document />);
+});
 
-  it("renders breadcrumbs", () => {
-    const wrapper = mount(
-      <MemoryRouter>
-        <Document breadcrumbs={breadcrumbs} />
-      </MemoryRouter>
-    );
+it("<Document /> renders breadcrumbs", () => {
+  const wrapper = mount(
+    <MemoryRouter>
+      <Document breadcrumbs={breadcrumbs} />
+    </MemoryRouter>
+  );
 
-    expect(wrapper.find('.shard-docs-breadcrumbs a').exists()).toBe(true);
-  });
+  expect(wrapper.find('.shard-docs-breadcrumbs a').exists()).toBe(true);
+});
 
-  it("renders document", () => {
-    const wrapper = mount(
-      <MemoryRouter>
-        <Document document={document} />
-      </MemoryRouter>
-    );
+it("<Document /> renders document", () => {
+  const wrapper = mount(
+    <MemoryRouter>
+      <Document document={document} />
+    </MemoryRouter>
+  );
 
-    expect(wrapper.find('.shard-docs-document-body').exists()).toBe(true);
-    expect(wrapper.find('.shard-docs-document-body h1').text()).toBe('Hello earth!');
-    expect(wrapper.find('.shard-docs-document-body h2').text()).toBe('Hello galaxy!');
-    expect(wrapper.find('.shard-docs-document-body h3').text()).toBe('Hello universe!');
-  });
+  expect(wrapper.find('.shard-docs-document-body').exists()).toBe(true);
+  expect(wrapper.find('.shard-docs-document-body h1').text()).toBe('Hello earth!');
+  expect(wrapper.find('.shard-docs-document-body h2').text()).toBe('Hello galaxy!');
+  expect(wrapper.find('.shard-docs-document-body h3').text()).toBe('Hello universe!');
 });

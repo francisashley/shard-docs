@@ -23,25 +23,23 @@ const documents = [
   }
 ] as documentItem[];
 
-describe("<Pagination />", () => {
-  const mountMain = (options: { prevPage?: paginationPage, nextPage?: paginationPage, documents?: documentItem[] }) => {
-    const { prevPage, nextPage, documents = []} = options
-    return mount(
-      <MemoryRouter>
-        <Main prevPage={prevPage} nextPage={nextPage} documents={documents} />
-      </MemoryRouter>
-    )
-  };
+const mountMain = (options: { prevPage?: paginationPage, nextPage?: paginationPage, documents?: documentItem[] }) => {
+  const { prevPage, nextPage, documents = []} = options
+  return mount(
+    <MemoryRouter>
+      <Main prevPage={prevPage} nextPage={nextPage} documents={documents} />
+    </MemoryRouter>
+  )
+};
 
-  it("renders Pagination", () => {
-    const wrapper = mountMain({prevPage, nextPage});
+test("<Pagination /> renders Pagination", () => {
+  const wrapper = mountMain({prevPage, nextPage});
 
-    expect(wrapper.find("Pagination").exists()).toBe(true);
-  });
+  expect(wrapper.find("Pagination").exists()).toBe(true);
+});
 
-  it("renders Document", () => {
-    const wrapper = mountMain({prevPage, nextPage, documents});
+test("<Pagination /> renders Document", () => {
+  const wrapper = mountMain({prevPage, nextPage, documents});
 
-    expect(wrapper.find("Document").length).toBe(1);
-  });
+  expect(wrapper.find("Document").length).toBe(1);
 });
