@@ -5,10 +5,10 @@
  * @return {array}
  */
 
-export default function setActiveTreeNode(tree: item[] = [], currentPath = "") {
+export default function setActiveMenuItem(tree: item[] = [], currentPath = "") {
   return tree.map(node => {
     if (node.type === "category") {
-      node.items = setActiveTreeNode(node.items, currentPath);
+      node.items = setActiveMenuItem(node.items, currentPath);
     }
     if (node.type === "category" || node.type === "document") {
       node.isActive = node.path === currentPath;

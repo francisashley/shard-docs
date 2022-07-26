@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import { setActiveTreeNode, filterDocuments, setActiveCrumb } from "../utils";
+import { setActiveMenuItem, filterDocuments, setActiveCrumb } from "../utils";
 import withRouter from "../hoc/withRouter";
 
 import ShardDocsMain from "./ShardDocsMain";
@@ -45,7 +45,7 @@ const ShardDocs = (props: ShardDocsProps) => {
       setCurrentPath(props.currentPath);
 
       const currentDocuments = filterDocuments(content.documents, props.currentPath).map(document => setActiveCrumb(document, props.currentPath));
-      const currentActiveTreeNode = setActiveTreeNode(content.tree, props.currentPath) as categoryItem[]
+      const currentActiveTreeNode = setActiveMenuItem(content.tree, props.currentPath) as categoryItem[]
 
       setDocuments(currentDocuments)
       setMenu(currentActiveTreeNode)

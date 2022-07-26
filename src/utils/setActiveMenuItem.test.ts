@@ -1,4 +1,4 @@
-import setActiveTreeNode from "./setActiveTreeNode";
+import setActiveMenuItem from "./setActiveMenuItem";
 
 const tree = [
   {
@@ -42,8 +42,8 @@ const tree = [
   }
 ];
 
-test("setActiveTreeNode() correctly sets isActive", () => {
-  expect(setActiveTreeNode(tree as item[], '/doc-b')).toStrictEqual([
+test("setActiveMenuItem() correctly sets isActive", () => {
+  expect(setActiveMenuItem(tree as item[], '/doc-b')).toStrictEqual([
     {
       name: null,
       type: "category",
@@ -89,7 +89,7 @@ test("setActiveTreeNode() correctly sets isActive", () => {
       ]
     }
   ])
-  expect(setActiveTreeNode(tree as item[], '/doc-z')).toStrictEqual([
+  expect(setActiveMenuItem(tree as item[], '/doc-z')).toStrictEqual([
     {
       name: null,
       type: "category",
