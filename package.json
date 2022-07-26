@@ -102,5 +102,8 @@
     "react-dom": "^16",
     "react-router-dom": "^5.1.2"
   },
-  "dependencies": {}
+  "dependencies": {
+    "react": "^17",
+    "react-dom": "^17"
+  }
 }
