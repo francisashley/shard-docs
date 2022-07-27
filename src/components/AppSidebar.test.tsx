@@ -31,7 +31,7 @@ test("<AppSidebar /> renders with default props", () => {
 test("<AppSidebar /> renders app title", () => {
   const wrapper = mountSidebar({ title });
 
-  expect(wrapper.find('.sd-AppHeaderTitle h2').text()).toBe(title);
+  expect(wrapper.find('.sd-AppHeader__title').text()).toBe(title);
 });
 
 test("<AppSidebar /> renders menu", () => {
@@ -56,7 +56,7 @@ test("<AppSidebar /> can toggle sidebar", () => {
   const wrapper = mountSidebar();
 
   expect((wrapper.find('[data-show-on-mobile]').props() as any)['data-show-on-mobile']).toBe(false)
-  wrapper.find('.sd-AppHeaderToggle').simulate('click')
+  wrapper.find('.sd-AppHeader__toggle-btn').simulate('click')
   expect((wrapper.find('[data-show-on-mobile]').props() as any)['data-show-on-mobile']).toBe(true)
 });
 
@@ -64,7 +64,7 @@ test("<AppSidebar /> closes sidebar menu when navigating", () => {
   const wrapper = mountSidebar({ items } as { items: categoryItem[] });
 
   expect((wrapper.find('[data-show-on-mobile]').props() as any)['data-show-on-mobile']).toBe(false)
-  wrapper.find('.sd-AppHeaderToggle').simulate('click')
+  wrapper.find('.sd-AppHeader__toggle-btn').simulate('click')
   expect((wrapper.find('[data-show-on-mobile]').props() as any)['data-show-on-mobile']).toBe(true)
   wrapper.find('.sd-AppNav NavDocument a').simulate('click')
   expect((wrapper.find('[data-show-on-mobile]').props() as any)['data-show-on-mobile']).toBe(false)

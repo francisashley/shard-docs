@@ -1,7 +1,39 @@
 .sd-AppHeader {
   margin: 15px 15px 15px 0;
   display: flex;
+
+  &__title-link {
+    flex: 1;
+    text-decoration: none;
+    overflow: hidden;
   
+    &:focus {
+      color: #673ab6;
+    }
+  
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__title {
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+    margin: 0;
+    padding: 3px 15px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+
+    @media (min-width: 1200px) {
+      background: white;
+      color: #673ab6;
+      font-weight: 700;
+      font-size: 14px;
+    }
+  }
+
   &__toggle-btn {
     background: transparent;
     color: white;

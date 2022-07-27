@@ -37,7 +37,7 @@ test("<App /> renders with props", () => {
   expect(wrapper.find('AppSidebar').exists()).toBe(true);
 
   // Renders title
-  expect(wrapper.find('AppSidebar .sd-AppHeaderTitle h2').text()).toBe(title);
+  expect(wrapper.find('AppSidebar .sd-AppHeader__title').text()).toBe(title);
 
   // Renders menu
   expect(wrapper.find('AppSidebar .sd-AppNav ul li').exists()).toBe(true);

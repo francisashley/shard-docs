@@ -4,7 +4,11 @@ import { MemoryRouter } from "react-router-dom";
 import AppHeader from "./AppHeader";
 
 test("<AppHeader /> renders with default props", () => {
-  const wrapper = mount(<AppHeader/>)
+  const wrapper = mount(
+    <MemoryRouter>
+      <AppHeader/>
+    </MemoryRouter>
+  )
 
   expect(wrapper.find('.sd-AppHeader').exists()).toBe(true)
 });
@@ -16,7 +20,7 @@ test("<AppHeader /> renders title", () => {
     </MemoryRouter>
   );
 
-  expect(wrapper.find('.sd-AppHeaderTitle h2').text()).toBe("Hello world")
+  expect(wrapper.find('.sd-AppHeader__title').text()).toBe("Hello world")
 });
 
 test("<AppHeader /> renders header link with custom basePath", () => {
@@ -26,21 +30,29 @@ test("<AppHeader /> renders header link with custom basePath", () => {
     </MemoryRouter>
   );
 
-  expect(wrapper.find('.sd-AppHeader a').props().href).toBe("/docs")
+  expect(wrapper.find('.sd-AppHeader__title-link').hostNodes().props().href).toBe("/docs")
   expect(wrapper.find('.sd-AppHeader').text()).toBe("Hello world")
 });
 
 test("<AppHeader /> renders toggle button", () => {
-  const wrapper = mount(<AppHeader />);
+  const wrapper = mount(
+    <MemoryRouter>
+      <AppHeader />
+    </MemoryRouter>
+  );
 
-  expect(wrapper.find('.sd-AppHeaderToggle').exists()).toBe(true)
+  expect(wrapper.find('.sd-AppHeader__toggle-btn').exists()).toBe(true)
 });
 
 test("<AppHeader /> calls onToggleMenu when sidebar toggle button clicked", () => {
   const onToggleMenu = jest.fn();
-  const wrapper = mount(<AppHeader onToggleMenu={onToggleMenu} />)
+  const wrapper = mount(
+    <MemoryRouter>
+      <AppHeader onToggleMenu={onToggleMenu} />
+    </MemoryRouter>
+  )
 
-  wrapper.find('.sd-AppHeaderToggle').simulate('click')
+  wrapper.find('.sd-AppHeader__toggle-btn').simulate('click')
 
   expect(onToggleMenu.mock.calls[0].length).toBe(1)
 });
