@@ -8,7 +8,7 @@
     "watch": "mix watch",
     "hot": "mix watch --hot",
     "build": "mix --production",
-    "analyse": "yarn build && npx source-map-explorer ./public/examples.js"
+    "analyse": "yarn build && npx source-map-explorer ./dist/*.js"
   },
   "homepage": "https://fa-repo.github.io/shard-docs",
   "devDependencies": {
