@@ -5,18 +5,16 @@ import Sidebar from "./ShardDocsSidebar";
 import contentTool from "../utils/contentTool";
 
 const title = "App title";
-const description = "App description.";
 const { items } = contentTool.parseContent([
   { type: 'document', name: "Doc A", document: <h1>Doc A</h1> }
 ]);
 
-const mountSidebar = (options = {} as { title?: string, description?: string, items?: categoryItem[], hideBuiltWithShardDocs?: boolean}) => {
-  const { title, description, items, hideBuiltWithShardDocs } = options;
+const mountSidebar = (options = {} as { title?: string, items?: categoryItem[], hideBuiltWithShardDocs?: boolean}) => {
+  const { title, items, hideBuiltWithShardDocs } = options;
   return mount(
     <MemoryRouter>
       <Sidebar
         title={title}
-        description={description}
         items={items}
         hideBuiltWithShardDocs={hideBuiltWithShardDocs}
       />
@@ -34,12 +32,6 @@ test("<Sidebar /> renders app title", () => {
   const wrapper = mountSidebar({ title });
 
   expect(wrapper.find('.shard-docs-header-title h2').text()).toBe(title);
-});
-
-test("<Sidebar /> renders app description", () => {
-  const wrapper = mountSidebar({ description });
-
-  expect(wrapper.find('.shard-docs-description').text()).toBe(description);
 });
 
 test("<Sidebar /> renders menu", () => {

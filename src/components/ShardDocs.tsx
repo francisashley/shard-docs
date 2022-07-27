@@ -14,7 +14,6 @@ import "./ShardDocs.scss";
 
 export type props = {
   title?: string,
-  description?: string,
   content?: content,
   basePath?: string,
   hideBuiltWithShardDocs?: boolean,
@@ -64,7 +63,6 @@ const ShardDocs = (props: props) => {
     <div className="shard-docs">
       <ShardDocsSidebar
         title={props.title}
-        description={props.description}
         basePath={props.basePath}
         items={menu as categoryItem[]}
         hideBuiltWithShardDocs={props.hideBuiltWithShardDocs}
@@ -76,7 +74,6 @@ const ShardDocs = (props: props) => {
 
 ShardDocs.propTypes = {
   title: PropTypes.string,
-  description: PropTypes.string,
   content: ContentPropType,
   basePath: PropTypes.string,
   hideBuiltWithShardDocs: PropTypes.bool,
@@ -86,7 +83,6 @@ ShardDocs.propTypes = {
 
 ShardDocs.defaultProps = {
   title: "",
-  description: "",
   content: [],
   basePath: "/",
   hideBuiltWithShardDocs: false,

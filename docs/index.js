@@ -31,8 +31,7 @@ const components = {
 render(
   <MDXProvider components={components}>
     <ShardDocs
-      title="@fa-repo/shard-docs"
-      description="A doc manager written in React for organising and viewing MDX files."
+      title="Shard docs"
       content={[
         {
           type: 'category',

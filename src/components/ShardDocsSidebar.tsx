@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import ShardDocsSidebarHeader from "./ShardDocsSidebarHeader";
-import ShardDocsSidebarDescription from "./ShardDocsSidebarDescription";
 import ShardDocsSidebarMenu from "./ShardDocsSidebarMenu";
 import ShardDocsSidebarBuiltWithShardDocs from "./ShardDocsSidebarBuiltWithShardDocs";
 import { ItemsPropType } from "../prop-types";
@@ -9,7 +8,6 @@ import "./ShardDocsSidebar.scss";
 
 type props = {
   title?: string,
-  description?: string,
   basePath?: string,
   items: categoryItem[],
   hideBuiltWithShardDocs: boolean,
@@ -22,7 +20,6 @@ type state = {
 class ShardDocsSidebar extends React.Component<props, state> {
   static propTypes = {
     title: PropTypes.string,
-    description: PropTypes.string,
     basePath: PropTypes.string,
     items: ItemsPropType,
     hideBuiltWithShardDocs: PropTypes.bool
@@ -31,7 +28,6 @@ class ShardDocsSidebar extends React.Component<props, state> {
   static defaultProps = {
     app: {},
     title: "",
-    description: "",
     items: [],
     hideBuiltWithShardDocs: false
   };
@@ -47,11 +43,9 @@ class ShardDocsSidebar extends React.Component<props, state> {
       <aside className="shard-docs-sidebar">
         <ShardDocsSidebarHeader
           title={props.title}
-          description={props.description}
           basePath={props.basePath}
           onToggleMenu={() => this.setState({ showMenuOnMobile: !this.state.showMenuOnMobile })}
         />
-        {props.description && <ShardDocsSidebarDescription description={props.description} />}
         <ShardDocsSidebarMenu
           items={props.items}
           showOnMobile={this.state.showMenuOnMobile}

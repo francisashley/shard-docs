@@ -3,23 +3,20 @@ import { mount } from "enzyme";
 import ShardDocs from "./ShardDocs";
 
 const title = "App title";
-const description = "App description.";
 const content = [
   { type: 'document', name: "Doc A", document: <h1>Doc A</h1> },
   { type: 'document', name: "Doc B", document: <h1>Doc B</h1> }
 ];
 
 const mountShardDocs = (options = {}) => {
-  const { title, description, content = [], hideBuiltWithShardDocs } = options as {
+  const { title, content = [], hideBuiltWithShardDocs } = options as {
     title?: string;
-    description?: string;
     content?: any[];
     hideBuiltWithShardDocs?: boolean;
   };
   return mount(
     <ShardDocs
       title={title}
-      description={description}
       content={content}
       hideBuiltWithShardDocs={hideBuiltWithShardDocs}
     />
@@ -34,16 +31,13 @@ test("<ShardDocs /> renders with default props", () => {
 });
 
 test("<ShardDocs /> renders with props", () => {
-  const wrapper = mountShardDocs({ title, description, content });
+  const wrapper = mountShardDocs({ title, content });
 
   // Renders sidebar
   expect(wrapper.find('ShardDocsSidebar').exists()).toBe(true);
 
-  // Renders app title
+  // Renders title
   expect(wrapper.find('ShardDocsSidebar .shard-docs-header-title h2').text()).toBe(title);
-
-  // Renders app description
-  expect(wrapper.find('ShardDocsSidebar .shard-docs-description').text()).toBe(description);
 
   // Renders menu
   expect(wrapper.find('ShardDocsSidebar .shard-docs-menu ul li').exists()).toBe(true);

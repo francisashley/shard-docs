@@ -28,14 +28,9 @@ const content = [
   { type: "link", name: "Github", url: "https://github.com", external: true },
 ]
 
-render(
-  <ShardDocs
-    title="ShardDocs demo"
-    description="A description describing the purpose of the docs."
-    content={content}
-  />,
-  document.getElementById("root")
-);
+const root = document.getElementById("root");
+
+render(<ShardDocs title="ShardDocs demo" content={content} />, root);
 ```
 
 ### Shards

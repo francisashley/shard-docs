@@ -21,14 +21,12 @@ const ShardDocsSidebarHeader = ({ title, basePath, onToggleMenu, ...props }: pro
 
 ShardDocsSidebarHeader.propTypes = {
   title: PropTypes.string,
-  description: PropTypes.string,
   basePath: PropTypes.string,
   onToggleMenu: PropTypes.func
 };
 
 ShardDocsSidebarHeader.defaultProps = {
   title: "",
-  description: "",
   basePath: "/",
   onToggleMenu: () => {}
 };

@@ -56,11 +56,7 @@ const content = [
 ]
 
 render(
-  <ShardDocs
-    title="ShardDocs demo"
-    description="A description describing the purpose of the docs."
-    content={content}
-  />,
+  <ShardDocs title="ShardDocs demo" content={content} />,
   document.getElementById("root")
 );
 ```
@@ -73,14 +69,7 @@ render(
    * @string
    * @default ""
   */
-  title="App title"
-  /**
-   * Describe intention of docs. Appears below the title.
-   * @optional
-   * @string
-   * @default ""
-  */
-  description="App description"
+  title="Documentation title"
   /**
    * Add a prefix to all routes. E.g. "/docs/".
    * @optional
@@ -100,7 +89,7 @@ render(
    * @string "hash"|"browser"
    * @default "hash"
   */
-  routerType="browser"
+  routerType="hash"
   /**
    * Use react routers BrowserRouter instead of HashRouter (default) for routing..
    * @boolean
@@ -123,7 +112,7 @@ Data is composed in a way that describes the relationship of items to each other
 
 Each item has a common `name` property. The combination of subsequent properties define their types.
 
-### Let's take a look at the different types of items:
+### The different types of items:
 
 `document`:  Represents a document endpoint.
 ```jsx
