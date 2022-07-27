@@ -1,0 +1,62 @@
+.sd-NavDocument a,
+.sd-NavLink a {
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+  padding: 3px 15px 3px 0;
+  display: flex;
+  cursor: pointer;
+  font-weight: 400;
+
+  &:hover {
+    color: white;
+  }
+
+  &.active {
+    color: #fff176;
+  }
+
+  &[disabled] {
+    opacity: 0.5;
+    text-decoration: none !important;
+    cursor: default;
+  }
+
+  svg {
+    height: 16px;
+    width: 16px;
+    min-width: 16px;
+    min-height: 16px;
+    margin-right: 5px;
+    position: relative;
+  }
+}
+
+.sd-NavLink svg {
+  width: 14px !important;
+  min-width: 14px !important;
+}
+
+.sd-NavCategory {
+  padding: 0;
+  list-style-type: none;
+
+  &__header a {
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    padding: 3px 0;
+    display: flex;
+    cursor: pointer;
+    font-weight: 400;
+  }
+
+  &__header a:hover {
+    color: white;
+  }
+
+  &__header svg {
+    width: 9px;
+    height: 9px;
+    margin: 4px;
+    margin-right: 8px;
+  }
+}
