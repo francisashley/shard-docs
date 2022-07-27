@@ -1,4 +1,26 @@
 .sd-AppHeader {
   margin: 15px 15px 15px 0;
   display: flex;
+  
+  &__toggle-btn {
+    background: transparent;
+    color: white;
+    border: 1px solid transparent;
+    margin: -1px 0;
+    outline: none;
+    cursor: pointer;
+  
+    &:focus {
+      border-color: white;
+    }
+    
+    @media (min-width: 1200px) {
+      display: none;
+    }
+  }
+
+  &__toggle-icon {
+    width: 27px;
+    height: 27px;
+  }
 }
