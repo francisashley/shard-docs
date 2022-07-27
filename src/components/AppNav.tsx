@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import classnames from "classnames";
 import { ItemsPropType } from "../prop-types";
 import NavSection from "./NavSection";
 import "./AppNav.scss";
@@ -12,7 +13,7 @@ type props = {
 
 const AppNav = (props: props) => {
   return (
-    <div className="sd-AppNav" data-show-on-mobile={props.showOnMobile}>
+    <div className={classnames("sd-AppNav", props.showOnMobile && 'sd-AppNav--show')}>
       {props.items.map((item, i) => (
         <NavSection key={i} index={i} item={item} onNavigate={props.onNavigate} />
       ))}

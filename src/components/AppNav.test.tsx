@@ -34,13 +34,13 @@ test("<AppNav /> renders AppNav", () => {
 test("<AppNav /> can show AppNav on mobile devices", () => {
   const { wrapper } = mountAppNav({ items, showOnMobile: true } as { items: categoryItem[]});
 
-  expect((wrapper.find('.sd-AppNav').props() as any)['data-show-on-mobile']).toBe(true)
+  expect((wrapper.find('.sd-AppNav--show').exists())).toBe(true)
 });
 
 test("<AppNav /> can show AppNav on mobile devices", () => {
   const { wrapper } = mountAppNav({ items, showOnMobile: false } as { items: categoryItem[]});
 
-  expect((wrapper.find('.sd-AppNav').props() as any)['data-show-on-mobile']).toBe(false)
+  expect((wrapper.find('.sd-AppNav--show').exists())).toBe(false)
 });
 
 test("<AppNav /> calls onNavigate", () => {
