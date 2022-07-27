@@ -97,10 +97,10 @@ render(
   hideBuiltWithShardDocs={true}
   /**
    * Data is fed in through the content prop. Scroll down for an explanation of the schema.
-   * @array
-   * @default []
+   * @string "hash"|"browser"
+   * @default "hash"
   */
-  useBrowserRouter={true}
+  routerType="browser"
   /**
    * Use react routers BrowserRouter instead of HashRouter (default) for routing..
    * @boolean

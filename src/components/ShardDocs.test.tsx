@@ -10,12 +10,11 @@ const content = [
 ];
 
 const mountShardDocs = (options = {}) => {
-  const { title, description, content = [], hideBuiltWithShardDocs, useBrowserRouter } = options as {
+  const { title, description, content = [], hideBuiltWithShardDocs } = options as {
     title?: string;
     description?: string;
     content?: any[];
     hideBuiltWithShardDocs?: boolean;
-    useBrowserRouter?: boolean;
   };
   return mount(
     <ShardDocs
@@ -23,7 +22,6 @@ const mountShardDocs = (options = {}) => {
       description={description}
       content={content}
       hideBuiltWithShardDocs={hideBuiltWithShardDocs}
-      useBrowserRouter={useBrowserRouter}
     />
   )
 };

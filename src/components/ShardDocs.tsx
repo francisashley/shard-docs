@@ -18,7 +18,7 @@ export type props = {
   content?: content,
   basePath?: string,
   hideBuiltWithShardDocs?: boolean,
-  useBrowserRouter?: boolean,
+  routerType?: "hash" | "browser",
   currentPath?: string
 }
 
@@ -80,7 +80,7 @@ ShardDocs.propTypes = {
   content: ContentPropType,
   basePath: PropTypes.string,
   hideBuiltWithShardDocs: PropTypes.bool,
-  useBrowserRouter: PropTypes.bool,
+  routerType: PropTypes.string,
   currentPath: PropTypes.string,
 };
 
@@ -90,7 +90,7 @@ ShardDocs.defaultProps = {
   content: [],
   basePath: "/",
   hideBuiltWithShardDocs: false,
-  useBrowserRouter: false,
+  routerType: "hash",
   currentPath: ''
 };
 
