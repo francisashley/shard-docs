@@ -1,5 +1,5 @@
 import React from "react";
-import MenuIcon from "./icons/MenuIcon";
+import HamburgerIcon from "./icons/HamburgerIcon";
 import "./ShardDocsSidebarHeaderToggle.scss";
 
 type props = {
@@ -9,7 +9,7 @@ type props = {
 const ShardDocsSidebarHeaderToggle = ({ onClick, ...props}: props) => {
   return (
     <button className="shard-docs-header-toggle" onClick={onClick} {...props}>
-      <MenuIcon />
+      <HamburgerIcon />
     </button>
   );
 };
