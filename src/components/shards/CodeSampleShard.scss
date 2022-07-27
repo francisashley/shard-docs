@@ -1,32 +1,32 @@
-.shard-docs-code-sample-shard {
+.sd-CodeSampleShard {
   margin-bottom: 16px;
-}
+  
+  &__header {
+    padding: 0 0 5px 0;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+  }
 
-.shard-docs-code-sample-shard .shard-docs-code-sample-shard-header {
-  padding: 0 0 5px 0;
-  font-size: 14px;
-  display: flex;
-  align-items: center;
-
-  h3 {
+  &__title {
     margin: 0;
-    font-size: 16px;
-    font-weight: 500;
+    font-size: 16px !important;
+    font-weight: 500 !important;
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
     margin-right: 15px;
   }
 
-  menu {
+  &__menu {
     margin-left: auto;
     white-space: nowrap;
     margin: 0 0 0 auto;
     display: inline-flex;
   }
 
-  menu a {
-    color: black;
+  &__menu-link {
+    color: black !important;
     padding: 10px !important;
     transition: opacity 150ms ease-out;
     border-radius: 50%;
@@ -39,42 +39,42 @@
     &:after {
       display: none;
     }
-
-    svg {
-      height: 20px;
-      width: 20px;
+  }
+  
+  &__menu-icon {
+    height: 20px;
+    width: 20px;
+  }
+  
+  &__body {
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.1);
+  }
+  
+  &__source-code {
+    margin-bottom: 15px;
+  
+    pre {
+      margin: 0;
+      border-radius: 0 !important;
+    }
+  
+    pre code {
+      border-radius: 0 !important;
     }
   }
-}
-
-.shard-docs-code-sample-shard .shard-docs-code-sample-shard-body {
-  padding: 15px;
-  background: rgba(0, 0, 0, 0.1);
-}
-
-.shard-docs-code-sample-shard-source-code {
-  margin-bottom: 15px;
-
-  pre {
-    margin: 0;
-    border-radius: 0 !important;
-  }
-
-  pre code {
-    border-radius: 0 !important;
-  }
-}
-
-.shard-docs-code-sample-shard-example {
-  overflow: auto;
-  background: white;
-  padding: 15px;
-
-  > :first-child {
-    margin-top: 0;
-  }
-
-  > :last-child {
-    margin-bottom: 0;
+  
+  &__example {
+    overflow: auto;
+    background: white;
+    padding: 15px;
+  
+    > :first-child {
+      margin-top: 0;
+    }
+  
+    > :last-child {
+      margin-bottom: 0;
+    }
   }
 }

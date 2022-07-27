@@ -78,32 +78,32 @@ class CodeSampleShard extends React.Component<props, state> {
     }
 
     return (
-      <section className={classnames("shard-docs-code-sample-shard", props.className)}>
+      <section className={classnames("sd-CodeSampleShard", props.className)}>
         {showHeader && (
-          <header className="shard-docs-code-sample-shard-header">
-            <h3 className="title" title={props.title}>
+          <header className="sd-CodeSampleShard__header">
+            <h3 className="sd-CodeSampleShard__title" title={props.title}>
               {props.title}
             </h3>
-            <menu>
-              <BaseLink className="code" preventDefault onClick={this.toggleCode}>
-                <CodeIcon />
+            <menu className="sd-CodeSampleShard__menu">
+              <BaseLink className="sd-CodeSampleShard__menu-link" preventDefault onClick={this.toggleCode}>
+                <CodeIcon className="sd-CodeSampleShard__menu-icon" />
               </BaseLink>
 
               {props.repository && (
-                <BaseLink className="repository" href={props.repository} newTab>
-                  <GithubIcon />
+                <BaseLink className="sd-CodeSampleShard__menu-link" href={props.repository} newTab>
+                  <GithubIcon className="sd-CodeSampleShard__menu-icon" />
                 </BaseLink>
               )}
             </menu>
           </header>
         )}
-        <div className="shard-docs-code-sample-shard-body">
+        <div className="sd-CodeSampleShard__body">
           {displayCode && (
-            <div className="shard-docs-code-sample-shard-source-code">
+            <div className="sd-CodeSampleShard__source-code">
               <CodeBlockRenderer language={props.lang}>{props.sourceCode}</CodeBlockRenderer>
             </div>
           )}
-          <div className="shard-docs-code-sample-shard-example">
+          <div className="sd-CodeSampleShard__example">
             {props.useIframe ? (
               <Frame
                 initialContent={`<!DOCTYPE html><html><head>${props.iframeHead}</head><body><div class="frame-root"></div></body></html>`}
