@@ -4,7 +4,6 @@ import NavDocument from "./NavDocument";
 import NavLink from "./NavLink";
 import NavCategory from "./NavCategory";
 import { ItemsPropType } from "../prop-types";
-import "./NavTree.scss";
 
 type props = {
   items: item[],

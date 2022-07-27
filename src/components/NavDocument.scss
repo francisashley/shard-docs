@@ -1,0 +1,33 @@
+.sd-NavDocument {
+  &__link {
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    padding: 3px 15px 3px 0;
+    display: flex;
+    cursor: pointer;
+    font-weight: 400;
+
+    &:hover {
+      color: white;
+    }
+
+    &.active {
+      color: #fff176;
+    }
+
+    &[disabled] {
+      opacity: 0.5;
+      text-decoration: none !important;
+      cursor: default;
+    }
+  }
+
+  &__icon {
+    height: 16px;
+    width: 16px;
+    min-width: 16px;
+    min-height: 16px;
+    margin-right: 5px;
+    position: relative;
+  }
+}

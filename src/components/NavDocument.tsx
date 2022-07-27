@@ -4,6 +4,7 @@ import classnames from "classnames";
 import { NavLink } from "react-router-dom";
 import { DocumentItemPropType } from "../prop-types";
 import FileIcon from "./icons/FileIcon";
+import "./NavDocument.scss";
 
 type props = {
   item: documentItem;
@@ -15,12 +16,12 @@ const NavDocument = (props: props) => {
     <li className="sd-NavDocument">
       <NavLink
         style={{ paddingLeft: props.item.depth * 15 + "px" }}
-        className={classnames(props.item.isActive && "active")}
+        className={classnames('sd-NavDocument__link', props.item.isActive && "sd-NavDocument__link--active")}
         onClick={e => (props.item.isEmpty ? e.preventDefault() : props.onNavigate())}
         to={props.item.path}
         exact
       >
-        <FileIcon />
+        <FileIcon className='sd-NavDocument__icon'/>
         {props.item.name}
       </NavLink>
     </li>
