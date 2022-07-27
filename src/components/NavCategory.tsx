@@ -6,6 +6,7 @@ import BaseLink from "@fa-repo/base-react/dist/link";
 import TriangleArrowDown from "./icons/TriangleArrowDown";
 import TriangleArrowRight from "./icons/TriangleArrowRight";
 import sessionDB from "../utils/sessionDB";
+import "./NavCategory.scss";
 
 type props = {
   item: categoryItem,
@@ -52,11 +53,12 @@ class NavCategory extends React.Component<props, state> {
         {item.name && (
           <li className="sd-NavCategory__header">
             <BaseLink
+             className="sd-NavCategory__header-link"
               style={{ paddingLeft: item.depth * 15 + "px" }}
               onClick={this.toggleCategory}
               disabled={item.isEmpty}
             >
-              {this.state.expanded ? <TriangleArrowDown /> : <TriangleArrowRight />}
+              {this.state.expanded ? <TriangleArrowDown className="sd-NavCategory__header-icon" /> : <TriangleArrowRight className="sd-NavCategory__header-icon" />}
               {item.name}
             </BaseLink>
           </li>

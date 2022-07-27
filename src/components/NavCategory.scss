@@ -1,0 +1,24 @@
+.sd-NavCategory {
+  padding: 0;
+  list-style-type: none;
+
+  &__header-link {
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    padding: 3px 0;
+    display: flex;
+    cursor: pointer;
+    font-weight: 400;
+
+    &:hover {
+      color: white;
+    }
+  }
+
+  &__header-icon {
+    width: 9px;
+    height: 9px;
+    margin: 4px;
+    margin-right: 8px;
+  }
+}
