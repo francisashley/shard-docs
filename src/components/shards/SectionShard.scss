@@ -1,21 +1,23 @@
-.shard-docs-section-shard {
+.sd-SectionShard {
   margin-bottom: 16px;
-  .shard-docs-section-shard-title {
-    margin: 0 0 1rem 0;
-    border-bottom: 2px solid #ff9800;
+
+  &__title {
+    margin-top: 0 !important;
+    margin-bottom: 1rem !important;
+    border-bottom: 2px solid #ff9800 !important;
     display: inline-block;
-    font-weight: 500;
+    font-weight: 500 !important;
     letter-spacing: 0.3px;
-    font-size: 15px;
+    font-size: 15px !important;
     text-transform: uppercase;
     transition: border-bottom 150ms ease-out;
 
     &:hover {
-      border-bottom: 2px solid black;
+      border-bottom: 2px solid black !important;
     }
   }
 
-  h2 a {
+  &__title-link {
     color: #212121 !important;
     text-decoration: none !important;
     padding-bottom: 0.2rem;

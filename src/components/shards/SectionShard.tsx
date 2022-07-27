@@ -29,7 +29,7 @@ class SectionShard extends React.Component<SectionShardProps, SectionShardState>
 
   state = {
     expanded: true,
-    storageId: "fa-repo-section-shard-state-" + this.props.persistState
+    storageId: "sd-SectionShard-state-" + this.props.persistState
   };
 
   componentDidMount() {
@@ -52,11 +52,11 @@ class SectionShard extends React.Component<SectionShardProps, SectionShardState>
   render() {
     const { title, persistState, ...props } = this.props;
     return (
-      <section {...props} className={classnames("shard-docs-section-shard", props.className)}>
-        <h2 className="shard-docs-section-shard-title">
-          <BaseLink href="#" onClick={() => this.toggle()} preventDefault text={title} />
+      <section {...props} className={classnames("sd-SectionShard", props.className)}>
+        <h2 className="sd-SectionShard__title">
+          <BaseLink className="sd-SectionShard__title-link" href="#" onClick={() => this.toggle()} preventDefault text={title} />
         </h2>
-        {this.isExpanded() && <div className="shard-docs-section-shard">{props.children}</div>}
+        {this.isExpanded() && <div className="sd-SectionShard__content">{props.children}</div>}
       </section>
     );
   }
