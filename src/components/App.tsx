@@ -34,7 +34,14 @@ const App = (props: props) => {
     const content = contentTool.parseContent(props.content || [], basePath)
     setContent(content)
     setMenu(content.items);
-    setDocuments(content.documents);
+    const currentDocuments = filterDocuments(content.documents, props.currentPath).map(document => setActiveCrumb(document, props.currentPath));
+    setDocuments(currentDocuments);
+
+    const prevIndex = content.documents.findIndex((document: documentItem) => document.path === props.currentPath) - 1;
+    setPrevPage(content.documents[prevIndex] ? content.documents[prevIndex] : null);
+    
+    const nextIndex = content.documents.findIndex((document: documentItem) => document.path === props.currentPath) + 1;
+    setNextPage(content.documents[nextIndex] ? content.documents[nextIndex] : null);
   }, []);
 
   useEffect(() => {
@@ -49,15 +56,16 @@ const App = (props: props) => {
       setDocuments(currentDocuments)
       setMenu(currentActiveMenuItem)
 
-      const prevIndex = currentDocuments.findIndex((document: documentItem) => document.path === props.currentPath) - 1;
-      setPrevPage(currentDocuments[prevIndex] ? currentDocuments[prevIndex] : null);
+      const prevIndex = content.documents.findIndex((document: documentItem) => document.path === props.currentPath) - 1;
+      setPrevPage(content.documents[prevIndex] ? content.documents[prevIndex] : null);
       
-      const nextIndex = currentDocuments.findIndex((document: documentItem) => document.path === props.currentPath) + 1;
-      setNextPage(currentDocuments[nextIndex] ? currentDocuments[nextIndex] : null);
+      const nextIndex = content.documents.findIndex((document: documentItem) => document.path === props.currentPath) + 1;
+      setNextPage(content.documents[nextIndex] ? content.documents[nextIndex] : null);
 
       window.scrollTo(0, 0);
     }
   }, [props.currentPath])
+
 
   return (
     <div className="sd-App">
