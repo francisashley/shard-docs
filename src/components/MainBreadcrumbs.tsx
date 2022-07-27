@@ -10,23 +10,21 @@ type props = {
 }
 
 const MainBreadcrumbs = ({ breadcrumbs }: props) => (
-  <nav className="sd-MainBreadcrumbs">
-    <ol>
-      {breadcrumbs.map(({ name, path, isActive }, i) => {
-        const className = classnames(isActive && "active");
-
-        return (
-          <li key={i}>
-            {
-              <NavLink isActive={() => isActive} to={path}>
-                {name}
-              </NavLink>
-            }
-          </li>
-        );
-      })}
-    </ol>
-  </nav>
+  <ul className="sd-MainBreadcrumbs" role="navigation">
+    {breadcrumbs.map(({ name, path, isActive }, i) => {
+      return (
+        <li className="sd-MainBreadcrumbs__item" key={i}>
+          <NavLink
+            className={classnames("sd-MainBreadcrumbs__item-link", isActive && "sd-MainBreadcrumbs__item-link--active")}
+            isActive={() => false}
+            to={path}
+          >
+            {name}
+          </NavLink>
+        </li>
+      );
+    })}
+  </ul>
 );
 
 MainBreadcrumbs.propTypes = {
