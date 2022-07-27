@@ -11,7 +11,7 @@ type props = {
 const ShardDocsSidebarHeaderTitle = (props: props) => {
   return (
     <NavLink to={props.path} className="shard-docs-header-title">
-      <h2 title={props.title}>{props.title}</h2>
+      <h2 title={props.title} aria-label="Home">{props.title}</h2>
     </NavLink>
   );
 };
