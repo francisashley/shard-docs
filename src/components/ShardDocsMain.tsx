@@ -13,7 +13,6 @@ type props = {
 
 const ShardDocsMain = (props: props) => {
   const showPagination = Boolean(props.prevPage || props.nextPage);
-  console.log('showPagination', showPagination)
   return (
     <main className="shard-docs-main">
       {props.documents.map((document, i) => (
