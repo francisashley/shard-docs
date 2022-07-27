@@ -4,7 +4,7 @@ import "./BuiltWithShardDocs.scss";
 const BuiltWithShardDocs = () => {
   return (
     <footer className="sd-BuiltWithShardDocs">
-      Built with <a href="https://fa-repo.github.io/shard-docs/#/docs">@fa-repo/shard-docs</a>
+      Built with <a className="sd-BuiltWithShardDocs__link" href="https://fa-repo.github.io/shard-docs/#/docs">@fa-repo/shard-docs</a>
     </footer>
   );
 };
