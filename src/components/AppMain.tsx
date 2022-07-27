@@ -13,12 +13,17 @@ type props = {
 
 const AppMain = (props: props) => {
   const showPagination = Boolean(props.prevPage || props.nextPage);
+
+  const Documents = props.documents.map((document, i) => (
+    <MainDocument key={i} breadcrumbs={document.breadcrumbs} document={document.document} />
+  ))
+
+  const Pagination = showPagination && <MainPagination prevPage={props.prevPage} nextPage={props.nextPage} />
+
   return (
     <main className="sd-AppMain">
-      {props.documents.map((document, i) => (
-        <MainDocument key={i} breadcrumbs={document.breadcrumbs} document={document.document} />
-      ))}
-     { showPagination && <MainPagination prevPage={props.prevPage} nextPage={props.nextPage} />}
+      {Documents}
+      {Pagination}
     </main>
   );
 };
