@@ -19,7 +19,6 @@
     "watch": "npx rollup -c -w",
     "build": "npx rimraf ./dist && npx rollup -c",
     "build-ts": "tsc",
-    "prepare": "yarn build",
     "docs:deploy": "cd docs && yarn && yarn build && npx gh-pages -d dist --git $(which git)",
     "preversion": "yarn test && yarn build",
     "postpublish": "git push --tags",
