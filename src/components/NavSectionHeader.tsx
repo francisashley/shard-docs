@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import classnames from "classnames";
 import ArrowDown from "./icons/ArrowDown";
 import ArrowRight from "./icons/ArrowRight";
 import BaseLink from "@fa-repo/base-react/dist/link";
@@ -30,9 +31,9 @@ class NavSectionHeader extends React.Component<props> {
 
     return (
       <header className="sd-NavSectionHeader">
-        <BaseLink href="#" preventDefault onClick={props.onToggle}>
-          <h3>{props.title}</h3>
-          {props.expanded ? <ArrowDown /> : <ArrowRight />}
+        <BaseLink className="sd-NavSectionHeader__link" href="#" preventDefault onClick={props.onToggle}>
+          <h3 className="sd-NavSectionHeader__title">{props.title}</h3>
+          <ArrowRight className={classnames("sd-NavSectionHeader__arrow-icon", props.expanded && "sd-NavSectionHeader__arrow-icon--expanded" )} />
         </BaseLink>
       </header>
     );
