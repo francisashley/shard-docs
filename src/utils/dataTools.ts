@@ -4,7 +4,7 @@ import kebabCase from "lodash/kebabCase";
 const getSlug = (name: string) => slugify(kebabCase(name), { lower: true });
 const removeDuplicateSlashes = (path: string) => path.replace(/\/+$/, "").replace(/\/+/g, "/");
 
-function normaliseContent(items: inputData): item[] {
+function normaliseContent(items: inputData): data {
   const itemTemplates = {
     category: { type: 'category', name: '', path: '', items: [], isEmpty: true, isActive: false, depth: 0 },
     page: { type: 'page', name: '', path: '', breadcrumbs: [], content: null, isEmpty: true, isActive: false, depth: 0 },
@@ -20,18 +20,18 @@ function normaliseContent(items: inputData): item[] {
 
     if (item.type === "category") {
       const items = normaliseContent((item.items || []) as inputData);
-      output.push({ ...outputTemplate, name: item.name, items } as categoryItem);
+      output.push({ ...outputTemplate, name: item.name, items } as category);
     } else if (item.type === "page") {
-      output.push({ ...outputTemplate, name: item.name, content: item.content } as pageItem);
+      output.push({ ...outputTemplate, name: item.name, content: item.content } as page);
     } else if (item.type === "link") {
-      output.push({ ...outputTemplate, name: item.name, url: item.url, external: item.external } as linkItem);
+      output.push({ ...outputTemplate, name: item.name, url: item.url, external: item.external } as link);
     }
   }
 
   return output;
 }
 
- function addPaths(items: item[], basePath = ''): item[] {
+ function addPaths(items: data, basePath = ''): data {
     const output = []
     for (const item of items) {
       const path = removeDuplicateSlashes(`${basePath}/${getSlug(item.name || '')}`);
@@ -51,7 +51,7 @@ function normaliseContent(items: inputData): item[] {
  * @param  {array} items Expects result of parse / shapeItems().
  * @return {array}
  */
-function addBreadcrumbs(items: item[], breadcrumbs: breadcrumb[]): item[] {
+function addBreadcrumbs(items: data, breadcrumbs: breadcrumb[]): data {
   const output = [];
   for (const item of items) {
     if (item.type === "category") {
@@ -76,7 +76,7 @@ function addBreadcrumbs(items: item[], breadcrumbs: breadcrumb[]): item[] {
  * @param  {array} items Expects result of parse/combineTopLevelAdjacentPages().
  * @return {array}
  */
- function shapeItems(items: item[]): item[] {
+ function shapeItems(items: data): data {
   const output = [];
   for (const item of items) {
     if (item.type === "category") {
@@ -100,10 +100,10 @@ function addBreadcrumbs(items: item[], breadcrumbs: breadcrumb[]): item[] {
  * @param  {array} items Requires types to have been added to array with addTypes().
  * @return {array}
  */
- function combineTopLevelAdjacentItems(items: item[]): item[] {
+ function combineTopLevelAdjacentItems(items: data): data {
   const preparedItems = items.map(item => {
     if (item.type !== "category") {
-      return { name: null, items: [item], type: "category"} as categoryItem;
+      return { name: null, items: [item], type: "category"} as category;
     }
     return item
   });
@@ -127,7 +127,7 @@ function addBreadcrumbs(items: item[], breadcrumbs: breadcrumb[]): item[] {
  * @param  {array} items Expects result of parse/ shapeItems().
  * @return {array}
  */
-function addDepth(items: item[], depth = 0): item[] {
+function addDepth(items: data, depth = 0): data {
   const output = [];
   for (const item of items) {
     if (item.type === "category") {
@@ -145,7 +145,7 @@ function addDepth(items: item[], depth = 0): item[] {
  * @param  {array} source Expects source array to have been fed through addTypes..
  * @return {array} returns all pages in an array
  */
-function getPages(items: item[], accumulator: (pageItem)[] = []) {
+function getPages(items: data, accumulator: (page)[] = []) {
   for (const item of items) {
     if (item.type === "category") {
       accumulator = getPages((item.items || []), accumulator);
@@ -156,17 +156,17 @@ function getPages(items: item[], accumulator: (pageItem)[] = []) {
   return accumulator;
 }
 
-function getCurrentPage(pages: pageItem[], path: string): pageItem | null {
+function getCurrentPage(pages: page[], path: string): page | null {
   return pages.find(page => page.path === path) || null;
 }
 
-function getPrevPage(pages: pageItem[], currentPath: string): pageItem | null {
-  const activeIndex = pages.findIndex((document: pageItem) => document.path === currentPath);
+function getPrevPage(pages: page[], currentPath: string): page | null {
+  const activeIndex = pages.findIndex((document: page) => document.path === currentPath);
   return pages[activeIndex - 1] ? pages[activeIndex - 1] : null;
 }
 
-function getNextPage(pages: pageItem[], currentPath: string): pageItem | null {
-  const activeIndex = pages.findIndex((document: pageItem) => document.path === currentPath);
+function getNextPage(pages: page[], currentPath: string): page | null {
+  const activeIndex = pages.findIndex((document: page) => document.path === currentPath);
   return pages[activeIndex + 1] ? pages[activeIndex + 1] : null;
 }
 
@@ -193,7 +193,7 @@ function parse(items: inputData, basePath = "/") {
  * @param  {string} path current url
  * @return {array}
  */
-function filterPages(pages: pageItem[] = [], path = "") {
+function filterPages(pages: page[] = [], path = "") {
   return pages.filter(page => page.path.startsWith(path));
 }
 
@@ -203,7 +203,7 @@ function filterPages(pages: pageItem[] = [], path = "") {
  * @param  {string} path current url
  * @return {array}
  */
-function setActiveCrumb(page: pageItem, path = "") {
+function setActiveCrumb(page: page, path = "") {
   page.breadcrumbs = page.breadcrumbs.map(crumb => ({
     ...crumb,
     isActive: crumb.path === path
@@ -217,7 +217,7 @@ function setActiveCrumb(page: pageItem, path = "") {
  * @param  {string} currentPath current url
  * @return {array}
  */
-function setActiveMenuItem(items: item[] = [], currentPath = "") {
+function setActiveMenuItem(items: data = [], currentPath = "") {
   return items.map(item => {
     if (item.type === "category") {
       item.items = setActiveMenuItem(item.items, currentPath);

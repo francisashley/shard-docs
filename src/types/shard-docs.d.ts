@@ -7,17 +7,17 @@ type inputData = {
   content?: unknown;
 }[]
 
-type categoryItem = {
+type category = {
   type: 'category';
   name: string | null;
   path: string;
-  items: item[];
+  items: data;
   isEmpty: boolean,
   isActive: boolean,
   depth: number
 }
 
-type pageItem = {
+type page = {
   type: 'page';
   name: string;
   path: string;
@@ -28,7 +28,7 @@ type pageItem = {
   depth: number
 }
 
-type linkItem = {
+type link = {
   type: 'link';
   name: string;
   url: string;
@@ -36,7 +36,9 @@ type linkItem = {
   depth: number
 }
 
-type item = (categoryItem | pageItem | linkItem)
+type item = (category | page | link)
+
+type data = item[]
 
 type breadcrumb = {
   path: string,

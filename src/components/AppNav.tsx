@@ -7,7 +7,7 @@ import "./AppNav.scss";
 
 type props = {
   showOnMobile: boolean,
-  items: categoryItem[],
+  items: category[],
   onNavigate: () => void,
 }
 

@@ -19,9 +19,9 @@ const page =  {
       <h3>Hello universe!</h3>,
     </>
   )
-} as pageItem;
+} as page;
 
-const mountMain = (options: { prevPage?: paginationPage, nextPage?: paginationPage, page?: pageItem }) => {
+const mountMain = (options: { prevPage?: paginationPage, nextPage?: paginationPage, page?: page }) => {
   const { prevPage, nextPage, page = null} = options
   return mount(
     <MemoryRouter>

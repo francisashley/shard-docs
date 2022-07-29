@@ -9,7 +9,7 @@ import "./AppSidebar.scss";
 type props = {
   title?: string,
   basePath?: string,
-  items: categoryItem[],
+  items: category[],
   hideBuiltWithShardDocs: boolean,
 }
 

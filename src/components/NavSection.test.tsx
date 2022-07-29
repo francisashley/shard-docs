@@ -26,7 +26,7 @@ test("<NavSection /> renders first index correctly", () => {
   const onNavigateMock = jest.fn();
   const wrapper = mount(
     <MemoryRouter>
-      <NavSection index={0} item={items[0] as categoryItem} onNavigate={onNavigateMock} />
+      <NavSection index={0} item={items[0] as category} onNavigate={onNavigateMock} />
     </MemoryRouter>
   );
 
@@ -48,7 +48,7 @@ test("<NavSection /> renders first index correctly", () => {
 test("<NavSection /> render indexes after first index correctly", () => {
   const wrapper = mount(
     <MemoryRouter>
-      <NavSection index={1} item={items[1] as categoryItem} />
+      <NavSection index={1} item={items[1] as category} />
     </MemoryRouter>
   );
 
@@ -60,7 +60,7 @@ test("<NavSection /> render indexes after first index correctly", () => {
 test("<NavSection /> renders without title correctly", () => {
   const wrapper = mount(
     <MemoryRouter>
-      <NavSection index={1} item={items[2] as categoryItem} />
+      <NavSection index={1} item={items[2] as category} />
     </MemoryRouter>
   );
 

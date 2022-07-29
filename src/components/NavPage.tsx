@@ -2,12 +2,12 @@ import React from "react";
 import PropTypes from "prop-types";
 import classnames from "classnames";
 import { NavLink } from "react-router-dom";
-import { PageItemPropType } from "../prop-types";
+import { PagePropType } from "../prop-types";
 import FileIcon from "./icons/FileIcon";
 import "./NavPage.scss";
 
 type props = {
-  item: pageItem;
+  item: page;
   onNavigate: () => void;
 }
 
@@ -29,7 +29,7 @@ const NavPage = (props: props) => {
 };
 
 NavPage.propTypes = {
-  item: PageItemPropType,
+  item: PagePropType,
   onNavigate: PropTypes.func
 };
 

@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { CategoryItemPropType } from "../prop-types";
+import { CategoryPropType } from "../prop-types";
 import NavTree from "./NavTree";
 import BaseLink from "@fa-repo/base-react/dist/link";
 import TriangleArrowDown from "./icons/TriangleArrowDown";
@@ -9,7 +9,7 @@ import sessionDB from "../utils/sessionDB";
 import "./NavCategory.scss";
 
 type props = {
-  item: categoryItem,
+  item: category,
   onNavigate: () => void
 }
 type state = {
@@ -19,7 +19,7 @@ type state = {
 
 class NavCategory extends React.Component<props, state> {
   static propTypes = {
-    item: CategoryItemPropType,
+    item: CategoryPropType,
     onNavigate: PropTypes.func
   };
   

@@ -6,7 +6,7 @@ import NavCategory from "./NavCategory";
 import { ItemsPropType } from "../prop-types";
 
 type props = {
-  items: item[],
+  items: data,
   onNavigate: () => void
 }
 

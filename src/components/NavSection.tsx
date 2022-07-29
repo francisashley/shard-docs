@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { CategoryItemPropType } from "../prop-types";
+import { CategoryPropType } from "../prop-types";
 import ShardDocsSidebarMenuTree from "./NavTree";
 import sessionDB from "../utils/sessionDB";
 import classnames from "classnames";
@@ -9,7 +9,7 @@ import "./NavSection.scss";
 
 type props = {
   index: number,
-  item: categoryItem,
+  item: category,
   onNavigate: () => void,
 }
 
@@ -20,7 +20,7 @@ type state = {
 class NavSection extends React.Component<props, state> {
   static propTypes = {
     index: PropTypes.number,
-    item: CategoryItemPropType,
+    item: CategoryPropType,
     onNavigate: PropTypes.func
   };
   

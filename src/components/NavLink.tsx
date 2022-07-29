@@ -1,10 +1,10 @@
 import React from "react";
 import ExternalLinkIcon from "./icons/ExternalLinkIcon";
-import { LinkItemPropType } from "../prop-types";
+import { LinkPropType } from "../prop-types";
 import "./NavLink.scss";
 
 type props = {
-  item: linkItem;
+  item: link;
 }
 
 const NavLink = (props: props) => {
@@ -20,7 +20,7 @@ const NavLink = (props: props) => {
 };
 
 NavLink.propTypes = {
-  item: LinkItemPropType
+  item: LinkPropType
 };
 
 NavLink.defaultProps = {

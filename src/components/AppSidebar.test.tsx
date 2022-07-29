@@ -9,7 +9,7 @@ const items = dataTools.parse([
   { type: 'page', name: "Doc A", content: <h1>Doc A</h1> }
 ]);
 
-const mountSidebar = (options = {} as { title?: string, items?: categoryItem[], hideBuiltWithShardDocs?: boolean}) => {
+const mountSidebar = (options = {} as { title?: string, items?: category[], hideBuiltWithShardDocs?: boolean}) => {
   const { title, items, hideBuiltWithShardDocs } = options;
   return mount(
     <MemoryRouter>
@@ -35,7 +35,7 @@ test("<AppSidebar /> renders app title", () => {
 });
 
 test("<AppSidebar /> renders menu", () => {
-  const wrapper = mountSidebar({ items } as { items: categoryItem[] });
+  const wrapper = mountSidebar({ items } as { items: category[] });
 
   expect(wrapper.find('.sd-AppNav ul li').exists()).toBe(true);
 });
@@ -61,7 +61,7 @@ test("<AppSidebar /> can toggle sidebar", () => {
 });
 
 test("<AppSidebar /> closes sidebar menu when navigating", () => {
-  const wrapper = mountSidebar({ items } as { items: categoryItem[] });
+  const wrapper = mountSidebar({ items } as { items: category[] });
 
   expect((wrapper.find('.sd-AppNav--show').exists())).toBe(false)
   wrapper.find('.sd-AppHeader__toggle-btn').simulate('click')

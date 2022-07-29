@@ -1,12 +1,11 @@
 import React from "react";
-import PropTypes from "prop-types";
 import MainPagination from "./MainPagination";
 import MainContent from "./MainContent";
-import { PagePropType, PageItemPropType } from "../prop-types";
+import { PagePropType } from "../prop-types";
 import "./AppMain.scss";
 
 type props = {
-  page?: pageItem | null,
+  page?: page | null,
   prevPage?: paginationPage,
   nextPage?: paginationPage,
 }
@@ -27,7 +26,7 @@ const AppMain = (props: props) => {
 AppMain.propTypes = {
   prevPage: PagePropType,
   nextPage: PagePropType,
-  page: PageItemPropType
+  page: PagePropType
 };
 AppMain.defaultProps = {
   prevPage: null,

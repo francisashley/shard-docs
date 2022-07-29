@@ -19,7 +19,7 @@ const items = dataTools.parse([
   { type: 'link', name: "Github", url: "http://github.com", external: true }
 ]);
 
-const mountMenuList = ({ items } = {} as { items: item[]}) => {
+const mountMenuList = ({ items } = {} as { items: data }) => {
   const onNavigate = jest.fn();
   const wrapper = mount(
     <MemoryRouter>

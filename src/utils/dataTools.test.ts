@@ -214,7 +214,7 @@ test("dataTools.filterPages() filters correctly", () => {
     }
   ];
 
-  expect(dataTools.filterPages(pages as pageItem[])).toStrictEqual([
+  expect(dataTools.filterPages(pages as page[])).toStrictEqual([
     {
       name: "Doc A",
       type: "page",
@@ -239,7 +239,7 @@ test("dataTools.filterPages() filters correctly", () => {
     }
   ])
 
-  expect(dataTools.filterPages(pages as pageItem[], '/doc-a')).toStrictEqual([
+  expect(dataTools.filterPages(pages as page[], '/doc-a')).toStrictEqual([
     {
       name: "Doc A",
       type: "page",
@@ -298,7 +298,7 @@ test("dataTools.setActiveMenuItem() correctly sets isActive", () => {
     }
   ];
 
-  expect(dataTools.setActiveMenuItem(items as item[], '/doc-b')).toStrictEqual([
+  expect(dataTools.setActiveMenuItem(items as data, '/doc-b')).toStrictEqual([
     {
       name: null,
       type: "category",
@@ -344,7 +344,7 @@ test("dataTools.setActiveMenuItem() correctly sets isActive", () => {
       ]
     }
   ])
-  expect(dataTools.setActiveMenuItem(items as item[], '/doc-z')).toStrictEqual([
+  expect(dataTools.setActiveMenuItem(items as data, '/doc-z')).toStrictEqual([
     {
       name: null,
       type: "category",
@@ -408,7 +408,7 @@ test("dataTools.setActiveCrumb() sets active crumb correctly", () => {
     isEmpty: true
   };
 
-  expect(dataTools.setActiveCrumb(page as pageItem)).toStrictEqual({
+  expect(dataTools.setActiveCrumb(page as page)).toStrictEqual({
     name: "Hello universe",
     type: "page",
     path: "/hello-universe",
@@ -423,7 +423,7 @@ test("dataTools.setActiveCrumb() sets active crumb correctly", () => {
     isEmpty: true
   });
 
-  expect(dataTools.setActiveCrumb(page as pageItem, "/hello")).toStrictEqual({
+  expect(dataTools.setActiveCrumb(page as page, "/hello")).toStrictEqual({
     name: "Hello universe",
     type: "page",
     path: "/hello-universe",
@@ -438,7 +438,7 @@ test("dataTools.setActiveCrumb() sets active crumb correctly", () => {
     isEmpty: true
   });
 
-  expect(dataTools.setActiveCrumb(page as pageItem, "/hello/planet")).toStrictEqual({
+  expect(dataTools.setActiveCrumb(page as page, "/hello/planet")).toStrictEqual({
     name: "Hello universe",
     type: "page",
     path: "/hello-universe",
@@ -453,7 +453,7 @@ test("dataTools.setActiveCrumb() sets active crumb correctly", () => {
     isEmpty: true
   });
 
-  expect(dataTools.setActiveCrumb(page as pageItem, "/hello/planet/galaxy")).toStrictEqual({
+  expect(dataTools.setActiveCrumb(page as page, "/hello/planet/galaxy")).toStrictEqual({
     name: "Hello universe",
     type: "page",
     path: "/hello-universe",
@@ -468,7 +468,7 @@ test("dataTools.setActiveCrumb() sets active crumb correctly", () => {
     isEmpty: true
   });
 
-  expect(dataTools.setActiveCrumb(page as pageItem, "/hello/planet/galaxy/universe")).toStrictEqual({
+  expect(dataTools.setActiveCrumb(page as page, "/hello/planet/galaxy/universe")).toStrictEqual({
     name: "Hello universe",
     type: "page",
     path: "/hello-universe",

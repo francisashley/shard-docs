@@ -15,7 +15,7 @@ const items = dataTools.parse([
 test("<NavCategory /> renders correctly", () => {
   const wrapper = mount(
     <MemoryRouter>
-      <NavCategory item={items[0] as categoryItem} />
+      <NavCategory item={items[0] as category} />
     </MemoryRouter>
   );
 

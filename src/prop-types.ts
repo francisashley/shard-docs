@@ -28,19 +28,14 @@ export const BreadcrumbPropType = PropTypes.shape({
 });
 export const BreadcrumbsPropType = PropTypes.arrayOf(BreadcrumbPropType);
 
-export const PagePropType = PropTypes.shape({
-  name: PropTypes.string,
-  path: PropTypes.string
-});
-
-export const LinkItemPropType = PropTypes.shape({
+export const LinkPropType = PropTypes.shape({
   type: PropTypes.oneOf(["link"]),
   name: PropTypes.string,
   url: PropTypes.string,
   external: PropTypes.bool
 });
 
-export const PageItemPropType = PropTypes.shape({
+export const PagePropType = PropTypes.shape({
   type: PropTypes.oneOf(["page"]),
   path: PropTypes.string,
   name: PropTypes.string,
@@ -50,21 +45,21 @@ export const PageItemPropType = PropTypes.shape({
   content: PropTypes.element
 });
 
-export const CategoryItemPropShape = {
+export const CategoryPropShape = {
   type: PropTypes.oneOf(["category"]),
   path: PropTypes.string,
   name: PropTypes.string,
   isEmpty: PropTypes.bool,
   isActive: PropTypes.bool,
 } as { [key: string]: any };
-CategoryItemPropShape.items = PropTypes.arrayOf(
+CategoryPropShape.items = PropTypes.arrayOf(
   PropTypes.oneOfType([
-    PageItemPropType,
-    LinkItemPropType,
-    PropTypes.shape(CategoryItemPropShape )
+    PagePropType,
+    LinkPropType,
+    PropTypes.shape(CategoryPropShape )
   ])
 );
 
-export const CategoryItemPropType = PropTypes.shape(CategoryItemPropShape);
+export const CategoryPropType = PropTypes.shape(CategoryPropShape);
 
-export const ItemsPropType = PropTypes.arrayOf(PropTypes.oneOfType([PageItemPropType, LinkItemPropType, CategoryItemPropType]));
+export const ItemsPropType = PropTypes.arrayOf(PropTypes.oneOfType([PagePropType, LinkPropType, CategoryPropType]));

@@ -22,11 +22,11 @@ export type props = {
 
 const App = (props: props) => {
   const [currentPath, setCurrentPath] = useState(props.currentPath);
-  const [data, setData] = useState(dataTools.parse(props.data || [], props.basePath) as item[]);
-  const [pages, setPages] = useState([] as pageItem[]);
-  const [currentPage, setCurrentPage] = useState(null as (pageItem | null));
-  const [prevPage, setPrevPage] = useState(null as pageItem | null);
-  const [nextPage, setNextPage] = useState(null as pageItem | null);
+  const [data, setData] = useState(dataTools.parse(props.data || [], props.basePath) as data);
+  const [pages, setPages] = useState([] as page[]);
+  const [currentPage, setCurrentPage] = useState(null as (page | null));
+  const [prevPage, setPrevPage] = useState(null as page | null);
+  const [nextPage, setNextPage] = useState(null as page | null);
 
   useEffect(() => {
     const data = dataTools.parse(props.data || [], props.basePath)
@@ -58,7 +58,7 @@ const App = (props: props) => {
       <AppSidebar
         title={props.title}
         basePath={props.basePath}
-        items={data as categoryItem[]}
+        items={data as category[]}
         hideBuiltWithShardDocs={props.hideBuiltWithShardDocs}
       />
       <AppMain page={currentPage} prevPage={prevPage as paginationPage} nextPage={nextPage as paginationPage} />
