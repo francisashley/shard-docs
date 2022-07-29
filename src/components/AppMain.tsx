@@ -6,7 +6,7 @@ import { PagePropType, DocumentItemPropType } from "../prop-types";
 import "./AppMain.scss";
 
 type props = {
-  documents: documentItem[],
+  document?: documentItem | null,
   prevPage?: paginationPage,
   nextPage?: paginationPage,
 }
@@ -14,15 +14,12 @@ type props = {
 const AppMain = (props: props) => {
   const showPagination = Boolean(props.prevPage || props.nextPage);
 
-  const Documents = props.documents.map((document, i) => (
-    <MainDocument key={i} breadcrumbs={document.breadcrumbs} document={document.document} />
-  ))
-
+  const Document = props.document && <MainDocument breadcrumbs={props.document.breadcrumbs} document={props.document.document} />
   const Pagination = showPagination && <MainPagination prevPage={props.prevPage} nextPage={props.nextPage} />
 
   return (
     <main className="sd-AppMain">
-      {Documents}
+      {Document}
       {Pagination}
     </main>
   );
@@ -31,12 +28,12 @@ const AppMain = (props: props) => {
 AppMain.propTypes = {
   prevPage: PagePropType,
   nextPage: PagePropType,
-  documents: PropTypes.arrayOf(DocumentItemPropType)
+  document: PropTypes.arrayOf(DocumentItemPropType)
 };
 AppMain.defaultProps = {
   prevPage: null,
   nextPage: null,
-  documents: []
+  document: null
 };
 
 export default AppMain;

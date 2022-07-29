@@ -25,7 +25,7 @@ const App = (props: props) => {
   const [currentPath, setCurrentPath] = useState(props.currentPath);
   const [content, setContent] = useState({ items: [], documents: [] } as { items: item[], documents: documentItem[] });
   const [menu, setMenu] = useState([] as item[]);
-  const [documents, setDocuments] = useState([] as documentItem[]);
+  const [currentDocument, setCurrentDocument] = useState(null as (documentItem | null));
   const [prevPage, setPrevPage] = useState(null as documentItem | null);
   const [nextPage, setNextPage] = useState(null as documentItem | null);
 
@@ -34,8 +34,8 @@ const App = (props: props) => {
     const documents = dataTools.getDocuments(data)
     setContent({ items: data, documents })
     setMenu(data);
-    const currentDocuments = dataTools.filterDocuments(documents, props.currentPath).map(document => dataTools.setActiveCrumb(document, props.currentPath));
-    setDocuments(currentDocuments);
+    const currentDocument = dataTools.filterDocuments(documents, props.currentPath)[0] || null;
+    setCurrentDocument(currentDocument ? dataTools.setActiveCrumb(currentDocument, props.currentPath) : null);
 
     const prevIndex = content.documents.findIndex((document: documentItem) => document.path === props.currentPath) - 1;
     setPrevPage(content.documents[prevIndex] ? content.documents[prevIndex] : null);
@@ -49,12 +49,9 @@ const App = (props: props) => {
 
     if (props.currentPath !== prevPath) {
       setCurrentPath(props.currentPath);
-
-      const currentDocuments = dataTools.filterDocuments(content.documents, props.currentPath).map(document => dataTools.setActiveCrumb(document, props.currentPath));
-      const currentActiveMenuItem = dataTools.setActiveMenuItem(content.items, props.currentPath) as categoryItem[]
-
-      setDocuments(currentDocuments)
-      setMenu(currentActiveMenuItem)
+      const currentDocument = dataTools.filterDocuments(content.documents, props.currentPath)[0] || null;
+      setCurrentDocument(currentDocument ? dataTools.setActiveCrumb(currentDocument, props.currentPath) : null)
+      setMenu(dataTools.setActiveMenuItem(content.items, props.currentPath) as categoryItem[])
 
       const prevIndex = content.documents.findIndex((document: documentItem) => document.path === props.currentPath) - 1;
       setPrevPage(content.documents[prevIndex] ? content.documents[prevIndex] : null);
@@ -75,7 +72,7 @@ const App = (props: props) => {
         items={menu as categoryItem[]}
         hideBuiltWithShardDocs={props.hideBuiltWithShardDocs}
       />
-      <AppMain documents={documents} prevPage={prevPage as paginationPage} nextPage={nextPage as paginationPage} />
+      <AppMain document={currentDocument} prevPage={prevPage as paginationPage} nextPage={nextPage as paginationPage} />
     </div>
   );
 }
