@@ -9,17 +9,17 @@ let items = contentTools.parse([
     type: 'category',
     name: "Essentials",
     items: [
-      { type: 'document', name: "Get started", document: <h1>Get started</h1> }
+      { type: 'page', name: "Get started", content: <h1>Get started</h1> }
     ]
   },
   {
     type: 'category',
     name: "Examples",
     items: [
-      { type: 'document', name: "Hello world", document: <h1>Hello world</h1> }
+      { type: 'page', name: "Hello world", content: <h1>Hello world</h1> }
     ]
   },
-  { type: 'document', name: "Doc A", document: <h1>Doc A</h1> }
+  { type: 'page', name: "Doc A", content: <h1>Doc A</h1> }
 ]);
 
 test("<NavSection /> renders first index correctly", () => {
@@ -41,7 +41,7 @@ test("<NavSection /> renders first index correctly", () => {
   expect(wrapper.find('NavTree').exists()).toBe(true)
 
   // calls onNavigate
-  wrapper.find('NavTree NavDocument a').first().simulate('click')
+  wrapper.find('NavTree NavPage a').first().simulate('click')
   expect(onNavigateMock.mock.calls.length).toBe(1)
 });
 

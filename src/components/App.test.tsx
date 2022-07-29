@@ -4,8 +4,8 @@ import App from "./App";
 
 const title = "App title";
 const content = [
-  { type: 'document', name: "Doc A", document: <h1>Doc A</h1> },
-  { type: 'document', name: "Doc B", document: <h1>Doc B</h1> }
+  { type: 'page', name: "Doc A", content: <h1>Doc A</h1> },
+  { type: 'page', name: "Doc B", content: <h1>Doc B</h1> }
 ];
 
 const mountShardDocs = (options = {}) => {
@@ -48,8 +48,8 @@ test("<App /> renders with props", () => {
   // Renders main
   expect(wrapper.find('AppMain').exists()).toBe(true);
 
-  // Renders documents
-  expect(wrapper.find('AppMain MainDocument').exists()).toBe(true);
+  // Renders Page
+  expect(wrapper.find('AppMain MainContent').exists()).toBe(true);
 });
 
 test("<App /> can hide sidebar footer", () => {

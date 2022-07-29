@@ -23,25 +23,25 @@ export type props = {
 const App = (props: props) => {
   const [basePath] = useState(props.basePath);
   const [currentPath, setCurrentPath] = useState(props.currentPath);
-  const [content, setContent] = useState({ items: [], documents: [] } as { items: item[], documents: documentItem[] });
+  const [content, setContent] = useState({ items: [], pages: [] } as { items: item[], pages: pageItem[] });
   const [menu, setMenu] = useState([] as item[]);
-  const [currentDocument, setCurrentDocument] = useState(null as (documentItem | null));
-  const [prevPage, setPrevPage] = useState(null as documentItem | null);
-  const [nextPage, setNextPage] = useState(null as documentItem | null);
+  const [currentPage, setCurrentPage] = useState(null as (pageItem | null));
+  const [prevPage, setPrevPage] = useState(null as pageItem | null);
+  const [nextPage, setNextPage] = useState(null as pageItem | null);
 
   useEffect(() => {
     const data = dataTools.parse(props.content || [], basePath)
-    const documents = dataTools.getDocuments(data)
-    setContent({ items: data, documents })
+    const pages = dataTools.getPages(data)
+    setContent({ items: data, pages })
     setMenu(data);
-    const currentDocument = dataTools.filterDocuments(documents, props.currentPath)[0] || null;
-    setCurrentDocument(currentDocument ? dataTools.setActiveCrumb(currentDocument, props.currentPath) : null);
+    const currentPage = dataTools.filterPages(pages, props.currentPath)[0] || null;
+    setCurrentPage(currentPage ? dataTools.setActiveCrumb(currentPage, props.currentPath) : null);
 
-    const prevIndex = content.documents.findIndex((document: documentItem) => document.path === props.currentPath) - 1;
-    setPrevPage(content.documents[prevIndex] ? content.documents[prevIndex] : null);
+    const prevIndex = content.pages.findIndex((page: pageItem) => page.path === props.currentPath) - 1;
+    setPrevPage(content.pages[prevIndex] ? content.pages[prevIndex] : null);
     
-    const nextIndex = content.documents.findIndex((document: documentItem) => document.path === props.currentPath) + 1;
-    setNextPage(content.documents[nextIndex] ? content.documents[nextIndex] : null);
+    const nextIndex = content.pages.findIndex((page: pageItem) => page.path === props.currentPath) + 1;
+    setNextPage(content.pages[nextIndex] ? content.pages[nextIndex] : null);
   }, []);
 
   useEffect(() => {
@@ -49,15 +49,15 @@ const App = (props: props) => {
 
     if (props.currentPath !== prevPath) {
       setCurrentPath(props.currentPath);
-      const currentDocument = dataTools.filterDocuments(content.documents, props.currentPath)[0] || null;
-      setCurrentDocument(currentDocument ? dataTools.setActiveCrumb(currentDocument, props.currentPath) : null)
+      const currentPage = dataTools.filterPages(content.pages, props.currentPath)[0] || null;
+      setCurrentPage(currentPage ? dataTools.setActiveCrumb(currentPage, props.currentPath) : null)
       setMenu(dataTools.setActiveMenuItem(content.items, props.currentPath) as categoryItem[])
 
-      const prevIndex = content.documents.findIndex((document: documentItem) => document.path === props.currentPath) - 1;
-      setPrevPage(content.documents[prevIndex] ? content.documents[prevIndex] : null);
+      const prevIndex = content.pages.findIndex((page: pageItem) => page.path === props.currentPath) - 1;
+      setPrevPage(content.pages[prevIndex] ? content.pages[prevIndex] : null);
       
-      const nextIndex = content.documents.findIndex((document: documentItem) => document.path === props.currentPath) + 1;
-      setNextPage(content.documents[nextIndex] ? content.documents[nextIndex] : null);
+      const nextIndex = content.pages.findIndex((page: pageItem) => page.path === props.currentPath) + 1;
+      setNextPage(content.pages[nextIndex] ? content.pages[nextIndex] : null);
 
       window.scrollTo(0, 0);
     }
@@ -72,7 +72,7 @@ const App = (props: props) => {
         items={menu as categoryItem[]}
         hideBuiltWithShardDocs={props.hideBuiltWithShardDocs}
       />
-      <AppMain document={currentDocument} prevPage={prevPage as paginationPage} nextPage={nextPage as paginationPage} />
+      <AppMain page={currentPage} prevPage={prevPage as paginationPage} nextPage={nextPage as paginationPage} />
     </div>
   );
 }

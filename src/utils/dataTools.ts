@@ -7,7 +7,7 @@ const removeDuplicateSlashes = (path: string) => path.replace(/\/+$/, "").replac
 function normaliseContent(items: content): item[] {
   const itemTemplates = {
     category: { type: 'category', name: '', path: '', items: [], isEmpty: true, isActive: false, depth: 0 },
-    document: { type: 'document', name: '', path: '', breadcrumbs: [], document: null, isEmpty: true, isActive: false, depth: 0 },
+    page: { type: 'page', name: '', path: '', breadcrumbs: [], content: null, isEmpty: true, isActive: false, depth: 0 },
     link: { type: 'link', name: '', url: '', external: false, depth: 0 },
   }
 
@@ -21,8 +21,8 @@ function normaliseContent(items: content): item[] {
     if (item.type === "category") {
       const items = normaliseContent((item.items || []) as content);
       output.push({ ...outputTemplate, name: item.name, items } as categoryItem);
-    } else if (item.type === "document") {
-      output.push({ ...outputTemplate, name: item.name, document: item.document } as documentItem);
+    } else if (item.type === "page") {
+      output.push({ ...outputTemplate, name: item.name, content: item.content } as pageItem);
     } else if (item.type === "link") {
       output.push({ ...outputTemplate, name: item.name, url: item.url, external: item.external } as linkItem);
     }
@@ -37,7 +37,7 @@ function normaliseContent(items: content): item[] {
       const path = removeDuplicateSlashes(`${basePath}/${getSlug(item.name || '')}`);
       if (item.type === "category") {
         output.push({ ...item, path, items: addPaths(item.items || [], path) });
-      } else if (item.type === "document") {
+      } else if (item.type === "page") {
         output.push({ ...item, path });
       } else if (item.type === "link") {
         output.push(item);
@@ -47,7 +47,7 @@ function normaliseContent(items: content): item[] {
 }
 
 /**
- * Recursively loops through source tree adding breadcrumbs to all documents / categories.
+ * Recursively loops through source tree adding breadcrumbs to all pages / categories.
  * @param  {array} items Expects result of parse / shapeItems().
  * @return {array}
  */
@@ -59,7 +59,7 @@ function addBreadcrumbs(items: item[], breadcrumbs: breadcrumb[]): item[] {
         ...item,
         items: addBreadcrumbs(item.items || [], [...breadcrumbs, { name: item.name || '', path: item.path, isActive: false }]),
       })
-    } else if (item.type === "document") {
+    } else if (item.type === "page") {
       output.push({
         ...item,
         breadcrumbs: [...breadcrumbs, { name: item.name, path: item.path, isActive: false }],
@@ -73,7 +73,7 @@ function addBreadcrumbs(items: item[], breadcrumbs: breadcrumb[]): item[] {
 
 /**
  * Loops through each item, child and grandchild shaping each item to the specs of its given type.
- * @param  {array} items Expects result of parse/combineTopLevelAdjacentDocuments().
+ * @param  {array} items Expects result of parse/combineTopLevelAdjacentPages().
  * @return {array}
  */
  function shapeItems(items: item[]): item[] {
@@ -83,8 +83,8 @@ function addBreadcrumbs(items: item[], breadcrumbs: breadcrumb[]): item[] {
       const items = shapeItems(item.items || []);
       const isEmpty = !item.items?.length;
       output.push({ ...item, isEmpty, items })
-    } else if (item.type === "document") {
-      const isEmpty = !item.document;
+    } else if (item.type === "page") {
+      const isEmpty = !item.content;
       const depth = item.breadcrumbs?.length || 0;
       output.push({ ...item, isEmpty, depth })
     } else if (item.type === "link") {
@@ -142,15 +142,15 @@ function addDepth(items: item[], depth = 0): item[] {
 
 
 /**
- * Loops through each item, child and grandchild grabbing each document.
+ * Loops through each item, child and grandchild grabbing each page.
  * @param  {array} source Expects source array to have been fed through addTypes..
- * @return {array} returns all documents in an array
+ * @return {array} returns all pages in an array
  */
-function getDocuments(items: item[], accumulator: (documentItem)[] = []) {
+function getPages(items: item[], accumulator: (pageItem)[] = []) {
   for (const item of items) {
     if (item.type === "category") {
-      accumulator = getDocuments((item.items || []), accumulator);
-    } else if (item.type === "document") {
+      accumulator = getPages((item.items || []), accumulator);
+    } else if (item.type === "page") {
       accumulator = [...accumulator, item];
     }
   }
@@ -175,31 +175,31 @@ function parse(items: content, basePath = "/") {
 }
 
 /**
- * Return documents that are equal too or descendants of path.
- * @param  {array} documents fed in from adapters/contentTool()
+ * Return pages that are equal too or descendants of path.
+ * @param  {array} pages fed in from adapters/contentTool()
  * @param  {string} path current url
  * @return {array}
  */
-function filterDocuments(documents: documentItem[] = [], path = "") {
-  return documents.filter(document => document.path.startsWith(path));
+function filterPages(pages: pageItem[] = [], path = "") {
+  return pages.filter(page => page.path.startsWith(path));
 }
 
 /**
- * Loop through breadcrumb in document and set isActive on crumbs that match provided path.
- * @param  {array} breadcrumbs a field from document object
+ * Loop through breadcrumb in page and set isActive on crumbs that match provided path.
+ * @param  {array} breadcrumbs a field from page object
  * @param  {string} path current url
  * @return {array}
  */
-function setActiveCrumb(document: documentItem, path = "") {
-  document.breadcrumbs = document.breadcrumbs.map(crumb => ({
+function setActiveCrumb(page: pageItem, path = "") {
+  page.breadcrumbs = page.breadcrumbs.map(crumb => ({
     ...crumb,
     isActive: crumb.path === path
   }));
-  return document;
+  return page;
 }
 
 /**
- * Compare a path to each path in document / category items and set boolean result on isActive prop.
+ * Compare a path to each path in page / category items and set boolean result on isActive prop.
  * @param  {array} items fed in from adapters/contentTool()
  * @param  {string} currentPath current url
  * @return {array}
@@ -209,7 +209,7 @@ function setActiveMenuItem(items: item[] = [], currentPath = "") {
     if (item.type === "category") {
       item.items = setActiveMenuItem(item.items, currentPath);
     }
-    if (item.type === "category" || item.type === "document") {
+    if (item.type === "category" || item.type === "page") {
       item.isActive = item.path === currentPath;
     }
     return item;
@@ -219,8 +219,8 @@ function setActiveMenuItem(items: item[] = [], currentPath = "") {
 
 export default {
   parse,
-  getDocuments,
-  filterDocuments,
+  getPages,
+  filterPages,
   setActiveCrumb,
   setActiveMenuItem
 }

@@ -3,9 +3,9 @@ import PropTypes from "prop-types";
 export const ContentPropType = PropTypes.arrayOf(
   PropTypes.oneOfType([
     PropTypes.shape({
-      type: PropTypes.oneOf(['document']).isRequired,
+      type: PropTypes.oneOf(['page']).isRequired,
       name: PropTypes.string,
-      document: PropTypes.element
+      content: PropTypes.element
     }),
     PropTypes.shape({
       type: PropTypes.oneOf(['category']).isRequired,
@@ -40,14 +40,14 @@ export const LinkItemPropType = PropTypes.shape({
   external: PropTypes.bool
 });
 
-export const DocumentItemPropType = PropTypes.shape({
-  type: PropTypes.oneOf(["document"]),
+export const PageItemPropType = PropTypes.shape({
+  type: PropTypes.oneOf(["page"]),
   path: PropTypes.string,
   name: PropTypes.string,
   isEmpty: PropTypes.bool,
   isActive: PropTypes.bool,
   breadcrumbs: BreadcrumbsPropType,
-  document: PropTypes.element
+  content: PropTypes.element
 });
 
 export const CategoryItemPropShape = {
@@ -59,7 +59,7 @@ export const CategoryItemPropShape = {
 } as { [key: string]: any };
 CategoryItemPropShape.items = PropTypes.arrayOf(
   PropTypes.oneOfType([
-    DocumentItemPropType,
+    PageItemPropType,
     LinkItemPropType,
     PropTypes.shape(CategoryItemPropShape )
   ])
@@ -67,4 +67,4 @@ CategoryItemPropShape.items = PropTypes.arrayOf(
 
 export const CategoryItemPropType = PropTypes.shape(CategoryItemPropShape);
 
-export const ItemsPropType = PropTypes.arrayOf(PropTypes.oneOfType([DocumentItemPropType, LinkItemPropType, CategoryItemPropType]));
+export const ItemsPropType = PropTypes.arrayOf(PropTypes.oneOfType([PageItemPropType, LinkItemPropType, CategoryItemPropType]));

@@ -5,7 +5,7 @@ import AppNav from "./AppNav";
 import dataTools from "../utils/dataTools";
 
 const items = dataTools.parse([
-  { type: 'document', name: "Doc A", document: <h1>Doc A</h1> }
+  { type: 'page', name: "Doc A", content: <h1>Doc A</h1> }
 ]);
 
 const mountAppNav = ({ items, showOnMobile } = {} as {items?: categoryItem[], showOnMobile?:boolean}) => {

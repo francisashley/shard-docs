@@ -9,16 +9,16 @@ import ShardDocs, { CodeSampleShard } from "@fa-repo/shard-docs";
   content={
     [
       {
-        type: "document",
+        type: "page",
         name: "Hello world",
-        document: <img src="/images/hello-world.jpg" alt="Turtle" />
+        content: <img src="/images/hello-world.jpg" alt="Turtle" />
       },
       {
         type: "category",
         name: "Examples",
         items: [
-          { name: "Use case A", document: <h1>Use case A</h1> },
-          { name: "Use case B", document: <h1>Use case B</h1> }
+          { type: "page", name: "Use case A", content: <h1>Use case A</h1> },
+          { type: "page", name: "Use case B", content: <h1>Use case B</h1> }
         ]
       },
       { type: "link", name: "Github", url: "https://github.com/", external: true }
@@ -34,13 +34,13 @@ import ShardDocs, { CodeSampleShard } from "@fa-repo/shard-docs";
     basePath="/examples/hello-world"
     content={
       [
-        { type: "document", name: "Hello world", document: <h1>Hello world</h1> },
+        { type: "page", name: "Hello world", content: <h1>Hello world</h1> },
         {
           type: "category",
           name: "Examples",
           items: [
-            { type: "document", name: "Use case A", document: <h1>Use case A</h1> },
-            { type: "document", name: "Use case B", document: <h1>Use case B</h1> }
+            { type: "page", name: "Use case A", content: <h1>Use case A</h1> },
+            { type: "page", name: "Use case B", content: <h1>Use case B</h1> }
           ]
         },
         { type: "link", name: "Github", url: "https://github.com/", external: true }

@@ -5,15 +5,15 @@ import NavTree from "./NavTree";
 import dataTools from "../utils/dataTools";
 
 const items = dataTools.parse([
-  { type: 'document', name: "Doc A", document: <h1>Doc A</h1> },
-  { type: 'document', name: "Doc B", document: <h1>Doc B</h1> },
-  { type: 'document', name: "Doc C", document: <h1>Doc C</h1> },
+  { type: 'page', name: "Doc A", content: <h1>Doc A</h1> },
+  { type: 'page', name: "Doc B", content: <h1>Doc B</h1> },
+  { type: 'page', name: "Doc C", content: <h1>Doc C</h1> },
   {
     type: 'category', 
     name: "Category",
     items: [
-      { type: 'document', name: "Doc D", document: <h1>Doc D</h1> },
-      { type: 'document', name: "Doc E", document: <h1>Doc E</h1> }
+      { type: 'page', name: "Doc D", content: <h1>Doc D</h1> },
+      { type: 'page', name: "Doc E", content: <h1>Doc E</h1> }
     ]
   },
   { type: 'link', name: "Github", url: "http://github.com", external: true }
@@ -50,7 +50,7 @@ test("<NavTree /> renders with items data", () => {
   expect(wrapper.find('NavTree > NavCategory').at(2).find('li a').props().href).toBe('http://github.com');
   expect(wrapper.find('NavTree > NavCategory').at(2).find('li a').text()).toBe('Github');
 
-  // Renders document
+  // Renders page
   expect(wrapper.find('NavTree > NavCategory').at(0).find('li a').first().text()).toBe('Doc A');
   expect(wrapper.find('NavTree > NavCategory').at(0).find('li a').first().props().href).toBe('/doc-a');
 });

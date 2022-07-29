@@ -1,10 +1,10 @@
 type content = {
-  type: 'category' | 'document' | 'link';
+  type: 'category' | 'page' | 'link';
   name: string;
   url?: string;
   external?: boolean;
   items?: content
-  document?: unknown;
+  content?: unknown;
 }[]
 
 type categoryItem = {
@@ -17,11 +17,11 @@ type categoryItem = {
   depth: number
 }
 
-type documentItem = {
-  type: 'document';
+type pageItem = {
+  type: 'page';
   name: string;
   path: string;
-  document: string | React.ReactNode;
+  content: string | React.ReactNode;
   breadcrumbs: breadcrumb[];
   isEmpty: boolean,
   isActive: boolean,
@@ -36,7 +36,7 @@ type linkItem = {
   depth: number
 }
 
-type item = (categoryItem | documentItem | linkItem)
+type item = (categoryItem | pageItem | linkItem)
 
 type breadcrumb = {
   path: string,

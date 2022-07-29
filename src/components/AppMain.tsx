@@ -1,12 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
 import MainPagination from "./MainPagination";
-import MainDocument from "./MainDocument";
-import { PagePropType, DocumentItemPropType } from "../prop-types";
+import MainContent from "./MainContent";
+import { PagePropType, PageItemPropType } from "../prop-types";
 import "./AppMain.scss";
 
 type props = {
-  document?: documentItem | null,
+  page?: pageItem | null,
   prevPage?: paginationPage,
   nextPage?: paginationPage,
 }
@@ -14,12 +14,12 @@ type props = {
 const AppMain = (props: props) => {
   const showPagination = Boolean(props.prevPage || props.nextPage);
 
-  const Document = props.document && <MainDocument breadcrumbs={props.document.breadcrumbs} document={props.document.document} />
+  const Content = props.page && <MainContent breadcrumbs={props.page.breadcrumbs} content={props.page.content} />
   const Pagination = showPagination && <MainPagination prevPage={props.prevPage} nextPage={props.nextPage} />
 
   return (
     <main className="sd-AppMain">
-      {Document}
+      {Content}
       {Pagination}
     </main>
   );
@@ -28,12 +28,12 @@ const AppMain = (props: props) => {
 AppMain.propTypes = {
   prevPage: PagePropType,
   nextPage: PagePropType,
-  document: PropTypes.arrayOf(DocumentItemPropType)
+  page: PropTypes.arrayOf(PageItemPropType)
 };
 AppMain.defaultProps = {
   prevPage: null,
   nextPage: null,
-  document: null
+  page: null
 };
 
 export default AppMain;

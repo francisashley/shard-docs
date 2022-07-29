@@ -35,21 +35,21 @@ npm install @fa-repo/shard-docs react-router-dom
 ## Basic usage
 
 ```jsx
-// documentation.js
+//
 import React from "react";
 import { render } from "react-dom";
 import ShardDocs from "@fa-repo/shard-docs";
 import "@fa-repo/shard-docs/dist/index.css";
 
 const content = [
-  { type: "document", name: "Install", document: <><h1>Install</h1></> },
-  { type: "document", name: "Basic usage", document: <><h1>Basic usage</h1></> },
+  { type: "page", name: "Install", content: <><h1>Install</h1></> },
+  { type: "page", name: "Basic usage", content: <><h1>Basic usage</h1></> },
   {
     type: "category",
     name: "Examples",
     items: [
-      { type: "document", name: "Use case A", document: <><h1>Use case A</h1></> },
-      { type: "document", name: "Use case B", document: <><h1>Use case B</h1></> }
+      { type: "page", name: "Use case A", content: <><h1>Use case A</h1></> },
+      { type: "page", name: "Use case B", content: <><h1>Use case B</h1></> }
     ]
   },
   { type: "link", name: "Github", url: "https://github.com", external: true },
@@ -100,7 +100,7 @@ render(
       type: "category",
       name: "Essentials",
       items: [
-        { type: "document", name: "Get started", document: <p>Lorem ipsum dolor sit amet..</p> }
+        { type: "page", name: "Get started", content: <p>Lorem ipsum dolor sit amet..</p> }
       ]
     }
   ]}
@@ -114,25 +114,25 @@ Each item has a common `name` property. The combination of subsequent properties
 
 ### The different types of items:
 
-`document`:  Represents a document endpoint.
+`page`:  Represents a page endpoint.
 ```jsx
   {
     /**
-     * Document type.
+     * Page type.
      * @required
      * @string
     */
-    type: "document",
+    type: "page",
     /**
-     * Document name
+     * Page name
      * @string
     */
     name: "Install",
     /**
-     * Document content
+     * Page content
      * @jsx
     */
-    document: <h1>Install</h1>
+    content: <h1>Install</h1>
   }
 ```
 

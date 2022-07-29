@@ -9,13 +9,13 @@ import "../dist/index.css";
 import "../dist/shards/SectionShard.css";
 import "../dist/shards/CodeSampleShard.css";
 
-// Documents
-import EssentialsGetStartedDocument from "./content/1-essentials-get-started.mdx";
-import EssentialsSchemaReferenceDocument from "./content/1-source-schema.mdx";
-import EssentialsApiReferenceDocument from "./content/1-reference-api.mdx";
-import ExamplesHelloWorldDocument from "./content/2-examples-hello-world.mdx";
-import ShardsCodeSampleShardDocument from "./content/3-shards-code-sample.mdx";
-import ShardsSectionShardDocument from "./content/3-shards-section.mdx";
+// Content
+import EssentialsGetStartedContent from "./content/1-essentials-get-started.mdx";
+import EssentialsSchemaReferenceContent from "./content/1-source-schema.mdx";
+import EssentialsApiReferenceContent from "./content/1-reference-api.mdx";
+import ExamplesHelloWorldContent from "./content/2-examples-hello-world.mdx";
+import ShardsCodeSampleShardContent from "./content/3-shards-code-sample.mdx";
+import ShardsSectionShardContent from "./content/3-shards-section.mdx";
 
 const components = {
   pre: props => {
@@ -37,24 +37,24 @@ render(
           type: 'category',
           name: "Essentials",
           items: [
-            { type: 'document', name: "Get started", document: <EssentialsGetStartedDocument /> },
-            { type: 'document', name: "Content", document: <EssentialsSchemaReferenceDocument /> },
-            { type: 'document', name: "API", document: <EssentialsApiReferenceDocument /> }
+            { type: 'page', name: "Get started", content: <EssentialsGetStartedContent /> },
+            { type: 'page', name: "Content", content: <EssentialsSchemaReferenceContent /> },
+            { type: 'page', name: "API", content: <EssentialsApiReferenceContent /> }
           ]
         },
         {
           type: 'category',
           name: "Examples",
           items: [
-            { type: 'document', name: "Hello world", document: <ExamplesHelloWorldDocument /> }
+            { type: 'page', name: "Hello world", content: <ExamplesHelloWorldContent /> }
           ]
         },
         {
           type: 'category',
           name: "Shards",
           items: [
-            { type: 'document', name: "<CodeSample />", document: <ShardsCodeSampleShardDocument /> },
-            { type: 'document', name: "<Section />", document: <ShardsSectionShardDocument /> }
+            { type: 'page', name: "<CodeSample />", content: <ShardsCodeSampleShardContent /> },
+            { type: 'page', name: "<Section />", content: <ShardsSectionShardContent /> }
           ]
         },
         { type: 'link', name: "Github", url: "http://github.com/fa-repo/shard-docs", external: true }

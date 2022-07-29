@@ -8,7 +8,7 @@ const items = dataTools.parse([
   {
     type: 'category', 
     name: "Category",
-    items: [{ type: 'document', name: "Document", document: <h1>Hello world</h1> }]
+    items: [{ type: 'page', name: "Page", content: <h1>Hello world</h1> }]
   }
 ]);
 

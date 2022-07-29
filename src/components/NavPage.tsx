@@ -2,40 +2,40 @@ import React from "react";
 import PropTypes from "prop-types";
 import classnames from "classnames";
 import { NavLink } from "react-router-dom";
-import { DocumentItemPropType } from "../prop-types";
+import { PageItemPropType } from "../prop-types";
 import FileIcon from "./icons/FileIcon";
-import "./NavDocument.scss";
+import "./NavPage.scss";
 
 type props = {
-  item: documentItem;
+  item: pageItem;
   onNavigate: () => void;
 }
 
-const NavDocument = (props: props) => {
+const NavPage = (props: props) => {
   return (
-    <li className="sd-NavDocument">
+    <li className="sd-NavPage">
       <NavLink
         style={{ paddingLeft: props.item.depth * 15 + "px" }}
-        className={classnames('sd-NavDocument__link', props.item.isActive && "sd-NavDocument__link--active")}
+        className={classnames('sd-NavPage__link', props.item.isActive && "sd-NavPage__link--active")}
         onClick={e => (props.item.isEmpty ? e.preventDefault() : props.onNavigate())}
         to={props.item.path}
         exact
       >
-        <FileIcon className='sd-NavDocument__icon'/>
+        <FileIcon className='sd-NavPage__icon'/>
         {props.item.name}
       </NavLink>
     </li>
   );
 };
 
-NavDocument.propTypes = {
-  item: DocumentItemPropType,
+NavPage.propTypes = {
+  item: PageItemPropType,
   onNavigate: PropTypes.func
 };
 
-NavDocument.defaultProps = {
+NavPage.defaultProps = {
   item: {},
   onNavigate: () => {}
 };
 
-export default NavDocument;
+export default NavPage;

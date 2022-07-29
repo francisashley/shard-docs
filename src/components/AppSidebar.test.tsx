@@ -6,7 +6,7 @@ import dataTools from "../utils/dataTools";
 
 const title = "App title";
 const items = dataTools.parse([
-  { type: 'document', name: "Doc A", document: <h1>Doc A</h1> }
+  { type: 'page', name: "Doc A", content: <h1>Doc A</h1> }
 ]);
 
 const mountSidebar = (options = {} as { title?: string, items?: categoryItem[], hideBuiltWithShardDocs?: boolean}) => {
@@ -66,6 +66,6 @@ test("<AppSidebar /> closes sidebar menu when navigating", () => {
   expect((wrapper.find('.sd-AppNav--show').exists())).toBe(false)
   wrapper.find('.sd-AppHeader__toggle-btn').simulate('click')
   expect((wrapper.find('.sd-AppNav--show').exists())).toBe(true)
-  wrapper.find('.sd-AppNav NavDocument a').simulate('click')
+  wrapper.find('.sd-AppNav NavPage a').simulate('click')
   expect((wrapper.find('.sd-AppNav--show').exists())).toBe(false)
 });

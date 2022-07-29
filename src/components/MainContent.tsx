@@ -4,30 +4,30 @@ import MainBreadcrumbs from "./MainBreadcrumbs";
 import { BreadcrumbPropType } from "../prop-types";
 
 import "../assets/github.css";
-import "./MainDocument.scss";
+import "./MainContent.scss";
 import "../assets/prism-github.css";
 
 type props = {
-  document: string | React.ReactNode,
+  content: string | React.ReactNode,
   breadcrumbs: breadcrumb[]
 }
-const MainDocument = ({ document, breadcrumbs }: props) => {
+const MainContent = ({ content, breadcrumbs }: props) => {
   return (
-    <article className="sd-MainDocument">
+    <article className="sd-MainContent">
       <MainBreadcrumbs breadcrumbs={breadcrumbs} />
-      <div className="sd-MainDocument__body markdown-body">{document}</div>
+      <div className="sd-MainContent__body markdown-body">{content}</div>
     </article>
   );
 };
 
-MainDocument.propTypes = {
+MainContent.propTypes = {
   breadcrumbs: PropTypes.arrayOf(BreadcrumbPropType).isRequired,
-  document: PropTypes.element
+  content: PropTypes.element
 };
 
-MainDocument.defaultProps = {
+MainContent.defaultProps = {
   breadcrumbs: [],
-  document: null
+  content: null
 };
 
-export default MainDocument;
+export default MainContent;
