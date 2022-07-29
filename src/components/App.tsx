@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import { setActiveMenuItem, filterDocuments, setActiveCrumb } from "../utils";
 import withRouter from "../hoc/withRouter";
 
 import AppMain from "./AppMain";
@@ -35,7 +34,7 @@ const App = (props: props) => {
     const documents = dataTools.getDocuments(data)
     setContent({ items: data, documents })
     setMenu(data);
-    const currentDocuments = filterDocuments(documents, props.currentPath).map(document => setActiveCrumb(document, props.currentPath));
+    const currentDocuments = dataTools.filterDocuments(documents, props.currentPath).map(document => dataTools.setActiveCrumb(document, props.currentPath));
     setDocuments(currentDocuments);
 
     const prevIndex = content.documents.findIndex((document: documentItem) => document.path === props.currentPath) - 1;
@@ -51,8 +50,8 @@ const App = (props: props) => {
     if (props.currentPath !== prevPath) {
       setCurrentPath(props.currentPath);
 
-      const currentDocuments = filterDocuments(content.documents, props.currentPath).map(document => setActiveCrumb(document, props.currentPath));
-      const currentActiveMenuItem = setActiveMenuItem(content.items, props.currentPath) as categoryItem[]
+      const currentDocuments = dataTools.filterDocuments(content.documents, props.currentPath).map(document => dataTools.setActiveCrumb(document, props.currentPath));
+      const currentActiveMenuItem = dataTools.setActiveMenuItem(content.items, props.currentPath) as categoryItem[]
 
       setDocuments(currentDocuments)
       setMenu(currentActiveMenuItem)

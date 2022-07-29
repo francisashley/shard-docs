@@ -157,6 +157,12 @@ function getDocuments(items: item[], accumulator: (documentItem)[] = []) {
   return accumulator;
 }
 
+/**
+ * Parse all user defined content and return a structured array.
+ * @param items 
+ * @param basePath 
+ * @returns 
+ */
 function parse(items: content, basePath = "/") {
   let normalisedItems = normaliseContent(items);
   normalisedItems = addPaths(normalisedItems, basePath);
@@ -168,7 +174,53 @@ function parse(items: content, basePath = "/") {
   return normalisedItems;
 }
 
+/**
+ * Return documents that are equal too or descendants of path.
+ * @param  {array} documents fed in from adapters/contentTool()
+ * @param  {string} path current url
+ * @return {array}
+ */
+function filterDocuments(documents: documentItem[] = [], path = "") {
+  return documents.filter(document => document.path.startsWith(path));
+}
+
+/**
+ * Loop through breadcrumb in document and set isActive on crumbs that match provided path.
+ * @param  {array} breadcrumbs a field from document object
+ * @param  {string} path current url
+ * @return {array}
+ */
+function setActiveCrumb(document: documentItem, path = "") {
+  document.breadcrumbs = document.breadcrumbs.map(crumb => ({
+    ...crumb,
+    isActive: crumb.path === path
+  }));
+  return document;
+}
+
+/**
+ * Compare a path to each path in document / category items and set boolean result on isActive prop.
+ * @param  {array} items fed in from adapters/contentTool()
+ * @param  {string} currentPath current url
+ * @return {array}
+ */
+function setActiveMenuItem(items: item[] = [], currentPath = "") {
+  return items.map(item => {
+    if (item.type === "category") {
+      item.items = setActiveMenuItem(item.items, currentPath);
+    }
+    if (item.type === "category" || item.type === "document") {
+      item.isActive = item.path === currentPath;
+    }
+    return item;
+  });
+}
+
+
 export default {
   parse,
-  getDocuments
+  getDocuments,
+  filterDocuments,
+  setActiveCrumb,
+  setActiveMenuItem
 }
