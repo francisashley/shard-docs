@@ -5,7 +5,7 @@ import withRouter from "../hoc/withRouter";
 
 import AppMain from "./AppMain";
 import AppSidebar from "./AppSidebar";
-import contentTool from "../utils/contentTool";
+import dataTools from "../utils/dataTools";
 
 import { ContentPropType } from "../prop-types";
 
@@ -31,7 +31,7 @@ const App = (props: props) => {
   const [nextPage, setNextPage] = useState(null as documentItem | null);
 
   useEffect(() => {
-    const content = contentTool.parseContent(props.content || [], basePath)
+    const content = dataTools.parseContent(props.content || [], basePath)
     setContent(content)
     setMenu(content.items);
     const currentDocuments = filterDocuments(content.documents, props.currentPath).map(document => setActiveCrumb(document, props.currentPath));

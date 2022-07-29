@@ -1,10 +1,10 @@
 import React from "react";
 import { mount } from "enzyme";
 import NavSection from "./NavSection";
-import contentTool from "../utils/contentTool";
+import contentTools from "../utils/dataTools";
 import { MemoryRouter } from "react-router-dom";
 
-let { items } = contentTool.parseContent([
+let { items } = contentTools.parseContent([
   {
     type: 'category',
     name: "Essentials",

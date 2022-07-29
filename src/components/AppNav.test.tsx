@@ -2,9 +2,9 @@ import React from "react";
 import { mount } from "enzyme";
 import { MemoryRouter } from "react-router-dom";
 import AppNav from "./AppNav";
-import contentTool from "../utils/contentTool";
+import dataTools from "../utils/dataTools";
 
-const { items } = contentTool.parseContent([
+const { items } = dataTools.parseContent([
   { type: 'document', name: "Doc A", document: <h1>Doc A</h1> }
 ]);
 

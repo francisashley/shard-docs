@@ -2,10 +2,10 @@ import React from "react";
 import { MemoryRouter } from "react-router-dom";
 import { mount } from "enzyme";
 import AppSidebar from "./AppSidebar";
-import contentTool from "../utils/contentTool";
+import dataTools from "../utils/dataTools";
 
 const title = "App title";
-const { items } = contentTool.parseContent([
+const { items } = dataTools.parseContent([
   { type: 'document', name: "Doc A", document: <h1>Doc A</h1> }
 ]);
 

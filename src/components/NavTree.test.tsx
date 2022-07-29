@@ -2,9 +2,9 @@ import React from "react";
 import { mount } from "enzyme";
 import { MemoryRouter } from "react-router-dom";
 import NavTree from "./NavTree";
-import contentTool from "../utils/contentTool";
+import dataTools from "../utils/dataTools";
 
-const { items } = contentTool.parseContent([
+const { items } = dataTools.parseContent([
   { type: 'document', name: "Doc A", document: <h1>Doc A</h1> },
   { type: 'document', name: "Doc B", document: <h1>Doc B</h1> },
   { type: 'document', name: "Doc C", document: <h1>Doc C</h1> },
