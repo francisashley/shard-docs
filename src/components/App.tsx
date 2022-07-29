@@ -6,7 +6,7 @@ import AppMain from "./AppMain";
 import AppSidebar from "./AppSidebar";
 import dataTools from "../utils/dataTools";
 
-import { ContentPropType } from "../prop-types";
+import { DataPropType } from "../prop-types";
 
 import "../assets/sanitize.css";
 import "./App.scss";
@@ -79,7 +79,7 @@ const App = (props: props) => {
 
 App.propTypes = {
   title: PropTypes.string,
-  content: ContentPropType,
+  data: DataPropType,
   basePath: PropTypes.string,
   hideBuiltWithShardDocs: PropTypes.bool,
   routerType: PropTypes.string,
@@ -88,7 +88,7 @@ App.propTypes = {
 
 App.defaultProps = {
   title: "",
-  content: [],
+  data: [],
   basePath: "/",
   hideBuiltWithShardDocs: false,
   routerType: "hash",

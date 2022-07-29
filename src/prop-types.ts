@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-export const ContentPropType = PropTypes.arrayOf(
+export const DataPropType = PropTypes.arrayOf(
   PropTypes.oneOfType([
     PropTypes.shape({
       type: PropTypes.oneOf(['page']).isRequired,
