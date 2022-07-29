@@ -32,9 +32,9 @@ test("<SectionShard /> can toggle body", async () => {
 test("<SectionShard /> remembers toggle state", async () => {
   const user = userEvent.setup();
   render(<SectionShard title={title} persistState="abc"><p>Hi</p></SectionShard>);
-  expect(localStorage.getItem('fa-repo-section-shard-state-abc')).toBe(null);
+  expect(localStorage.getItem('sd-SectionShard-state-abc')).toBe(null);
   await user.click(screen.getByRole('link'))
-  expect(JSON.parse(localStorage.getItem('fa-repo-section-shard-state-abc') as string)).toBe(false);
+  expect(JSON.parse(localStorage.getItem('sd-SectionShard-state-abc') as string)).toBe(false);
   await user.click(screen.getByRole('link'))
-  expect(JSON.parse(localStorage.getItem('fa-repo-section-shard-state-abc') as string)).toBe(true);
+  expect(JSON.parse(localStorage.getItem('sd-SectionShard-state-abc') as string)).toBe(true);
 });

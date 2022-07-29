@@ -85,12 +85,12 @@ class CodeSampleShard extends React.Component<props, state> {
               {props.title}
             </h3>
             <menu className="sd-CodeSampleShard__menu">
-              <BaseLink className="sd-CodeSampleShard__menu-link" preventDefault onClick={this.toggleCode}>
+              <BaseLink className="sd-CodeSampleShard__menu-link sd-CodeSampleShard__menu-link--code" preventDefault onClick={this.toggleCode}>
                 <CodeIcon className="sd-CodeSampleShard__menu-icon" />
               </BaseLink>
 
               {props.repository && (
-                <BaseLink className="sd-CodeSampleShard__menu-link" href={props.repository} newTab>
+                <BaseLink className="sd-CodeSampleShard__menu-link sd-CodeSampleShard__menu-link--repository" href={props.repository} newTab>
                   <GithubIcon className="sd-CodeSampleShard__menu-icon" />
                 </BaseLink>
               )}
