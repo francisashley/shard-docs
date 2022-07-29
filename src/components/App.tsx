@@ -21,44 +21,33 @@ export type props = {
 }
 
 const App = (props: props) => {
-  const [basePath] = useState(props.basePath);
   const [currentPath, setCurrentPath] = useState(props.currentPath);
-  const [content, setContent] = useState({ items: [], pages: [] } as { items: item[], pages: pageItem[] });
-  const [menu, setMenu] = useState([] as item[]);
+  const [data, setData] = useState(dataTools.parse(props.data || [], props.basePath) as item[]);
+  const [pages, setPages] = useState([] as pageItem[]);
   const [currentPage, setCurrentPage] = useState(null as (pageItem | null));
   const [prevPage, setPrevPage] = useState(null as pageItem | null);
   const [nextPage, setNextPage] = useState(null as pageItem | null);
 
   useEffect(() => {
-    const data = dataTools.parse(props.data || [], basePath)
+    const data = dataTools.parse(props.data || [], props.basePath)
     const pages = dataTools.getPages(data)
-    setContent({ items: data, pages })
-    setMenu(data);
-    const currentPage = dataTools.filterPages(pages, props.currentPath)[0] || null;
-    setCurrentPage(currentPage ? dataTools.setActiveCrumb(currentPage, props.currentPath) : null);
-
-    const prevIndex = content.pages.findIndex((page: pageItem) => page.path === props.currentPath) - 1;
-    setPrevPage(content.pages[prevIndex] ? content.pages[prevIndex] : null);
-    
-    const nextIndex = content.pages.findIndex((page: pageItem) => page.path === props.currentPath) + 1;
-    setNextPage(content.pages[nextIndex] ? content.pages[nextIndex] : null);
+    setData(data)
+    setPages(pages)
+    setCurrentPage(dataTools.getCurrentPage(pages, props.currentPath || ''));
+    setPrevPage(dataTools.getPrevPage(pages, props.currentPath || ''));
+    setNextPage(dataTools.getNextPage(pages, props.currentPath || ''));
   }, []);
 
   useEffect(() => {
     const prevPath = currentPath;
 
     if (props.currentPath !== prevPath) {
+      const updatedData = dataTools.setActiveMenuItem(data, props.currentPath);
       setCurrentPath(props.currentPath);
-      const currentPage = dataTools.filterPages(content.pages, props.currentPath)[0] || null;
-      setCurrentPage(currentPage ? dataTools.setActiveCrumb(currentPage, props.currentPath) : null)
-      setMenu(dataTools.setActiveMenuItem(content.items, props.currentPath) as categoryItem[])
-
-      const prevIndex = content.pages.findIndex((page: pageItem) => page.path === props.currentPath) - 1;
-      setPrevPage(content.pages[prevIndex] ? content.pages[prevIndex] : null);
-      
-      const nextIndex = content.pages.findIndex((page: pageItem) => page.path === props.currentPath) + 1;
-      setNextPage(content.pages[nextIndex] ? content.pages[nextIndex] : null);
-
+      setData(updatedData)
+      setCurrentPage(dataTools.getCurrentPage(pages, props.currentPath || ''));
+      setPrevPage(dataTools.getPrevPage(pages, props.currentPath || ''));
+      setNextPage(dataTools.getNextPage(pages, props.currentPath || ''));
       window.scrollTo(0, 0);
     }
   }, [props.currentPath])
@@ -69,7 +58,7 @@ const App = (props: props) => {
       <AppSidebar
         title={props.title}
         basePath={props.basePath}
-        items={menu as categoryItem[]}
+        items={data as categoryItem[]}
         hideBuiltWithShardDocs={props.hideBuiltWithShardDocs}
       />
       <AppMain page={currentPage} prevPage={prevPage as paginationPage} nextPage={nextPage as paginationPage} />
@@ -92,7 +81,7 @@ App.defaultProps = {
   basePath: "/",
   hideBuiltWithShardDocs: false,
   routerType: "hash",
-  currentPath: ''
+  currentPath: ""
 };
 
 export default withRouter<props>(App);

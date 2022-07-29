@@ -140,7 +140,6 @@ function addDepth(items: item[], depth = 0): item[] {
   return output;
 }
 
-
 /**
  * Loops through each item, child and grandchild grabbing each page.
  * @param  {array} source Expects source array to have been fed through addTypes..
@@ -155,6 +154,20 @@ function getPages(items: item[], accumulator: (pageItem)[] = []) {
     }
   }
   return accumulator;
+}
+
+function getCurrentPage(pages: pageItem[], path: string): pageItem | null {
+  return pages.find(page => page.path === path) || null;
+}
+
+function getPrevPage(pages: pageItem[], currentPath: string): pageItem | null {
+  const activeIndex = pages.findIndex((document: pageItem) => document.path === currentPath);
+  return pages[activeIndex - 1] ? pages[activeIndex - 1] : null;
+}
+
+function getNextPage(pages: pageItem[], currentPath: string): pageItem | null {
+  const activeIndex = pages.findIndex((document: pageItem) => document.path === currentPath);
+  return pages[activeIndex + 1] ? pages[activeIndex + 1] : null;
 }
 
 /**
@@ -220,6 +233,9 @@ function setActiveMenuItem(items: item[] = [], currentPath = "") {
 export default {
   parse,
   getPages,
+  getCurrentPage,
+  getPrevPage,
+  getNextPage,
   filterPages,
   setActiveCrumb,
   setActiveMenuItem
