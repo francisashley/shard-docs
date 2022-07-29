@@ -14,12 +14,11 @@ type props = {
 const AppMain = (props: props) => {
   const showPagination = Boolean(props.prevPage || props.nextPage);
 
-  const Content = props.page && <MainContent breadcrumbs={props.page.breadcrumbs} content={props.page.content} />
   const Pagination = showPagination && <MainPagination prevPage={props.prevPage} nextPage={props.nextPage} />
 
   return (
     <main className="sd-AppMain">
-      {Content}
+      <MainContent breadcrumbs={props.page?.breadcrumbs} content={props.page?.content} />
       {Pagination}
     </main>
   );
@@ -28,7 +27,7 @@ const AppMain = (props: props) => {
 AppMain.propTypes = {
   prevPage: PagePropType,
   nextPage: PagePropType,
-  page: PropTypes.arrayOf(PageItemPropType)
+  page: PageItemPropType
 };
 AppMain.defaultProps = {
   prevPage: null,
