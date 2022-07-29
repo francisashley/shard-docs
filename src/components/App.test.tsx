@@ -3,21 +3,21 @@ import { mount } from "enzyme";
 import App from "./App";
 
 const title = "App title";
-const content = [
+const data = [
   { type: 'page', name: "Doc A", content: <h1>Doc A</h1> },
   { type: 'page', name: "Doc B", content: <h1>Doc B</h1> }
 ];
 
 const mountShardDocs = (options = {}) => {
-  const { title, content = [], hideBuiltWithShardDocs } = options as {
+  const { title, data = [], hideBuiltWithShardDocs } = options as {
     title?: string;
-    content?: any[];
+    data?: any[];
     hideBuiltWithShardDocs?: boolean;
   };
   return mount(
     <App
       title={title}
-      content={content}
+      data={data}
       hideBuiltWithShardDocs={hideBuiltWithShardDocs}
     />
   )
@@ -31,7 +31,7 @@ test("<App /> renders with default props", () => {
 });
 
 test("<App /> renders with props", () => {
-  const wrapper = mountShardDocs({ title, content });
+  const wrapper = mountShardDocs({ title, data });
 
   // Renders sidebar
   expect(wrapper.find('AppSidebar').exists()).toBe(true);

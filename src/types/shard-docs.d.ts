@@ -1,4 +1,4 @@
-type content = {
+type inputData = {
   type: 'category' | 'page' | 'link';
   name: string;
   url?: string;

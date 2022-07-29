@@ -32,7 +32,7 @@ render(
   <MDXProvider components={components}>
     <ShardDocs
       title="Shard docs"
-      content={[
+      data={[
         {
           type: 'category',
           name: "Essentials",

@@ -41,7 +41,7 @@ import { render } from "react-dom";
 import ShardDocs from "@fa-repo/shard-docs";
 import "@fa-repo/shard-docs/dist/index.css";
 
-const content = [
+const data = [
   { type: "page", name: "Install", content: <><h1>Install</h1></> },
   { type: "page", name: "Basic usage", content: <><h1>Basic usage</h1></> },
   {
@@ -56,7 +56,7 @@ const content = [
 ]
 
 render(
-  <ShardDocs title="ShardDocs demo" content={content} />,
+  <ShardDocs title="ShardDocs demo" data={data} />,
   document.getElementById("root")
 );
 ```
@@ -95,7 +95,7 @@ render(
    * @boolean
    * @default false
   */
-  content={[
+  data={[
     {
       type: "category",
       name: "Essentials",

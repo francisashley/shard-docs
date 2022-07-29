@@ -4,7 +4,7 @@ import kebabCase from "lodash/kebabCase";
 const getSlug = (name: string) => slugify(kebabCase(name), { lower: true });
 const removeDuplicateSlashes = (path: string) => path.replace(/\/+$/, "").replace(/\/+/g, "/");
 
-function normaliseContent(items: content): item[] {
+function normaliseContent(items: inputData): item[] {
   const itemTemplates = {
     category: { type: 'category', name: '', path: '', items: [], isEmpty: true, isActive: false, depth: 0 },
     page: { type: 'page', name: '', path: '', breadcrumbs: [], content: null, isEmpty: true, isActive: false, depth: 0 },
@@ -19,7 +19,7 @@ function normaliseContent(items: content): item[] {
     const outputTemplate = itemTemplates[item.type];
 
     if (item.type === "category") {
-      const items = normaliseContent((item.items || []) as content);
+      const items = normaliseContent((item.items || []) as inputData);
       output.push({ ...outputTemplate, name: item.name, items } as categoryItem);
     } else if (item.type === "page") {
       output.push({ ...outputTemplate, name: item.name, content: item.content } as pageItem);
@@ -163,7 +163,7 @@ function getPages(items: item[], accumulator: (pageItem)[] = []) {
  * @param basePath 
  * @returns 
  */
-function parse(items: content, basePath = "/") {
+function parse(items: inputData, basePath = "/") {
   let normalisedItems = normaliseContent(items);
   normalisedItems = addPaths(normalisedItems, basePath);
   normalisedItems = addBreadcrumbs(normalisedItems, [{ path: basePath, name: "~", isActive: false }]);

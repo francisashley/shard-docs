@@ -14,7 +14,7 @@ import { render } from "react-dom";
 import ShardDocs from "@fa-repo/shard-docs";
 import "@fa-repo/shard-docs/dist/index.css";
 
-const content = [
+const data = [
   { type: "page", name: "Install", content: <h1>Install</h1> },
   { type: "page", name: "Basic usage", content: <h1>Basic usage</h1> },
   {
@@ -30,7 +30,7 @@ const content = [
 
 const root = document.getElementById("root");
 
-render(<ShardDocs title="ShardDocs demo" content={content} />, root);
+render(<ShardDocs title="ShardDocs demo" data={data} />, root);
 ```
 
 ### Shards

@@ -13,7 +13,7 @@ import "./App.scss";
 
 export type props = {
   title?: string,
-  content?: content,
+  data?: inputData,
   basePath?: string,
   hideBuiltWithShardDocs?: boolean,
   routerType?: "hash" | "browser",
@@ -30,7 +30,7 @@ const App = (props: props) => {
   const [nextPage, setNextPage] = useState(null as pageItem | null);
 
   useEffect(() => {
-    const data = dataTools.parse(props.content || [], basePath)
+    const data = dataTools.parse(props.data || [], basePath)
     const pages = dataTools.getPages(data)
     setContent({ items: data, pages })
     setMenu(data);
