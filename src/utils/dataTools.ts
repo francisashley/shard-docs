@@ -48,7 +48,7 @@ function normaliseContent(items: content): item[] {
 
 /**
  * Recursively loops through source tree adding breadcrumbs to all documents / categories.
- * @param  {array} items Expects result of parseContent/ shapeItems().
+ * @param  {array} items Expects result of parse / shapeItems().
  * @return {array}
  */
 function addBreadcrumbs(items: item[], breadcrumbs: breadcrumb[]): item[] {
@@ -73,7 +73,7 @@ function addBreadcrumbs(items: item[], breadcrumbs: breadcrumb[]): item[] {
 
 /**
  * Loops through each item, child and grandchild shaping each item to the specs of its given type.
- * @param  {array} items Expects result of parseContent/combineTopLevelAdjacentDocuments().
+ * @param  {array} items Expects result of parse/combineTopLevelAdjacentDocuments().
  * @return {array}
  */
  function shapeItems(items: item[]): item[] {
@@ -124,7 +124,7 @@ function addBreadcrumbs(items: item[], breadcrumbs: breadcrumb[]): item[] {
 
 /**
  * Recursively loops through source tree adding depth level to all items.
- * @param  {array} items Expects result of parseContent/ shapeItems().
+ * @param  {array} items Expects result of parse/ shapeItems().
  * @return {array}
  */
 function addDepth(items: item[], depth = 0): item[] {
@@ -146,10 +146,10 @@ function addDepth(items: item[], depth = 0): item[] {
  * @param  {array} source Expects source array to have been fed through addTypes..
  * @return {array} returns all documents in an array
  */
-function flattenDocuments(items: item[], accumulator: (documentItem)[] = []) {
+function getDocuments(items: item[], accumulator: (documentItem)[] = []) {
   for (const item of items) {
     if (item.type === "category") {
-      accumulator = flattenDocuments((item.items || []), accumulator);
+      accumulator = getDocuments((item.items || []), accumulator);
     } else if (item.type === "document") {
       accumulator = [...accumulator, item];
     }
@@ -157,7 +157,7 @@ function flattenDocuments(items: item[], accumulator: (documentItem)[] = []) {
   return accumulator;
 }
 
-function parseContent(items: content, basePath = "/") {
+function parse(items: content, basePath = "/") {
   let normalisedItems = normaliseContent(items);
   normalisedItems = addPaths(normalisedItems, basePath);
   normalisedItems = addBreadcrumbs(normalisedItems, [{ path: basePath, name: "~", isActive: false }]);
@@ -165,12 +165,10 @@ function parseContent(items: content, basePath = "/") {
   normalisedItems = combineTopLevelAdjacentItems(normalisedItems);
   normalisedItems = addDepth(normalisedItems);
 
-  return {
-    items: normalisedItems,
-    documents: flattenDocuments(normalisedItems)
-  };
+  return normalisedItems;
 }
 
 export default {
-  parseContent
+  parse,
+  getDocuments
 }

@@ -1,6 +1,6 @@
 import dataTools from "./dataTools";
 
-const content = dataTools.parseContent([
+const input = [
   { type: "document", name: "Doc A", document: null },
   { type: "document", name: "Doc B", document: null },
   { type: "document", name: "Doc C", document: null },
@@ -14,10 +14,11 @@ const content = dataTools.parseContent([
   },
   { type: "link", name: "Github", url: "http://github.com", external: true },
   { type: "something", name: "This is a purposefully invalid type that should be removed from the output", someType:'some-type'}
-] as any);
+] as any;
 
 test("dataTools() transforms data and returns tree", () => {
-  expect(content.items).toStrictEqual([
+  const data = dataTools.parse(input);
+  expect(data).toStrictEqual([
     {
       name: null,
       type: "category",
@@ -113,8 +114,10 @@ test("dataTools() transforms data and returns tree", () => {
   ])}
 );
 
-test("dataTools() transforms data and returns documents in a flat array", () =>
-  expect(content.documents).toStrictEqual([
+test("dataTools() transforms data and returns documents in a flat array", () => {
+  const data = dataTools.parse(input);
+  const documents = dataTools.getDocuments(data);
+  expect(documents).toStrictEqual([
     {
       name: "Doc A",
       type: "document",
@@ -183,4 +186,4 @@ test("dataTools() transforms data and returns documents in a flat array", () =>
       depth: 1
     }
   ])
-);
+});

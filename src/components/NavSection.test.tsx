@@ -4,7 +4,7 @@ import NavSection from "./NavSection";
 import contentTools from "../utils/dataTools";
 import { MemoryRouter } from "react-router-dom";
 
-let { items } = contentTools.parseContent([
+let items = contentTools.parse([
   {
     type: 'category',
     name: "Essentials",

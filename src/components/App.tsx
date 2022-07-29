@@ -31,10 +31,11 @@ const App = (props: props) => {
   const [nextPage, setNextPage] = useState(null as documentItem | null);
 
   useEffect(() => {
-    const content = dataTools.parseContent(props.content || [], basePath)
-    setContent(content)
-    setMenu(content.items);
-    const currentDocuments = filterDocuments(content.documents, props.currentPath).map(document => setActiveCrumb(document, props.currentPath));
+    const data = dataTools.parse(props.content || [], basePath)
+    const documents = dataTools.getDocuments(data)
+    setContent({ items: data, documents })
+    setMenu(data);
+    const currentDocuments = filterDocuments(documents, props.currentPath).map(document => setActiveCrumb(document, props.currentPath));
     setDocuments(currentDocuments);
 
     const prevIndex = content.documents.findIndex((document: documentItem) => document.path === props.currentPath) - 1;

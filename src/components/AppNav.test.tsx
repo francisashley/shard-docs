@@ -4,7 +4,7 @@ import { MemoryRouter } from "react-router-dom";
 import AppNav from "./AppNav";
 import dataTools from "../utils/dataTools";
 
-const { items } = dataTools.parseContent([
+const items = dataTools.parse([
   { type: 'document', name: "Doc A", document: <h1>Doc A</h1> }
 ]);
 

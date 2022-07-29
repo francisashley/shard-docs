@@ -4,7 +4,7 @@ import { MemoryRouter } from "react-router-dom";
 import NavCategory from "./NavCategory";
 import dataTools from "../utils/dataTools";
 
-const { items } = dataTools.parseContent([
+const items = dataTools.parse([
   {
     type: 'category', 
     name: "Category",
