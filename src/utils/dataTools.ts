@@ -67,7 +67,7 @@ function parse(
         type: 'link',
         name: item.name,
         url: item.content,
-        external: isExternalLink(item.content as string),
+        isExternal: isExternalLink(item.content as string),
         depth,
       } as link)
     }

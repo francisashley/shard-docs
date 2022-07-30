@@ -95,7 +95,7 @@ test('dataTools() transforms data and returns tree', () => {
         },
       ],
     },
-    { name: 'Github', type: 'link', url: 'http://github.com', external: true, depth: 0 },
+    { name: 'Github', type: 'link', url: 'http://github.com', isExternal: true, depth: 0 },
   ])
 })
 

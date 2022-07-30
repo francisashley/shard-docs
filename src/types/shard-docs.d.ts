@@ -30,7 +30,7 @@ type link = {
   type: 'link'
   name: string
   url: string
-  external: boolean
+  isExternal: boolean
   depth: number
 }
 

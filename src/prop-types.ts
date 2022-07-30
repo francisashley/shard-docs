@@ -18,7 +18,7 @@ export const LinkPropType = PropTypes.shape({
   type: PropTypes.oneOf(['link']),
   name: PropTypes.string,
   url: PropTypes.string,
-  external: PropTypes.bool,
+  isExternal: PropTypes.bool,
 })
 
 export const PagePropType = PropTypes.shape({

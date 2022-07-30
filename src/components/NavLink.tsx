@@ -8,7 +8,7 @@ type props = {
 }
 
 const NavLink = (props: props) => {
-  const openInNewTab = props.item.external === true
+  const openInNewTab = props.item.isExternal === true
   return (
     <li className="NavLink">
       <a
