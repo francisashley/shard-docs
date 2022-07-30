@@ -18,7 +18,7 @@ const AppMain = (props: props) => {
   )
 
   return (
-    <main className="sd-AppMain">
+    <main className="AppMain">
       <MainContent breadcrumbs={props.page?.breadcrumbs} content={props.page?.content} />
       {Pagination}
     </main>

@@ -27,41 +27,41 @@ test('<AppSidebar /> renders with default props', () => {
 test('<AppSidebar /> renders app title', () => {
   const wrapper = mountSidebar({ title })
 
-  expect(wrapper.find('.sd-AppHeader__title').text()).toBe(title)
+  expect(wrapper.find('.AppHeader__title').text()).toBe(title)
 })
 
 test('<AppSidebar /> renders menu', () => {
   const wrapper = mountSidebar({ items } as { items: category[] })
 
-  expect(wrapper.find('.sd-AppNav ul li').exists()).toBe(true)
+  expect(wrapper.find('.AppNav ul li').exists()).toBe(true)
 })
 
 test('<AppSidebar /> renders sidebar footer', () => {
   const wrapper = mountSidebar()
 
-  expect(wrapper.find('.sd-BuiltWithShardDocs').exists()).toBe(true)
+  expect(wrapper.find('.BuiltWithShardDocs').exists()).toBe(true)
 })
 
 test('<AppSidebar /> can hide sidebar footer', () => {
   const wrapper = mountSidebar({ hideBuiltWithShardDocs: true })
 
-  expect(wrapper.find('.sd-BuiltWithShardDocs').exists()).toBe(false)
+  expect(wrapper.find('.BuiltWithShardDocs').exists()).toBe(false)
 })
 
 test('<AppSidebar /> can toggle sidebar', () => {
   const wrapper = mountSidebar()
 
-  expect(wrapper.find('.sd-AppNav--show').exists()).toBe(false)
-  wrapper.find('.sd-AppHeader__toggle-btn').simulate('click')
-  expect(wrapper.find('.sd-AppNav--show').exists()).toBe(true)
+  expect(wrapper.find('.AppNav--show').exists()).toBe(false)
+  wrapper.find('.AppHeader__toggle-btn').simulate('click')
+  expect(wrapper.find('.AppNav--show').exists()).toBe(true)
 })
 
 test('<AppSidebar /> closes sidebar menu when navigating', () => {
   const wrapper = mountSidebar({ items } as { items: category[] })
 
-  expect(wrapper.find('.sd-AppNav--show').exists()).toBe(false)
-  wrapper.find('.sd-AppHeader__toggle-btn').simulate('click')
-  expect(wrapper.find('.sd-AppNav--show').exists()).toBe(true)
-  wrapper.find('.sd-AppNav NavPage a').simulate('click')
-  expect(wrapper.find('.sd-AppNav--show').exists()).toBe(false)
+  expect(wrapper.find('.AppNav--show').exists()).toBe(false)
+  wrapper.find('.AppHeader__toggle-btn').simulate('click')
+  expect(wrapper.find('.AppNav--show').exists()).toBe(true)
+  wrapper.find('.AppNav NavPage a').simulate('click')
+  expect(wrapper.find('.AppNav--show').exists()).toBe(false)
 })

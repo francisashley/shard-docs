@@ -20,26 +20,24 @@ test('<MainBreadcrumbs /> renders breadcrumbs', () => {
     </MemoryRouter>
   )
 
-  expect(wrapper.find('.sd-MainBreadcrumbs__item-link').hostNodes().length).toBe(3)
-  expect(wrapper.find('.sd-MainBreadcrumbs__item-link').hostNodes().at(0).prop('href')).toBe('/')
-  expect(wrapper.find('.sd-MainBreadcrumbs__item-link').hostNodes().at(1).prop('href')).toBe(
+  expect(wrapper.find('.MainBreadcrumbs__item-link').hostNodes().length).toBe(3)
+  expect(wrapper.find('.MainBreadcrumbs__item-link').hostNodes().at(0).prop('href')).toBe('/')
+  expect(wrapper.find('.MainBreadcrumbs__item-link').hostNodes().at(1).prop('href')).toBe(
     '/examples'
   )
-  expect(wrapper.find('.sd-MainBreadcrumbs__item-link').hostNodes().at(2).prop('href')).toBe(
+  expect(wrapper.find('.MainBreadcrumbs__item-link').hostNodes().at(2).prop('href')).toBe(
     '/examples/hello-world'
   )
-  expect(wrapper.find('.sd-MainBreadcrumbs__item-link').hostNodes().at(0).text()).toBe('~')
-  expect(wrapper.find('.sd-MainBreadcrumbs__item-link').hostNodes().at(1).text()).toBe('Examples')
-  expect(wrapper.find('.sd-MainBreadcrumbs__item-link').hostNodes().at(2).text()).toBe(
-    'Hello world'
+  expect(wrapper.find('.MainBreadcrumbs__item-link').hostNodes().at(0).text()).toBe('~')
+  expect(wrapper.find('.MainBreadcrumbs__item-link').hostNodes().at(1).text()).toBe('Examples')
+  expect(wrapper.find('.MainBreadcrumbs__item-link').hostNodes().at(2).text()).toBe('Hello world')
+  expect(wrapper.find('.MainBreadcrumbs__item-link').hostNodes().at(0).prop('className')).toBe(
+    'MainBreadcrumbs__item-link'
   )
-  expect(wrapper.find('.sd-MainBreadcrumbs__item-link').hostNodes().at(0).prop('className')).toBe(
-    'sd-MainBreadcrumbs__item-link'
+  expect(wrapper.find('.MainBreadcrumbs__item-link').hostNodes().at(1).prop('className')).toBe(
+    'MainBreadcrumbs__item-link'
   )
-  expect(wrapper.find('.sd-MainBreadcrumbs__item-link').hostNodes().at(1).prop('className')).toBe(
-    'sd-MainBreadcrumbs__item-link'
-  )
-  expect(wrapper.find('.sd-MainBreadcrumbs__item-link').hostNodes().at(2).prop('className')).toBe(
-    'sd-MainBreadcrumbs__item-link sd-MainBreadcrumbs__item-link--active'
+  expect(wrapper.find('.MainBreadcrumbs__item-link').hostNodes().at(2).prop('className')).toBe(
+    'MainBreadcrumbs__item-link MainBreadcrumbs__item-link--active'
   )
 })

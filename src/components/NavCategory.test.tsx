@@ -20,7 +20,7 @@ test('<NavCategory /> renders correctly', () => {
 
   expect(wrapper.find('NavTree').exists()).toBe(true)
 
-  wrapper.find('.sd-NavCategory__header-link').first().simulate('click')
+  wrapper.find('.NavCategory__header-link').first().simulate('click')
 
   expect(wrapper.find('NavTree').exists()).toBe(false)
 })

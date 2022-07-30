@@ -13,7 +13,7 @@ type props = {
 
 const AppNav = (props: props) => {
   return (
-    <div className={classnames('sd-AppNav', props.showOnMobile && 'sd-AppNav--show')}>
+    <div className={classnames('AppNav', props.showOnMobile && 'AppNav--show')}>
       {props.items.map((item, i) => (
         <NavSection key={i} index={i} item={item} onNavigate={props.onNavigate} />
       ))}

@@ -30,18 +30,18 @@ class NavSectionHeader extends React.Component<props> {
     const props = this.props
 
     return (
-      <header className="sd-NavSectionHeader">
+      <header className="NavSectionHeader">
         <BaseLink
-          className="sd-NavSectionHeader__link"
+          className="NavSectionHeader__link"
           href="#"
           preventDefault
           onClick={props.onToggle}
         >
-          <h3 className="sd-NavSectionHeader__title">{props.title}</h3>
+          <h3 className="NavSectionHeader__title">{props.title}</h3>
           <ArrowRight
             className={classnames(
-              'sd-NavSectionHeader__arrow-icon',
-              props.expanded && 'sd-NavSectionHeader__arrow-icon--expanded'
+              'NavSectionHeader__arrow-icon',
+              props.expanded && 'NavSectionHeader__arrow-icon--expanded'
             )}
           />
         </BaseLink>

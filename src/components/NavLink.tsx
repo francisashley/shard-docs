@@ -10,14 +10,14 @@ type props = {
 const NavLink = (props: props) => {
   const openInNewTab = props.item.external === true
   return (
-    <li className="sd-NavLink">
+    <li className="NavLink">
       <a
-        className="sd-NavLink__link"
+        className="NavLink__link"
         href={props.item.url}
         target={openInNewTab ? '_blank' : '_self'}
         style={{ paddingLeft: props.item.depth * 15 + 'px' }}
       >
-        <ExternalLinkIcon className="sd-NavLink__icon" />
+        <ExternalLinkIcon className="NavLink__icon" />
         {props.item.name}
       </a>
     </li>

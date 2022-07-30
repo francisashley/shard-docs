@@ -40,7 +40,7 @@ class AppSidebar extends React.Component<props, state> {
     const props = this.props
     const showBuiltWithShardDocs = !props.hideBuiltWithShardDocs
     return (
-      <aside className="sd-AppSidebar">
+      <aside className="AppSidebar">
         <AppHeader
           title={props.title}
           basePath={props.basePath}

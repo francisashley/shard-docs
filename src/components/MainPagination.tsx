@@ -10,10 +10,10 @@ type MainPaginationProps = {
 
 const MainPagination = (props: MainPaginationProps) => {
   return (
-    <footer className="sd-MainPagination">
+    <footer className="MainPagination">
       {props.prevPage && (
         <NavLink
-          className="sd-MainPagination__btn sd-MainPagination__btn--prev"
+          className="MainPagination__btn MainPagination__btn--prev"
           to={props.prevPage.path}
           exact
         >
@@ -22,7 +22,7 @@ const MainPagination = (props: MainPaginationProps) => {
       )}
       {props.nextPage && (
         <NavLink
-          className="sd-MainPagination__btn sd-MainPagination__btn--next"
+          className="MainPagination__btn MainPagination__btn--next"
           to={props.nextPage.path}
           exact
         >

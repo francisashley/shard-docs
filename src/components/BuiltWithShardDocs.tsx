@@ -3,9 +3,9 @@ import './BuiltWithShardDocs.scss'
 
 const BuiltWithShardDocs = () => {
   return (
-    <footer className="sd-BuiltWithShardDocs">
+    <footer className="BuiltWithShardDocs">
       Built with{' '}
-      <a className="sd-BuiltWithShardDocs__link" href="https://fa-repo.github.io/shard-docs/#/docs">
+      <a className="BuiltWithShardDocs__link" href="https://fa-repo.github.io/shard-docs/#/docs">
         @fa-repo/shard-docs
       </a>
     </footer>

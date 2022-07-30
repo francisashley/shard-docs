@@ -13,9 +13,9 @@ type props = {
 }
 const MainContent = ({ content, breadcrumbs }: props) => {
   return (
-    <article className="sd-MainContent">
+    <article className="MainContent">
       <MainBreadcrumbs breadcrumbs={breadcrumbs} />
-      <div className="sd-MainContent__body markdown-body">{content}</div>
+      <div className="MainContent__body markdown-body">{content}</div>
     </article>
   )
 }

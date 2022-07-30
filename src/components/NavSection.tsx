@@ -35,7 +35,7 @@ class NavSection extends React.Component<props, state> {
   }
 
   get sessionId() {
-    return 'sd-nav-cat-expanded' + (this.props.item.path || '')
+    return 'nav-cat-expanded' + (this.props.item.path || '')
   }
 
   toggle = () => {
@@ -48,11 +48,7 @@ class NavSection extends React.Component<props, state> {
     const collapsible = Boolean(props.item.name)
     const expanded = this.state.expanded
 
-    const className = classnames(
-      'sd-NavSection',
-      collapsible && 'collapsible',
-      expanded && 'expanded'
-    )
+    const className = classnames('NavSection', collapsible && 'collapsible', expanded && 'expanded')
 
     // Ignore `expanded` value if section is discrete.
     const showMenu = collapsible ? expanded : true

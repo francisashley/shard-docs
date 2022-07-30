@@ -43,9 +43,9 @@ test('<SectionShard /> remembers toggle state', async () => {
       <p>Hi</p>
     </SectionShard>
   )
-  expect(localStorage.getItem('sd-SectionShard-state-abc')).toBe(null)
+  expect(localStorage.getItem('SectionShard-state-abc')).toBe(null)
   await user.click(screen.getByRole('link'))
-  expect(JSON.parse(localStorage.getItem('sd-SectionShard-state-abc') as string)).toBe(false)
+  expect(JSON.parse(localStorage.getItem('SectionShard-state-abc') as string)).toBe(false)
   await user.click(screen.getByRole('link'))
-  expect(JSON.parse(localStorage.getItem('sd-SectionShard-state-abc') as string)).toBe(true)
+  expect(JSON.parse(localStorage.getItem('SectionShard-state-abc') as string)).toBe(true)
 })

@@ -13,18 +13,15 @@ type props = {
 
 const NavPage = (props: props) => {
   return (
-    <li className="sd-NavPage">
+    <li className="NavPage">
       <NavLink
         style={{ paddingLeft: props.item.depth * 15 + 'px' }}
-        className={classnames(
-          'sd-NavPage__link',
-          props.item.isActive && 'sd-NavPage__link--active'
-        )}
+        className={classnames('NavPage__link', props.item.isActive && 'NavPage__link--active')}
         onClick={(e) => (props.item.isEmpty ? e.preventDefault() : props.onNavigate())}
         to={props.item.path}
         exact
       >
-        <FileIcon className="sd-NavPage__icon" />
+        <FileIcon className="NavPage__icon" />
         {props.item.name}
       </NavLink>
     </li>

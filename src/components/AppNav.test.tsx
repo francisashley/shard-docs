@@ -28,25 +28,25 @@ test('<AppNav /> renders with default props', () => {
 test('<AppNav /> renders AppNav', () => {
   const { wrapper } = mountAppNav({ items } as { items: category[] })
 
-  expect(wrapper.find('.sd-AppNav ul li').exists()).toBe(true)
+  expect(wrapper.find('.AppNav ul li').exists()).toBe(true)
 })
 
 test('<AppNav /> can show AppNav on mobile devices', () => {
   const { wrapper } = mountAppNav({ items, showOnMobile: true } as { items: category[] })
 
-  expect(wrapper.find('.sd-AppNav--show').exists()).toBe(true)
+  expect(wrapper.find('.AppNav--show').exists()).toBe(true)
 })
 
 test('<AppNav /> can show AppNav on mobile devices', () => {
   const { wrapper } = mountAppNav({ items, showOnMobile: false } as { items: category[] })
 
-  expect(wrapper.find('.sd-AppNav--show').exists()).toBe(false)
+  expect(wrapper.find('.AppNav--show').exists()).toBe(false)
 })
 
 test('<AppNav /> calls onNavigate', () => {
   const { wrapper, onNavigate } = mountAppNav({ items } as { items: category[] })
 
-  wrapper.find('.sd-AppNav ul li a').first().simulate('click')
+  wrapper.find('.AppNav ul li a').first().simulate('click')
 
   expect(onNavigate.mock.calls.length).toBe(1)
 })

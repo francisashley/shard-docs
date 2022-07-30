@@ -53,7 +53,7 @@ const App = (props: props) => {
   }, [props.currentPath])
 
   return (
-    <div className="sd-App">
+    <div className="App">
       <AppSidebar
         title={props.title}
         basePath={props.basePath}

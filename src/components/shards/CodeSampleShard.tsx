@@ -78,40 +78,40 @@ class CodeSampleShard extends React.Component<props, state> {
     }
 
     return (
-      <section className={classnames('sd-CodeSampleShard', props.className)}>
+      <section className={classnames('CodeSampleShard', props.className)}>
         {showHeader && (
-          <header className="sd-CodeSampleShard__header">
-            <h3 className="sd-CodeSampleShard__title" title={props.title}>
+          <header className="CodeSampleShard__header">
+            <h3 className="CodeSampleShard__title" title={props.title}>
               {props.title}
             </h3>
-            <menu className="sd-CodeSampleShard__menu">
+            <menu className="CodeSampleShard__menu">
               <BaseLink
-                className="sd-CodeSampleShard__menu-link sd-CodeSampleShard__menu-link--code"
+                className="CodeSampleShard__menu-link CodeSampleShard__menu-link--code"
                 preventDefault
                 onClick={this.toggleCode}
               >
-                <CodeIcon className="sd-CodeSampleShard__menu-icon" />
+                <CodeIcon className="CodeSampleShard__menu-icon" />
               </BaseLink>
 
               {props.repository && (
                 <BaseLink
-                  className="sd-CodeSampleShard__menu-link sd-CodeSampleShard__menu-link--repository"
+                  className="CodeSampleShard__menu-link CodeSampleShard__menu-link--repository"
                   href={props.repository}
                   newTab
                 >
-                  <GithubIcon className="sd-CodeSampleShard__menu-icon" />
+                  <GithubIcon className="CodeSampleShard__menu-icon" />
                 </BaseLink>
               )}
             </menu>
           </header>
         )}
-        <div className="sd-CodeSampleShard__body">
+        <div className="CodeSampleShard__body">
           {displayCode && (
-            <div className="sd-CodeSampleShard__source-code">
+            <div className="CodeSampleShard__source-code">
               <CodeBlockRenderer language={props.lang}>{props.sourceCode}</CodeBlockRenderer>
             </div>
           )}
-          <div className="sd-CodeSampleShard__example">
+          <div className="CodeSampleShard__example">
             {props.useIframe ? (
               <Frame
                 initialContent={`<!DOCTYPE html><html><head>${props.iframeHead}</head><body><div class="frame-root"></div></body></html>`}

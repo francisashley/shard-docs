@@ -10,14 +10,14 @@ type props = {
 }
 
 const MainBreadcrumbs = ({ breadcrumbs }: props) => (
-  <ul className="sd-MainBreadcrumbs" role="navigation">
+  <ul className="MainBreadcrumbs" role="navigation">
     {breadcrumbs.map(({ name, path, isActive }, i) => {
       return (
-        <li className="sd-MainBreadcrumbs__item" key={i}>
+        <li className="MainBreadcrumbs__item" key={i}>
           <NavLink
             className={classnames(
-              'sd-MainBreadcrumbs__item-link',
-              isActive && 'sd-MainBreadcrumbs__item-link--active'
+              'MainBreadcrumbs__item-link',
+              isActive && 'MainBreadcrumbs__item-link--active'
             )}
             isActive={() => false}
             to={path}

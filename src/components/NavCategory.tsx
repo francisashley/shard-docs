@@ -29,7 +29,7 @@ class NavCategory extends React.Component<props, state> {
   }
 
   state = {
-    sessionId: 'sd-nav-cat-expanded' + this.props.item.path,
+    sessionId: 'nav-cat-expanded' + this.props.item.path,
     expanded: true,
   }
 
@@ -49,19 +49,19 @@ class NavCategory extends React.Component<props, state> {
     const { item, onNavigate } = this.props
 
     return (
-      <ul className="sd-NavCategory">
+      <ul className="NavCategory">
         {item.name && (
-          <li className="sd-NavCategory__header">
+          <li className="NavCategory__header">
             <BaseLink
-              className="sd-NavCategory__header-link"
+              className="NavCategory__header-link"
               style={{ paddingLeft: item.depth * 15 + 'px' }}
               onClick={this.toggleCategory}
               disabled={item.isEmpty}
             >
               {this.state.expanded ? (
-                <TriangleArrowDown className="sd-NavCategory__header-icon" />
+                <TriangleArrowDown className="NavCategory__header-icon" />
               ) : (
-                <TriangleArrowRight className="sd-NavCategory__header-icon" />
+                <TriangleArrowRight className="NavCategory__header-icon" />
               )}
               {item.name}
             </BaseLink>

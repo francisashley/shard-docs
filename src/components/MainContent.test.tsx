@@ -28,7 +28,7 @@ it('<MainContent /> renders breadcrumbs', () => {
     </MemoryRouter>
   )
 
-  expect(wrapper.find('.sd-MainBreadcrumbs a').exists()).toBe(true)
+  expect(wrapper.find('.MainBreadcrumbs a').exists()).toBe(true)
 })
 
 it('<MainContent /> renders content', () => {
@@ -38,8 +38,8 @@ it('<MainContent /> renders content', () => {
     </MemoryRouter>
   )
 
-  expect(wrapper.find('.sd-MainContent__body').exists()).toBe(true)
-  expect(wrapper.find('.sd-MainContent__body h1').text()).toBe('Hello earth!')
-  expect(wrapper.find('.sd-MainContent__body h2').text()).toBe('Hello galaxy!')
-  expect(wrapper.find('.sd-MainContent__body h3').text()).toBe('Hello universe!')
+  expect(wrapper.find('.MainContent__body').exists()).toBe(true)
+  expect(wrapper.find('.MainContent__body h1').text()).toBe('Hello earth!')
+  expect(wrapper.find('.MainContent__body h2').text()).toBe('Hello galaxy!')
+  expect(wrapper.find('.MainContent__body h3').text()).toBe('Hello universe!')
 })
