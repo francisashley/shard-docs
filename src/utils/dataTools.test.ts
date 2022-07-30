@@ -1,19 +1,18 @@
 import dataTools from "./dataTools";
 
 const input = [
-  { type: "page", name: "Doc A", content: null },
-  { type: "page", name: "Doc B", content: null },
-  { type: "page", name: "Doc C", content: null },
+  { name: "Doc A", content: null },
+  { name: "Doc B", content: null },
+  { name: "Doc C", content: null },
   {
-    type: "category",
     name: "Category",
-    items: [
-      { type: "page", name: "Doc D", content: null },
-      { type: "page", name: "Doc E", content: null }
+    content: [
+      { name: "Doc D", content: null },
+      { name: "Doc E", content: null }
     ]
   },
-  { type: "link", name: "Github", url: "http://github.com", external: true },
-  { type: "something", name: "This is a purposefully invalid type that should be removed from the output", someType:'some-type'}
+  { name: "Github", content: "http://github.com" },
+  { name: "This is an invalid type and should not appear in the output" }
 ] as any;
 
 test("dataTools() transforms data and returns tree", () => {

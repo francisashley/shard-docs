@@ -34,30 +34,27 @@ render(
       title="Shard docs"
       data={[
         {
-          type: 'category',
           name: "Essentials",
-          items: [
-            { type: 'page', name: "Get started", content: <EssentialsGetStartedContent /> },
-            { type: 'page', name: "Content", content: <EssentialsSchemaReferenceContent /> },
-            { type: 'page', name: "API", content: <EssentialsApiReferenceContent /> }
+          content: [
+            { name: "Get started", content: <EssentialsGetStartedContent /> },
+            { name: "Content", content: <EssentialsSchemaReferenceContent /> },
+            { name: "API", content: <EssentialsApiReferenceContent /> }
           ]
         },
         {
-          type: 'category',
           name: "Examples",
-          items: [
-            { type: 'page', name: "Hello world", content: <ExamplesHelloWorldContent /> }
+          content: [
+            { name: "Hello world", content: <ExamplesHelloWorldContent /> }
           ]
         },
         {
-          type: 'category',
           name: "Shards",
-          items: [
-            { type: 'page', name: "<CodeSample />", content: <ShardsCodeSampleShardContent /> },
-            { type: 'page', name: "<Section />", content: <ShardsSectionShardContent /> }
+          content: [
+            { name: "<CodeSample />", content: <ShardsCodeSampleShardContent /> },
+            { name: "<Section />", content: <ShardsSectionShardContent /> }
           ]
         },
-        { type: 'link', name: "Github", url: "http://github.com/fa-repo/shard-docs", external: true }
+        { name: "Github", content: "http://github.com/fa-repo/shard-docs" }
       ]}
     />
   </MDXProvider>,

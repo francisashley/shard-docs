@@ -6,7 +6,7 @@ import dataTools from "../utils/dataTools";
 
 const title = "App title";
 const items = dataTools.parse([
-  { type: 'page', name: "Doc A", content: <h1>Doc A</h1> }
+  { name: "Doc A", content: <h1>Doc A</h1> }
 ]);
 
 const mountSidebar = (options = {} as { title?: string, items?: category[], hideBuiltWithShardDocs?: boolean}) => {

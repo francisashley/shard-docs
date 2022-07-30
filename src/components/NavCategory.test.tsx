@@ -6,9 +6,8 @@ import dataTools from "../utils/dataTools";
 
 const items = dataTools.parse([
   {
-    type: 'category', 
     name: "Category",
-    items: [{ type: 'page', name: "Page", content: <h1>Hello world</h1> }]
+    content: [{ name: "Page", content: <h1>Hello world</h1> }]
   }
 ]);
 

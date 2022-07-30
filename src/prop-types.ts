@@ -1,24 +1,10 @@
 import PropTypes from "prop-types";
 
 export const DataPropType = PropTypes.arrayOf(
-  PropTypes.oneOfType([
-    PropTypes.shape({
-      type: PropTypes.oneOf(['page']).isRequired,
-      name: PropTypes.string,
-      content: PropTypes.element
-    }),
-    PropTypes.shape({
-      type: PropTypes.oneOf(['category']).isRequired,
-      name: PropTypes.string,
-      items: PropTypes.array
-    }),
-    PropTypes.shape({
-      type: PropTypes.oneOf(['link']).isRequired,
-      name: PropTypes.string,
-      url: PropTypes.string,
-      external: PropTypes.bool
-    }),
-  ])
+  PropTypes.shape({
+    name: PropTypes.string,
+    content: PropTypes.oneOfType([PropTypes.element,PropTypes.array,PropTypes.bool])
+  }),
 );
 
 export const BreadcrumbPropType = PropTypes.shape({

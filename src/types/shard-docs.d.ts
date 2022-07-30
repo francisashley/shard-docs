@@ -1,11 +1,9 @@
-type inputData = {
-  type: 'category' | 'page' | 'link';
+type inputItem = {
   name: string;
-  url?: string;
-  external?: boolean;
-  items?: content
-  content?: unknown;
-}[]
+  content: string | inputItem[] | React.ReactNode;
+}
+
+type inputData = inputItem[]
 
 type category = {
   type: 'category';

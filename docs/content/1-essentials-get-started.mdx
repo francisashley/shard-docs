@@ -15,17 +15,16 @@ import ShardDocs from "@fa-repo/shard-docs";
 import "@fa-repo/shard-docs/dist/index.css";
 
 const data = [
-  { type: "page", name: "Install", content: <h1>Install</h1> },
-  { type: "page", name: "Basic usage", content: <h1>Basic usage</h1> },
+  { name: "Install", content: <h1>Install</h1> },
+  { name: "Basic usage", content: <h1>Basic usage</h1> },
   {
-    type: "category",
     name: "Examples",
-    items: [
-      { type: "page", name: "Use case A", content: <h1>Use case A</h1> },
-      { type: "page", name: "Use case B", content: <h1>Use case B</h1> }
+    content: [
+      { name: "Use case A", content: <h1>Use case A</h1> },
+      { name: "Use case B", content: <h1>Use case B</h1> }
     ]
   },
-  { type: "link", name: "Github", url: "https://github.com", external: true },
+  { name: "Github", content: "https://github.com" },
 ]
 
 const root = document.getElementById("root");

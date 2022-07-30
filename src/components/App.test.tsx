@@ -4,8 +4,8 @@ import App from "./App";
 
 const title = "App title";
 const data = [
-  { type: 'page', name: "Doc A", content: <h1>Doc A</h1> },
-  { type: 'page', name: "Doc B", content: <h1>Doc B</h1> }
+  { name: "Doc A", content: <h1>Doc A</h1> },
+  { name: "Doc B", content: <h1>Doc B</h1> }
 ];
 
 const mountShardDocs = (options = {}) => {

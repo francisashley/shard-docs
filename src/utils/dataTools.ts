@@ -1,8 +1,19 @@
 import slugify from "slugify";
 import kebabCase from "lodash/kebabCase";
+import React from "react";
 
 const getSlug = (name: string) => slugify(kebabCase(name), { lower: true });
 const removeDuplicateSlashes = (path: string) => path.replace(/\/+$/, "").replace(/\/+/g, "/");
+const isInternalLink = (text: string) => new RegExp('^\/.+').test(text);
+const isExternalLink = (text: string) => new RegExp('^https?:\/\/.+').test(text);
+
+const getInputType = (item: inputItem): "category" | "page" | "link" | null => {
+  if (!item.name) return null;
+  else if (Array.isArray(item.content)) return "category";
+  else if (typeof item.content === 'string' && (isInternalLink(item.content) || isExternalLink(item.content))) return 'link';
+  else if (React.isValidElement(item.content) || item.content === null) return "page";
+  return null;
+}
 
 function normaliseContent(items: inputData): data {
   const itemTemplates = {
@@ -14,17 +25,19 @@ function normaliseContent(items: inputData): data {
   const output = [];
 
   for (const item of items) {
-    if (!itemTemplates[item.type]) continue;
+    const inputType = getInputType(item);
 
-    const outputTemplate = itemTemplates[item.type];
+    if (!inputType) continue;
 
-    if (item.type === "category") {
-      const items = normaliseContent((item.items || []) as inputData);
+    const outputTemplate = itemTemplates[inputType];
+
+    if (inputType === "category") {
+      const items = normaliseContent((item.content || []) as inputData);
       output.push({ ...outputTemplate, name: item.name, items } as category);
-    } else if (item.type === "page") {
+    } else if (inputType === "page") {
       output.push({ ...outputTemplate, name: item.name, content: item.content } as page);
-    } else if (item.type === "link") {
-      output.push({ ...outputTemplate, name: item.name, url: item.url, external: item.external } as link);
+    } else if (inputType === "link") {
+      output.push({ ...outputTemplate, name: item.name, url: item.content, external: isExternalLink(item.content as string) } as link);
     }
   }
 

@@ -1,41 +1,36 @@
 ```js
 // example
 const content = [
-  { type: "page", name: "Install", content: [ <h1>Install</h1> ] },
-  { type: "page", name: "Basic usage", content: [ <h1>Basic usage</h1> ] },
+  { name: "Install", content: <h1>Install</h1> },
+  { name: "Basic usage", content: <h1>Basic usage</h1> },
   {
-    type: "category",
     name: "Examples",
-    items: [
-      { type: "page", name: "Use case A", content: [ <h1>Use case A</h1> ] },
-      { type: "page", name: "Use case B", content: [ <h1>Use case B</h1> ] }
+    content: [
+      { name: "Use case A", content: <h1>Use case A</h1> },
+      { name: "Use case B", content: <h1>Use case B</h1> }
     ]
   },
-  { type: "link", name: "Github", url: "https://github.com", external: true },
+  { name: "Github", content: "https://github.com" },
 ]
 ```
 
 #### Page item
 
-| Name        | Type   | Default | Required | Description                       |
-|-------------|--------|---------|----------|-----------------------------------|
-| `type`      | string | `""`    | Required | Must be "page".                   |
-| `name`      | string | `""`    | Required | Page name.                        |
-| `page`      | JSX    | `null`  |          | Page content.                     |
+| Name        | Type          | Description                       |
+|-------------|---------------|-----------------------------------|
+| `name`      | `string`      | Page name.                        |
+| `content`   | `JSX`|`null`  | Page content.                     |
 
 #### Category item
 
-| Name       | Type   | Default | Required | Description                                       |
-|------------|--------|---------|----------|---------------------------------------------------|
-| `type`     | string | `""`    |          | Must be "category".                               |
-| `name`     | string | `""`    |          | Category name.                                    |
-| `items`    | array  | `[]`    | Required | An array that accepts all items listed here.      |
+| Name       | Type   | Description                                 |
+|------------|--------|---------------------------------------------|
+| `name`     | string | Category name.                              |
+| `content`  | array  | An array containing items listed here.      |
 
 #### Link item
 
-| Name          | Type    | Default | Required | Description                                      |
-|---------------|---------|---------|----------|--------------------------------------------------|
-| `type`        | string  | `""`    | Required | Must be "link".                                  |
-| `name`        | string  | `""`    |          | Link name.                                       |
-| `url`         | string  | `""`    | Required | Link url.                                        |
-| `external`    | boolean | `""`    | Required | Toggles whether to open the link in a new tab.   |
+| Name          | Type    | Description                                      |
+|---------------|---------|--------------------------------------------------|
+| `name`        | string  | Link name.                                       |
+| `content`     | string  | Accepts internal and external links. E.g. /path/to/path. http://www.website.com, https://www.website.com |

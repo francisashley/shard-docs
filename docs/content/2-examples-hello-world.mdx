@@ -9,19 +9,16 @@ import ShardDocs, { CodeSampleShard } from "@fa-repo/shard-docs";
   data={
     [
       {
-        type: "page",
         name: "Hello world",
         content: <img src="/images/hello-world.jpg" alt="Turtle" />
       },
       {
-        type: "category",
-        name: "Examples",
         items: [
           { type: "page", name: "Use case A", content: <h1>Use case A</h1> },
           { type: "page", name: "Use case B", content: <h1>Use case B</h1> }
         ]
       },
-      { type: "link", name: "Github", url: "https://github.com/", external: true }
+      { name: "Github", content: "https://github.com/" }
     ]
   }
 />`}
@@ -34,16 +31,15 @@ import ShardDocs, { CodeSampleShard } from "@fa-repo/shard-docs";
     basePath="/examples/hello-world"
     data={
       [
-        { type: "page", name: "Hello world", content: <h1>Hello world</h1> },
+        { name: "Hello world", content: <h1>Hello world</h1> },
         {
-          type: "category",
           name: "Examples",
           items: [
-            { type: "page", name: "Use case A", content: <h1>Use case A</h1> },
-            { type: "page", name: "Use case B", content: <h1>Use case B</h1> }
+            { name: "Use case A", content: <h1>Use case A</h1> },
+            { name: "Use case B", content: <h1>Use case B</h1> }
           ]
         },
-        { type: "link", name: "Github", url: "https://github.com/", external: true }
+        { name: "Github", content: "https://github.com/" }
       ]
     }
   />

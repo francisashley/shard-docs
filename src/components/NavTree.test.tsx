@@ -5,18 +5,17 @@ import NavTree from "./NavTree";
 import dataTools from "../utils/dataTools";
 
 const items = dataTools.parse([
-  { type: 'page', name: "Doc A", content: <h1>Doc A</h1> },
-  { type: 'page', name: "Doc B", content: <h1>Doc B</h1> },
-  { type: 'page', name: "Doc C", content: <h1>Doc C</h1> },
+  { name: "Doc A", content: <h1>Doc A</h1> },
+  { name: "Doc B", content: <h1>Doc B</h1> },
+  { name: "Doc C", content: <h1>Doc C</h1> },
   {
-    type: 'category', 
     name: "Category",
-    items: [
-      { type: 'page', name: "Doc D", content: <h1>Doc D</h1> },
-      { type: 'page', name: "Doc E", content: <h1>Doc E</h1> }
+    content: [
+      { name: "Doc D", content: <h1>Doc D</h1> },
+      { name: "Doc E", content: <h1>Doc E</h1> }
     ]
   },
-  { type: 'link', name: "Github", url: "http://github.com", external: true }
+  { name: "Github", content: "http://github.com" }
 ]);
 
 const mountMenuList = ({ items } = {} as { items: data }) => {

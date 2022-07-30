@@ -6,20 +6,18 @@ import { MemoryRouter } from "react-router-dom";
 
 let items = contentTools.parse([
   {
-    type: 'category',
     name: "Essentials",
-    items: [
-      { type: 'page', name: "Get started", content: <h1>Get started</h1> }
+    content: [
+      { name: "Get started", content: <h1>Get started</h1> }
     ]
   },
   {
-    type: 'category',
     name: "Examples",
-    items: [
-      { type: 'page', name: "Hello world", content: <h1>Hello world</h1> }
+    content: [
+      { name: "Hello world", content: <h1>Hello world</h1> }
     ]
   },
-  { type: 'page', name: "Doc A", content: <h1>Doc A</h1> }
+  { name: "Doc A", content: <h1>Doc A</h1> }
 ]);
 
 test("<NavSection /> renders first index correctly", () => {
