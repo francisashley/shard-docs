@@ -1,65 +1,71 @@
-import React from "react";
-import PropTypes from "prop-types";
-import classnames from "classnames";
-import BaseLink from "@fa-repo/base-react/dist/link";
-import "./SectionShard.scss";
+import React from 'react'
+import PropTypes from 'prop-types'
+import classnames from 'classnames'
+import BaseLink from '@fa-repo/base-react/dist/link'
+import './SectionShard.scss'
 
 type SectionShardProps = {
-  title?: string,
-  persistState?: string,
-  className?: string,
-  children?: React.ReactNode,
+  title?: string
+  persistState?: string
+  className?: string
+  children?: React.ReactNode
 }
 
 type SectionShardState = {
-  expanded: boolean,
+  expanded: boolean
   storageId: string
 }
 
 class SectionShard extends React.Component<SectionShardProps, SectionShardState> {
   static propTypes = {
     title: PropTypes.string.isRequired,
-    persistState: PropTypes.string
-  };
+    persistState: PropTypes.string,
+  }
 
   static defaultProps = {
-    title: "",
-    persistState: null
-  };
+    title: '',
+    persistState: null,
+  }
 
   state = {
     expanded: true,
-    storageId: "sd-SectionShard-state-" + this.props.persistState
-  };
+    storageId: 'sd-SectionShard-state-' + this.props.persistState,
+  }
 
   componentDidMount() {
     if (this.props.persistState) {
-      this.setState({ expanded: this.isExpanded() });
+      this.setState({ expanded: this.isExpanded() })
     }
   }
 
   isExpanded = () => {
-    const state = localStorage.getItem(this.state.storageId);
-    return state === null ? this.state.expanded : state === "true";
-  };
+    const state = localStorage.getItem(this.state.storageId)
+    return state === null ? this.state.expanded : state === 'true'
+  }
 
   toggle = () => {
-    const expanded = !this.isExpanded();
-    if (this.props.persistState) localStorage.setItem(this.state.storageId, String(expanded));
-    this.setState({ expanded });
-  };
+    const expanded = !this.isExpanded()
+    if (this.props.persistState) localStorage.setItem(this.state.storageId, String(expanded))
+    this.setState({ expanded })
+  }
 
   render() {
-    const { title, persistState, ...props } = this.props;
+    const { title, persistState, ...props } = this.props
     return (
-      <section {...props} className={classnames("sd-SectionShard", props.className)}>
+      <section {...props} className={classnames('sd-SectionShard', props.className)}>
         <h2 className="sd-SectionShard__title">
-          <BaseLink className="sd-SectionShard__title-link" href="#" onClick={() => this.toggle()} preventDefault text={title} />
+          <BaseLink
+            className="sd-SectionShard__title-link"
+            href="#"
+            onClick={() => this.toggle()}
+            preventDefault
+            text={title}
+          />
         </h2>
         {this.isExpanded() && <div className="sd-SectionShard__content">{props.children}</div>}
       </section>
-    );
+    )
   }
 }
 
-export default SectionShard;
+export default SectionShard

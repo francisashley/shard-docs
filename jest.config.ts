@@ -1,11 +1,11 @@
-"use strict";
+'use strict'
 
-import { defaults } from "jest-config";
+import { defaults } from 'jest-config'
 
 export default {
-  setupFilesAfterEnv: ["./enzyme.config.js", "jest-extended", "./jest-setup.ts", './jest-setup.ts'],
+  setupFilesAfterEnv: ['./enzyme.config.js', 'jest-extended', './jest-setup.ts', './jest-setup.ts'],
   moduleNameMapper: {
-    "\\.(css|scss|less)$": "identity-obj-proxy"
+    '\\.(css|scss|less)$': 'identity-obj-proxy',
   },
-  moduleFileExtensions: [...defaults.moduleFileExtensions, "scss"]
-};
+  moduleFileExtensions: [...defaults.moduleFileExtensions, 'scss'],
+}

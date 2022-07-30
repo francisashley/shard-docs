@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react'
 
 // (origin) Material design - keyboard_arrow_right
 const ArrowRight = (props: any) => (
@@ -6,6 +6,6 @@ const ArrowRight = (props: any) => (
     <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z" />
     <path fill="none" d="M0 0h24v24H0V0z" />
   </svg>
-);
+)
 
-export default ArrowRight;
+export default ArrowRight

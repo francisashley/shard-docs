@@ -1,20 +1,20 @@
-import React from "react";
-import PropTypes from "prop-types";
-import AppHeader from "./AppHeader";
-import AppNav from "./AppNav";
-import BuiltWithShardDocs from "./BuiltWithShardDocs";
-import { ItemsPropType } from "../prop-types";
-import "./AppSidebar.scss";
+import React from 'react'
+import PropTypes from 'prop-types'
+import AppHeader from './AppHeader'
+import AppNav from './AppNav'
+import BuiltWithShardDocs from './BuiltWithShardDocs'
+import { ItemsPropType } from '../prop-types'
+import './AppSidebar.scss'
 
 type props = {
-  title?: string,
-  basePath?: string,
-  items: category[],
-  hideBuiltWithShardDocs: boolean,
+  title?: string
+  basePath?: string
+  items: category[]
+  hideBuiltWithShardDocs: boolean
 }
 
 type state = {
-  showMenuOnMobile: boolean,
+  showMenuOnMobile: boolean
 }
 
 class AppSidebar extends React.Component<props, state> {
@@ -22,23 +22,23 @@ class AppSidebar extends React.Component<props, state> {
     title: PropTypes.string,
     basePath: PropTypes.string,
     items: ItemsPropType,
-    hideBuiltWithShardDocs: PropTypes.bool
-  };
+    hideBuiltWithShardDocs: PropTypes.bool,
+  }
 
   static defaultProps = {
     app: {},
-    title: "",
+    title: '',
     items: [],
-    hideBuiltWithShardDocs: false
-  };
+    hideBuiltWithShardDocs: false,
+  }
 
   state = {
-    showMenuOnMobile: false
-  };
+    showMenuOnMobile: false,
+  }
 
   render() {
-    const props = this.props;
-    const showBuiltWithShardDocs = !props.hideBuiltWithShardDocs;
+    const props = this.props
+    const showBuiltWithShardDocs = !props.hideBuiltWithShardDocs
     return (
       <aside className="sd-AppSidebar">
         <AppHeader
@@ -53,8 +53,8 @@ class AppSidebar extends React.Component<props, state> {
         />
         {showBuiltWithShardDocs && <BuiltWithShardDocs />}
       </aside>
-    );
+    )
   }
 }
 
-export default AppSidebar;
+export default AppSidebar

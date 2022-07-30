@@ -1,20 +1,21 @@
 module.exports = {
-  presets: [["@babel/preset-env", { modules: false }], "@babel/preset-react"],
-  plugins: ["@babel/plugin-proposal-class-properties", "@babel/plugin-proposal-optional-chaining"],
+  presets: [['@babel/preset-env', { modules: false }], '@babel/preset-react'],
+  plugins: ['@babel/plugin-proposal-class-properties', '@babel/plugin-proposal-optional-chaining'],
   env: {
     test: {
       presets: [
-        ["@babel/preset-env", { targets: { node: "current" }, useBuiltIns: "usage", corejs: 3 }],
-        '@babel/preset-typescript',"@babel/preset-react",
+        ['@babel/preset-env', { targets: { node: 'current' }, useBuiltIns: 'usage', corejs: 3 }],
+        '@babel/preset-typescript',
+        '@babel/preset-react',
       ],
       plugins: [
-        "@babel/plugin-proposal-class-properties",
-        "@babel/plugin-proposal-do-expressions",
-        "@babel/plugin-proposal-json-strings",
-        "@babel/plugin-proposal-nullish-coalescing-operator",
-        "@babel/plugin-proposal-optional-chaining",
-        "inline-react-svg"
-      ]
-    }
-  }
-};
+        '@babel/plugin-proposal-class-properties',
+        '@babel/plugin-proposal-do-expressions',
+        '@babel/plugin-proposal-json-strings',
+        '@babel/plugin-proposal-nullish-coalescing-operator',
+        '@babel/plugin-proposal-optional-chaining',
+        'inline-react-svg',
+      ],
+    },
+  },
+}

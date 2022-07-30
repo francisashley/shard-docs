@@ -1,12 +1,12 @@
-import React from "react";
-import PropTypes from "prop-types";
-import classnames from "classnames";
-import { NavLink } from "react-router-dom";
-import { BreadcrumbPropType } from "../prop-types";
-import "./MainBreadcrumbs.scss";
+import React from 'react'
+import PropTypes from 'prop-types'
+import classnames from 'classnames'
+import { NavLink } from 'react-router-dom'
+import { BreadcrumbPropType } from '../prop-types'
+import './MainBreadcrumbs.scss'
 
 type props = {
-  breadcrumbs: breadcrumb[],
+  breadcrumbs: breadcrumb[]
 }
 
 const MainBreadcrumbs = ({ breadcrumbs }: props) => (
@@ -15,24 +15,27 @@ const MainBreadcrumbs = ({ breadcrumbs }: props) => (
       return (
         <li className="sd-MainBreadcrumbs__item" key={i}>
           <NavLink
-            className={classnames("sd-MainBreadcrumbs__item-link", isActive && "sd-MainBreadcrumbs__item-link--active")}
+            className={classnames(
+              'sd-MainBreadcrumbs__item-link',
+              isActive && 'sd-MainBreadcrumbs__item-link--active'
+            )}
             isActive={() => false}
             to={path}
           >
             {name}
           </NavLink>
         </li>
-      );
+      )
     })}
   </ul>
-);
+)
 
 MainBreadcrumbs.propTypes = {
-  breadcrumbs: PropTypes.arrayOf(BreadcrumbPropType).isRequired
-};
+  breadcrumbs: PropTypes.arrayOf(BreadcrumbPropType).isRequired,
+}
 
 MainBreadcrumbs.defaultProps = {
-  breadcrumbs: []
-};
+  breadcrumbs: [],
+}
 
-export default MainBreadcrumbs;
+export default MainBreadcrumbs
