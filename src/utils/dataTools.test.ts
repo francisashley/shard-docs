@@ -19,50 +19,43 @@ test("dataTools() transforms data and returns tree", () => {
   const data = dataTools.parse(input);
   expect(data).toStrictEqual([
     {
-      name: null,
-      type: "category",
-      depth: 0,
-      items: [
-        {
-          name: "Doc A",
-          type: "page",
-          path: "/doc-a",
-          breadcrumbs: [
-            { path: "/", name: "~", isActive: false },
-            { path: "/doc-a", name: "Doc A", isActive: false }
-          ],
-          content: null,
-          isEmpty: true,
-          isActive: false,
-          depth: 1
-        },
-        {
-          name: "Doc B",
-          type: "page",
-          path: "/doc-b",
-          breadcrumbs: [
-            { path: "/", name: "~", isActive: false },
-            { path: "/doc-b", name: "Doc B", isActive: false }
-          ],
-          content: null,
-          isEmpty: true,
-          isActive: false,
-          depth: 1
-        },
-        {
-          name: "Doc C",
-          type: "page",
-          path: "/doc-c",
-          breadcrumbs: [
-            { path: "/", name: "~", isActive: false },
-            { path: "/doc-c", name: "Doc C", isActive: false }
-          ],
-          content: null,
-          isEmpty: true,
-          isActive: false,
-          depth: 1
-        }
-      ]
+      name: "Doc A",
+      type: "page",
+      path: "/doc-a",
+      breadcrumbs: [
+        { path: "/", name: "~", isActive: false },
+        { path: "/doc-a", name: "Doc A", isActive: false }
+      ],
+      content: null,
+      isEmpty: true,
+      isActive: false,
+      depth: 0
+    },
+    {
+      name: "Doc B",
+      type: "page",
+      path: "/doc-b",
+      breadcrumbs: [
+        { path: "/", name: "~", isActive: false },
+        { path: "/doc-b", name: "Doc B", isActive: false }
+      ],
+      content: null,
+      isEmpty: true,
+      isActive: false,
+      depth: 0
+    },
+    {
+      name: "Doc C",
+      type: "page",
+      path: "/doc-c",
+      breadcrumbs: [
+        { path: "/", name: "~", isActive: false },
+        { path: "/doc-c", name: "Doc C", isActive: false }
+      ],
+      content: null,
+      isEmpty: true,
+      isActive: false,
+      depth: 0
     },
     {
       name: "Category",
@@ -102,14 +95,7 @@ test("dataTools() transforms data and returns tree", () => {
         }
       ]
     },
-    {
-      name: null,
-      type: "category",
-      items: [
-        { name: "Github", type: "link", url: "http://github.com", external: true, depth: 1 }
-      ],
-      depth: 0
-    }
+    { name: "Github", type: "link", url: "http://github.com", external: true, depth: 0 }
   ])}
 );
 
@@ -128,7 +114,7 @@ test("dataTools() transforms data and returns pages in a flat array", () => {
       content: null,
       isEmpty: true,
       isActive: false,
-      depth: 1
+      depth: 0
     },
     {
       name: "Doc B",
@@ -141,7 +127,7 @@ test("dataTools() transforms data and returns pages in a flat array", () => {
       content: null,
       isEmpty: true,
       isActive: false,
-      depth: 1
+      depth: 0
     },
     {
       name: "Doc C",
@@ -154,7 +140,7 @@ test("dataTools() transforms data and returns pages in a flat array", () => {
       content: null,
       isEmpty: true,
       isActive: false,
-      depth: 1
+      depth: 0
     },
     {
       name: "Doc D",
@@ -257,136 +243,113 @@ test("dataTools.filterPages() filters correctly", () => {
 test("dataTools.setActiveMenuItem() correctly sets isActive", () => {  
   const items = [
     {
-      name: null,
-      type: "category",
-      path: '/',
-      items: [
-        {
-          name: "Doc A",
-          type: "page",
-          path: "/doc-a",
-          breadcrumbs: [
-            { path: "/", name: "~", isActive: false },
-            { name: "Doc A", path: "/doc-a", isActive: false }],
-          content: null,
-          isEmpty: true
-        },
-        {
-          name: "Doc B",
-          type: "page",
-          path: "/doc-b",
-          breadcrumbs: [
-            { path: "/", name: "~", isActive: false },
-            { name: "Doc B", path: "/doc-b", isActive: false }
-          ],
-          content: null,
-          isEmpty: true
-        },
-        {
-          name: "Doc C",
-          type: "page",
-          path: "/doc-c",
-          breadcrumbs: [
-            { path: "/", name: "~", isActive: false },
-            { name: "Doc C", path: "/doc-c", isActive: false }
-          ],
-          content: null,
-          isEmpty: true
-        }
-      ]
+      name: "Doc A",
+      type: "page",
+      path: "/doc-a",
+      breadcrumbs: [
+        { path: "/", name: "~", isActive: false },
+        { name: "Doc A", path: "/doc-a", isActive: false }],
+      content: null,
+      isEmpty: true
+    },
+    {
+      name: "Doc B",
+      type: "page",
+      path: "/doc-b",
+      breadcrumbs: [
+        { path: "/", name: "~", isActive: false },
+        { name: "Doc B", path: "/doc-b", isActive: false }
+      ],
+      content: null,
+      isEmpty: true
+    },
+    {
+      name: "Doc C",
+      type: "page",
+      path: "/doc-c",
+      breadcrumbs: [
+        { path: "/", name: "~", isActive: false },
+        { name: "Doc C", path: "/doc-c", isActive: false }
+      ],
+      content: null,
+      isEmpty: true
     }
   ];
 
   expect(dataTools.setActiveMenuItem(items as data, '/doc-b')).toStrictEqual([
-    {
-      name: null,
-      type: "category",
-      path: '/',
-      isActive: false,
-      items: [
-        {
-          name: "Doc A",
-          type: "page",
-          path: "/doc-a",
-          breadcrumbs: [
-            { path: "/", name: "~", isActive: false },
-            { name: "Doc A", path: "/doc-a", isActive: false }
-          ],
-          content: null,
-          isEmpty: true,
-          isActive: false
-        },
-        {
-          name: "Doc B",
-          type: "page",
-          path: "/doc-b",
-          breadcrumbs: [
-            { path: "/", name: "~", isActive: false },
-            { name: "Doc B", path: "/doc-b", isActive: false }
-          ],
-          content: null,
-          isEmpty: true,
-          isActive: true
-        },
-        {
-          name: "Doc C",
-          type: "page",
-          path: "/doc-c",
-          breadcrumbs: [
-            { path: "/", name: "~", isActive: false },
-            { name: "Doc C", path: "/doc-c", isActive: false }
-          ],
-          content: null,
-          isEmpty: true,
-          isActive: false
-        }
-      ]
-    }
+      {
+        name: "Doc A",
+        type: "page",
+        path: "/doc-a",
+        breadcrumbs: [
+          { path: "/", name: "~", isActive: false },
+          { name: "Doc A", path: "/doc-a", isActive: false }
+        ],
+        content: null,
+        isEmpty: true,
+        isActive: false
+      },
+      {
+        name: "Doc B",
+        type: "page",
+        path: "/doc-b",
+        breadcrumbs: [
+          { path: "/", name: "~", isActive: false },
+          { name: "Doc B", path: "/doc-b", isActive: false }
+        ],
+        content: null,
+        isEmpty: true,
+        isActive: true
+      },
+      {
+        name: "Doc C",
+        type: "page",
+        path: "/doc-c",
+        breadcrumbs: [
+          { path: "/", name: "~", isActive: false },
+          { name: "Doc C", path: "/doc-c", isActive: false }
+        ],
+        content: null,
+        isEmpty: true,
+        isActive: false
+      }
   ])
-  expect(dataTools.setActiveMenuItem(items as data, '/doc-z')).toStrictEqual([
+expect(dataTools.setActiveMenuItem(items as data, '/doc-z')).toStrictEqual([
     {
-      name: null,
-      type: "category",
-      path: "/",
-      isActive: false,
-      items: [
-        {
-          name: "Doc A",
-          type: "page",
-          path: "/doc-a",
-          breadcrumbs: [
-            { path: "/", name: "~", isActive: false },
-            { name: "Doc A", path: "/doc-a", isActive: false }
-          ],
-          content: null,
-          isEmpty: true,
-          isActive: false
-        },
-        {
-          name: "Doc B",
-          type: "page",
-          path: "/doc-b",
-          breadcrumbs: [
-            { path: "/", name: "~", isActive: false },
-            { name: "Doc B", path: "/doc-b", isActive: false }
-          ],
-          content: null,
-          isEmpty: true,
-          isActive: false
-        },
-        {
-          name: "Doc C",
-          type: "page",
-          path: "/doc-c",
-          breadcrumbs: [
-            { path: "/", name: "~", isActive: false },
-            { name: "Doc C", path: "/doc-c", isActive: false }
-          ],
-          content: null,
-          isEmpty: true,
-          isActive: false
-        }
-      ]
+      name: "Doc A",
+      type: "page",
+      path: "/doc-a",
+      breadcrumbs: [
+        { path: "/", name: "~", isActive: false },
+        { name: "Doc A", path: "/doc-a", isActive: false }
+      ],
+      content: null,
+      isEmpty: true,
+      isActive: false
+    },
+    {
+      name: "Doc B",
+      type: "page",
+      path: "/doc-b",
+      breadcrumbs: [
+        { path: "/", name: "~", isActive: false },
+        { name: "Doc B", path: "/doc-b", isActive: false }
+      ],
+      content: null,
+      isEmpty: true,
+      isActive: false
+    },
+    {
+      name: "Doc C",
+      type: "page",
+      path: "/doc-c",
+      breadcrumbs: [
+        { path: "/", name: "~", isActive: false },
+        { name: "Doc C", path: "/doc-c", isActive: false }
+      ],
+      content: null,
+      isEmpty: true,
+      isActive: false
     }
   ])
 });
