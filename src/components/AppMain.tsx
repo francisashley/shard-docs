@@ -19,7 +19,7 @@ const AppMain = (props: props) => {
 
   return (
     <main className="AppMain">
-      <MainContent breadcrumbs={props.page?.breadcrumbs} content={props.page?.content} />
+      <MainContent title={props.page?.name} content={props.page?.content} />
       {Pagination}
     </main>
   )

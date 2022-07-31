@@ -3,12 +3,6 @@ import { MemoryRouter } from 'react-router-dom'
 import { mount } from 'enzyme'
 import MainContent from './MainContent'
 
-const breadcrumbs = [
-  { name: '~', path: '/', isActive: false },
-  { name: 'Examples', path: '/examples', isActive: false },
-  { name: 'Hello world', path: '/examples/hello-world', isActive: false },
-]
-
 const content = (
   <>
     <h1>Hello earth!</h1>
@@ -19,16 +13,6 @@ const content = (
 
 it('<MainContent /> renders with default props', () => {
   mount(<MainContent />)
-})
-
-it('<MainContent /> renders breadcrumbs', () => {
-  const wrapper = mount(
-    <MemoryRouter>
-      <MainContent breadcrumbs={breadcrumbs} />
-    </MemoryRouter>
-  )
-
-  expect(wrapper.find('.MainBreadcrumbs a').exists()).toBe(true)
 })
 
 it('<MainContent /> renders content', () => {

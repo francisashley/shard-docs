@@ -44,10 +44,7 @@ function parse(
         type: 'category',
         name: item.name,
         path,
-        items: parse(content, path, depth + 1, [
-          ...breadcrumbs,
-          { name: item.name || '', path, isActive: false },
-        ]),
+        items: parse(content, path, depth + 1),
         isEmpty: !Boolean(content?.length),
         isActive: false,
         isExpanded: sessionDB.get(path, false),
@@ -58,7 +55,6 @@ function parse(
         type: 'page',
         name: item.name,
         path,
-        breadcrumbs: [...breadcrumbs, { name: item.name, path, isActive: false }],
         content: item.content,
         isEmpty: Boolean(!item.content),
         isActive: false,
@@ -119,20 +115,6 @@ function filterPages(pages: page[] = [], path = '') {
 }
 
 /**
- * Loop through breadcrumb in page and set isActive on crumbs that match provided path.
- * @param  {array} breadcrumbs a field from page object
- * @param  {string} path current url
- * @return {array}
- */
-function setActiveCrumb(page: page, path = '') {
-  page.breadcrumbs = page.breadcrumbs.map((crumb) => ({
-    ...crumb,
-    isActive: crumb.path === path,
-  }))
-  return page
-}
-
-/**
  * Compare a path to each path in page / category items and set boolean result on isActive prop.
  * @param  {array} items fed in from adapters/contentTool()
  * @param  {string} currentPath current url
@@ -172,7 +154,6 @@ export default {
   getPrevPage,
   getNextPage,
   filterPages,
-  setActiveCrumb,
   setActiveMenuItem,
   toggleMenu,
   isActive,

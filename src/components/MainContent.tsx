@@ -1,32 +1,32 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import MainBreadcrumbs from './MainBreadcrumbs'
-import { BreadcrumbPropType } from '../prop-types'
 
 import '../assets/github.css'
 import './MainContent.scss'
 import '../assets/prism-github.css'
 
 type props = {
+  title: string
   content: string | React.ReactNode
-  breadcrumbs: breadcrumb[]
 }
-const MainContent = ({ content, breadcrumbs }: props) => {
+const MainContent = (props: props) => {
   return (
     <article className="MainContent">
-      <MainBreadcrumbs breadcrumbs={breadcrumbs} />
-      <div className="MainContent__body markdown-body">{content}</div>
+      <div className="MainContent__body markdown-body">
+        <h1>{props.title}</h1>
+        {props.content}
+      </div>
     </article>
   )
 }
 
 MainContent.propTypes = {
-  breadcrumbs: PropTypes.arrayOf(BreadcrumbPropType).isRequired,
+  title: PropTypes.string,
   content: PropTypes.element,
 }
 
 MainContent.defaultProps = {
-  breadcrumbs: [],
+  title: '',
   content: null,
 }
 

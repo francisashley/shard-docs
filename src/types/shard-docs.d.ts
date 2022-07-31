@@ -21,7 +21,6 @@ type page = {
   name: string
   path: string
   content: string | React.ReactNode
-  breadcrumbs: breadcrumb[]
   isEmpty: boolean
   isActive: boolean
   depth: number
@@ -38,12 +37,6 @@ type link = {
 type item = category | page | link
 
 type data = item[]
-
-type breadcrumb = {
-  path: string
-  name: string
-  isActive: boolean
-}
 
 type paginationPage = {
   name: string

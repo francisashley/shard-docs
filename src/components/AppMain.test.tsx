@@ -7,11 +7,6 @@ const prevPage = { name: 'Prev', path: '/prev' } as paginationPage
 const nextPage = { name: 'Next', path: '/next' } as paginationPage
 const page = {
   type: 'page',
-  breadcrumbs: [
-    { path: '/', name: '~', isActive: false },
-    { path: '/examples', name: 'Examples', isActive: true },
-    { path: '/examples/hello-world', name: 'Hello world', isActive: false },
-  ],
   content: (
     <>
       <h1>Hello earth!</h1>,<h2>Hello galaxy!</h2>,<h3>Hello universe!</h3>,

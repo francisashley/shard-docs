@@ -7,13 +7,6 @@ export const DataPropType = PropTypes.arrayOf(
   })
 )
 
-export const BreadcrumbPropType = PropTypes.shape({
-  name: PropTypes.string,
-  path: PropTypes.string,
-  isActive: PropTypes.bool.isRequired,
-})
-export const BreadcrumbsPropType = PropTypes.arrayOf(BreadcrumbPropType)
-
 export const LinkPropType = PropTypes.shape({
   type: PropTypes.oneOf(['link']),
   name: PropTypes.string,
@@ -27,7 +20,6 @@ export const PagePropType = PropTypes.shape({
   name: PropTypes.string,
   isEmpty: PropTypes.bool,
   isActive: PropTypes.bool,
-  breadcrumbs: BreadcrumbsPropType,
   content: PropTypes.element,
 })
 
