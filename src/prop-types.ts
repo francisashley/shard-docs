@@ -15,6 +15,7 @@ export const LinkPropType = PropTypes.shape({
 })
 
 export const PagePropType = PropTypes.shape({
+  pageId: PropTypes.number,
   type: PropTypes.oneOf(['page']),
   path: PropTypes.string,
   name: PropTypes.string,

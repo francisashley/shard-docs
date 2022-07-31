@@ -26,7 +26,7 @@ const getInputType = (item: inputItem): 'category' | 'page' | 'link' | null => {
  * @param basePath
  * @returns
  */
-function parse(items: inputData, basePath: string = '/'): data {
+function parse(items: inputData, basePath: string = '/', pageId: number = 0): data {
   const output = []
 
   for (const item of items) {
@@ -39,12 +39,13 @@ function parse(items: inputData, basePath: string = '/'): data {
         type: 'category',
         name: item.name,
         path,
-        items: parse(content, path),
+        items: parse(content, path, pageId++),
         isActive: false,
         isExpanded: false,
       } as category)
     } else if (inputType === 'page') {
       output.push({
+        pageId: pageId++,
         type: 'page',
         name: item.name,
         path,
@@ -65,18 +66,27 @@ function parse(items: inputData, basePath: string = '/'): data {
 }
 
 function updateState(items: data, basePath: string = '/', currentPath: string = ''): data {
+  const isActive = (
+    itemPath: string,
+    basePath: string,
+    currentPath: string,
+    pageId?: number
+  ): boolean => {
+    if (pageId === 0 && basePath === currentPath) return true
+    return itemPath === currentPath || currentPath.startsWith(itemPath)
+  }
   return items.map((item) => {
     if (item.type === 'category') {
       return {
         ...item,
         items: updateState(item.items, basePath, currentPath),
-        isActive: isActive(item.path, currentPath),
+        isActive: isActive(item.path, basePath, currentPath),
         isExpanded: sessionDB.get(item.path, false),
       }
     } else if (item.type === 'page') {
       return {
         ...item,
-        isActive: isActive(item.path, currentPath),
+        isActive: isActive(item.path, basePath, currentPath, item.pageId),
       }
     } else if (item.type === 'link') {
       return {
@@ -131,10 +141,6 @@ function toggleMenu(data: data, path: string) {
   })
 }
 
-export const isActive = (itemPath: string, currentPath: string): boolean => {
-  return itemPath === currentPath || currentPath.startsWith(itemPath)
-}
-
 export default {
   parse,
   updateState,
@@ -143,5 +149,4 @@ export default {
   getPrevPage,
   getNextPage,
   toggleMenu,
-  isActive,
 }

@@ -15,6 +15,7 @@ type category = {
 }
 
 type page = {
+  pageId: number
   type: 'page'
   name: string
   path: string
