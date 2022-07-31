@@ -1,0 +1,23 @@
+.AppNavSubMenuList {
+  &__button-icon {
+    position: absolute;
+    right: 0.5rem;
+    top: 50%;
+    transform: translateY(-50%) rotate(0);
+    transition-duration: .3s;
+    transition-property: transform;
+    transition-timing-function: cubic-bezier(.4,0,.2,1);
+
+    &--expanded {
+      transform: translateY(-50%) rotate(90deg);
+    }
+  }
+
+  &__list {
+    display: none;
+
+    &--expanded {
+      display:block;
+    }
+  }
+}

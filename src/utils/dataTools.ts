@@ -1,6 +1,7 @@
 import slugify from 'slugify'
 import kebabCase from 'lodash/kebabCase'
 import React from 'react'
+import sessionDB from '../utils/sessionDB'
 
 const getSlug = (name: string) => slugify(kebabCase(name), { lower: true })
 const removeDuplicateSlashes = (path: string) => path.replace(/\/+$/, '').replace(/\/+/g, '/')
@@ -49,6 +50,7 @@ function parse(
         ]),
         isEmpty: !Boolean(content?.length),
         isActive: false,
+        isExpanded: sessionDB.get(path, false),
         depth,
       } as category)
     } else if (inputType === 'page') {
@@ -147,6 +149,21 @@ function setActiveMenuItem(items: data = [], currentPath = '') {
     return item
   })
 }
+function toggleMenu(data: data, path: string) {
+  return data.map((item) => {
+    if (item.type === 'category' && item.path === path) {
+      sessionDB.set(item.path, !item.isExpanded)
+      return { ...item, isExpanded: !item.isExpanded }
+    } else if (item.type === 'category') {
+      item.items = toggleMenu(item.items, path)
+    }
+    return item
+  })
+}
+
+export const isActive = (itemPath: string, currentPath: string): boolean => {
+  return itemPath === currentPath || currentPath.startsWith(itemPath)
+}
 
 export default {
   parse,
@@ -157,4 +174,6 @@ export default {
   filterPages,
   setActiveCrumb,
   setActiveMenuItem,
+  toggleMenu,
+  isActive,
 }

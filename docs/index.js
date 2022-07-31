@@ -33,14 +33,9 @@ render(
     <ShardDocs
       title="Shard docs"
       data={[
-        {
-          name: 'Essentials',
-          content: [
-            { name: 'Get started', content: <EssentialsGetStartedContent /> },
-            { name: 'Content', content: <EssentialsSchemaReferenceContent /> },
-            { name: 'API', content: <EssentialsApiReferenceContent /> },
-          ],
-        },
+        { name: 'Get started', content: <EssentialsGetStartedContent /> },
+        { name: 'Content', content: <EssentialsSchemaReferenceContent /> },
+        { name: 'API', content: <EssentialsApiReferenceContent /> },
         {
           name: 'Examples',
           content: [{ name: 'Hello world', content: <ExamplesHelloWorldContent /> }],

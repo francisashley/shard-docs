@@ -11,6 +11,7 @@ type props = {
   basePath?: string
   items: category[]
   hideBuiltWithShardDocs: boolean
+  onToggleMenu: (event: React.MouseEvent<HTMLElement>, path: string) => void
 }
 
 type state = {
@@ -23,6 +24,7 @@ class AppSidebar extends React.Component<props, state> {
     basePath: PropTypes.string,
     items: ItemsPropType,
     hideBuiltWithShardDocs: PropTypes.bool,
+    onToggleMenu: PropTypes.func,
   }
 
   static defaultProps = {
@@ -30,6 +32,7 @@ class AppSidebar extends React.Component<props, state> {
     title: '',
     items: [],
     hideBuiltWithShardDocs: false,
+    onToggleMenu: () => {},
   }
 
   state = {
@@ -50,6 +53,7 @@ class AppSidebar extends React.Component<props, state> {
           items={props.items}
           showOnMobile={this.state.showMenuOnMobile}
           onNavigate={() => this.setState({ showMenuOnMobile: false })}
+          onToggleMenu={props.onToggleMenu}
         />
         {showBuiltWithShardDocs && <BuiltWithShardDocs />}
       </aside>

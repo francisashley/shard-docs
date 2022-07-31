@@ -7,11 +7,12 @@ type inputData = inputItem[]
 
 type category = {
   type: 'category'
-  name: string | null
+  name: string
   path: string
   items: data
   isEmpty: boolean
   isActive: boolean
+  isExpanded: boolean
   depth: number
 }
 

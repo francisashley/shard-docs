@@ -52,6 +52,10 @@ const App = (props: props) => {
     }
   }, [props.currentPath])
 
+  const onToggleMenu = (event: React.MouseEvent<HTMLElement>, path: string) => {
+    setData(dataTools.toggleMenu(data, path))
+  }
+
   return (
     <div className="App">
       <AppSidebar
@@ -59,6 +63,7 @@ const App = (props: props) => {
         basePath={props.basePath}
         items={data as category[]}
         hideBuiltWithShardDocs={props.hideBuiltWithShardDocs}
+        onToggleMenu={onToggleMenu}
       />
       <AppMain
         page={currentPage}
