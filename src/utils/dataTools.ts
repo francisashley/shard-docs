@@ -94,23 +94,6 @@ function getNextPage(pages: page[], currentPath: string): page | null {
   return pages[activeIndex + 1] ? pages[activeIndex + 1] : null
 }
 
-/**
- * Compare a path to each path in page / category items and set boolean result on isActive prop.
- * @param  {array} items fed in from adapters/contentTool()
- * @param  {string} currentPath current url
- * @return {array}
- */
-function setActiveMenuItem(items: data = [], currentPath = '') {
-  return items.map((item) => {
-    if (item.type === 'category') {
-      item.items = setActiveMenuItem(item.items, currentPath)
-    }
-    if (item.type === 'category' || item.type === 'page') {
-      item.isActive = item.path === currentPath
-    }
-    return item
-  })
-}
 function toggleMenu(data: data, path: string) {
   return data.map((item) => {
     if (item.type === 'category' && item.path === path) {
@@ -133,7 +116,6 @@ export default {
   getCurrentPage,
   getPrevPage,
   getNextPage,
-  setActiveMenuItem,
   toggleMenu,
   isActive,
 }
