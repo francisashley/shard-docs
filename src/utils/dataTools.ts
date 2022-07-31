@@ -26,12 +26,7 @@ const getInputType = (item: inputItem): 'category' | 'page' | 'link' | null => {
  * @param basePath
  * @returns
  */
-function parse(
-  items: inputData,
-  basePath: string = '/',
-  depth: number = 0,
-  breadcrumbs: breadcrumb[] = [{ path: '/', name: '~', isActive: false }]
-): data {
+function parse(items: inputData, basePath: string = '/'): data {
   const output = []
 
   for (const item of items) {
@@ -44,11 +39,10 @@ function parse(
         type: 'category',
         name: item.name,
         path,
-        items: parse(content, path, depth + 1),
+        items: parse(content, path),
         isEmpty: !Boolean(content?.length),
         isActive: false,
         isExpanded: sessionDB.get(path, false),
-        depth,
       } as category)
     } else if (inputType === 'page') {
       output.push({
@@ -58,7 +52,6 @@ function parse(
         content: item.content,
         isEmpty: Boolean(!item.content),
         isActive: false,
-        depth,
       } as page)
     } else if (inputType === 'link') {
       output.push({
@@ -66,7 +59,6 @@ function parse(
         name: item.name,
         url: item.content,
         isExternal: isExternalLink(item.content as string),
-        depth,
       } as link)
     }
   }

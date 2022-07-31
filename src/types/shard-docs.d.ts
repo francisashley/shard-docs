@@ -13,7 +13,6 @@ type category = {
   isEmpty: boolean
   isActive: boolean
   isExpanded: boolean
-  depth: number
 }
 
 type page = {
@@ -23,7 +22,6 @@ type page = {
   content: string | React.ReactNode
   isEmpty: boolean
   isActive: boolean
-  depth: number
 }
 
 type link = {
@@ -31,7 +29,6 @@ type link = {
   name: string
   url: string
   isExternal: boolean
-  depth: number
 }
 
 type item = category | page | link

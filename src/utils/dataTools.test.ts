@@ -25,7 +25,6 @@ test('dataTools() transforms data and returns tree', () => {
       content: null,
       isEmpty: true,
       isActive: false,
-      depth: 0,
     },
     {
       name: 'Doc B',
@@ -34,7 +33,6 @@ test('dataTools() transforms data and returns tree', () => {
       content: null,
       isEmpty: true,
       isActive: false,
-      depth: 0,
     },
     {
       name: 'Doc C',
@@ -43,7 +41,6 @@ test('dataTools() transforms data and returns tree', () => {
       content: null,
       isEmpty: true,
       isActive: false,
-      depth: 0,
     },
     {
       name: 'Category',
@@ -51,7 +48,6 @@ test('dataTools() transforms data and returns tree', () => {
       path: '/category',
       isEmpty: false,
       isActive: false,
-      depth: 0,
       items: [
         {
           name: 'Doc D',
@@ -60,7 +56,6 @@ test('dataTools() transforms data and returns tree', () => {
           content: null,
           isEmpty: true,
           isActive: false,
-          depth: 1,
         },
         {
           name: 'Doc E',
@@ -69,11 +64,10 @@ test('dataTools() transforms data and returns tree', () => {
           content: null,
           isEmpty: true,
           isActive: false,
-          depth: 1,
         },
       ],
     },
-    { name: 'Github', type: 'link', url: 'http://github.com', isExternal: true, depth: 0 },
+    { name: 'Github', type: 'link', url: 'http://github.com', isExternal: true },
   ])
 })
 
@@ -88,7 +82,6 @@ test('dataTools() transforms data and returns pages in a flat array', () => {
       content: null,
       isEmpty: true,
       isActive: false,
-      depth: 0,
     },
     {
       name: 'Doc B',
@@ -97,7 +90,6 @@ test('dataTools() transforms data and returns pages in a flat array', () => {
       content: null,
       isEmpty: true,
       isActive: false,
-      depth: 0,
     },
     {
       name: 'Doc C',
@@ -106,7 +98,6 @@ test('dataTools() transforms data and returns pages in a flat array', () => {
       content: null,
       isEmpty: true,
       isActive: false,
-      depth: 0,
     },
     {
       name: 'Doc D',
@@ -115,7 +106,6 @@ test('dataTools() transforms data and returns pages in a flat array', () => {
       content: null,
       isEmpty: true,
       isActive: false,
-      depth: 1,
     },
     {
       name: 'Doc E',
@@ -124,7 +114,6 @@ test('dataTools() transforms data and returns pages in a flat array', () => {
       content: null,
       isEmpty: true,
       isActive: false,
-      depth: 1,
     },
   ])
 })
