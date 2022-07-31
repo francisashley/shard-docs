@@ -95,16 +95,6 @@ function getNextPage(pages: page[], currentPath: string): page | null {
 }
 
 /**
- * Return pages that are equal too or descendants of path.
- * @param  {array} pages fed in from adapters/contentTool()
- * @param  {string} path current url
- * @return {array}
- */
-function filterPages(pages: page[] = [], path = '') {
-  return pages.filter((page) => page.path.startsWith(path))
-}
-
-/**
  * Compare a path to each path in page / category items and set boolean result on isActive prop.
  * @param  {array} items fed in from adapters/contentTool()
  * @param  {string} currentPath current url
@@ -143,7 +133,6 @@ export default {
   getCurrentPage,
   getPrevPage,
   getNextPage,
-  filterPages,
   setActiveMenuItem,
   toggleMenu,
   isActive,

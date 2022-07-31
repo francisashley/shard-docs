@@ -107,47 +107,6 @@ test('dataTools() transforms data and returns pages in a flat array', () => {
   ])
 })
 
-test('dataTools.filterPages() filters correctly', () => {
-  const pages = [
-    {
-      name: 'Doc A',
-      type: 'page',
-      path: '/doc-a',
-      content: null,
-    },
-    {
-      name: 'Doc B',
-      type: 'page',
-      path: '/doc-b',
-      content: null,
-    },
-  ]
-
-  expect(dataTools.filterPages(pages as page[])).toStrictEqual([
-    {
-      name: 'Doc A',
-      type: 'page',
-      path: '/doc-a',
-      content: null,
-    },
-    {
-      name: 'Doc B',
-      type: 'page',
-      path: '/doc-b',
-      content: null,
-    },
-  ])
-
-  expect(dataTools.filterPages(pages as page[], '/doc-a')).toStrictEqual([
-    {
-      name: 'Doc A',
-      type: 'page',
-      path: '/doc-a',
-      content: null,
-    },
-  ])
-})
-
 test('dataTools.setActiveMenuItem() correctly sets isActive', () => {
   const items = [
     {
