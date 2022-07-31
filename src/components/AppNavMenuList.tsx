@@ -5,8 +5,6 @@ import PropTypes from 'prop-types'
 import AppNavMenuListButton from './AppNavMenuListButton'
 import AppNavSubMenuList from './AppNavSubMenuList'
 import './AppNavMenuList.scss'
-import { useLocation } from 'react-router-dom'
-import dataTools from '../utils/dataTools'
 
 type props = {
   items: data
@@ -16,7 +14,6 @@ type props = {
 }
 
 const AppNavMenuList = (props: props) => {
-  const location = useLocation()
   return (
     <ul
       className={classnames('AppNavMenuList', props.className, {
@@ -31,17 +28,11 @@ const AppNavMenuList = (props: props) => {
             <AppNavSubMenuList
               item={item}
               onToggleMenu={props.onToggleMenu}
-              isActive={dataTools.isActive(item.path, location.pathname)}
+              isActive={item.isActive}
             />
           )
         } else if (item.type === 'page') {
-          child = (
-            <AppNavMenuListButton
-              name={item.name}
-              url={item.path}
-              isActive={dataTools.isActive(item.path, location.pathname)}
-            />
-          )
+          child = <AppNavMenuListButton name={item.name} url={item.path} isActive={item.isActive} />
         } else if (item.type === 'link') {
           child = <AppNavMenuListButton name={item.name} url={item.url} />
         }

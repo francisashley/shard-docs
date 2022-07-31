@@ -9,7 +9,7 @@ import './AppSidebar.scss'
 type props = {
   title?: string
   basePath?: string
-  items: category[]
+  items: item[]
   hideBuiltWithShardDocs: boolean
   onToggleMenu: (event: React.MouseEvent<HTMLElement>, path: string) => void
 }

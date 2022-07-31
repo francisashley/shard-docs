@@ -8,7 +8,7 @@ import AppNavMenuList from './AppNavMenuList'
 
 type props = {
   showOnMobile: boolean
-  items: category[]
+  items: item[]
   onNavigate: () => void
   onToggleMenu: (event: React.MouseEvent<HTMLElement>, path: string) => void
 }

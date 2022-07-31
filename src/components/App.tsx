@@ -13,7 +13,7 @@ import './App.scss'
 
 export type props = {
   title?: string
-  data?: inputData
+  data: inputData
   basePath?: string
   hideBuiltWithShardDocs?: boolean
   routerType?: 'hash' | 'browser'
@@ -21,30 +21,26 @@ export type props = {
 }
 
 const App = (props: props) => {
+  let initialData = dataTools.parse(props.data, props.basePath)
+  initialData = dataTools.updateState(initialData, props.basePath, props.currentPath)
+  const pages = dataTools.getPages(initialData)
+  const initialCurrentPage = dataTools.getCurrentPage(pages, props.currentPath)
+  const initialPrevPage = dataTools.getPrevPage(pages, props.currentPath)
+  const initialNextPage = dataTools.getNextPage(pages, props.currentPath)
+
+  const [data, setData] = useState(initialData)
   const [currentPath, setCurrentPath] = useState(props.currentPath)
-  const [data, setData] = useState(dataTools.parse(props.data || [], props.basePath) as data)
-  const [pages, setPages] = useState([] as page[])
-  const [currentPage, setCurrentPage] = useState(null as page | null)
-  const [prevPage, setPrevPage] = useState(null as page | null)
-  const [nextPage, setNextPage] = useState(null as page | null)
+  const [currentPage, setCurrentPage] = useState(initialCurrentPage as page | null)
+  const [prevPage, setPrevPage] = useState(initialPrevPage as page | null)
+  const [nextPage, setNextPage] = useState(initialNextPage as page | null)
 
-  useEffect(() => {
-    const data = dataTools.parse(props.data || [], props.basePath)
-    const pages = dataTools.getPages(data)
-    setData(data)
-    setPages(pages)
-    setCurrentPage(dataTools.getCurrentPage(pages, props.currentPath || ''))
-    setPrevPage(dataTools.getPrevPage(pages, props.currentPath || ''))
-    setNextPage(dataTools.getNextPage(pages, props.currentPath || ''))
-  }, [])
-
+  // on route change
   useEffect(() => {
     const prevPath = currentPath
 
     if (props.currentPath !== prevPath) {
-      const updatedData = dataTools.setActiveMenuItem(data, props.currentPath)
       setCurrentPath(props.currentPath)
-      setData(updatedData)
+      setData(dataTools.updateState(data, props.basePath, props.currentPath))
       setCurrentPage(dataTools.getCurrentPage(pages, props.currentPath || ''))
       setPrevPage(dataTools.getPrevPage(pages, props.currentPath || ''))
       setNextPage(dataTools.getNextPage(pages, props.currentPath || ''))
@@ -61,7 +57,7 @@ const App = (props: props) => {
       <AppSidebar
         title={props.title}
         basePath={props.basePath}
-        items={data as category[]}
+        items={data as item[]}
         hideBuiltWithShardDocs={props.hideBuiltWithShardDocs}
         onToggleMenu={onToggleMenu}
       />

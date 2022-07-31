@@ -41,7 +41,7 @@ function parse(items: inputData, basePath: string = '/'): data {
         path,
         items: parse(content, path),
         isActive: false,
-        isExpanded: sessionDB.get(path, false),
+        isExpanded: false,
       } as category)
     } else if (inputType === 'page') {
       output.push({
@@ -56,12 +56,36 @@ function parse(items: inputData, basePath: string = '/'): data {
         type: 'link',
         name: item.name,
         url: item.content,
-        isExternal: isExternalLink(item.content as string),
+        isExternal: false,
       } as link)
     }
   }
 
   return output
+}
+
+function updateState(items: data, basePath: string = '/', currentPath: string = ''): data {
+  return items.map((item) => {
+    if (item.type === 'category') {
+      return {
+        ...item,
+        items: updateState(item.items, basePath, currentPath),
+        isActive: isActive(item.path, currentPath),
+        isExpanded: sessionDB.get(item.path, false),
+      }
+    } else if (item.type === 'page') {
+      return {
+        ...item,
+        isActive: isActive(item.path, currentPath),
+      }
+    } else if (item.type === 'link') {
+      return {
+        ...item,
+        isExternal: isExternalLink(item.url),
+      }
+    }
+    return item
+  })
 }
 
 /**
@@ -80,16 +104,17 @@ function getPages(items: data, accumulator: page[] = []) {
   return accumulator
 }
 
-function getCurrentPage(pages: page[], path: string): page | null {
+function getCurrentPage(pages: page[], path: string = '', basePath: string = '/'): page | null {
+  if (path === basePath) return pages[0]
   return pages.find((page) => page.path === path) || null
 }
 
-function getPrevPage(pages: page[], currentPath: string): page | null {
+function getPrevPage(pages: page[], currentPath: string = ''): page | null {
   const activeIndex = pages.findIndex((document: page) => document.path === currentPath)
   return pages[activeIndex - 1] ? pages[activeIndex - 1] : null
 }
 
-function getNextPage(pages: page[], currentPath: string): page | null {
+function getNextPage(pages: page[], currentPath: string = ''): page | null {
   const activeIndex = pages.findIndex((document: page) => document.path === currentPath)
   return pages[activeIndex + 1] ? pages[activeIndex + 1] : null
 }
@@ -112,6 +137,7 @@ export const isActive = (itemPath: string, currentPath: string): boolean => {
 
 export default {
   parse,
+  updateState,
   getPages,
   getCurrentPage,
   getPrevPage,
