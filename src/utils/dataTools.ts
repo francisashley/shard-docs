@@ -40,7 +40,6 @@ function parse(items: inputData, basePath: string = '/'): data {
         name: item.name,
         path,
         items: parse(content, path),
-        isEmpty: !Boolean(content?.length),
         isActive: false,
         isExpanded: sessionDB.get(path, false),
       } as category)
@@ -50,7 +49,6 @@ function parse(items: inputData, basePath: string = '/'): data {
         name: item.name,
         path,
         content: item.content,
-        isEmpty: Boolean(!item.content),
         isActive: false,
       } as page)
     } else if (inputType === 'link') {

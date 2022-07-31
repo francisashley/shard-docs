@@ -10,7 +10,6 @@ type category = {
   name: string
   path: string
   items: data
-  isEmpty: boolean
   isActive: boolean
   isExpanded: boolean
 }
@@ -20,7 +19,6 @@ type page = {
   name: string
   path: string
   content: string | React.ReactNode
-  isEmpty: boolean
   isActive: boolean
 }
 

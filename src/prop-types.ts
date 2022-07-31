@@ -18,7 +18,6 @@ export const PagePropType = PropTypes.shape({
   type: PropTypes.oneOf(['page']),
   path: PropTypes.string,
   name: PropTypes.string,
-  isEmpty: PropTypes.bool,
   isActive: PropTypes.bool,
   content: PropTypes.element,
 })
@@ -27,7 +26,6 @@ export const CategoryPropShape = {
   type: PropTypes.oneOf(['category']),
   path: PropTypes.string,
   name: PropTypes.string,
-  isEmpty: PropTypes.bool,
   isActive: PropTypes.bool,
 } as { [key: string]: any }
 CategoryPropShape.items = PropTypes.arrayOf(

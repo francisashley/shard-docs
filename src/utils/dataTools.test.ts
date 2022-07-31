@@ -23,7 +23,6 @@ test('dataTools() transforms data and returns tree', () => {
       type: 'page',
       path: '/doc-a',
       content: null,
-      isEmpty: true,
       isActive: false,
     },
     {
@@ -31,7 +30,6 @@ test('dataTools() transforms data and returns tree', () => {
       type: 'page',
       path: '/doc-b',
       content: null,
-      isEmpty: true,
       isActive: false,
     },
     {
@@ -39,14 +37,12 @@ test('dataTools() transforms data and returns tree', () => {
       type: 'page',
       path: '/doc-c',
       content: null,
-      isEmpty: true,
       isActive: false,
     },
     {
       name: 'Category',
       type: 'category',
       path: '/category',
-      isEmpty: false,
       isActive: false,
       items: [
         {
@@ -54,7 +50,6 @@ test('dataTools() transforms data and returns tree', () => {
           type: 'page',
           path: '/category/doc-d',
           content: null,
-          isEmpty: true,
           isActive: false,
         },
         {
@@ -62,7 +57,6 @@ test('dataTools() transforms data and returns tree', () => {
           type: 'page',
           path: '/category/doc-e',
           content: null,
-          isEmpty: true,
           isActive: false,
         },
       ],
@@ -80,7 +74,6 @@ test('dataTools() transforms data and returns pages in a flat array', () => {
       type: 'page',
       path: '/doc-a',
       content: null,
-      isEmpty: true,
       isActive: false,
     },
     {
@@ -88,7 +81,6 @@ test('dataTools() transforms data and returns pages in a flat array', () => {
       type: 'page',
       path: '/doc-b',
       content: null,
-      isEmpty: true,
       isActive: false,
     },
     {
@@ -96,7 +88,6 @@ test('dataTools() transforms data and returns pages in a flat array', () => {
       type: 'page',
       path: '/doc-c',
       content: null,
-      isEmpty: true,
       isActive: false,
     },
     {
@@ -104,7 +95,6 @@ test('dataTools() transforms data and returns pages in a flat array', () => {
       type: 'page',
       path: '/category/doc-d',
       content: null,
-      isEmpty: true,
       isActive: false,
     },
     {
@@ -112,7 +102,6 @@ test('dataTools() transforms data and returns pages in a flat array', () => {
       type: 'page',
       path: '/category/doc-e',
       content: null,
-      isEmpty: true,
       isActive: false,
     },
   ])
@@ -125,14 +114,12 @@ test('dataTools.filterPages() filters correctly', () => {
       type: 'page',
       path: '/doc-a',
       content: null,
-      isEmpty: true,
     },
     {
       name: 'Doc B',
       type: 'page',
       path: '/doc-b',
       content: null,
-      isEmpty: true,
     },
   ]
 
@@ -142,14 +129,12 @@ test('dataTools.filterPages() filters correctly', () => {
       type: 'page',
       path: '/doc-a',
       content: null,
-      isEmpty: true,
     },
     {
       name: 'Doc B',
       type: 'page',
       path: '/doc-b',
       content: null,
-      isEmpty: true,
     },
   ])
 
@@ -159,7 +144,6 @@ test('dataTools.filterPages() filters correctly', () => {
       type: 'page',
       path: '/doc-a',
       content: null,
-      isEmpty: true,
     },
   ])
 })
@@ -171,21 +155,18 @@ test('dataTools.setActiveMenuItem() correctly sets isActive', () => {
       type: 'page',
       path: '/doc-a',
       content: null,
-      isEmpty: true,
     },
     {
       name: 'Doc B',
       type: 'page',
       path: '/doc-b',
       content: null,
-      isEmpty: true,
     },
     {
       name: 'Doc C',
       type: 'page',
       path: '/doc-c',
       content: null,
-      isEmpty: true,
     },
   ]
 
@@ -195,7 +176,6 @@ test('dataTools.setActiveMenuItem() correctly sets isActive', () => {
       type: 'page',
       path: '/doc-a',
       content: null,
-      isEmpty: true,
       isActive: false,
     },
     {
@@ -203,7 +183,6 @@ test('dataTools.setActiveMenuItem() correctly sets isActive', () => {
       type: 'page',
       path: '/doc-b',
       content: null,
-      isEmpty: true,
       isActive: true,
     },
     {
@@ -211,7 +190,6 @@ test('dataTools.setActiveMenuItem() correctly sets isActive', () => {
       type: 'page',
       path: '/doc-c',
       content: null,
-      isEmpty: true,
       isActive: false,
     },
   ])
@@ -221,7 +199,6 @@ test('dataTools.setActiveMenuItem() correctly sets isActive', () => {
       type: 'page',
       path: '/doc-a',
       content: null,
-      isEmpty: true,
       isActive: false,
     },
     {
@@ -229,7 +206,6 @@ test('dataTools.setActiveMenuItem() correctly sets isActive', () => {
       type: 'page',
       path: '/doc-b',
       content: null,
-      isEmpty: true,
       isActive: false,
     },
     {
@@ -237,7 +213,6 @@ test('dataTools.setActiveMenuItem() correctly sets isActive', () => {
       type: 'page',
       path: '/doc-c',
       content: null,
-      isEmpty: true,
       isActive: false,
     },
   ])
