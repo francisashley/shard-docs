@@ -10,7 +10,7 @@ type props = {
   items: data
   isRoot: boolean
   className: string
-  onToggleMenu: (event: React.MouseEvent<HTMLElement>, path: string) => void
+  onToggleMenu: (path: string) => void
 }
 
 const AppNavMenuList = (props: props) => {

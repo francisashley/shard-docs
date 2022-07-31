@@ -10,7 +10,7 @@ type props = {
   showOnMobile: boolean
   items: item[]
   onNavigate: () => void
-  onToggleMenu: (event: React.MouseEvent<HTMLElement>, path: string) => void
+  onToggleMenu: (path: string) => void
 }
 
 const AppNav = (props: props) => {

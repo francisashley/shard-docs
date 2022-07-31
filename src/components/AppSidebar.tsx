@@ -11,7 +11,7 @@ type props = {
   basePath?: string
   items: item[]
   hideBuiltWithShardDocs: boolean
-  onToggleMenu: (event: React.MouseEvent<HTMLElement>, path: string) => void
+  onToggleMenu: (path: string) => void
 }
 
 type state = {

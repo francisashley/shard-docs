@@ -48,7 +48,7 @@ const App = (props: props) => {
     }
   }, [props.currentPath])
 
-  const onToggleMenu = (event: React.MouseEvent<HTMLElement>, path: string) => {
+  const onToggleMenu = (path: string) => {
     setData(dataTools.toggleMenu(data, path))
   }
 

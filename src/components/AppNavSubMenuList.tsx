@@ -10,7 +10,7 @@ import './AppNavSubMenuList.scss'
 type props = {
   item: category
   isActive: boolean
-  onToggleMenu: (event: React.MouseEvent<HTMLElement>, path: string) => void
+  onToggleMenu: (path: string) => void
 }
 
 const AppNavSubMenuList = (props: props) => {
@@ -19,7 +19,7 @@ const AppNavSubMenuList = (props: props) => {
       <AppNavMenuListButton
         name={props.item.name}
         className="AppNavSubMenuList__button"
-        onClick={(event) => props.onToggleMenu(event, props.item.path)}
+        onClick={() => props.onToggleMenu(props.item.path)}
         isActive={props.isActive}
         after={
           <ArrowRight
