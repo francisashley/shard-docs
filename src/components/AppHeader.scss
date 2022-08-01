@@ -1,5 +1,4 @@
 .AppHeader {
-  padding: 16px;
   display: flex;
   background: rgba(0,0,0,0.3);
 
@@ -8,7 +7,7 @@
     font-size: 17px;
     font-weight: 500;
     margin: 0;
-    padding: 3px 15px;
+    padding: 16px 32px;
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
@@ -16,10 +15,6 @@
     flex: 1;
     text-decoration: none;
     overflow: hidden;
-  
-    &:focus {
-      color: #673ab6;
-    }
   }
 
   &__toggle-btn {
