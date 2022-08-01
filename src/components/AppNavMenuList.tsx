@@ -11,6 +11,7 @@ type props = {
   isRoot: boolean
   className: string
   onToggleMenu: (path: string) => void
+  onNavigate: () => void
 }
 
 const AppNavMenuList = (props: props) => {
@@ -28,11 +29,19 @@ const AppNavMenuList = (props: props) => {
             <AppNavSubMenuList
               item={item}
               onToggleMenu={props.onToggleMenu}
+              onNavigate={props.onNavigate}
               isActive={item.isActive}
             />
           )
         } else if (item.type === 'page') {
-          child = <AppNavMenuListButton name={item.name} url={item.path} isActive={item.isActive} />
+          child = (
+            <AppNavMenuListButton
+              name={item.name}
+              url={item.path}
+              isActive={item.isActive}
+              onClick={props.onNavigate}
+            />
+          )
         } else if (item.type === 'link') {
           child = <AppNavMenuListButton name={item.name} url={item.url} />
         }
@@ -52,6 +61,7 @@ AppNavMenuList.propTypes = {
   isRoot: PropTypes.bool,
   className: PropTypes.string,
   onToggleMenu: PropTypes.func,
+  onNavigate: PropTypes.func,
 }
 
 AppNavMenuList.defaultProps = {
@@ -59,6 +69,7 @@ AppNavMenuList.defaultProps = {
   isRoot: false,
   className: '',
   onToggleMenu: () => {},
+  onNavigate: () => {},
 }
 
 export default AppNavMenuList

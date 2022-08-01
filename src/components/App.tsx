@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import withRouter from '../hoc/withRouter'
-
 import AppMain from './AppMain'
 import AppSidebar from './AppSidebar'
 import dataTools from '../utils/dataTools'
-
+import useWindowSize from '../hooks/useWindowSize'
 import { DataPropType } from '../prop-types'
 
 import '../assets/sanitize.css'
@@ -33,6 +32,11 @@ const App = (props: props) => {
   const [currentPage, setCurrentPage] = useState(initialCurrentPage as page | null)
   const [prevPage, setPrevPage] = useState(initialPrevPage as page | null)
   const [nextPage, setNextPage] = useState(initialNextPage as page | null)
+  const windowSize = useWindowSize()
+
+  const [device, setDevice] = useState(
+    (windowSize.width || 0) > 1200 ? 'desktop' : ('mobile' as 'desktop' | 'mobile')
+  )
 
   // on route change
   useEffect(() => {
@@ -48,6 +52,11 @@ const App = (props: props) => {
     }
   }, [props.currentPath])
 
+  // on window resize
+  useEffect(() => {
+    setDevice((windowSize.width || 0) > 1200 ? 'desktop' : 'mobile')
+  }, [windowSize.width])
+
   const onToggleMenu = (path: string) => {
     setData(dataTools.toggleMenu(data, path))
   }
@@ -60,6 +69,7 @@ const App = (props: props) => {
         items={data as item[]}
         hideBuiltWithShardDocs={props.hideBuiltWithShardDocs}
         onToggleMenu={onToggleMenu}
+        device={device}
       />
       <AppMain
         page={currentPage}

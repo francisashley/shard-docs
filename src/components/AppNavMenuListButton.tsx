@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { HTMLAttributes } from 'react'
 import classnames from 'classnames'
 import PropTypes from 'prop-types'
 import { NavLink } from 'react-router-dom'
@@ -11,6 +11,7 @@ type props = {
   className: string
   isActive: boolean
   after: React.ReactElement
+  'aria-expanded'?: boolean | null
   onClick: (event: React.MouseEvent<HTMLElement>) => unknown
 }
 
@@ -51,6 +52,10 @@ const AppNavMenuListButton = (props: props) => {
       </NavLink>
     )
   } else {
+    const attrs = {} as HTMLAttributes<HTMLButtonElement>
+    if (typeof props['aria-expanded'] === 'boolean') {
+      attrs['aria-expanded'] = props['aria-expanded']
+    }
     return (
       <button
         className={classnames(
@@ -59,6 +64,7 @@ const AppNavMenuListButton = (props: props) => {
           props.className
         )}
         onClick={props.onClick}
+        {...attrs}
       >
         {props.name}
         {props.after}
@@ -71,6 +77,7 @@ AppNavMenuListButton.propTypes = {
   name: PropTypes.string,
   url: PropTypes.string,
   className: PropTypes.string,
+  'aria-expanded': PropTypes.bool,
   isActive: PropTypes.bool,
   after: PropTypes.node,
   onClick: PropTypes.func,
@@ -80,6 +87,7 @@ AppNavMenuListButton.defaultProps = {
   name: '',
   url: '',
   className: '',
+  'aria-expanded': null,
   isActive: false,
   after: null,
   onClick: () => {},

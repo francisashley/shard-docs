@@ -10,6 +10,7 @@ import './AppNavSubMenuList.scss'
 type props = {
   item: category
   isActive: boolean
+  onNavigate: () => void
   onToggleMenu: (path: string) => void
 }
 
@@ -21,6 +22,7 @@ const AppNavSubMenuList = (props: props) => {
         className="AppNavSubMenuList__button"
         onClick={() => props.onToggleMenu(props.item.path)}
         isActive={props.isActive}
+        aria-expanded={props.item.isExpanded}
         after={
           <ArrowRight
             className={classnames('AppNavSubMenuList__button-icon', {
@@ -34,6 +36,7 @@ const AppNavSubMenuList = (props: props) => {
           'AppNavSubMenuList__list--expanded': props.item.isExpanded,
         })}
         items={props.item.items}
+        onNavigate={props.onNavigate}
       />
     </div>
   )
@@ -42,12 +45,14 @@ const AppNavSubMenuList = (props: props) => {
 AppNavSubMenuList.propTypes = {
   item: CategoryPropType,
   isActive: PropTypes.bool,
+  onNavigate: PropTypes.func,
   onToggleMenu: PropTypes.func,
 }
 
 AppNavSubMenuList.defaultProps = {
   item: null,
   isActive: false,
+  onNavigate: () => {},
   onToggleMenu: () => {},
 }
 

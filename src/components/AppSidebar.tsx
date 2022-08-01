@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import AppHeader from './AppHeader'
 import AppNav from './AppNav'
@@ -11,54 +11,53 @@ type props = {
   basePath?: string
   items: item[]
   hideBuiltWithShardDocs: boolean
+  device: 'desktop' | 'mobile'
   onToggleMenu: (path: string) => void
 }
 
-type state = {
-  showMenuOnMobile: boolean
+const AppSidebar = (props: props) => {
+  const [showMenuOnMobile, setShowMenuOnMobile] = useState(false)
+  const showBuiltWithShardDocs = !props.hideBuiltWithShardDocs
+  const isExpanded = props.device !== 'mobile' || showMenuOnMobile
+  const onToggleMenu = () => setShowMenuOnMobile(!showMenuOnMobile)
+  const onNavigate = () => setShowMenuOnMobile(false)
+
+  return (
+    <aside className="AppSidebar">
+      <AppHeader
+        title={props.title}
+        basePath={props.basePath}
+        isExpanded={isExpanded}
+        onToggleMenu={onToggleMenu}
+      />
+      <AppNav
+        items={props.items}
+        showOnMobile={showMenuOnMobile}
+        onNavigate={onNavigate}
+        onToggleMenu={props.onToggleMenu}
+        device={props.device}
+      />
+      {showBuiltWithShardDocs && <BuiltWithShardDocs />}
+    </aside>
+  )
 }
 
-class AppSidebar extends React.Component<props, state> {
-  static propTypes = {
-    title: PropTypes.string,
-    basePath: PropTypes.string,
-    items: ItemsPropType,
-    hideBuiltWithShardDocs: PropTypes.bool,
-    onToggleMenu: PropTypes.func,
-  }
+AppSidebar.propTypes = {
+  title: PropTypes.string,
+  basePath: PropTypes.string,
+  items: ItemsPropType,
+  hideBuiltWithShardDocs: PropTypes.bool,
+  device: PropTypes.oneOf(['desktop', 'mobile']),
+  onToggleMenu: PropTypes.func,
+}
 
-  static defaultProps = {
-    app: {},
-    title: '',
-    items: [],
-    hideBuiltWithShardDocs: false,
-    onToggleMenu: () => {},
-  }
-
-  state = {
-    showMenuOnMobile: false,
-  }
-
-  render() {
-    const props = this.props
-    const showBuiltWithShardDocs = !props.hideBuiltWithShardDocs
-    return (
-      <aside className="AppSidebar">
-        <AppHeader
-          title={props.title}
-          basePath={props.basePath}
-          onToggleMenu={() => this.setState({ showMenuOnMobile: !this.state.showMenuOnMobile })}
-        />
-        <AppNav
-          items={props.items}
-          showOnMobile={this.state.showMenuOnMobile}
-          onNavigate={() => this.setState({ showMenuOnMobile: false })}
-          onToggleMenu={props.onToggleMenu}
-        />
-        {showBuiltWithShardDocs && <BuiltWithShardDocs />}
-      </aside>
-    )
-  }
+AppSidebar.defaultProps = {
+  app: {},
+  title: '',
+  items: [],
+  hideBuiltWithShardDocs: false,
+  device: 'mobile',
+  onToggleMenu: () => {},
 }
 
 export default AppSidebar

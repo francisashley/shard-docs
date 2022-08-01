@@ -1,67 +1,100 @@
 import React from 'react'
+import { render, screen } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 import { MemoryRouter } from 'react-router-dom'
-import { mount } from 'enzyme'
 import AppSidebar from './AppSidebar'
 import dataTools from '../utils/dataTools'
 
-const title = 'App title'
 const items = dataTools.parse([{ name: 'Doc A', content: <h1>Doc A</h1> }])
 
-const mountSidebar = (
-  options = {} as { title?: string; items?: category[]; hideBuiltWithShardDocs?: boolean }
-) => {
-  const { title, items, hideBuiltWithShardDocs } = options
-  return mount(
+test('<AppSidebar /> renders with default props', () => {
+  render(
     <MemoryRouter>
-      <AppSidebar title={title} items={items} hideBuiltWithShardDocs={hideBuiltWithShardDocs} />
+      <AppSidebar />
     </MemoryRouter>
   )
-}
-
-test('<AppSidebar /> renders with default props', () => {
-  const wrapper = mountSidebar()
-
-  expect(wrapper.exists()).toBe(true)
+  expect(screen).toBeTruthy()
 })
 
 test('<AppSidebar /> renders app title', () => {
-  const wrapper = mountSidebar({ title })
-
-  expect(wrapper.find('.AppHeader__title').text()).toBe(title)
+  render(
+    <MemoryRouter>
+      <AppSidebar title={'App title'} />
+    </MemoryRouter>
+  )
+  expect(screen.queryByText('App title')).toBeTruthy()
 })
 
 test('<AppSidebar /> renders menu', () => {
-  const wrapper = mountSidebar({ items } as { items: category[] })
-
-  expect(wrapper.find('.AppNav ul li').exists()).toBe(true)
+  render(
+    <MemoryRouter>
+      <AppSidebar items={items} device="desktop" />
+    </MemoryRouter>
+  )
+  expect(screen.getByRole('navigation').querySelectorAll('a').length).toBe(1)
 })
 
 test('<AppSidebar /> renders sidebar footer', () => {
-  const wrapper = mountSidebar()
+  render(
+    <MemoryRouter>
+      <AppSidebar items={items} />
+    </MemoryRouter>
+  )
 
-  expect(wrapper.find('.BuiltWithShardDocs').exists()).toBe(true)
+  expect(screen.getByRole('contentinfo')).toBeTruthy()
 })
 
 test('<AppSidebar /> can hide sidebar footer', () => {
-  const wrapper = mountSidebar({ hideBuiltWithShardDocs: true })
+  render(
+    <MemoryRouter>
+      <AppSidebar hideBuiltWithShardDocs />
+    </MemoryRouter>
+  )
 
-  expect(wrapper.find('.BuiltWithShardDocs').exists()).toBe(false)
+  expect(screen.queryByRole('contentinfo')).toBeFalsy()
 })
 
-test('<AppSidebar /> can toggle sidebar', () => {
-  const wrapper = mountSidebar()
+test('<AppSidebar /> displays properly on mobile', async () => {
+  const user = userEvent.setup()
+  render(
+    <MemoryRouter>
+      <AppSidebar device="mobile" />
+    </MemoryRouter>
+  )
 
-  expect(wrapper.find('.AppNav--show').exists()).toBe(false)
-  wrapper.find('.AppHeader__toggle-btn').simulate('click')
-  expect(wrapper.find('.AppNav--show').exists()).toBe(true)
+  expect(screen.queryByRole('navigation')).toBeFalsy()
+  await user.click(screen.getByRole('button'))
+  expect(screen.getByRole('navigation')).toBeVisible()
+  await user.click(screen.getByRole('button'))
+  expect(screen.queryByRole('navigation')).toBeFalsy()
 })
 
-test('<AppSidebar /> closes sidebar menu when navigating', () => {
-  const wrapper = mountSidebar({ items } as { items: category[] })
+test('<AppSidebar /> displays properly on desktop', async () => {
+  const user = userEvent.setup()
+  render(
+    <MemoryRouter>
+      <AppSidebar device="desktop" />
+    </MemoryRouter>
+  )
 
-  expect(wrapper.find('.AppNav--show').exists()).toBe(false)
-  wrapper.find('.AppHeader__toggle-btn').simulate('click')
-  expect(wrapper.find('.AppNav--show').exists()).toBe(true)
-  wrapper.find('.AppNav NavPage a').simulate('click')
-  expect(wrapper.find('.AppNav--show').exists()).toBe(false)
+  expect(screen.queryByRole('navigation')).toBeTruthy()
+  await user.click(screen.getByRole('button'))
+  expect(screen.getByRole('navigation')).toBeVisible()
+  await user.click(screen.getByRole('button'))
+  expect(screen.queryByRole('navigation')).toBeTruthy()
+})
+
+test('<AppSidebar /> closes sidebar menu when navigating on mobile', async () => {
+  const user = userEvent.setup()
+  render(
+    <MemoryRouter>
+      <AppSidebar items={items} device="mobile" />
+    </MemoryRouter>
+  )
+
+  expect(screen.queryByRole('navigation')).toBeFalsy()
+  await user.click(screen.getByRole('button'))
+  expect(screen.getByRole('navigation')).toBeVisible()
+  await user.click(screen.getAllByRole('link')[1])
+  expect(screen.queryByRole('navigation')).toBeFalsy()
 })
