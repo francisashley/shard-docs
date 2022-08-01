@@ -5,9 +5,9 @@ import MainContent from './MainContent'
 
 const content = (
   <>
-    <h1>Hello earth!</h1>
-    <h2>Hello galaxy!</h2>
-    <h3>Hello universe!</h3>
+    <h2>Hello earth!</h2>
+    <h3>Hello galaxy!</h3>
+    <h4>Hello universe!</h4>
   </>
 )
 
@@ -23,7 +23,7 @@ it('<MainContent /> renders content', () => {
   )
 
   expect(wrapper.find('.MainContent__body').exists()).toBe(true)
-  expect(wrapper.find('.MainContent__body h1').text()).toBe('Hello earth!')
-  expect(wrapper.find('.MainContent__body h2').text()).toBe('Hello galaxy!')
-  expect(wrapper.find('.MainContent__body h3').text()).toBe('Hello universe!')
+  expect(wrapper.find('.MainContent__body h2').text()).toBe('Hello earth!')
+  expect(wrapper.find('.MainContent__body h3').text()).toBe('Hello galaxy!')
+  expect(wrapper.find('.MainContent__body h4').text()).toBe('Hello universe!')
 })
