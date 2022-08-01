@@ -13,10 +13,8 @@ type props = {
 const AppHeader = ({ title, basePath, onToggleMenu, ...props }: props) => {
   return (
     <header className="AppHeader" {...props}>
-      <NavLink className="AppHeader__title-link" to={basePath}>
-        <h2 className="AppHeader__title" title={title} aria-label="Home">
-          {title}
-        </h2>
+      <NavLink className="AppHeader__title" to={basePath} area-label="Home" title={title}>
+        {title}
       </NavLink>
       <button className="AppHeader__toggle-btn" onClick={onToggleMenu} {...props}>
         <HamburgerIcon className="AppHeader__toggle-icon" />
