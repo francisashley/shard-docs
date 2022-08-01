@@ -15,9 +15,12 @@ type props = {
 
 const AppNav = (props: props) => {
   return (
-    <div className={classnames('AppNav', props.showOnMobile && 'AppNav--show')}>
+    <nav
+      className={classnames('AppNav', props.showOnMobile && 'AppNav--show')}
+      aria-label="Main Menu"
+    >
       <AppNavMenuList items={props.items} isRoot={true} onToggleMenu={props.onToggleMenu} />
-    </div>
+    </nav>
   )
 }
 
