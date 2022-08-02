@@ -116,7 +116,7 @@ ReactDOM.render(<ShardDocs title="ShardDocs demo" data={data} />, document.getEl
 
 ## Data schema 
 
-Data passed to ShardEditor is composed of three types of items. Pages, Categories and Links. To
+Data passed to ShardDocs is composed of three types of items. Pages, Categories and Links. To
 keep the schema as simple as possible, each item shares the same fields and the type is implicitly
 determined by the data provided.
 
