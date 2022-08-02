@@ -1,49 +1,48 @@
 import React from 'react'
+import { render, screen } from '@testing-library/react'
 import { MemoryRouter } from 'react-router-dom'
-import { mount } from 'enzyme'
 import MainPagination from './MainPagination'
 
-const mountPagination = (
-  { prevPage, nextPage } = {} as { prevPage?: paginationPage; nextPage?: paginationPage }
-) => {
-  return mount(
+const prevPage = { name: 'Prev', path: '/prev' }
+const nextPage = { name: 'Next', path: '/next' }
+
+test('<MainPagination /> renders nothing', () => {
+  render(
+    <MemoryRouter>
+      <MainPagination />
+    </MemoryRouter>
+  )
+  expect(screen.queryAllByRole('link').length).toBe(0)
+})
+
+test('<MainPagination /> renders prev page', () => {
+  render(
+    <MemoryRouter>
+      <MainPagination prevPage={prevPage} />
+    </MemoryRouter>
+  )
+  expect(screen.queryAllByRole('link').length).toBe(1)
+  expect(screen.getByText('⟵ Prev')).toBeTruthy()
+})
+
+test('<MainPagination /> renders next page', () => {
+  render(
+    <MemoryRouter>
+      <MainPagination nextPage={nextPage} />
+    </MemoryRouter>
+  )
+  expect(screen.queryAllByRole('link').length).toBe(1)
+  expect(screen.getByText('Next ⟶')).toBeTruthy()
+})
+
+test('<MainPagination /> renders both pages', () => {
+  render(
     <MemoryRouter>
       <MainPagination prevPage={prevPage} nextPage={nextPage} />
     </MemoryRouter>
   )
-}
 
-test('<MainPagination /> renders nothing', () => {
-  const wrapper = mountPagination()
-
-  expect(wrapper.find('.MainPagination__btn').hostNodes().length).toBe(0)
-})
-
-test('<MainPagination /> renders prev page', () => {
-  const wrapper = mountPagination({ prevPage: { name: 'Prev', path: '/prev' } })
-
-  expect(wrapper.find('.MainPagination__btn').hostNodes().length).toBe(1)
-  expect(wrapper.find('.MainPagination__btn--prev').hostNodes().props().href).toBe('/prev')
-  expect(wrapper.find('.MainPagination__btn--prev').hostNodes().text()).toBe('⟵ Prev')
-})
-
-test('<MainPagination /> renders next page', () => {
-  const wrapper = mountPagination({ nextPage: { name: 'Next', path: '/next' } })
-
-  expect(wrapper.find('.MainPagination__btn').hostNodes().length).toBe(1)
-  expect(wrapper.find('.MainPagination__btn--next').hostNodes().props().href).toBe('/next')
-  expect(wrapper.find('.MainPagination__btn--next').hostNodes().text()).toBe('Next ⟶')
-})
-
-test('<MainPagination /> renders both pages', () => {
-  const wrapper = mountPagination({
-    prevPage: { name: 'Prev', path: '/prev' },
-    nextPage: { name: 'Next', path: '/next' },
-  })
-
-  expect(wrapper.find('.MainPagination__btn').hostNodes().length).toBe(2)
-  expect(wrapper.find('.MainPagination__btn--prev').hostNodes().props().href).toBe('/prev')
-  expect(wrapper.find('.MainPagination__btn--prev').hostNodes().text()).toBe('⟵ Prev')
-  expect(wrapper.find('.MainPagination__btn--next').hostNodes().props().href).toBe('/next')
-  expect(wrapper.find('.MainPagination__btn--next').hostNodes().text()).toBe('Next ⟶')
+  expect(screen.queryAllByRole('link').length).toBe(2)
+  expect(screen.getByText('⟵ Prev')).toBeTruthy()
+  expect(screen.getByText('Next ⟶')).toBeTruthy()
 })
