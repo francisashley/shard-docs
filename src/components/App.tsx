@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import withRouter from '../hoc/withRouter'
 import AppMain from './AppMain'
@@ -27,8 +27,8 @@ const App = (props: props) => {
 
   // on route change
   useEffect(() => {
-    dataActions.setCurrentPath(props.currentPath || '')
-    pageActions.setCurrentPath(props.currentPath || '')
+    dataActions.setCurrentPath(props.currentPath)
+    pageActions.setCurrentPath(props.currentPath)
     window.scrollTo(0, 0)
   }, [props.currentPath])
 

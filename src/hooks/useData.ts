@@ -5,7 +5,7 @@ export default function useData(
   data: inputData,
   basePath: string = '/',
   currentPath: string = ''
-): [data, { setCurrentPath: (path: string) => void; toggleMenu: (path: string) => void }] {
+): [data, { setCurrentPath: (path?: string) => void; toggleMenu: (path: string) => void }] {
   let initialData = dataTools.parse(data, basePath)
   initialData = dataTools.updateState(initialData, basePath, currentPath)
 

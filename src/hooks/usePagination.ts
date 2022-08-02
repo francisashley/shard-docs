@@ -6,7 +6,7 @@ type pagination = { all: page[]; current: page | null; prev: page | null; next: 
 export default function usePagination(
   data: data,
   currentPath: string = ''
-): [pagination, { setCurrentPath: (path: string) => void }] {
+): [pagination, { setCurrentPath: (path?: string) => void }] {
   const pages = dataTools.getPages(data)
 
   const [parsedData, setParsedData] = useState({
