@@ -1,7 +1,6 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 import { MemoryRouter } from 'react-router-dom'
-import { mount } from 'enzyme'
 import AppMain from './AppMain'
 
 const prevPage = { name: 'Prev', path: '/prev' } as paginationPage
@@ -14,19 +13,6 @@ const page = {
     </>
   ),
 } as page
-
-const mountMain = (options: {
-  prevPage?: paginationPage
-  nextPage?: paginationPage
-  page?: page
-}) => {
-  const { prevPage, nextPage, page = null } = options
-  return mount(
-    <MemoryRouter>
-      <AppMain prevPage={prevPage} nextPage={nextPage} page={page} />
-    </MemoryRouter>
-  )
-}
 
 test('<Pagination /> renders Pagination', () => {
   render(
