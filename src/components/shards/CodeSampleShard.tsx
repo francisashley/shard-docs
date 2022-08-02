@@ -89,6 +89,7 @@ class CodeSampleShard extends React.Component<props, state> {
                 className="CodeSampleShard__menu-link CodeSampleShard__menu-link--code"
                 preventDefault
                 onClick={this.toggleCode}
+                aria-label="Toggle code"
               >
                 <CodeIcon className="CodeSampleShard__menu-icon" />
               </BaseLink>
@@ -98,6 +99,7 @@ class CodeSampleShard extends React.Component<props, state> {
                   className="CodeSampleShard__menu-link CodeSampleShard__menu-link--repository"
                   href={props.repository}
                   newTab
+                  aria-label="View repository"
                 >
                   <GithubIcon className="CodeSampleShard__menu-icon" />
                 </BaseLink>
@@ -108,7 +110,9 @@ class CodeSampleShard extends React.Component<props, state> {
         <div className="CodeSampleShard__body">
           {displayCode && (
             <div className="CodeSampleShard__source-code">
-              <CodeBlockRenderer language={props.lang}>{props.sourceCode}</CodeBlockRenderer>
+              <CodeBlockRenderer aria-label="Source code" language={props.lang}>
+                {props.sourceCode}
+              </CodeBlockRenderer>
             </div>
           )}
           <div className="CodeSampleShard__example">
@@ -116,6 +120,7 @@ class CodeSampleShard extends React.Component<props, state> {
               <Frame
                 initialContent={`<!DOCTYPE html><html><head>${props.iframeHead}</head><body><div class="frame-root"></div></body></html>`}
                 style={props.iframeStyle}
+                role="presentation"
               >
                 {children}
               </Frame>

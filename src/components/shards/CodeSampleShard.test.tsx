@@ -1,79 +1,68 @@
 import React from 'react'
-import { mount } from 'enzyme'
+import { render, screen } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 import CodeSampleShard from './CodeSampleShard'
 
-const title = 'Hello world'
 const repository = 'github.com'
 const sourceCode = `
 <HelloWorld />
 `
 
 test('<CodeSampleShard /> renders with default props', () => {
-  const wrapper = mount(<CodeSampleShard />)
-  expect(wrapper.find('CodeSampleShard').exists()).toBe(true)
+  render(<CodeSampleShard />)
+  expect(screen).toBeTruthy()
+  expect(screen.queryByLabelText('Toggle code')).not.toBeInTheDocument()
+  expect(screen.queryByLabelText('View repository')).not.toBeInTheDocument()
 })
 
 test('<CodeSampleShard /> renders title', () => {
-  const wrapper = mount(<CodeSampleShard title={title} />)
-  expect(wrapper.find('.CodeSampleShard__header').text()).toBe('Hello world')
+  render(<CodeSampleShard title="Hello world" />)
+  expect(screen.getByRole('heading')).toHaveTextContent('Hello world')
 })
 
 test('<CodeSampleShard /> renders source code button when sourceCode provided', () => {
-  const wrapper = mount(<CodeSampleShard sourceCode={sourceCode} />)
-  expect(wrapper.find('.CodeSampleShard__menu-link--code').hostNodes().exists()).toBe(true)
-})
-
-test('<CodeSampleShard /> hides source code button when sourceCode is empty', () => {
-  const wrapper = mount(<CodeSampleShard />)
-  expect(wrapper.find('.CodeSampleShard__menu-link--repository').hostNodes().exists()).toBe(false)
+  render(<CodeSampleShard sourceCode={sourceCode} />)
+  expect(screen.getByLabelText('Toggle code')).toBeInTheDocument()
 })
 
 test('<CodeSampleShard /> renders repository anchor when repository provided', () => {
-  const wrapper = mount(<CodeSampleShard repository={repository} />)
-
-  expect(wrapper.find('.CodeSampleShard__menu-link--repository').hostNodes().exists()).toBe(true)
-  expect(wrapper.find('.CodeSampleShard__menu-link--repository').hostNodes().props().href).toBe(
-    'github.com'
-  )
-})
-
-test('<CodeSampleShard /> hides repository anchor when no repository is provided', () => {
-  const wrapper = mount(<CodeSampleShard />)
-
-  expect(wrapper.find('.CodeSampleShard__menu-link').exists()).toBe(false)
+  render(<CodeSampleShard repository={repository} />)
+  expect(screen.getByLabelText('View repository')).toBeInTheDocument()
 })
 
 test('<CodeSampleShard /> renders example', () => {
-  const wrapper = mount(
+  render(
     <CodeSampleShard>
-      <h1>Hello world</h1>
+      <h2>Hello world</h2>
     </CodeSampleShard>
   )
-
-  expect(wrapper.find('.CodeSampleShard__body h1').text()).toBe('Hello world')
+  expect(screen.getByRole('heading', { level: 2 })).toHaveTextContent('Hello world')
 })
 
 test('<CodeSampleShard /> renders example in an iframe', () => {
-  const wrapper = mount(
-    <CodeSampleShard useIframe>
-      <h1>Hello world</h1>
-    </CodeSampleShard>
-  )
-
-  expect(wrapper.find('Frame').exists()).toBe(true)
+  // cannot currently test the iframe
+  // https://github.com/ryanseddon/react-frame-component/issues/193
+  // render(
+  //   <CodeSampleShard useIframe>
+  //     <h1>Hello world</h1>
+  //   </CodeSampleShard>
+  // )
+  // screen.debug()
+  // expect(screen.queryByRole('presentation')).toBeInTheDocument()
 })
 
-test('<CodeSampleShard /> toggles sourceCode', () => {
-  const wrapper = mount(
+test('<CodeSampleShard /> toggles sourceCode', async () => {
+  const user = userEvent.setup()
+  render(
     <CodeSampleShard sourceCode={sourceCode}>
       <h1>Hello world</h1>
       <h2>Hello galaxy</h2>
     </CodeSampleShard>
   )
 
-  expect(wrapper.find('.CodeSampleShard__source-code').exists()).toBe(false)
+  expect(screen.queryByLabelText('Source code')).not.toBeInTheDocument()
 
-  wrapper.find('.CodeSampleShard__menu-link--code').hostNodes().simulate('click')
+  await user.click(screen.getByLabelText('Toggle code'))
 
-  expect(wrapper.find('.CodeSampleShard__source-code').exists()).toBe(true)
+  expect(screen.getByLabelText('Source code')).toBeInTheDocument()
 })

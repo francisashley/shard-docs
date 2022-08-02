@@ -5,6 +5,7 @@ type props = {
   children: string
   className?: string
   language: Language
+  'aria-label'?: string
 }
 
 export default (props: props) => {
@@ -13,7 +14,7 @@ export default (props: props) => {
   return (
     <Highlight {...defaultProps} code={props.children.trim()} language={language} theme={undefined}>
       {({ className, tokens, getLineProps, getTokenProps }) => (
-        <pre className={className}>
+        <pre className={className} aria-label={props['aria-label'] || ''}>
           <code>
             {tokens.map((line, i) => {
               return (
