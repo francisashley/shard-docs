@@ -10,7 +10,7 @@ type MainPaginationProps = {
 
 const MainPagination = (props: MainPaginationProps) => {
   return (
-    <footer className="MainPagination">
+    <footer className="MainPagination" aria-label="Pagination footer">
       {props.prevPage && (
         <NavLink
           className="MainPagination__btn MainPagination__btn--prev"

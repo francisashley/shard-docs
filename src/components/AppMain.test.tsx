@@ -1,4 +1,5 @@
 import React from 'react'
+import { render, screen } from '@testing-library/react'
 import { MemoryRouter } from 'react-router-dom'
 import { mount } from 'enzyme'
 import AppMain from './AppMain'
@@ -28,13 +29,20 @@ const mountMain = (options: {
 }
 
 test('<Pagination /> renders Pagination', () => {
-  const wrapper = mountMain({ prevPage, nextPage })
+  render(
+    <MemoryRouter>
+      <AppMain prevPage={prevPage} nextPage={nextPage} />
+    </MemoryRouter>
+  )
 
-  expect(wrapper.find('MainPagination').exists()).toBe(true)
+  expect(screen.getByLabelText('Pagination footer')).toBeInTheDocument()
 })
 
 test('<Pagination /> renders Page', () => {
-  const wrapper = mountMain({ prevPage, nextPage, page })
-
-  expect(wrapper.find('MainContent').length).toBe(1)
+  render(
+    <MemoryRouter>
+      <AppMain prevPage={prevPage} nextPage={nextPage} page={page} />
+    </MemoryRouter>
+  )
+  expect(screen.getByRole('article')).toBeInTheDocument()
 })
