@@ -5,7 +5,11 @@ const BuiltWithShardDocs = () => {
   return (
     <footer className="BuiltWithShardDocs">
       Built with{' '}
-      <a className="BuiltWithShardDocs__link" href="https://fa-repo.github.io/shard-docs/#/docs">
+      <a
+        aria-label="Built with shard docs"
+        className="BuiltWithShardDocs__link"
+        href="https://fa-repo.github.io/shard-docs/#/docs"
+      >
         @fa-repo/shard-docs
       </a>
     </footer>

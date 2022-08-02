@@ -12,7 +12,7 @@ import './App.scss'
 
 export type props = {
   title?: string
-  data: inputData
+  data?: inputData
   basePath?: string
   hideBuiltWithShardDocs?: boolean
   routerType?: 'hash' | 'browser'
@@ -20,7 +20,7 @@ export type props = {
 }
 
 const App = (props: props) => {
-  let initialData = dataTools.parse(props.data, props.basePath)
+  let initialData = dataTools.parse(props.data || [], props.basePath)
   initialData = dataTools.updateState(initialData, props.basePath, props.currentPath)
   const pages = dataTools.getPages(initialData)
   const initialCurrentPage = dataTools.getCurrentPage(pages, props.currentPath)

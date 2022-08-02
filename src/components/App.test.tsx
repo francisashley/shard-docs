@@ -1,56 +1,46 @@
 import React from 'react'
-import { mount } from 'enzyme'
+import { render, screen } from '@testing-library/react'
 import App from './App'
 
-const title = 'App title'
 const data = [
-  { name: 'Doc A', content: <h1>Doc A</h1> },
-  { name: 'Doc B', content: <h1>Doc B</h1> },
+  { name: 'Doc A', content: <h2>Doc A</h2> },
+  { name: 'Doc B', content: <h2>Doc B</h2> },
 ]
 
-const mountShardDocs = (options = {}) => {
-  const {
-    title,
-    data = [],
-    hideBuiltWithShardDocs,
-  } = options as {
-    title?: string
-    data?: any[]
-    hideBuiltWithShardDocs?: boolean
-  }
-  return mount(<App title={title} data={data} hideBuiltWithShardDocs={hideBuiltWithShardDocs} />)
-}
-
 test('<App /> renders with default props', () => {
-  const wrapper = mountShardDocs()
-
-  expect(wrapper.exists()).toBe(true)
+  render(<App />)
+  expect(screen).toBeTruthy()
 })
 
-test('<App /> renders with props', () => {
-  const wrapper = mountShardDocs({ title, data })
+test('<App /> renders with props', async () => {
+  Object.defineProperty(window, 'innerWidth', {
+    writable: true,
+    configurable: true,
+    value: 1300,
+  })
+
+  render(<App title="App title" data={data} />)
 
   // Renders sidebar
-  expect(wrapper.find('AppSidebar').exists()).toBe(true)
+  expect(await screen.getByRole('complementary')).toBeTruthy()
 
   // Renders title
-  expect(wrapper.find('AppSidebar .AppHeader__title').text()).toBe(title)
+  expect(screen.getByText('App title')).toBeTruthy()
 
   // Renders menu
-  expect(wrapper.find('AppSidebar .AppNav ul li').exists()).toBe(true)
+  expect(screen.getByRole('navigation').querySelectorAll('a').length).toBe(2)
 
   // Renders sidebar footer
-  expect(wrapper.find('AppSidebar .BuiltWithShardDocs').exists()).toBe(true)
+  expect(screen.getByLabelText('Built with shard docs')).toBeTruthy()
 
   // Renders main
-  expect(wrapper.find('AppMain').exists()).toBe(true)
+  expect(screen.getByRole('main')).toBeTruthy()
 
   // Renders Page
-  expect(wrapper.find('AppMain MainContent').exists()).toBe(true)
+  expect(screen.getByText('Doc A', { selector: 'h2' })).toBeTruthy()
 })
 
 test('<App /> can hide sidebar footer', () => {
-  const wrapper = mountShardDocs({ hideBuiltWithShardDocs: true })
-
-  expect(wrapper.find('AppSidebar .BuiltWithShardDocs').exists()).toBe(false)
+  render(<App hideBuiltWithShardDocs />)
+  expect(screen.queryByRole('contentinfo')).toBeFalsy()
 })
