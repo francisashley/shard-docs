@@ -1,11 +1,10 @@
 import '@testing-library/jest-dom'
 import '@testing-library/user-event'
 
-const originalConsoleError = global.console.error
-
 /**
  * Ensure propType errors fail the tests.
  */
+const originalConsoleError = global.console.error
 global.beforeEach(() => {
   global.console.error = (...args) => {
     const propTypeFailures = [/Failed prop type/, /Warning: Received/]
@@ -37,7 +36,9 @@ const localStorageMock = (function () {
     },
   }
 })()
-
 Object.defineProperty(window, 'localStorage', {
   value: localStorageMock,
 })
+
+// Fix "Not implemented: window.scrollTo"
+Object.defineProperty(window, 'scrollTo', { value: () => {}, writable: true })
