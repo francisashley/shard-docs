@@ -36,6 +36,7 @@ const AppNavSubMenuList = (props: props) => {
           'AppNavSubMenuList__list--expanded': props.item.isExpanded,
         })}
         items={props.item.items}
+        hidden={!props.item.isExpanded}
         onNavigate={props.onNavigate}
       />
     </div>

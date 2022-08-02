@@ -10,6 +10,7 @@ type props = {
   items: data
   isRoot: boolean
   className: string
+  hidden: boolean
   onToggleMenu: (path: string) => void
   onNavigate: () => void
 }
@@ -20,6 +21,7 @@ const AppNavMenuList = (props: props) => {
       className={classnames('AppNavMenuList', props.className, {
         'AppNavMenuList--root': props.isRoot,
       })}
+      hidden={props.hidden}
     >
       {props.items.map((item, i) => {
         let child
@@ -60,6 +62,7 @@ AppNavMenuList.propTypes = {
   items: ItemsPropType,
   isRoot: PropTypes.bool,
   className: PropTypes.string,
+  hidden: PropTypes.bool,
   onToggleMenu: PropTypes.func,
   onNavigate: PropTypes.func,
 }
@@ -68,6 +71,7 @@ AppNavMenuList.defaultProps = {
   items: [],
   isRoot: false,
   className: '',
+  hidden: false,
   onToggleMenu: () => {},
   onNavigate: () => {},
 }
