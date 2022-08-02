@@ -30,6 +30,7 @@ const AppNavMenuListButton = (props: props) => {
           props.className
         )}
         onClick={props.onClick}
+        aria-label={'Open external link: ' + props.name}
       >
         {props.name}
         <ExternalLinkIcon className="AppNavMenuListButton__external-icon" />
@@ -46,6 +47,7 @@ const AppNavMenuListButton = (props: props) => {
           props.className
         )}
         onClick={props.onClick}
+        aria-label={'Navigate to page: ' + props.name}
       >
         {props.name}
         {props.after}
