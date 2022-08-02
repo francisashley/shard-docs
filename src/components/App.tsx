@@ -6,6 +6,7 @@ import AppSidebar from './AppSidebar'
 import dataTools from '../utils/dataTools'
 import useWindowSize from '../hooks/useWindowSize'
 import useData from '../hooks/useData'
+import usePagination from '../hooks/usePagination'
 import { DataPropType } from '../prop-types'
 
 import '../assets/sanitize.css'
@@ -22,15 +23,7 @@ export type props = {
 
 const App = (props: props) => {
   const [data, dataActions] = useData(props.data || [], props.basePath, props.currentPath)
-  const pages = dataTools.getPages(data)
-  const initialCurrentPage = dataTools.getCurrentPage(pages, props.currentPath)
-  const initialPrevPage = dataTools.getPrevPage(pages, props.currentPath)
-  const initialNextPage = dataTools.getNextPage(pages, props.currentPath)
-
-  const [currentPath, setCurrentPath] = useState(props.currentPath)
-  const [currentPage, setCurrentPage] = useState(initialCurrentPage as page | null)
-  const [prevPage, setPrevPage] = useState(initialPrevPage as page | null)
-  const [nextPage, setNextPage] = useState(initialNextPage as page | null)
+  const [pages, pageActions] = usePagination(data, props.currentPath)
   const windowSize = useWindowSize()
 
   const [device, setDevice] = useState(
@@ -39,16 +32,9 @@ const App = (props: props) => {
 
   // on route change
   useEffect(() => {
-    const prevPath = currentPath
-
-    if (props.currentPath !== prevPath) {
-      setCurrentPath(props.currentPath)
-      dataActions.setCurrentPath(props.currentPath || '')
-      setCurrentPage(dataTools.getCurrentPage(pages, props.currentPath || ''))
-      setPrevPage(dataTools.getPrevPage(pages, props.currentPath || ''))
-      setNextPage(dataTools.getNextPage(pages, props.currentPath || ''))
-      window.scrollTo(0, 0)
-    }
+    dataActions.setCurrentPath(props.currentPath || '')
+    pageActions.setCurrentPath(props.currentPath || '')
+    window.scrollTo(0, 0)
   }, [props.currentPath])
 
   // on window resize
@@ -67,9 +53,9 @@ const App = (props: props) => {
         device={device}
       />
       <AppMain
-        page={currentPage}
-        prevPage={prevPage as paginationPage}
-        nextPage={nextPage as paginationPage}
+        page={pages.current}
+        prevPage={pages.prev as paginationPage}
+        nextPage={pages.next as paginationPage}
       />
     </div>
   )
