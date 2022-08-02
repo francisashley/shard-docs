@@ -1,29 +1,29 @@
 import React from 'react'
+import { render, screen } from '@testing-library/react'
 import { MemoryRouter } from 'react-router-dom'
-import { mount } from 'enzyme'
 import MainContent from './MainContent'
 
-const content = (
-  <>
-    <h2>Hello earth!</h2>
-    <h3>Hello galaxy!</h3>
-    <h4>Hello universe!</h4>
-  </>
-)
-
 it('<MainContent /> renders with default props', () => {
-  mount(<MainContent />)
+  render(<MainContent />)
+  expect(screen).toBeTruthy()
 })
 
 it('<MainContent /> renders content', () => {
-  const wrapper = mount(
+  render(
     <MemoryRouter>
-      <MainContent content={content} />
+      <MainContent
+        content={
+          <>
+            <h2>Hello earth!</h2>
+            <h3>Hello galaxy!</h3>
+            <h4>Hello universe!</h4>
+          </>
+        }
+      />
     </MemoryRouter>
   )
 
-  expect(wrapper.find('.MainContent__body').exists()).toBe(true)
-  expect(wrapper.find('.MainContent__body h2').text()).toBe('Hello earth!')
-  expect(wrapper.find('.MainContent__body h3').text()).toBe('Hello galaxy!')
-  expect(wrapper.find('.MainContent__body h4').text()).toBe('Hello universe!')
+  expect(screen.getByRole('heading', { level: 2 })).toHaveTextContent('Hello earth!')
+  expect(screen.getByRole('heading', { level: 3 })).toHaveTextContent('Hello galaxy!')
+  expect(screen.getByRole('heading', { level: 4 })).toHaveTextContent('Hello universe!')
 })
