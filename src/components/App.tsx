@@ -5,6 +5,7 @@ import AppMain from './AppMain'
 import AppSidebar from './AppSidebar'
 import dataTools from '../utils/dataTools'
 import useWindowSize from '../hooks/useWindowSize'
+import useData from '../hooks/useData'
 import { DataPropType } from '../prop-types'
 
 import '../assets/sanitize.css'
@@ -20,14 +21,12 @@ export type props = {
 }
 
 const App = (props: props) => {
-  let initialData = dataTools.parse(props.data || [], props.basePath)
-  initialData = dataTools.updateState(initialData, props.basePath, props.currentPath)
-  const pages = dataTools.getPages(initialData)
+  const [data, dataActions] = useData(props.data || [], props.basePath, props.currentPath)
+  const pages = dataTools.getPages(data)
   const initialCurrentPage = dataTools.getCurrentPage(pages, props.currentPath)
   const initialPrevPage = dataTools.getPrevPage(pages, props.currentPath)
   const initialNextPage = dataTools.getNextPage(pages, props.currentPath)
 
-  const [data, setData] = useState(initialData)
   const [currentPath, setCurrentPath] = useState(props.currentPath)
   const [currentPage, setCurrentPage] = useState(initialCurrentPage as page | null)
   const [prevPage, setPrevPage] = useState(initialPrevPage as page | null)
@@ -44,7 +43,7 @@ const App = (props: props) => {
 
     if (props.currentPath !== prevPath) {
       setCurrentPath(props.currentPath)
-      setData(dataTools.updateState(data, props.basePath, props.currentPath))
+      dataActions.setCurrentPath(props.currentPath || '')
       setCurrentPage(dataTools.getCurrentPage(pages, props.currentPath || ''))
       setPrevPage(dataTools.getPrevPage(pages, props.currentPath || ''))
       setNextPage(dataTools.getNextPage(pages, props.currentPath || ''))
@@ -57,10 +56,6 @@ const App = (props: props) => {
     setDevice((windowSize.width || 0) > 1200 ? 'desktop' : 'mobile')
   }, [windowSize.width])
 
-  const onToggleMenu = (path: string) => {
-    setData(dataTools.toggleMenu(data, path))
-  }
-
   return (
     <div className="App">
       <AppSidebar
@@ -68,7 +63,7 @@ const App = (props: props) => {
         basePath={props.basePath}
         items={data as item[]}
         hideBuiltWithShardDocs={props.hideBuiltWithShardDocs}
-        onToggleMenu={onToggleMenu}
+        onToggleMenu={dataActions.toggleMenu}
         device={device}
       />
       <AppMain
