@@ -93,13 +93,13 @@ ReactDOM.render(<ShardDocs title="ShardDocs demo" data={data} />, document.getEl
   */
   hideBuiltWithShardDocs={true}
   /**
-   * Data is fed in through the content prop. Scroll down for an explanation of the schema.
+   * Use react routers BrowserRouter instead of HashRouter (default) for routing..
    * @string "hash"|"browser"
    * @default "hash"
   */
-  routerType="hash"
+  routerType="browser"
   /**
-   * Use react routers BrowserRouter instead of HashRouter (default) for routing..
+   * Data is fed in through the content prop. Scroll down for an explanation of the schema.
    * @boolean
    * @default false
   */
