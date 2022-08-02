@@ -7,16 +7,16 @@ export default function useData(
   currentPath: string = ''
 ): [data, { setCurrentPath: (path?: string) => void; toggleMenu: (path: string) => void }] {
   let initialData = dataTools.parse(data, basePath)
-  initialData = dataTools.updateState(initialData, basePath, currentPath)
+  initialData = dataTools.updatePathStates(initialData, basePath, currentPath)
 
   const [parsedData, setParsedData] = useState(initialData)
 
   const setCurrentPath = (currentPath: string = '') => {
-    setParsedData(dataTools.updateState(parsedData, basePath, currentPath))
+    setParsedData(dataTools.updatePathStates(parsedData, basePath, currentPath))
   }
 
   const toggleMenu = (path: string) => {
-    setParsedData(dataTools.toggleMenu(parsedData, path))
+    setParsedData(dataTools.toggleMenuExpandedState(parsedData, path))
   }
 
   return [
