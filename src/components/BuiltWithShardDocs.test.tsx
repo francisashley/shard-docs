@@ -1,8 +1,8 @@
 import React from 'react'
-import { mount } from 'enzyme'
+import { render, screen } from '@testing-library/react'
 import BuiltWithShardDocs from './BuiltWithShardDocs'
 
 test('<BuiltWithShardDocs /> renders with default props', () => {
-  const wrapper = mount(<BuiltWithShardDocs />)
-  expect(wrapper.find('BuiltWithShardDocs').exists()).toBe(true)
+  render(<BuiltWithShardDocs />)
+  expect(screen).toBeTruthy()
 })
