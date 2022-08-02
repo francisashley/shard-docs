@@ -24,6 +24,7 @@ test('dataTools() transforms data and returns tree', () => {
       path: '/doc-a',
       content: null,
       isActive: false,
+      pageId: 0,
     },
     {
       name: 'Doc B',
@@ -31,6 +32,7 @@ test('dataTools() transforms data and returns tree', () => {
       path: '/doc-b',
       content: null,
       isActive: false,
+      pageId: 1,
     },
     {
       name: 'Doc C',
@@ -38,12 +40,14 @@ test('dataTools() transforms data and returns tree', () => {
       path: '/doc-c',
       content: null,
       isActive: false,
+      pageId: 2,
     },
     {
       name: 'Category',
       type: 'category',
       path: '/category',
       isActive: false,
+      isExpanded: false,
       items: [
         {
           name: 'Doc D',
@@ -51,6 +55,7 @@ test('dataTools() transforms data and returns tree', () => {
           path: '/category/doc-d',
           content: null,
           isActive: false,
+          pageId: 3,
         },
         {
           name: 'Doc E',
@@ -58,10 +63,11 @@ test('dataTools() transforms data and returns tree', () => {
           path: '/category/doc-e',
           content: null,
           isActive: false,
+          pageId: 4,
         },
       ],
     },
-    { name: 'Github', type: 'link', url: 'http://github.com', isExternal: true },
+    { name: 'Github', type: 'link', url: 'http://github.com', isExternal: false },
   ])
 })
 
@@ -75,6 +81,7 @@ test('dataTools() transforms data and returns pages in a flat array', () => {
       path: '/doc-a',
       content: null,
       isActive: false,
+      pageId: 0,
     },
     {
       name: 'Doc B',
@@ -82,6 +89,7 @@ test('dataTools() transforms data and returns pages in a flat array', () => {
       path: '/doc-b',
       content: null,
       isActive: false,
+      pageId: 1,
     },
     {
       name: 'Doc C',
@@ -89,6 +97,7 @@ test('dataTools() transforms data and returns pages in a flat array', () => {
       path: '/doc-c',
       content: null,
       isActive: false,
+      pageId: 2,
     },
     {
       name: 'Doc D',
@@ -96,6 +105,7 @@ test('dataTools() transforms data and returns pages in a flat array', () => {
       path: '/category/doc-d',
       content: null,
       isActive: false,
+      pageId: 3,
     },
     {
       name: 'Doc E',
@@ -103,6 +113,7 @@ test('dataTools() transforms data and returns pages in a flat array', () => {
       path: '/category/doc-e',
       content: null,
       isActive: false,
+      pageId: 4,
     },
   ])
 })
