@@ -3,10 +3,9 @@ import PropTypes from 'prop-types'
 import withRouter from '../hoc/withRouter'
 import AppMain from './AppMain'
 import AppSidebar from './AppSidebar'
-import dataTools from '../utils/dataTools'
-import useWindowSize from '../hooks/useWindowSize'
 import useData from '../hooks/useData'
 import usePagination from '../hooks/usePagination'
+import useDevice from '../hooks/useDevice'
 import { DataPropType } from '../prop-types'
 
 import '../assets/sanitize.css'
@@ -24,11 +23,7 @@ export type props = {
 const App = (props: props) => {
   const [data, dataActions] = useData(props.data || [], props.basePath, props.currentPath)
   const [pages, pageActions] = usePagination(data, props.currentPath)
-  const windowSize = useWindowSize()
-
-  const [device, setDevice] = useState(
-    (windowSize.width || 0) > 1200 ? 'desktop' : ('mobile' as 'desktop' | 'mobile')
-  )
+  const [device] = useDevice()
 
   // on route change
   useEffect(() => {
@@ -36,11 +31,6 @@ const App = (props: props) => {
     pageActions.setCurrentPath(props.currentPath || '')
     window.scrollTo(0, 0)
   }, [props.currentPath])
-
-  // on window resize
-  useEffect(() => {
-    setDevice((windowSize.width || 0) > 1200 ? 'desktop' : 'mobile')
-  }, [windowSize.width])
 
   return (
     <div className="App">
