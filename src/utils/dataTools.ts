@@ -147,7 +147,9 @@ function getPrevPage(pages: page[], currentPath: string = ''): page | null {
 /**
  * get the next page.
  */
-function getNextPage(pages: page[], currentPath: string = ''): page | null {
+function getNextPage(pages: page[], currentPath: string = '', basePath: string = ''): page | null {
+  if (currentPath === basePath) return pages[1] || null
+
   const activeIndex = pages.findIndex((document: page) => document.path === currentPath)
   return pages[activeIndex + 1] ? pages[activeIndex + 1] : null
 }

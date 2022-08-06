@@ -22,7 +22,7 @@ export default function usePagination(
       all: pages,
       current: dataTools.getCurrentPage(pages, currentPath, basePath),
       prev: dataTools.getPrevPage(pages, currentPath),
-      next: dataTools.getNextPage(pages, currentPath),
+      next: dataTools.getNextPage(pages, currentPath, basePath),
     })
   }
 
