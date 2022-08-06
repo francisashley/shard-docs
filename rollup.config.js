@@ -26,13 +26,13 @@ function transpile(input, outputPath, outputFileName) {
       {
         file: outputPath + '/' + outputFileName + '.js',
         format: 'cjs',
-        sourcemap: true,
+        // sourcemap: true,
         exports: 'named',
       },
       {
         file: outputPath + '/' + outputFileName + '.es.js',
         format: 'es',
-        sourcemap: true,
+        // sourcemap: true,
         exports: 'named',
       },
     ],
