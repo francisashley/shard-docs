@@ -12,20 +12,12 @@ const MainPagination = (props: MainPaginationProps) => {
   return (
     <footer className="MainPagination" aria-label="Pagination footer">
       {props.prevPage && (
-        <NavLink
-          className="MainPagination__btn MainPagination__btn--prev"
-          to={props.prevPage.path}
-          exact
-        >
+        <NavLink className="MainPagination__btn MainPagination__btn--prev" to={props.prevPage.path}>
           ⟵ {props.prevPage.name}
         </NavLink>
       )}
       {props.nextPage && (
-        <NavLink
-          className="MainPagination__btn MainPagination__btn--next"
-          to={props.nextPage.path}
-          exact
-        >
+        <NavLink className="MainPagination__btn MainPagination__btn--next" to={props.nextPage.path}>
           {props.nextPage.name} ⟶
         </NavLink>
       )}

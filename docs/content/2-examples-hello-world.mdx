@@ -3,19 +3,17 @@ import ShardDocs, { CodeSampleShard } from "@fa-repo/shard-docs";
 <CodeSampleShard
   title="Example"
   repository="https://github.com/fa-repo/shard-docs/tree/master/docs/src/examples/HelloWorld"
-  sourceCode={`
-<ShardDocs
+  sourceCode={`<ShardDocs
   title="Package name"
+  basePath="/examples/hello-world"
   data={
     [
+      { name: "Hello world", content: <p>Lorem ipsum</p> },
       {
-        name: "Hello world",
-        content: <img src="/images/hello-world.jpg" alt="Turtle" />
-      },
-      {
-        items: [
-          { type: "page", name: "Use case A", content: <h1>Use case A</h1> },
-          { type: "page", name: "Use case B", content: <h1>Use case B</h1> }
+        name: "Examples",
+        content: [
+          { name: "Use case A", content: <p>Lorem Ipsum</p> },
+          { name: "Use case B", content: <p>Lorem Ipsum</p> }
         ]
       },
       { name: "Github", content: "https://github.com/" }
@@ -31,12 +29,12 @@ import ShardDocs, { CodeSampleShard } from "@fa-repo/shard-docs";
     basePath="/examples/hello-world"
     data={
       [
-        { name: "Hello world", content: <h1>Hello world</h1> },
+        { name: "Hello world", content: <p>Lorem ipsum</p> },
         {
           name: "Examples",
-          items: [
-            { name: "Use case A", content: <h1>Use case A</h1> },
-            { name: "Use case B", content: <h1>Use case B</h1> }
+          content: [
+            { name: "Use case A", content: <p>Lorem Ipsum</p> },
+            { name: "Use case B", content: <p>Lorem Ipsum</p> }
           ]
         },
         { name: "Github", content: "https://github.com/" }

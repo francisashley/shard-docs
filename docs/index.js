@@ -1,5 +1,5 @@
 import React from 'react'
-import { render } from 'react-dom'
+import { createRoot } from 'react-dom/client'
 
 import { MDXProvider } from '@mdx-js/react'
 
@@ -28,7 +28,8 @@ const components = {
   code: CodeBlockRenderer,
 }
 
-render(
+const root = createRoot(document.getElementById('root'))
+root.render(
   <MDXProvider components={components}>
     <ShardDocs
       title="Shard docs"
@@ -50,6 +51,5 @@ render(
         { name: 'Github', content: 'http://github.com/fa-repo/shard-docs' },
       ]}
     />
-  </MDXProvider>,
-  document.getElementById('root')
+  </MDXProvider>
 )

@@ -5,13 +5,14 @@ type pagination = { all: page[]; current: page | null; prev: page | null; next: 
 
 export default function usePagination(
   data: data,
-  currentPath: string = ''
+  currentPath: string = '',
+  basePath: string = ''
 ): [pagination, { setCurrentPath: (path?: string) => void }] {
   const pages = dataTools.getPages(data)
 
   const [parsedData, setParsedData] = useState({
     all: pages,
-    current: dataTools.getCurrentPage(pages, currentPath),
+    current: dataTools.getCurrentPage(pages, currentPath, basePath),
     prev: dataTools.getPrevPage(pages, currentPath),
     next: dataTools.getNextPage(pages, currentPath),
   })
@@ -19,7 +20,7 @@ export default function usePagination(
   const setCurrentPath = (currentPath: string = '') => {
     setParsedData({
       all: pages,
-      current: dataTools.getCurrentPage(pages, currentPath),
+      current: dataTools.getCurrentPage(pages, currentPath, basePath),
       prev: dataTools.getPrevPage(pages, currentPath),
       next: dataTools.getNextPage(pages, currentPath),
     })

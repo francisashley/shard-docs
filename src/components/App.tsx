@@ -22,7 +22,7 @@ export type props = {
 
 const App = (props: props) => {
   const [data, dataActions] = useData(props.data || [], props.basePath, props.currentPath)
-  const [pages, pageActions] = usePagination(data, props.currentPath)
+  const [pages, pageActions] = usePagination(data, props.currentPath, props.basePath)
   const [device] = useDevice()
 
   // on route change
