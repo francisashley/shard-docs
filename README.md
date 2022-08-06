@@ -22,7 +22,7 @@ Currently there is some configuration involved in getting shard-docs working on 
 1) Create a fresh new react project under a `/docs` folder.
 
 ```bash
-yarn create-react-app docs
+npx create-react-app docs
 ```
 
 2) Install the dependencies.
