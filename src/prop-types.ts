@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 export const DataPropType = PropTypes.arrayOf(
   PropTypes.shape({
     name: PropTypes.string,
-    content: PropTypes.oneOfType([PropTypes.element, PropTypes.array, PropTypes.bool]),
+    content: PropTypes.oneOfType([PropTypes.string, PropTypes.element, PropTypes.array]),
   })
 )
 
