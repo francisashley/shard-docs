@@ -1,22 +1,24 @@
 {
-  "name": "shard-docs-docs",
+  "name": "docs2",
+  "private": true,
   "version": "0.0.0",
-  "description": "@fa-repo/shard-docs documentation",
+  "type": "module",
   "scripts": {
-    "serve": "npx serve ./dist -l 2012 --single",
-    "dev": "mix",
-    "watch": "mix watch",
-    "hot": "mix watch --hot",
-    "build": "mix --production",
-    "analyse": "yarn build && npx source-map-explorer ./dist/*.js"
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
   },
-  "homepage": "https://fa-repo.github.io/shard-docs",
   "devDependencies": {
     "@fa-repo/shard-docs": "link:..",
-    "@mdx-js/loader": "^1.5.0",
+    "@mapbox/rehype-prism": "^0.8.0",
+    "@mdx-js/react": "^2.1.2",
+    "@mdx-js/rollup": "^2.1.2",
+    "@originjs/vite-plugin-commonjs": "^1.0.3",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.0-rc.0",
-    "@types/mdx": "^2.0.2",
     "@types/mdx-js__react": "^1.5.5",
+    "@types/react": "^18.0.17",
+    "@types/react-dom": "^18.0.6",
+    "@vitejs/plugin-react": "^2.0.1",
     "babel-loader": "^8.0.6",
     "cross-env": "^5.2.0",
     "css-loader": "^3.2.0",
@@ -27,16 +29,12 @@
     "react": "link:../node_modules/react",
     "react-dom": "link:../node_modules/react-dom",
     "react-refresh": "^0.14.0",
+    "remark-gfm": "^3.0.1",
     "serve": "^14.0.1",
     "source-map-explorer": "^2.0.1",
-    "ts-loader": "^9.3.1",
+    "typescript": "^4.6.4",
+    "vite": "^3.0.7",
+    "vite-plugin-mdx": "^3.5.10",
     "vue-template-compiler": "^2.7.8"
-  },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ],
-  "private": true
+  }
 }
