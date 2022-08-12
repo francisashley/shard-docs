@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 import BaseLink from '@fa-repo/base-react/dist/link'
-import './SectionShard.scss'
+import '@/components/SectionShard.scss'
 
 type SectionShardProps = {
   title?: string

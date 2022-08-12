@@ -2,8 +2,8 @@ import React from 'react'
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { MemoryRouter } from 'react-router-dom'
-import AppSidebar from './AppSidebar'
-import dataTools from '../utils/dataTools'
+import AppSidebar from '@/components/AppSidebar'
+import dataTools from '@/utils/dataTools'
 
 const items = dataTools.parse([{ name: 'Doc A', content: <h1>Doc A</h1> }])
 

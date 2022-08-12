@@ -1,8 +1,8 @@
 import React from 'react'
-import MainPagination from './MainPagination'
-import MainContent from './MainContent'
-import { PagePropType } from '../prop-types'
-import './AppMain.scss'
+import MainPagination from '@/components/MainPagination'
+import MainContent from '@/components/MainContent'
+import { PagePropType } from '@/prop-types'
+import '@/components/AppMain.scss'
 
 type props = {
   page?: page | null

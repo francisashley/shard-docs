@@ -1,7 +1,7 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 import { MemoryRouter } from 'react-router-dom'
-import AppHeader from './AppHeader'
+import AppHeader from '@/components/AppHeader'
 
 test('<AppHeader /> renders with default props', () => {
   render(

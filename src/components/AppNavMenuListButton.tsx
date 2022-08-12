@@ -2,8 +2,8 @@ import React, { HTMLAttributes } from 'react'
 import classnames from 'classnames'
 import PropTypes from 'prop-types'
 import { NavLink } from 'react-router-dom'
-import ExternalLinkIcon from './icons/ExternalLinkIcon'
-import './AppNavMenuListButton.scss'
+import ExternalLinkIcon from '@/components/icons/ExternalLinkIcon'
+import '@/components/AppNavMenuListButton.scss'
 
 type props = {
   name: string

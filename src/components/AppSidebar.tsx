@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import AppHeader from './AppHeader'
-import AppNav from './AppNav'
-import BuiltWithShardDocs from './BuiltWithShardDocs'
-import { ItemsPropType } from '../prop-types'
-import './AppSidebar.scss'
+import AppHeader from '@/components/AppHeader'
+import AppNav from '@/components/AppNav'
+import BuiltWithShardDocs from '@/components/BuiltWithShardDocs'
+import { ItemsPropType } from '@/prop-types'
+import '@/components/AppSidebar.scss'
 
 type props = {
   title?: string

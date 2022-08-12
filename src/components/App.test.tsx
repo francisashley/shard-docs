@@ -1,6 +1,6 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
-import App from './App'
+import App from '@/components/App'
 
 const data = [
   { name: 'Doc A', content: <h2>Doc A</h2> },

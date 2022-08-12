@@ -1,9 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import '../assets/github.css'
-import './MainContent.scss'
-import '../assets/prism-github.css'
+import '@/assets/github.css'
+import '@/components/MainContent.scss'
+import '@/assets/prism-github.css'
 
 type props = {
   title: string

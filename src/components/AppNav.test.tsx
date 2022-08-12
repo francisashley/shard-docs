@@ -1,8 +1,8 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 import { MemoryRouter } from 'react-router-dom'
-import AppNav from './AppNav'
-import dataTools from '../utils/dataTools'
+import AppNav from '@/components/AppNav'
+import dataTools from '@/utils/dataTools'
 
 const items = dataTools.parse([{ name: 'Doc A', content: <h1>Doc A</h1> }])
 

@@ -1,7 +1,7 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import { PagePropType } from '../prop-types'
-import './MainPagination.scss'
+import { PagePropType } from '@/prop-types'
+import '@/components/MainPagination.scss'
 
 type MainPaginationProps = {
   prevPage?: paginationPage

@@ -1,14 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
-import CodeIcon from '../icons/CodeIcon'
-import GithubIcon from '../icons/GithubIcon'
+import CodeIcon from '@/components/icons/CodeIcon'
+import GithubIcon from '@/components/icons/GithubIcon'
 import isArray from 'lodash/isArray'
 import uniqueId from 'lodash/uniqueId'
-import CodeBlockRenderer from '../renderers/CodeBlockRenderer'
+import CodeBlockRenderer from '@/components/renderers/CodeBlockRenderer'
 import BaseLink from '@fa-repo/base-react/dist/link'
 import Frame from 'react-frame-component'
-import './CodeSampleShard.scss'
+import '@/components/CodeSampleShard.scss'
 import { Language } from 'prism-react-renderer'
 
 /**

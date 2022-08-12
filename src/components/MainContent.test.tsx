@@ -1,7 +1,7 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 import { MemoryRouter } from 'react-router-dom'
-import MainContent from './MainContent'
+import MainContent from '@/components/MainContent'
 
 it('<MainContent /> renders with default props', () => {
   render(<MainContent />)

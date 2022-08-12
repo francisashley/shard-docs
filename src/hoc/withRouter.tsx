@@ -1,5 +1,5 @@
 import React from 'react'
-import { HashRouter, BrowserRouter, Route, Routes, RouteProps } from 'react-router-dom'
+import { HashRouter, BrowserRouter, Route, Routes } from 'react-router-dom'
 import { useLocation, useInRouterContext } from 'react-router-dom'
 
 type withRouterOptionsProps = {
