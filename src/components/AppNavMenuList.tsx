@@ -4,7 +4,7 @@ import { ItemsPropType } from '@/prop-types'
 import PropTypes from 'prop-types'
 import AppNavMenuListButton from '@/components/AppNavMenuListButton'
 import AppNavSubMenuList from '@/components/AppNavSubMenuList'
-import '@/components/AppNavMenuList.scss'
+import './AppNavMenuList.scss'
 
 type props = {
   items: data

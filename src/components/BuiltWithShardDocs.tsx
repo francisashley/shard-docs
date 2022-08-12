@@ -1,5 +1,5 @@
 import React from 'react'
-import '@/components/BuiltWithShardDocs.scss'
+import './BuiltWithShardDocs.scss'
 
 const BuiltWithShardDocs = () => {
   return (

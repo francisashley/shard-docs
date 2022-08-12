@@ -3,7 +3,7 @@ import classnames from 'classnames'
 import PropTypes from 'prop-types'
 import { NavLink } from 'react-router-dom'
 import ExternalLinkIcon from '@/components/icons/ExternalLinkIcon'
-import '@/components/AppNavMenuListButton.scss'
+import './AppNavMenuListButton.scss'
 
 type props = {
   name: string

@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
-import '@/components/SectionShard.scss'
 import Link from '../Link'
+import './SectionShard.scss'
 
 type SectionShardProps = {
   title?: string

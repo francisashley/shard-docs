@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { NavLink } from 'react-router-dom'
 import HamburgerIcon from '@/components/icons/HamburgerIcon'
-import '@/components/AppHeader.scss'
+import './AppHeader.scss'
 
 type props = {
   title: string

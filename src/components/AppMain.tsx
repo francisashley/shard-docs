@@ -2,7 +2,7 @@ import React from 'react'
 import MainPagination from '@/components/MainPagination'
 import MainContent from '@/components/MainContent'
 import { PagePropType } from '@/prop-types'
-import '@/components/AppMain.scss'
+import './AppMain.scss'
 
 type props = {
   page?: page | null

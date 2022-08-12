@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 import AppNavMenuListButton from '@/components/AppNavMenuListButton'
 import ArrowRight from '@/components/icons/ArrowRight'
 import AppNavMenuList from '@/components/AppNavMenuList'
-import '@/components/AppNavSubMenuList.scss'
+import './AppNavSubMenuList.scss'
 
 type props = {
   item: category

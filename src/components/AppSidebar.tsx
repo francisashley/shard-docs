@@ -4,7 +4,7 @@ import AppHeader from '@/components/AppHeader'
 import AppNav from '@/components/AppNav'
 import BuiltWithShardDocs from '@/components/BuiltWithShardDocs'
 import { ItemsPropType } from '@/prop-types'
-import '@/components/AppSidebar.scss'
+import './AppSidebar.scss'
 
 type props = {
   title?: string
