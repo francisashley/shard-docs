@@ -17,7 +17,6 @@ import reactElementToJSXString from 'react-element-to-jsx-string'
  */
 
 type props = {
-  title?: string
   lang: Language
   repository?: string
   useIframe?: boolean
@@ -34,7 +33,6 @@ type state = {
 
 class CodeSampleShard extends React.Component<props, state> {
   static propTypes = {
-    title: PropTypes.string,
     lang: PropTypes.string,
     repository: PropTypes.string,
     useIframe: PropTypes.bool,
@@ -43,7 +41,6 @@ class CodeSampleShard extends React.Component<props, state> {
   }
 
   static defaultProps = {
-    title: '',
     lang: 'jsx',
     repository: '',
     useIframe: false,
@@ -76,9 +73,6 @@ class CodeSampleShard extends React.Component<props, state> {
     return (
       <section className={classnames('CodeSampleShard', props.className)}>
         <header className="CodeSampleShard__header">
-          <h3 className="CodeSampleShard__title" title={props.title}>
-            {props.title}
-          </h3>
           <menu className="CodeSampleShard__menu">
             {props.repository && (
               <Link

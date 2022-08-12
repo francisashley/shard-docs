@@ -172,7 +172,7 @@ import "@fa-repo/shard-docs/dist/shards/CodeSampleShard.css";
 
 ...
 
-<CodeSampleShard title="Hello world">
+<CodeSampleShard>
 <h1>Hello world</h1>
 </CodeSampleShard>
 ```
@@ -180,7 +180,6 @@ import "@fa-repo/shard-docs/dist/shards/CodeSampleShard.css";
 #### Props
 | Name        | Type    | Default | Required  | Description                                         |
 |-------------|---------|---------|-----------|-----------------------------------------------------|
-| title       | string  | `""`    | Sometimes | Describe the example.                               |
 | repository  | string  | `""`    |           | Link to external source code.                       |
 | lang        | string  | `jsx`   |           | Supported languages: `markup`, `bash`, `clike`, `c`, `cpp`, `css`, `css-extras`, `javascript`, `jsx`, `js-extras`, `coffeescript`, `diff`, `git`, `go`, `graphql`, `handlebars`, `json`, `less`, `makefile`, `markdown`, `objectivec`, `ocaml`, `python`, `reason`, `sass`, `scss`, `sql`, `stylus`, `tsx`, `typescript`, `wasm`, `yaml`. |`}
 | useIframe   | boolean | `false` |           | Load the code sample in an iframe.                  |

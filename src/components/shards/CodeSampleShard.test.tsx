@@ -12,11 +12,6 @@ test('<CodeSampleShard /> renders with default props', () => {
   expect(screen.queryByLabelText('View repository')).not.toBeInTheDocument()
 })
 
-test('<CodeSampleShard /> renders title', () => {
-  render(<CodeSampleShard title="Hello world" />)
-  expect(screen.getByRole('heading')).toHaveTextContent('Hello world')
-})
-
 test('<CodeSampleShard /> renders repository anchor when repository provided', () => {
   render(<CodeSampleShard repository={repository} />)
   expect(screen.getByLabelText('View repository')).toBeInTheDocument()
