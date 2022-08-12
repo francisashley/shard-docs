@@ -4,9 +4,6 @@ import userEvent from '@testing-library/user-event'
 import CodeSampleShard from '@/components/shards/CodeSampleShard'
 
 const repository = 'github.com'
-const sourceCode = `
-<HelloWorld />
-`
 
 test('<CodeSampleShard /> renders with default props', () => {
   render(<CodeSampleShard />)
@@ -18,11 +15,6 @@ test('<CodeSampleShard /> renders with default props', () => {
 test('<CodeSampleShard /> renders title', () => {
   render(<CodeSampleShard title="Hello world" />)
   expect(screen.getByRole('heading')).toHaveTextContent('Hello world')
-})
-
-test('<CodeSampleShard /> renders source code button when sourceCode provided', () => {
-  render(<CodeSampleShard sourceCode={sourceCode} />)
-  expect(screen.getByLabelText('Toggle code')).toBeInTheDocument()
 })
 
 test('<CodeSampleShard /> renders repository anchor when repository provided', () => {
@@ -54,7 +46,7 @@ test('<CodeSampleShard /> renders example in an iframe', () => {
 test('<CodeSampleShard /> toggles sourceCode', async () => {
   const user = userEvent.setup()
   render(
-    <CodeSampleShard sourceCode={sourceCode}>
+    <CodeSampleShard>
       <h1>Hello world</h1>
       <h2>Hello galaxy</h2>
     </CodeSampleShard>

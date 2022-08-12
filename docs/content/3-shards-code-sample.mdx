@@ -10,7 +10,6 @@ import "@fa-repo/shard-docs/dist/shards/CodeSampleShard.css";
 | Name        | Type    | Default | Required  | Description                                         |
 |-------------|---------|---------|-----------|-----------------------------------------------------|
 | title       | string  | `""`    | Sometimes | Describe the example.                               |
-| sourceCode  | string  | `""`    | Required  | The example source code.                            |
 | repository  | string  | `""`    |           | Link to external source code.                       |
 | lang        | string  | `jsx`   |           | Supported languages: `markup`, `bash`, `clike`, `c`, `cpp`, `css`, `css-extras`, `javascript`, `jsx`, `js-extras`, `coffeescript`, `diff`, `git`, `go`, `graphql`, `handlebars`, `json`, `less`, `makefile`, `markdown`, `objectivec`, `ocaml`, `python`, `reason`, `sass`, `scss`, `sql`, `stylus`, `tsx`, `typescript`, `wasm`, `yaml`. |`}
 | useIframe   | boolean | `false` |           | Load the code sample in an iframe.                  |
@@ -19,29 +18,10 @@ import "@fa-repo/shard-docs/dist/shards/CodeSampleShard.css";
 
 <CodeSampleShard
   title="Hello world - (visual note: the shard is used to present itself here hence the inception style look)"
-   sampleHead={`
-   <style> :root { font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Ubuntu, Arial, sans-serif; }</style>
-    <link rel="stylesheet" type="text/css" href="/css/CodeSampleShard.css"></link>`}
-  sourceCode={`
-<CodeSampleShard
-  title="Hi!"
-  repository="github.com/path/somewhere"
-  sampleHead={\`<link rel="stylesheet" type="text/css" href="/css/index.css"></link>\`}
-  sourceCode={\`<p>
-    Nulla at egestas ante. Suspendisse urna nisl, cursus eu ullamcorper ut, gravida at nibh. In
-    hendrerit eget sapien in sollicitudin. Nulla vulputate elementum turpis, vel ultrices purus
-    bibendum maximus. Aliquam vitae orci nunc. Praesent sagittis odio a odio gravida malesuada.
-    Vivamus accumsan turpis a turpis sagittis, sit amet eleifend nisl scelerisque.
-  </p>\`}
-  >
-  <p>
-    Nulla at egestas ante. Suspendisse urna nisl, cursus eu ullamcorper ut, gravida at nibh. In
-    hendrerit eget sapien in sollicitudin. Nulla vulputate elementum turpis, vel ultrices purus
-    bibendum maximus. Aliquam vitae orci nunc. Praesent sagittis odio a odio gravida malesuada.
-    Vivamus accumsan turpis a turpis sagittis, sit amet eleifend nisl scelerisque.
-  </p>
-</CodeSampleShard>
-`}
+  sampleHead={`
+    <style> :root { font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Ubuntu, Arial, sans-serif; }</style>
+    <link rel="stylesheet" type="text/css" href="/css/CodeSampleShard.css"></link>
+  `}
 >
   <CodeSampleShard
     title="Hi!"
@@ -50,16 +30,10 @@ import "@fa-repo/shard-docs/dist/shards/CodeSampleShard.css";
     <style> :root { font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Ubuntu, Arial, sans-serif; }</style>
     <link rel="stylesheet" type="text/css" href="/css/shard-docs.css"></link>
     <link rel="stylesheet" type="text/css" href="/css/CodeSampleShard.css"></link>`}
-    sourceCode={`<p>
-Nulla at egestas ante. Suspendisse urna nisl, cursus eu ullamcorper ut, gravida at nibh. In
-hendrerit eget sapien in sollicitudin. Nulla vulputate elementum turpis, vel ultrices purus
-bibendum maximus. Aliquam vitae orci nunc. Praesent sagittis odio a odio gravida malesuada.
-Vivamus accumsan turpis a turpis sagittis, sit amet eleifend nisl scelerisque.
-</p>`}
   >
-  Nulla at egestas ante. Suspendisse urna nisl, cursus eu ullamcorper ut, gravida at nibh.
-  In hendrerit eget sapien in sollicitudin. Nulla vulputate elementum turpis, vel ultrices
-  purus bibendum maximus. Aliquam vitae orci nunc. Praesent sagittis odio a odio gravida
-  malesuada. Vivamus accumsan turpis a turpis sagittis, sit amet eleifend nisl scelerisque.
+Nulla at egestas ante. Suspendisse urna nisl, cursus eu ullamcorper ut, gravida at nibh.
+In hendrerit eget sapien in sollicitudin. Nulla vulputate elementum turpis, vel ultrices
+purus bibendum maximus. Aliquam vitae orci nunc. Praesent sagittis odio a odio gravida
+malesuada. Vivamus accumsan turpis a turpis sagittis, sit amet eleifend nisl scelerisque.
   </CodeSampleShard>
 </CodeSampleShard>

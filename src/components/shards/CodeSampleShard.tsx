@@ -10,6 +10,7 @@ import Link from '../Link'
 import Frame from 'react-frame-component'
 import './CodeSampleShard.scss'
 import { Language } from 'prism-react-renderer'
+import reactElementToJSXString from 'react-element-to-jsx-string'
 
 /**
  * CodeSampleShard
@@ -18,7 +19,6 @@ import { Language } from 'prism-react-renderer'
 type props = {
   title?: string
   lang: Language
-  sourceCode: string
   repository?: string
   useIframe?: boolean
   iframeHead?: string
@@ -36,7 +36,6 @@ class CodeSampleShard extends React.Component<props, state> {
   static propTypes = {
     title: PropTypes.string,
     lang: PropTypes.string,
-    sourceCode: PropTypes.string,
     repository: PropTypes.string,
     useIframe: PropTypes.bool,
     iframeHead: PropTypes.string,
@@ -46,7 +45,6 @@ class CodeSampleShard extends React.Component<props, state> {
   static defaultProps = {
     title: '',
     lang: 'jsx',
-    sourceCode: '',
     repository: '',
     useIframe: false,
     iframeHead: '',
@@ -64,7 +62,6 @@ class CodeSampleShard extends React.Component<props, state> {
 
   render() {
     const props = this.props
-    const showHeader = props.title || props.sourceCode || props.repository
     const displayCode = this.state.displayCode
     let children = props.children as React.ReactNode
 
@@ -72,46 +69,43 @@ class CodeSampleShard extends React.Component<props, state> {
       if (isArray(children)) {
         children.map((child, i) => <child.type {...child.props} key={this.state.id + i} />)
       }
-      // else if (children) {
-      //   children = <children.type {...children.props} key={this.state.id} />;
-      // }
     }
+
+    const sourceCode = reactElementToJSXString(children)
 
     return (
       <section className={classnames('CodeSampleShard', props.className)}>
-        {showHeader && (
-          <header className="CodeSampleShard__header">
-            <h3 className="CodeSampleShard__title" title={props.title}>
-              {props.title}
-            </h3>
-            <menu className="CodeSampleShard__menu">
-              <Link
-                className="CodeSampleShard__menu-link CodeSampleShard__menu-link--code"
-                preventDefault
-                onClick={this.toggleCode}
-                aria-label="Toggle code"
-              >
-                <CodeIcon className="CodeSampleShard__menu-icon" />
-              </Link>
+        <header className="CodeSampleShard__header">
+          <h3 className="CodeSampleShard__title" title={props.title}>
+            {props.title}
+          </h3>
+          <menu className="CodeSampleShard__menu">
+            <Link
+              className="CodeSampleShard__menu-link CodeSampleShard__menu-link--code"
+              preventDefault
+              onClick={this.toggleCode}
+              aria-label="Toggle code"
+            >
+              <CodeIcon className="CodeSampleShard__menu-icon" />
+            </Link>
 
-              {props.repository && (
-                <Link
-                  className="CodeSampleShard__menu-link CodeSampleShard__menu-link--repository"
-                  href={props.repository}
-                  external
-                  aria-label="View repository"
-                >
-                  <GithubIcon className="CodeSampleShard__menu-icon" />
-                </Link>
-              )}
-            </menu>
-          </header>
-        )}
+            {props.repository && (
+              <Link
+                className="CodeSampleShard__menu-link CodeSampleShard__menu-link--repository"
+                href={props.repository}
+                external
+                aria-label="View repository"
+              >
+                <GithubIcon className="CodeSampleShard__menu-icon" />
+              </Link>
+            )}
+          </menu>
+        </header>
         <div className="CodeSampleShard__body">
           {displayCode && (
             <div className="CodeSampleShard__source-code">
               <CodeBlockRenderer aria-label="Source code" language={props.lang}>
-                {props.sourceCode}
+                {sourceCode}
               </CodeBlockRenderer>
             </div>
           )}
