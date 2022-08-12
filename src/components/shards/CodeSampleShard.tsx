@@ -80,6 +80,17 @@ class CodeSampleShard extends React.Component<props, state> {
             {props.title}
           </h3>
           <menu className="CodeSampleShard__menu">
+            {props.repository && (
+              <Link
+                className="CodeSampleShard__menu-link CodeSampleShard__menu-link--repository"
+                href={props.repository}
+                external
+                hideIcon
+                aria-label="View repository"
+              >
+                <GithubIcon className="CodeSampleShard__menu-icon" />
+              </Link>
+            )}
             <Link
               className="CodeSampleShard__menu-link CodeSampleShard__menu-link--code"
               preventDefault
@@ -88,17 +99,6 @@ class CodeSampleShard extends React.Component<props, state> {
             >
               <CodeIcon className="CodeSampleShard__menu-icon" />
             </Link>
-
-            {props.repository && (
-              <Link
-                className="CodeSampleShard__menu-link CodeSampleShard__menu-link--repository"
-                href={props.repository}
-                external
-                aria-label="View repository"
-              >
-                <GithubIcon className="CodeSampleShard__menu-icon" />
-              </Link>
-            )}
           </menu>
         </header>
         <div className="CodeSampleShard__body">
