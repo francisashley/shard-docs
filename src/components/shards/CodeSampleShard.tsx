@@ -6,9 +6,9 @@ import GithubIcon from '@/components/icons/GithubIcon'
 import isArray from 'lodash/isArray'
 import uniqueId from 'lodash/uniqueId'
 import CodeBlockRenderer from '@/components/renderers/CodeBlockRenderer'
-import BaseLink from '@fa-repo/base-react/dist/link'
+import Link from '../Link'
 import Frame from 'react-frame-component'
-import '@/components/CodeSampleShard.scss'
+import './CodeSampleShard.scss'
 import { Language } from 'prism-react-renderer'
 
 /**
@@ -85,24 +85,24 @@ class CodeSampleShard extends React.Component<props, state> {
               {props.title}
             </h3>
             <menu className="CodeSampleShard__menu">
-              <BaseLink
+              <Link
                 className="CodeSampleShard__menu-link CodeSampleShard__menu-link--code"
                 preventDefault
                 onClick={this.toggleCode}
                 aria-label="Toggle code"
               >
                 <CodeIcon className="CodeSampleShard__menu-icon" />
-              </BaseLink>
+              </Link>
 
               {props.repository && (
-                <BaseLink
+                <Link
                   className="CodeSampleShard__menu-link CodeSampleShard__menu-link--repository"
                   href={props.repository}
-                  newTab
+                  external
                   aria-label="View repository"
                 >
                   <GithubIcon className="CodeSampleShard__menu-icon" />
-                </BaseLink>
+                </Link>
               )}
             </menu>
           </header>

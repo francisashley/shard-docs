@@ -1,1 +1,0 @@
-declare module '@fa-repo/base-react/dist/link';

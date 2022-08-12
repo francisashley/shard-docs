@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
-import BaseLink from '@fa-repo/base-react/dist/link'
 import '@/components/SectionShard.scss'
+import Link from '../Link'
 
 type SectionShardProps = {
   title?: string
@@ -54,7 +54,7 @@ class SectionShard extends React.Component<SectionShardProps, SectionShardState>
     return (
       <section {...props} className={classnames('SectionShard', props.className)}>
         <h2 className="SectionShard__title">
-          <BaseLink
+          <Link
             className="SectionShard__title-link"
             href="#"
             onClick={() => this.toggle()}
