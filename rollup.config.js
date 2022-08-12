@@ -7,6 +7,7 @@ import url from 'rollup-plugin-url'
 import svgr from '@svgr/rollup'
 import json from 'rollup-plugin-json'
 import typescript from '@rollup/plugin-typescript'
+import filesize from 'rollup-plugin-filesize'
 
 export default [
   transpile('src/index.ts', 'dist', 'index'),
@@ -46,6 +47,7 @@ function transpile(input, outputPath, outputFileName) {
       resolve(),
       commonjs(),
       json(),
+      filesize(),
     ],
   }
 }
