@@ -38,7 +38,7 @@ function transpile(input, outputPath, outputFileName) {
       },
     ],
     plugins: [
-      typescript(),
+      typescript({ tsconfig: './tsconfig.build.json' }),
       external(),
       postcss({ extract: true }),
       url({ exclude: ['**/*.svg'] }),
