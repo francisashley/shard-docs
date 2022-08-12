@@ -2,7 +2,7 @@ const { js } = require('laravel-mix')
 const mix = require('laravel-mix')
 
 mix
-  .js('./index.js', 'dist/index.js')
+  .ts('./index.tsx', 'dist/index.js')
   .react()
   .copy('node_modules/@fa-repo/shard-docs/dist/index.css', 'dist/css/shard-docs.css')
   .copy(

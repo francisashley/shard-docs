@@ -1,8 +1,5 @@
-import React from 'react'
 import { createRoot } from 'react-dom/client'
-
-import { MDXProvider } from '@mdx-js/react'
-
+import { MDXProvider, MDXProviderComponents } from '@mdx-js/react'
 import ShardDocs, { CodeBlockRenderer } from '../dist/index'
 
 import '../dist/index.css'
@@ -26,9 +23,9 @@ const components = {
     }
   },
   code: CodeBlockRenderer,
-}
+} as MDXProviderComponents
 
-const root = createRoot(document.getElementById('root'))
+const root = createRoot(document.getElementById('root') as Element)
 root.render(
   <MDXProvider components={components}>
     <ShardDocs
