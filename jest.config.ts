@@ -3,7 +3,7 @@
 import { defaults } from 'jest-config'
 
 export default {
-  setupFilesAfterEnv: ['jest-extended', './jest-setup.ts', './jest-setup.ts'],
+  setupFilesAfterEnv: ['./jest-setup.ts', './jest-setup.ts'],
   moduleNameMapper: {
     '\\.(css|scss|less)$': 'identity-obj-proxy',
     '@/(.*)': '<rootDir>/src/$1',
