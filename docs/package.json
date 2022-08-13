@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite scripts/run",
-    "build": "tsc && vite build scripts/run",
+    "build": "tsc && vite build scripts/run --outDir ../../build",
     "preview": "vite preview scripts/run"
   },
   "devDependencies": {
