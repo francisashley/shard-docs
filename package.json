@@ -15,8 +15,9 @@
   ],
   "scripts": {
     "build": "node scripts/build.mjs",
+    "postbuild": "yarn build-ts",
     "watch": "node scripts/watch.mjs",
-    "build-ts": "tsc",
+    "build-ts": "tsc src/index.ts src/types/shard-docs.d.ts  --declaration --emitDeclarationOnly --jsx react --skipLibCheck --esModuleInterop --outDir dist",
     "docs:deploy": "cd docs && yarn && yarn build && npx gh-pages -d dist --git $(which git)",
     "preversion": "yarn test && yarn build",
     "postpublish": "git push --tags",
