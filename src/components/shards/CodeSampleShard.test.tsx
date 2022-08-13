@@ -8,8 +8,6 @@ const repository = 'github.com'
 test('<CodeSampleShard /> renders with default props', () => {
   render(<CodeSampleShard />)
   expect(screen).toBeTruthy()
-  expect(screen.queryByLabelText('Toggle code')).not.toBeInTheDocument()
-  expect(screen.queryByLabelText('View repository')).not.toBeInTheDocument()
 })
 
 test('<CodeSampleShard /> renders repository anchor when repository provided', () => {
