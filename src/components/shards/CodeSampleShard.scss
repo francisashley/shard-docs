@@ -1,11 +1,14 @@
 .CodeSampleShard {
   margin-bottom: 16px;
-  
+  border: thin solid #e0e0e0;
+  border-radius: 4px;
+ 
   &__header {
-    padding: 0 0 5px 0;
+    padding: 8px;
     font-size: 14px;
     display: flex;
     align-items: center;
+    border-bottom: thin solid #e0e0e0;
   }
 
   &__menu {
@@ -17,7 +20,7 @@
 
   &__menu-link {
     color: black !important;
-    padding: 10px !important;
+    padding: 8px !important;
     transition: opacity 150ms ease-out;
     border-radius: 50%;
     display: inline-flex;
@@ -36,14 +39,10 @@
     width: 20px;
   }
   
-  &__body {
-    padding: 15px;
-    background: rgba(0, 0, 0, 0.1);
-  }
-  
   &__source-code {
     margin-bottom: 15px;
-  
+    border-bottom: thin solid #e0e0e0;
+    
     pre {
       margin: 0;
       border-radius: 0 !important;
