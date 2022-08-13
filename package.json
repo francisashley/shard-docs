@@ -5,12 +5,16 @@
   "author": "fa-repo",
   "license": "MIT",
   "repository": "fa-repo/shard-docs",
+  "bin": {
+    "shard-docs": "bin/shard-docs.js"
+  },
   "main": "dist/index.js",
   "engines": {
     "node": ">=8",
     "npm": ">=5"
   },
   "files": [
+    "bin",
     "dist"
   ],
   "scripts": {
