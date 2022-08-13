@@ -62,13 +62,9 @@ class CodeSampleShard extends React.Component<props, state> {
     const displayCode = this.state.displayCode
     let children = props.children as React.ReactNode
 
-    if (children) {
-      if (isArray(children)) {
-        children.map((child, i) => <child.type {...child.props} key={this.state.id + i} />)
-      }
-    }
-
-    const sourceCode = reactElementToJSXString(children)
+    let preparedChildren = Array.isArray(children) ? children : [children]
+    preparedChildren = preparedChildren.filter((child) => child !== '\n').filter(Boolean)
+    const sourceCode = preparedChildren.map((child) => reactElementToJSXString(child)).join('\n')
 
     return (
       <section className={classnames('CodeSampleShard', props.className)}>
