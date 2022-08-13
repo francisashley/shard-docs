@@ -3,16 +3,16 @@ import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import CodeSampleShard from '@/components/shards/CodeSampleShard'
 
-const repository = 'github.com'
+const github = 'github.com'
 
 test('<CodeSampleShard /> renders with default props', () => {
   render(<CodeSampleShard />)
   expect(screen).toBeTruthy()
 })
 
-test('<CodeSampleShard /> renders repository anchor when repository provided', () => {
-  render(<CodeSampleShard repository={repository} />)
-  expect(screen.getByLabelText('View repository')).toBeInTheDocument()
+test('<CodeSampleShard /> renders the github button when provided a path', () => {
+  render(<CodeSampleShard github={github} />)
+  expect(screen.getByLabelText('View github repository')).toBeInTheDocument()
 })
 
 test('<CodeSampleShard /> renders example', () => {

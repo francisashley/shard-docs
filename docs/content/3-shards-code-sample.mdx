@@ -10,7 +10,7 @@ import "@fa-repo/shard-docs/dist/shards/CodeSampleShard.css";
 | Name        | Type    | Default | Required  | Description                                         |
 |-------------|---------|---------|-----------|-----------------------------------------------------|
 | title       | string  | `""`    | Sometimes | Describe the example.                               |
-| repository  | string  | `""`    |           | Link to external source code.                       |
+| github      | string  | `""`    |           | Link to Github.                       |
 | lang        | string  | `jsx`   |           | Supported languages: `markup`, `bash`, `clike`, `c`, `cpp`, `css`, `css-extras`, `javascript`, `jsx`, `js-extras`, `coffeescript`, `diff`, `git`, `go`, `graphql`, `handlebars`, `json`, `less`, `makefile`, `markdown`, `objectivec`, `ocaml`, `python`, `reason`, `sass`, `scss`, `sql`, `stylus`, `tsx`, `typescript`, `wasm`, `yaml`. |`}
 | useIframe   | boolean | `false` |           | Load the code sample in an iframe.                  |
 | iframeHead  | string  | `""`    |           | Add things to the iframe `<head />`.                |
@@ -25,7 +25,7 @@ import "@fa-repo/shard-docs/dist/shards/CodeSampleShard.css";
 >
   <CodeSampleShard
     title="Hi!"
-    repository="github.com/path/somewhere"
+    github="https://github.com/username/repo"
     sampleHead={`
     <style> :root { font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Ubuntu, Arial, sans-serif; }</style>
     <link rel="stylesheet" type="text/css" href="/css/shard-docs.css"></link>

@@ -164,7 +164,7 @@ Shard docs comes with a few pre-built shards (components you can drop in on the 
 
 ### &lt;CodeSample />
 
-This shard displays a component in a preview box, with access to the source code and a link to a repository.
+This shard displays a component in a preview box, with access to the source code and a link to github.
 
 ```jsx
 import { CodeSampleShard } from "@fa-repo/shard-docs";
@@ -180,7 +180,7 @@ import "@fa-repo/shard-docs/dist/shards/CodeSampleShard.css";
 #### Props
 | Name        | Type    | Default | Required  | Description                                         |
 |-------------|---------|---------|-----------|-----------------------------------------------------|
-| repository  | string  | `""`    |           | Link to external source code.                       |
+| github      | string  | `""`    |           | Link to Github.                                     |
 | lang        | string  | `jsx`   |           | Supported languages: `markup`, `bash`, `clike`, `c`, `cpp`, `css`, `css-extras`, `javascript`, `jsx`, `js-extras`, `coffeescript`, `diff`, `git`, `go`, `graphql`, `handlebars`, `json`, `less`, `makefile`, `markdown`, `objectivec`, `ocaml`, `python`, `reason`, `sass`, `scss`, `sql`, `stylus`, `tsx`, `typescript`, `wasm`, `yaml`. |`}
 | useIframe   | boolean | `false` |           | Load the code sample in an iframe.                  |
 | iframeHead  | string  | `""`    |           | Add things to the iframe `<head />`.                |

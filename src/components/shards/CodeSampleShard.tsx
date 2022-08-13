@@ -18,7 +18,7 @@ import reactElementToJSXString from 'react-element-to-jsx-string'
 
 type props = {
   lang: Language
-  repository?: string
+  github?: string
   useIframe?: boolean
   iframeHead?: string
   iframeStyle?: React.StyleHTMLAttributes<HTMLStyleElement>
@@ -34,7 +34,7 @@ type state = {
 class CodeSampleShard extends React.Component<props, state> {
   static propTypes = {
     lang: PropTypes.string,
-    repository: PropTypes.string,
+    github: PropTypes.string,
     useIframe: PropTypes.bool,
     iframeHead: PropTypes.string,
     iframeStyle: PropTypes.object,
@@ -42,7 +42,7 @@ class CodeSampleShard extends React.Component<props, state> {
 
   static defaultProps = {
     lang: 'jsx',
-    repository: '',
+    github: '',
     useIframe: false,
     iframeHead: '',
     iframeStyle: {},
@@ -70,13 +70,13 @@ class CodeSampleShard extends React.Component<props, state> {
       <section className={classnames('CodeSampleShard', props.className)}>
         <header className="CodeSampleShard__header">
           <menu className="CodeSampleShard__menu">
-            {props.repository && (
+            {props.github && (
               <Link
-                className="CodeSampleShard__menu-link CodeSampleShard__menu-link--repository"
-                href={props.repository}
+                className="CodeSampleShard__menu-link CodeSampleShard__menu-link--github"
+                href={props.github}
                 external
                 hideIcon
-                aria-label="View repository"
+                aria-label="View github repository"
               >
                 <GithubIcon className="CodeSampleShard__menu-icon" />
               </Link>
