@@ -1,7 +1,7 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import SectionShard from '@/components/shards/SectionShard'
+import SectionShard from './SectionShard'
 
 const title = 'Hello world'
 

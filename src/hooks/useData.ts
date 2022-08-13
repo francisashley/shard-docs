@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import dataTools from '@/utils/dataTools'
+import dataTools from '../utils/dataTools'
 
 export default function useData(
   data: inputData,

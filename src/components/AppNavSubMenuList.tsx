@@ -2,9 +2,9 @@ import React from 'react'
 import classnames from 'classnames'
 import { CategoryPropType } from '../prop-types'
 import PropTypes from 'prop-types'
-import AppNavMenuListButton from '@/components/AppNavMenuListButton'
-import ArrowRight from '@/components/icons/ArrowRight'
-import AppNavMenuList from '@/components/AppNavMenuList'
+import AppNavMenuListButton from './AppNavMenuListButton'
+import ArrowRight from './icons/ArrowRight'
+import AppNavMenuList from './AppNavMenuList'
 import './AppNavSubMenuList.scss'
 
 type props = {

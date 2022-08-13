@@ -1,9 +1,9 @@
 import React from 'react'
 import classnames from 'classnames'
-import { ItemsPropType } from '@/prop-types'
+import { ItemsPropType } from '../prop-types'
 import PropTypes from 'prop-types'
-import AppNavMenuListButton from '@/components/AppNavMenuListButton'
-import AppNavSubMenuList from '@/components/AppNavSubMenuList'
+import AppNavMenuListButton from './AppNavMenuListButton'
+import AppNavSubMenuList from './AppNavSubMenuList'
 import './AppNavMenuList.scss'
 
 type props = {

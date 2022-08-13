@@ -1,7 +1,7 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import CodeSampleShard from '@/components/shards/CodeSampleShard'
+import CodeSampleShard from './CodeSampleShard'
 
 const github = 'github.com'
 

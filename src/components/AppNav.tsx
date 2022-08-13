@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
-import { ItemsPropType } from '@/prop-types'
+import { ItemsPropType } from '../prop-types'
 import './AppNav.scss'
 
 import AppNavMenuList from './AppNavMenuList'

@@ -1,7 +1,7 @@
 import slugify from 'slugify'
 import kebabCase from 'lodash/kebabCase'
 import React from 'react'
-import sessionDB from '@/utils/sessionDB'
+import sessionDB from './sessionDB'
 
 // Helpers
 const getSlug = (name: string) => slugify(kebabCase(name), { lower: true })

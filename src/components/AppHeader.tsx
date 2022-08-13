@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { NavLink } from 'react-router-dom'
-import HamburgerIcon from '@/components/icons/HamburgerIcon'
+import HamburgerIcon from './icons/HamburgerIcon'
 import './AppHeader.scss'
 
 type props = {

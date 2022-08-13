@@ -1,7 +1,7 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 import { MemoryRouter } from 'react-router-dom'
-import AppMain from '@/components/AppMain'
+import AppMain from './AppMain'
 
 const prevPage = { name: 'Prev', path: '/prev' } as paginationPage
 const nextPage = { name: 'Next', path: '/next' } as paginationPage

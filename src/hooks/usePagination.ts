@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import dataTools from '@/utils/dataTools'
+import dataTools from '../utils/dataTools'
 
 type pagination = { all: page[]; current: page | null; prev: page | null; next: page | null }
 

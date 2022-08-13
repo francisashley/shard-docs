@@ -1,6 +1,6 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
-import AppNavMenuListButton from '@/components/AppNavMenuListButton'
+import AppNavMenuListButton from './AppNavMenuListButton'
 import { MemoryRouter } from 'react-router-dom'
 
 test('Renders internal link', () => {

@@ -1,8 +1,8 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
-import AppNavMenuList from '@/components/AppNavMenuList'
+import AppNavMenuList from './AppNavMenuList'
 import { MemoryRouter } from 'react-router-dom'
-import dataTools from '@/utils/dataTools'
+import dataTools from '../utils/dataTools'
 
 const items = dataTools.parse([
   {

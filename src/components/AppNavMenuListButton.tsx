@@ -2,7 +2,7 @@ import React, { HTMLAttributes } from 'react'
 import classnames from 'classnames'
 import PropTypes from 'prop-types'
 import { NavLink } from 'react-router-dom'
-import ExternalLinkIcon from '@/components/icons/ExternalLinkIcon'
+import ExternalLinkIcon from './icons/ExternalLinkIcon'
 import './AppNavMenuListButton.scss'
 
 type props = {
