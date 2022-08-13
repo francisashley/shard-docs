@@ -34,10 +34,6 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
           { name: 'Content', content: <EssentialsSchemaReferenceContent /> },
           { name: 'API', content: <EssentialsApiReferenceContent /> },
           {
-            name: 'Examples',
-            content: [{ name: 'Hello world', content: <ExamplesHelloWorldContent /> }],
-          },
-          {
             name: 'Shards',
             content: [
               { name: '<CodeSample />', content: <ShardsCodeSampleShardContent /> },
