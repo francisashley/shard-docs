@@ -9,7 +9,7 @@ type props = {
 }
 
 export default (props: props) => {
-  const language = props.language || props.className?.replace(/language-/, '')
+  const language = (props.language || props.className?.replace(/language-/, '')) as Language
 
   return (
     <Highlight {...defaultProps} code={props.children.trim()} language={language} theme={undefined}>
