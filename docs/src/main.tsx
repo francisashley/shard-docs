@@ -9,7 +9,6 @@ import '../../dist/index.css'
 import EssentialsGetStartedContent from '../content/1-essentials-get-started.mdx'
 import EssentialsSchemaReferenceContent from '../content/1-source-schema.mdx'
 import EssentialsApiReferenceContent from '../content/1-reference-api.mdx'
-import ExamplesHelloWorldContent from '../content/2-examples-hello-world.mdx'
 import ShardsCodeSampleShardContent from '../content/3-shards-code-sample.mdx'
 import ShardsSectionShardContent from '../content/3-shards-section.mdx'
 
