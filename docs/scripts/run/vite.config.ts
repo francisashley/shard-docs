@@ -7,6 +7,7 @@ import rehypePrism from '@mapbox/rehype-prism'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  root: process.cwd(),
   plugins: [
     viteCommonjs(),
     mdx({

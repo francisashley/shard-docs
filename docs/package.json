@@ -4,9 +4,9 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
-    "preview": "vite preview"
+    "dev": "vite scripts/run",
+    "build": "tsc && vite build scripts/run",
+    "preview": "vite preview scripts/run"
   },
   "devDependencies": {
     "@fa-repo/shard-docs": "link:..",
