@@ -21,7 +21,7 @@ await fs.copy(shell.getScaffoldDir(), shell.getDevDir(), (err) => {
 
   // 4) Run vite
   if (args.command === 'build') {
-    shell.exec(`vite build ${shell.getDevDir()} --outDir ../.build`)
+    shell.exec(`vite build ${shell.getDevDir()} --outDir ../.build --emptyOutDir`)
   } else if (args.command === 'dev') {
     shell.exec(`vite ${shell.getDevDir()}`)
   }
