@@ -7,7 +7,7 @@
   "repository": "fa-repo/shard-docs",
   "type": "module",
   "bin": {
-    "shard-docs": "bin/shard-docs.js"
+    "shard-docs": "bin/shard-docs.mjs"
   },
   "main": "dist/index.js",
   "engines": {
