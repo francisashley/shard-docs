@@ -6,7 +6,6 @@ import GithubIcon from '../icons/GithubIcon'
 import uniqueId from 'lodash/uniqueId'
 import CodeBlockRenderer from '../renderers/CodeBlockRenderer'
 import Link from '../Link'
-import Frame from 'react-frame-component'
 import './CodeSampleShard.scss'
 import { Language } from 'prism-react-renderer'
 import reactElementToJSXString from 'react-element-to-jsx-string'
@@ -98,19 +97,7 @@ class CodeSampleShard extends React.Component<props, state> {
               </CodeBlockRenderer>
             </div>
           )}
-          <div className="CodeSampleShard__example">
-            {props.useIframe ? (
-              <Frame
-                initialContent={`<!DOCTYPE html><html><head>${props.iframeHead}</head><body><div class="frame-root"></div></body></html>`}
-                style={props.iframeStyle}
-                role="presentation"
-              >
-                {children}
-              </Frame>
-            ) : (
-              children
-            )}
-          </div>
+          <div className="CodeSampleShard__example">{children}</div>
         </div>
       </section>
     )

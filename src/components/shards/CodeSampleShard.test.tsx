@@ -24,18 +24,6 @@ test('<CodeSampleShard /> renders example', () => {
   expect(screen.getByRole('heading', { level: 2 })).toHaveTextContent('Hello world')
 })
 
-test('<CodeSampleShard /> renders example in an iframe', () => {
-  // cannot currently test the iframe
-  // https://github.com/ryanseddon/react-frame-component/issues/193
-  // render(
-  //   <CodeSampleShard useIframe>
-  //     <h1>Hello world</h1>
-  //   </CodeSampleShard>
-  // )
-  // screen.debug()
-  // expect(screen.queryByRole('presentation')).toBeInTheDocument()
-})
-
 test('<CodeSampleShard /> toggles sourceCode', async () => {
   const user = userEvent.setup()
   render(
