@@ -24,7 +24,8 @@ await fs.copy(shell.getScaffoldDir(), shell.getDevDir(), (err) => {
     shell.exec(`vite build ${shell.getDevDir()} --outDir ../.build`)
   } else if (args.command === 'dev') {
     shell.exec(`vite ${shell.getDevDir()}`)
-  } else if (args.command === 'preview') {
-    shell.exec(`vite preview ${shell.getDevDir()}`)
   }
+  // else if (args.command === 'preview') {
+  //   shell.exec(`cd .docs && vite preview ${shell.getDevDir()} --open / && cd ../`)
+  // }
 })

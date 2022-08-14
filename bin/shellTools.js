@@ -18,7 +18,7 @@ const getArgs = (argv) => {
   argv = yargs(argv.slice(2))
     .demandCommand(1)
     .check((argv, options) => {
-      if (!['dev', 'build', 'preview'].includes(argv._[0])) {
+      if (!['dev', 'build'].includes(argv._[0])) {
         throw new Error(`Unknown command "${argv._[0]}". Please use "dev", "build" or "preview".`)
       }
       if (!argv._[1]) {
