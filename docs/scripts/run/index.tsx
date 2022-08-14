@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import ShardDocs from '../../../dist/index'
-import config from '../../docs.config'
+import config from '../../entry'
 import '../../../dist/index.css'
 
 type dataItem = {
