@@ -31,6 +31,7 @@ const getArgs = (argv) => {
   return {
     command: argv._[0],
     entry: argv._[1],
+    debug: Boolean(argv.debug),
   }
 }
 
