@@ -4,9 +4,9 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite scripts/run",
-    "build": "tsc && vite build scripts/run --outDir ../../build",
-    "preview": "vite preview scripts/run"
+    "dev": "shard-docs dev ./docs.config.tsx",
+    "build": "shard-docs build ./docs.config.tsx",
+    "preview": "shard-docs preview ./docs.config.tsx"
   },
   "devDependencies": {
     "@fa-repo/shard-docs": "6.0.*",
