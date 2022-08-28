@@ -20,7 +20,6 @@
   ],
   "scripts": {
     "dev": "node scripts/watch-framework.js",
-    "dev:test": "jest --watchAll --env=jsdom",
     "dev:analyse": "yarn build && npx source-map-explorer ./dist/index.js",
     "build": "yarn build:cli && yarn build:framework",
     "build:cli": "node scripts/build-cli.js",
@@ -29,7 +28,9 @@
     "postbuild": "yarn build:definitions",
     "docs:deploy": "cd docs && yarn && yarn build && npx gh-pages -d dist --git $(which git)",
     "preversion": "yarn test && yarn build",
-    "postpublish": "git push --tags"
+    "postpublish": "git push --tags",
+    "test": "jest --env=jsdom",
+    "test:watch": "jest --watchAll --env=jsdom"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.18.10",
