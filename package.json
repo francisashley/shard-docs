@@ -19,17 +19,19 @@
     "dist"
   ],
   "scripts": {
-    "build": "node scripts/build.mjs",
-    "postbuild": "yarn build-ts",
-    "watch": "node scripts/watch.mjs",
-    "build-ts": "tsc src/index.ts src/types/shard-docs.d.ts  --declaration --emitDeclarationOnly --jsx react --skipLibCheck --esModuleInterop --outDir dist",
+    "watch": "node scripts/watch-framework.mjs",
+    "build": "yarn build:cli && yarn build:framework",
+    "build:cli": "node scripts/build-cli.mjs",
+    "build:framework": "node scripts/build-framework.mjs",
+    "build:definitions": "tsc src/index.ts src/types/shard-docs.d.ts  --declaration --emitDeclarationOnly --jsx react --skipLibCheck --esModuleInterop --outDir dist",
+    "postbuild": "yarn build:definitions",
     "docs:deploy": "cd docs && yarn && yarn build && npx gh-pages -d dist --git $(which git)",
     "preversion": "yarn test && yarn build",
     "postpublish": "git push --tags",
-    "analyse": "yarn build && npx source-map-explorer ./dist/index.js",
     "test": "jest --env=jsdom",
     "test:watch": "jest --watch --env=jsdom",
-    "test:coverage": "jest --coverage"
+    "test:coverage": "jest --coverage",
+    "analyse": "yarn build && npx source-map-explorer ./dist/index.js"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.18.10",
@@ -42,12 +44,14 @@
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^14.4.3",
     "@types/cli-spinner": "^0.2.1",
+    "@types/fs-extra": "^9.0.13",
     "@types/shelljs": "^0.8.11",
     "@vitejs/plugin-react": "^2.0.1",
     "chalk": "^5.0.1",
     "classnames": "^2.3.1",
     "cli-spinner": "^0.2.10",
     "esbuild": "^0.15.2",
+    "esbuild-plugin-alias": "^0.2.1",
     "esbuild-sass-plugin": "^2.3.2",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^28.1.3",
@@ -65,7 +69,7 @@
     "ts-node": "^10.9.1",
     "typescript": "^4.7.4",
     "vite": "^3.0.7",
-    "esbuild-plugin-alias": "^0.2.1"
+    "cli-table": "^0.3.11"
   },
   "peerDependencies": {
     "react": "18.2.0",

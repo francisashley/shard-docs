@@ -4,8 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "shard-docs dev ./docs.config.tsx",
-    "build": "shard-docs build ./docs.config.tsx"
+    "dev": "shard-docs dev --entry ./docs.config.tsx",
+    "build": "shard-docs build --entry ./docs.config.tsx"
   },
   "devDependencies": {
     "@fa-repo/shard-docs": "6.0.*",
