@@ -16,7 +16,8 @@
   },
   "files": [
     "bin",
-    "dist"
+    "dist",
+    "template"
   ],
   "scripts": {
     "dev": "node scripts/watch-framework.js",
