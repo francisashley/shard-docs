@@ -45,8 +45,8 @@ const getBinDir = () => {
   return url.fileURLToPath(import.meta.url)
 }
 
-const getScaffoldDir = () => {
-  return path.resolve(getBinDir(), '../scaffolding')
+const getTemplateDir = () => {
+  return path.resolve(getBinDir(), '../template')
 }
 
 const getDevDir = () => {
@@ -69,7 +69,7 @@ export default {
   getArgs,
   getCurrDir,
   getBinDir,
-  getScaffoldDir,
+  getTemplateDir,
   getDevDir,
   getBuildDir,
   getEntryFilePath,
