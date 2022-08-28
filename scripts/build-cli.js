@@ -1,8 +1,4 @@
 import esbuild from 'esbuild'
-import { sassPlugin } from 'esbuild-sass-plugin'
-import postcss from 'postcss'
-import alias from 'esbuild-plugin-alias'
-import path from 'path'
 
 function build(entryFile, outFile) {
   esbuild
@@ -17,7 +13,7 @@ function build(entryFile, outFile) {
         js: "import { createRequire } from 'module';const require = createRequire(import.meta.url);",
       },
     })
-    .then(() => console.log('⚡ Build succeeded.'))
+    .then(() => console.log('⚡ CLI built'))
     .catch((e) => {
       console.log('Error building:', e.message)
       process.exit(1)

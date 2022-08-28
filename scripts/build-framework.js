@@ -1,6 +1,5 @@
 import esbuild from 'esbuild'
 import { sassPlugin } from 'esbuild-sass-plugin'
-import postcss from 'postcss'
 import alias from 'esbuild-plugin-alias'
 import path from 'path'
 
@@ -23,4 +22,4 @@ esbuild
       }),
     ],
   })
-  .then(() => console.log('⚡ Build'))
+  .then(() => console.log('⚡ Framework built'))

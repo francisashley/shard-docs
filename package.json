@@ -19,12 +19,12 @@
     "dist"
   ],
   "scripts": {
-    "dev": "node scripts/watch-framework.mjs",
+    "dev": "node scripts/watch-framework.js",
     "dev:test": "jest --watchAll --env=jsdom",
     "dev:analyse": "yarn build && npx source-map-explorer ./dist/index.js",
     "build": "yarn build:cli && yarn build:framework",
-    "build:cli": "node scripts/build-cli.mjs",
-    "build:framework": "node scripts/build-framework.mjs",
+    "build:cli": "node scripts/build-cli.js",
+    "build:framework": "node scripts/build-framework.js",
     "build:definitions": "tsc src/index.ts src/types/shard-docs.d.ts  --declaration --emitDeclarationOnly --jsx react --skipLibCheck --esModuleInterop --outDir dist",
     "postbuild": "yarn build:definitions",
     "docs:deploy": "cd docs && yarn && yarn build && npx gh-pages -d dist --git $(which git)",
