@@ -9,11 +9,31 @@ type dataItem = {
   content: string | dataItem[] | React.ReactNode
 }
 
-const { title = '', data = [] } = config as { title: string; data: dataItem[] }
+type options = {
+  title: string
+  data: dataItem[]
+  basePath: string
+  hideBuiltWithShardDocs: boolean
+  routerType: 'hash' | 'browser'
+}
+
+const {
+  title = '',
+  data = [],
+  basePath = '',
+  hideBuiltWithShardDocs = false,
+  routerType = 'hash',
+}: options = config
 
 const root = document.getElementById('root') as HTMLElement
 ReactDOM.createRoot(root).render(
   <React.StrictMode>
-    <ShardDocs title={title} data={data} />
+    <ShardDocs
+      title={title}
+      data={data}
+      basePath={basePath}
+      hideBuiltWithShardDocs={hideBuiltWithShardDocs}
+      routerType={routerType}
+    />
   </React.StrictMode>
 )
