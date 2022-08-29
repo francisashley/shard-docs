@@ -6,6 +6,7 @@ import SectionShardContent from './content/shards/section-shard.mdx'
 
 export default {
   title: 'Shard docs',
+  basePath: '/docs/',
   data: [
     { name: 'Get started', content: <GetStartedContent /> },
     { name: 'Config', content: <ConfigContent /> },
