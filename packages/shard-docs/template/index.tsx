@@ -20,7 +20,7 @@ type options = {
 const {
   title = '',
   data = [],
-  basePath = '',
+  basePath = '/',
   hideBuiltWithShardDocs = false,
   routerType = 'hash',
 }: options = config
