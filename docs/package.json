@@ -9,7 +9,7 @@
     "deploy": "yarn build && gh-pages -d ./.build"
   },
   "devDependencies": {
-    "@fa-repo/shard-docs": "6.0.7",
+    "@fa-repo/shard-docs": "6.0.8",
     "@mapbox/rehype-prism": "^0.8.0",
     "@mdx-js/react": "^2.1.2",
     "@mdx-js/rollup": "^2.1.2",
