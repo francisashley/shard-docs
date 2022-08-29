@@ -27,7 +27,7 @@ Run locally
 yarn dev
 ```
 
-Build to serve
+Build to deploy
   
 ```bash
 yarn build
