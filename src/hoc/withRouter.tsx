@@ -1,6 +1,6 @@
 import React from 'react'
 import { HashRouter, BrowserRouter, Route, Routes } from 'react-router-dom'
-import { useLocation, useInRouterContext } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 
 type withRouterOptionsProps = {
   routerType?: 'hash' | 'browser'
@@ -19,23 +19,11 @@ function withRouter<props>(WrappedComponent: (props: props) => React.ReactElemen
       return <WrappedComponent {...props} currentPath={location.pathname} />
     }
 
-    const inContext = useInRouterContext()
-
-    if (inContext) {
-      return (
-        <Routes>
-          <Route path="*" element={<EnrichedWrappedComponent />} />
-        </Routes>
-      )
-    } else {
-      return (
-        <Router>
-          <Routes>
-            <Route path="*" element={<EnrichedWrappedComponent />} />
-          </Routes>
-        </Router>
-      )
-    }
+    return (
+      <Routes>
+        <Route path="*" element={<EnrichedWrappedComponent />} />
+      </Routes>
+    )
   }
 }
 
