@@ -1,0 +1,42 @@
+
+Data passed to ShardDocs is composed of three types of items. Pages, Categories and Links. To
+keep the schema as simple as possible, each item shares the same fields and the type is implicitly
+determined by the data provided.
+
+**The anatomy of an item**
+
+Each item shares a `name` field and the type of data provided to `content` will determine how the item is treated.
+
+```typescript
+type item = {
+  name: string;
+  content: react.ReactNode | item[] | string;
+}
+```
+
+**Pages** are created by providing `JSX`. The world's your oyster in what you choose to display here.
+
+```typescript
+type page = {
+  name: string;
+  content: React.ReactNode;
+}
+```
+
+**Categories** are created by providing an array of items. These are used for grouping items in the sidebar and are infinitely nestable.
+
+```typescript
+type category = {
+  name: string;
+  content: item[];
+}
+```
+
+**Links** are created by providing a url string. Relative urls will use the internal router, absolute urls will open in a new tab.
+
+```typescript
+type link = {
+  name: string;
+  content: string;
+}
+```

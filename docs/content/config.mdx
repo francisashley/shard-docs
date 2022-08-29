@@ -1,0 +1,41 @@
+```tsx
+// docs.config.ts
+
+export default {
+  /**
+   * The title of the docs.
+   * @optional
+   * @string
+   */
+  title: "My Docs",
+
+  /**
+   * Add a prefix to all routes. E.g. "/docs/".
+   * @optional
+   * @string
+   * @default "/"
+  */
+  basePath: "/docs/",
+
+  /**
+   * Hide "Built with Shard Docs" at the bottom of the sidebar.
+   * @optional
+   * @boolean
+   * @default false
+  */
+  hideBuiltWithShardDocs: true,
+
+  /**
+   * Use react routers BrowserRouter instead of HashRouter (default) for routing..
+   * @string "hash"|"browser"
+   * @default "hash"
+  */
+  routerType: "browser",
+ 
+  /**
+   * The schema of the data, explained in the next section.
+   * @array
+   */
+  data: data,
+}
+```

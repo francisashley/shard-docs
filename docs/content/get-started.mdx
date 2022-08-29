@@ -1,0 +1,29 @@
+## Install
+
+```bash
+yarn create @fa-repo/shard-docs docs-name
+```
+
+## Basic usage
+
+```jsx
+// docs.config.ts
+
+import HelloWorldMarkdownContent from './content/hello-world.mdx'
+import HelloWorldReactContent from './components/helloworld.tsx'
+
+export default {
+  title: "My Docs",
+  data: [
+    { name: "Hello world", content: <p>Anything can go in here!</p> },
+    {
+      name: "Fruit",
+      content: [
+        { name: "Markdown", content: HelloWorldMarkdownContent },
+        { name: "React", content: HelloWorldReactContent },
+        { name: "Inline", content: <p>I am inline JSX</p>  },
+      ]
+    }
+  ]
+}
+```
