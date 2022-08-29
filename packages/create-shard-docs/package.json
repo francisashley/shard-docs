@@ -13,6 +13,7 @@
   },
   "files": [
     "bin/create-shard-docs.js",
+    "src",
     "template"
   ],
   "main": "src/index.js",
