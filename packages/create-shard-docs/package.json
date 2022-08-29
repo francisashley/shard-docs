@@ -1,0 +1,39 @@
+{
+  "name": "@fa-repo/create-shard-docs",
+  "version": "0.0.1",
+  "license": "MIT",
+  "author": "Francis Ashley",
+  "type": "module",
+  "bin": {
+    "@fa-repo/create-shard-docs": "bin/create-shard-docs.js",
+    "create-shard-docs": "bin/create-shard-docs.js"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "bin/create-shard-docs.js",
+    "template"
+  ],
+  "main": "src/index.js",
+  "engines": {
+    "node": ">=14"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/skystash/shard-docs.git",
+    "directory": "packages/create-shard-docs"
+  },
+  "scripts": {},
+  "devDependencies": {},
+  "dependencies": {
+    "arg": "^5.0.2",
+    "chalk": "^5.0.1",
+    "esm": "^3.2.25",
+    "execa": "^6.1.0",
+    "inquirer": "^9.1.0",
+    "listr": "^0.14.3",
+    "ncp": "^2.0.0",
+    "pkg-install": "^1.0.0"
+  }
+}
