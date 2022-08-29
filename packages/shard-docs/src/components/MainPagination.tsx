@@ -13,12 +13,12 @@ const MainPagination = (props: MainPaginationProps) => {
     <footer className="MainPagination" aria-label="Pagination footer">
       {props.prevPage && (
         <NavLink className="MainPagination__btn MainPagination__btn--prev" to={props.prevPage.path}>
-          ⟵ {props.prevPage.name}
+          ⬅ {props.prevPage.name}
         </NavLink>
       )}
       {props.nextPage && (
         <NavLink className="MainPagination__btn MainPagination__btn--next" to={props.nextPage.path}>
-          {props.nextPage.name} ⟶
+          {props.nextPage.name} ➡
         </NavLink>
       )}
     </footer>
