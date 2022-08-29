@@ -29,7 +29,7 @@ const App = (props: props) => {
   useEffect(() => {
     dataActions.setCurrentPath(props.currentPath)
     pageActions.setCurrentPath(props.currentPath)
-    window.scrollTo(0, 0)
+    window.scrollTo({ top: 0, behavior: 'smooth' })
   }, [props.currentPath])
 
   return (
