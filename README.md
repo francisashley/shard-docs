@@ -35,7 +35,7 @@ yarn build
 
 ## Basic usage
 
-The `docs.config.ts` file is the entry point and where shard-docs is configured.
+The `docs.config.ts` file is the entry point where shard-docs is configured.
 
 ```tsx
 import MarkdownHelloWorldContent from './content/hello-world.mdx'
