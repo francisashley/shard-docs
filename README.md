@@ -35,9 +35,9 @@ yarn build
 
 ## Basic usage
 
-The `docs.config.ts` file is the entry point where shard-docs is configured.
-
 ```tsx
+// docs.config.ts
+
 import MarkdownHelloWorldContent from './content/hello-world.mdx'
 import ReactHelloWorldContent from './components/helloworld.tsx'
 
@@ -60,6 +60,8 @@ export default {
 ## API
 
 ```tsx
+// docs.config.ts
+
 export default {
   /**
    * The title of the docs.
