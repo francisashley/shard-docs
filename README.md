@@ -13,105 +13,90 @@ An engine for composing beautiful, interactive documentation.
 
 <image src="example.png" alt="screenshot" style="box-shadow: 0 0 8px rgba(0,0,0,0.2), 0 0 20px rgba(0,0,0,0.3);border-radius: 8px;">
 
-## Install and setup
-
-Currently there is some configuration involved in getting shard-docs working on a fresh build. I do hope to automate this process in the future with a CLI script.
-
-**For now let's walk through the steps.**
-
-1) Create a fresh new react project under a `/docs` folder.
+## Installation
 
 ```bash
-npx create-react-app docs
+yarn create @fa-repo/shard-docs docs-name
 ```
 
-2) Install the dependencies.
+## Commands
+
+Run locally
 
 ```bash
-yarn add @fa-repo/shard-docs react-router-dom @mdx-js/loader @mdx-js/react --dev
+yarn dev
 ```
 
-3) (optional) Configure MDXJS as a loader to enable support for MDX.
-https://www.npmjs.com/package/@mdx-js/loader
-
-4) Update index.js to look like the `basic usage` example.
-
+Build to serve
+  
+```bash
+yarn build
+```
 
 ## Basic usage
 
-```jsx index.ts
-import React from "react";
-import ReactDOM from "react-dom";
-import ShardDocs from "@fa-repo/shard-docs";
-import BasicUsageContent from "./content/basic-usage.mdx";
-import "@fa-repo/shard-docs/dist/index.css";
+The `docs.config.ts` file is the entry point and where shard-docs is configured.
 
-const data = [
-  // Compose pages from JSX
-  { name: "Get started", content: <p>Lorem ipsum dolor sit amet, consectetur adipiscing...</p> },
+```tsx
+import MarkdownHelloWorldContent from './content/hello-world.mdx'
+import ReactHelloWorldContent from './components/helloworld.tsx'
 
-  // Compose pages from MDX after configuring @mdx-js/react loader.
-  { name: "Basic usage", content: <BasicUsageContent /> },
-
-  // Organise pages into collapsible sections on the sidebar. These are infinitely nestable.
-  {
-    name: "Examples",
-    content: [
-      { name: "Use case A", content: <p>Lorem ipsum dolor sit amet, consectetur adipiscing...</p> },
-      { name: "Use case B", content: <p>Lorem ipsum dolor sit amet, consectetur adipiscing...</p> }
-    ]
-  },
-
-  // Display links on the sidebar. Relative paths will use internal routing, absolute paths will open in new tab.
-  { name: "Github", content: "https://www.github.com" },
-];
-
-ReactDOM.render(<ShardDocs title="ShardDocs demo" data={data} />, document.getElementById("root"));
+export default {
+  title: "My Docs",
+  data: [
+    { name: "Hello world", content: <p>Anything can go in here!</p> },
+    {
+      name: "Fruit",
+      content: [
+        { name: "Markdown", content: MarkdownHelloWorldContent },
+        { name: "React", content: ReactHelloWorldContent },
+        { name: "Inline", content: <p>I am inline JSX</p>  },
+      ]
+    }
+  ]
+}
 ```
 
-## ShardDocs API
-```jsx
-<ShardDocs
+## API
+
+```tsx
+export default {
   /**
-   * Assign docs a title. Title appears at the top of the sidebar.
+   * The title of the docs.
+   * @optional
    * @string
-   * @default ""
-  */
-  title="Documentation title"
+   */
+  title: "My Docs",
+
   /**
    * Add a prefix to all routes. E.g. "/docs/".
    * @optional
    * @string
    * @default "/"
   */
-  basePath="/docs/"
+  basePath: "/docs/",
+
   /**
    * Hide "Built with Shard Docs" at the bottom of the sidebar.
    * @optional
    * @boolean
    * @default false
   */
-  hideBuiltWithShardDocs={true}
+  hideBuiltWithShardDocs: true,
+
   /**
    * Use react routers BrowserRouter instead of HashRouter (default) for routing..
    * @string "hash"|"browser"
    * @default "hash"
   */
-  routerType="browser"
+  routerType: "browser",
+ 
   /**
-   * Data is fed in through the content prop. Scroll down for an explanation of the schema.
-   * @boolean
-   * @default false
-  */
-  data={[
-    {
-      name: "Essentials",
-      content: [
-        { name: "Get started", content: <p>Lorem ipsum dolor sit amet..</p> }
-      ]
-    }
-  ]}
-/>
+   * The schema of the data is explained further down.
+   * @array
+   */
+  data: data,
+}
 ```
 
 ## Data schema 
@@ -212,26 +197,7 @@ import "@fa-repo/shard-docs/dist/shards/SectionShard.css";
 
 - [ ] Add github corner feature
 - [ ] Add search feature
-- [ ] Update to React 18.x
-- [ ] Add native support for MDX
-- [ ] Add CLI scripts to bootstrap the project, build and serve locally
 - [ ] Fully optimise package size
-- [ ] Simplify the entry point by exposing a config file instead of having to manually setup a react project each time. Something like:
-
-```tsx
-// src/entry.ts
-
-import BasicUsageContent from "./content/basic-usage.mdx";
-
-export default {
-  title: "Docs",
-  basePath: "/docs/",
-  data: [
-    { name: "Get started", content: <p>Lorem ipsum dolor sit amet..</p> },
-    { name: "Basic usage", content: BasicUsageContent },
-  ]
-};
-``` 
 
 ## License
 MIT
