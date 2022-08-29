@@ -3,7 +3,7 @@ import useWindowSize from '../hooks/useWindowSize'
 
 type device = 'mobile' | 'desktop'
 
-const DESKTOP_BREAKPOINT = 1200
+const DESKTOP_BREAKPOINT = 1024
 
 const getDevice = (windowWidth: number = 0): device => {
   return windowWidth > DESKTOP_BREAKPOINT ? 'desktop' : 'mobile'
