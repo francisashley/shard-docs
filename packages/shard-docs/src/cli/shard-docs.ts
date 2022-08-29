@@ -9,7 +9,10 @@ import url from 'url'
 import Table from 'cli-table'
 
 function parseArgumentsIntoOptions(rawArgs: string[]) {
-  const args = arg({ '--entry': String, '--debug': Boolean }, { argv: rawArgs.slice(2) })
+  const args = arg(
+    { '--entry': String, '--debug': Boolean, '--basePath': String },
+    { argv: rawArgs.slice(2) }
+  )
 
   if (!args._[0]) {
     throw new Error("missing command 'build' or 'watch")
@@ -23,6 +26,7 @@ function parseArgumentsIntoOptions(rawArgs: string[]) {
     command: args._[0],
     entry: args['--entry'] || '',
     debug: args['--debug'] || false,
+    basePath: args['--basePath'] || '/',
   }
 }
 
@@ -63,7 +67,9 @@ export function cli(args: string[]) {
   fs.copy(paths.templateFolder, paths.docsFolder, (err) => {
     if (err) return console.error(err)
     if (options.command === 'build') {
-      run(`vite build ${paths.docsFolder} --outDir ../.build --emptyOutDir`)
+      run(
+        `vite build ${paths.docsFolder} --outDir ../.build --emptyOutDir --base ${options.basePath}`
+      )
     } else if (options.command === 'dev') {
       run(`vite ${paths.docsFolder}`)
     }
