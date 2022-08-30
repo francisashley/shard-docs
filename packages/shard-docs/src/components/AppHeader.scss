@@ -1,13 +1,10 @@
 .AppHeader {
   display: flex;
-  background: rgba(0,0,0,0.3);
 
   &__title {
-    color: white;
     font-size: 17px;
     font-weight: 500;
     margin: 0;
-    padding: 16px 32px;
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
@@ -15,6 +12,17 @@
     flex: 1;
     text-decoration: none;
     overflow: hidden;
+    padding: 24px;
+    color: #fff;
+    text-align: center;
+    
+    @media (min-width: 1024px) {
+      padding: 16px;
+      background: rgba(255, 255, 255, 0.25);
+      box-shadow: 0 8px 32px 0 rgb(31 38 135 / 37%);
+      backdrop-filter: blur(4px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+    }
   }
 
   &__toggle-btn {
@@ -24,13 +32,16 @@
     margin: -1px 0;
     outline: none;
     cursor: pointer;
-  
+    padding: 24px;
+    position: absolute;
+
     &:focus {
       border-color: white;
     }
     
     @media (min-width: 1024px) {
       display: none;
+      padding: 0;
     }
   }
 

@@ -16,15 +16,6 @@ test('<AppSidebar /> renders with default props', () => {
   expect(screen).toBeTruthy()
 })
 
-test('<AppSidebar /> renders app title', () => {
-  render(
-    <MemoryRouter>
-      <AppSidebar title={'App title'} />
-    </MemoryRouter>
-  )
-  expect(screen.queryByText('App title')).toBeTruthy()
-})
-
 test('<AppSidebar /> renders menu', () => {
   render(
     <MemoryRouter>
@@ -32,69 +23,4 @@ test('<AppSidebar /> renders menu', () => {
     </MemoryRouter>
   )
   expect(screen.getByRole('navigation').querySelectorAll('a').length).toBe(1)
-})
-
-test('<AppSidebar /> renders sidebar footer', () => {
-  render(
-    <MemoryRouter>
-      <AppSidebar items={items} />
-    </MemoryRouter>
-  )
-
-  expect(screen.getByRole('contentinfo')).toBeTruthy()
-})
-
-test('<AppSidebar /> can hide sidebar footer', () => {
-  render(
-    <MemoryRouter>
-      <AppSidebar hideBuiltWithShardDocs />
-    </MemoryRouter>
-  )
-
-  expect(screen.queryByRole('contentinfo')).toBeFalsy()
-})
-
-test('<AppSidebar /> displays properly on mobile', async () => {
-  const user = userEvent.setup()
-  render(
-    <MemoryRouter>
-      <AppSidebar device="mobile" />
-    </MemoryRouter>
-  )
-
-  expect(screen.queryByRole('navigation')).toBeFalsy()
-  await user.click(screen.getByRole('button'))
-  expect(screen.getByRole('navigation')).toBeVisible()
-  await user.click(screen.getByRole('button'))
-  expect(screen.queryByRole('navigation')).toBeFalsy()
-})
-
-test('<AppSidebar /> displays properly on desktop', async () => {
-  const user = userEvent.setup()
-  render(
-    <MemoryRouter>
-      <AppSidebar device="desktop" />
-    </MemoryRouter>
-  )
-
-  expect(screen.queryByRole('navigation')).toBeTruthy()
-  await user.click(screen.getByRole('button'))
-  expect(screen.getByRole('navigation')).toBeVisible()
-  await user.click(screen.getByRole('button'))
-  expect(screen.queryByRole('navigation')).toBeTruthy()
-})
-
-test('<AppSidebar /> closes sidebar menu when navigating on mobile', async () => {
-  const user = userEvent.setup()
-  render(
-    <MemoryRouter>
-      <AppSidebar items={items} device="mobile" />
-    </MemoryRouter>
-  )
-
-  expect(screen.queryByRole('navigation')).toBeFalsy()
-  await user.click(screen.getByRole('button'))
-  expect(screen.getByRole('navigation')).toBeVisible()
-  await user.click(screen.getAllByRole('link')[1])
-  expect(screen.queryByRole('navigation')).toBeFalsy()
 })

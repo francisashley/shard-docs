@@ -1,6 +1,7 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import withRouter from '../hoc/withRouter'
+import AppHeader from './AppHeader'
 import AppMain from './AppMain'
 import AppSidebar from './AppSidebar'
 import useData from '../hooks/useData'
@@ -24,6 +25,7 @@ const App = (props: props) => {
   const [data, dataActions] = useData(props.data || [], props.basePath, props.currentPath)
   const [pages, pageActions] = usePagination(data, props.currentPath, props.basePath)
   const [device] = useDevice()
+  const [showMobileMobile, setMobileMenu] = useState(false)
 
   // on route change
   useEffect(() => {
@@ -34,19 +36,27 @@ const App = (props: props) => {
 
   return (
     <div className="App">
-      <AppSidebar
+      <AppHeader
         title={props.title}
         basePath={props.basePath}
-        items={data as item[]}
-        hideBuiltWithShardDocs={props.hideBuiltWithShardDocs}
-        onToggleMenu={dataActions.toggleMenu}
-        device={device}
+        onToggleMenu={() => setMobileMenu(!showMobileMobile)}
       />
-      <AppMain
-        page={pages.current}
-        prevPage={pages.prev as paginationPage}
-        nextPage={pages.next as paginationPage}
-      />
+      <div className="App__inner">
+        <AppSidebar
+          title={props.title}
+          basePath={props.basePath}
+          items={data as item[]}
+          showMobileMenu={showMobileMobile}
+          onToggleMenu={dataActions.toggleMenu}
+          device={device}
+        />
+        <AppMain
+          page={pages.current}
+          prevPage={pages.prev as paginationPage}
+          nextPage={pages.next as paginationPage}
+          hideBuiltWithShardDocs={props.hideBuiltWithShardDocs}
+        />
+      </div>
     </div>
   )
 }

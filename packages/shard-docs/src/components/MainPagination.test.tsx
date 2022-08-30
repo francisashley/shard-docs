@@ -22,7 +22,7 @@ test('<MainPagination /> renders prev page', () => {
     </MemoryRouter>
   )
   expect(screen.queryAllByRole('link').length).toBe(1)
-  expect(screen.getByText('⟵ Prev')).toBeTruthy()
+  expect(screen.getByText('⬅ Prev')).toBeTruthy()
 })
 
 test('<MainPagination /> renders next page', () => {
@@ -32,7 +32,7 @@ test('<MainPagination /> renders next page', () => {
     </MemoryRouter>
   )
   expect(screen.queryAllByRole('link').length).toBe(1)
-  expect(screen.getByText('Next ⟶')).toBeTruthy()
+  expect(screen.getByText('Next ➡')).toBeTruthy()
 })
 
 test('<MainPagination /> renders both pages', () => {
@@ -43,6 +43,6 @@ test('<MainPagination /> renders both pages', () => {
   )
 
   expect(screen.queryAllByRole('link').length).toBe(2)
-  expect(screen.getByText('⟵ Prev')).toBeTruthy()
-  expect(screen.getByText('Next ⟶')).toBeTruthy()
+  expect(screen.getByText('⬅ Prev')).toBeTruthy()
+  expect(screen.getByText('Next ➡')).toBeTruthy()
 })

@@ -1,7 +1,6 @@
 .AppNavMenuListButton {
   background: transparent;
   border-radius: 4px;
-  color: #fff;
   display: flex;
   font-size: 16px;
   font-weight: 500;
@@ -17,18 +16,22 @@
   position: relative;
   font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
   Ubuntu, Arial, sans-serif;
+  color: #fff;
+  background: rgba(255, 255, 255, 0);
+  transition: background 0.3s ease-out;
 
   &--toggle#{&}--active {
-    color: #fff176;
+    background: rgba(255, 255, 255, 0.4);
+    color: #fff;
   }
 
   &--internal#{&}--active {
-    background: rgba(0,0,0,0.2);
-    color: #fff176;
+    background: rgba(255, 255, 255, 0.4);
+    color: #fff;
   }
 
   &:not(&--active):hover {
-    background: rgba(0,0,0,0.2);
+    background: rgba(255, 255, 255, 0.2);
   }
   
   &--external &__external-icon {

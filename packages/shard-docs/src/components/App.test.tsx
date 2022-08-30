@@ -39,8 +39,3 @@ test('<App /> renders with props', async () => {
   // Renders Page
   expect(screen.getByText('Doc A', { selector: 'h2' })).toBeTruthy()
 })
-
-test('<App /> can hide sidebar footer', () => {
-  render(<App hideBuiltWithShardDocs />)
-  expect(screen.queryByRole('contentinfo')).toBeFalsy()
-})
