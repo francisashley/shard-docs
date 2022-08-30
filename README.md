@@ -6,7 +6,7 @@ An engine for composing beautiful, interactive documentation.
 
 [![version][version-badge]][package] [![MIT License][license-badge]][license]
 
-[**Read The Docs**](https://skystash.github.io/shard-docs/#/docs/)
+[**Read The Docs**](https://skystash.github.io/shard-docs/#/docs/get-started)
 </div>
 
 <hr/>
