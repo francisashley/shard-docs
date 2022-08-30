@@ -245,10 +245,10 @@
   resolved "https://registry.yarnpkg.com/@esbuild/linux-loong64/-/linux-loong64-0.14.54.tgz#de2a4be678bd4d0d1ffbb86e6de779cde5999028"
   integrity sha512-bZBrLAIX1kpWelV0XemxBZllyRmM6vgFQQG2GdNb+r3Fkp0FOh1NJSvekXDs7jq70k4euu1cryLMfU+mTXlEpw==
 
-"@fa-repo/shard-docs@6.0.10":
-  version "6.0.10"
-  resolved "https://registry.yarnpkg.com/@fa-repo/shard-docs/-/shard-docs-6.0.10.tgz#9dc0fc337ca576b71cd5b2c00b49c59d442a6dfe"
-  integrity sha512-/G5wbdROrL0v1dtc/fm0AWSoPkls7zRchWxaUpHGqY1UrOIU5WYB6MLit/kNQsQXe/RA2zVfS2kOrk7ma84uRQ==
+"@fa-repo/shard-docs@6.0.11":
+  version "6.0.11"
+  resolved "https://registry.yarnpkg.com/@fa-repo/shard-docs/-/shard-docs-6.0.11.tgz#90801063c4fa12ba7f969e5b79c500e0d4d03ca2"
+  integrity sha512-pWmMgjupgPToEdbSsDb0Sgag+0mSEDodMfcAoB3FWDUbdI09jZr9vNauQaJ6ZJXB7fOqdgZmeUynQoSDb8wnhQ==
 
 "@jridgewell/gen-mapping@^0.1.0":
   version "0.1.1"
