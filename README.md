@@ -11,7 +11,7 @@ An engine for composing beautiful, interactive documentation.
 
 <hr/>
 
-<image src="example.png" alt="screenshot" style="box-shadow: 0 0 8px rgba(0,0,0,0.2), 0 0 20px rgba(0,0,0,0.3);border-radius: 8px;">
+<image src="exampl.png" alt="screenshot" style="box-shadow: 0 0 8px rgba(0,0,0,0.2), 0 0 20px rgba(0,0,0,0.3);border-radius: 8px;">
 
 ## Installation
 
