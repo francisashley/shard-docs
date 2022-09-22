@@ -6,7 +6,7 @@ An engine for composing beautiful, interactive documentation.
 
 [![version][version-badge]][package] [![MIT License][license-badge]][license]
 
-[**Read The Docs**](https://skystash.github.io/shard-docs/#/docs/get-started)
+[**Read The Docs**](https://francisashley.github.io/shard-docs/#/docs/get-started)
 </div>
 
 <hr/>
@@ -87,7 +87,7 @@ export default {
   hideBuiltWithShardDocs: true,
 
   /**
-   * Use react routers BrowserRouter instead of HashRouter (default) for routing..
+   * Use react routers BrowserRouter instead of HashRouter for routing.
    * @string "hash"|"browser"
    * @default "hash"
   */
@@ -109,7 +109,7 @@ determined by the data provided.
 
 **The anatomy of an item**
 
-Each item shares a `name` field and the type of data provided to `content` will determine how the item is treated.
+Each item shares a `name` field and the type of data provided to `content` determins how the item is treated.
 
 ```typescript
 type item = {
@@ -118,7 +118,7 @@ type item = {
 }
 ```
 
-**Pages** are created by providing `JSX`. The world's your oyster in what you choose to display here.
+**Pages** are created by providing `JSX`, this could be inline or an imported component.
 
 ```typescript
 type page = {
@@ -127,7 +127,7 @@ type page = {
 }
 ```
 
-**Categories** are created by providing an array of items. These are used for grouping items in the sidebar and are infinitely nestable.
+**Categories** are created by providing an array of items, this will render a collapsible sub menu on the sidebar.
 
 ```typescript
 type category = {
@@ -136,7 +136,7 @@ type category = {
 }
 ```
 
-**Links** are created by providing a url string. Relative urls will use the internal router, absolute urls will open in a new tab.
+**Links** are created by providing a url. Relative urls will use the internal router, absolute urls will open in a new tab.
 
 ```typescript
 type link = {
