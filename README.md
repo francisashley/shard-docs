@@ -2,7 +2,7 @@
 
 # Shard Docs
 
-An engine for composing beautiful, interactive documentation.
+An engine for composing interactive documentation.
 
 [![version][version-badge]][package] [![MIT License][license-badge]][license]
 
